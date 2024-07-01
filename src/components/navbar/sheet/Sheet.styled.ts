@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 const Container = styled.div``;
 
 const Sheet = styled.div`
-  ${tw`
+    ${tw`
     fixed
 
     flex
@@ -27,8 +27,8 @@ const Sheet = styled.div`
 `;
 
 const CloseButton = styled.button`
-  // FIXME: ??.. 이거 수정할 수 있을까?..
-  ${tw`
+    // FIXME: ??.. 이거 수정할 수 있을까?..
+    ${tw`
     fixed
 
     flex
@@ -48,14 +48,14 @@ const CloseButton = styled.button`
 `;
 
 const CloseIcon = styled.img`
-  ${tw`
+    ${tw`
   w-6
   h-6
   `}
 `;
 
 const OuterArea = styled.div`
-  ${tw`
+    ${tw`
     fixed
     z-10
     ml-20

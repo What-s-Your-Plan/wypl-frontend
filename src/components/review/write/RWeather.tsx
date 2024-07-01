@@ -1,16 +1,14 @@
-import useReviewStore from '@/stores/ReviewStore';
-
-import { WeatherContent } from '@/objects/Content';
-import { WhiteContainer } from '@/components/common/Container';
-import { InputDefault } from '@/components/common/InputText';
-
+import Question from '@/assets/icons/emoji/question.svg';
 import SunDim from '@/assets/icons/sunDim.svg';
-import Sun from '@/assets/icons/weather/sun.svg';
 import Cloud from '@/assets/icons/weather/cloud.svg';
 import CloudAngledRain from '@/assets/icons/weather/cloudAngledRain.svg';
 import CloudSnow from '@/assets/icons/weather/cloudSnow.svg';
 import FastWind from '@/assets/icons/weather/fastWinds.svg';
-import Question from '@/assets/icons/emoji/question.svg';
+import Sun from '@/assets/icons/weather/sun.svg';
+import { WhiteContainer } from '@/components/common/Container';
+import { InputDefault } from '@/components/common/InputText';
+import { WeatherContent } from '@/objects/Content';
+import useReviewStore from '@/stores/ReviewStore';
 
 type RWeatherProps = {
   index: number;

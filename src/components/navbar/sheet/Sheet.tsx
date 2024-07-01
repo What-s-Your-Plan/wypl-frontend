@@ -1,6 +1,6 @@
-import closeIcon from '@/assets/icons/x.svg';
-
 import * as S from './Sheet.styled';
+
+import closeIcon from '@/assets/icons/x.svg';
 
 type Props = {
   childrenComponent: JSX.Element;

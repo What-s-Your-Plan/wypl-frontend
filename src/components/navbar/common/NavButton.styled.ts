@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 const Container = styled.div``;
 
 const Button = styled.button`
-  ${tw`
+    ${tw`
       flex
       items-center
       justify-center
@@ -21,7 +21,7 @@ const Button = styled.button`
 `;
 
 const Image = styled.img`
-  ${tw`
+    ${tw`
     h-6
     w-6
 `}

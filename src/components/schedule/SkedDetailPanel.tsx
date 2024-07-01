@@ -1,11 +1,13 @@
 import { useEffect, useState, Dispatch, SetStateAction } from 'react';
-import deleteSchedule from '@/services/schedule/deleteSchedule';
-import * as Items from './SkedDetailItems';
-import TrashIcon from '@/assets/icons/trash.svg';
-import EditIcon from '@/assets/icons/editPaper.svg';
 import { useNavigate } from 'react-router-dom';
+
+import * as Items from './SkedDetailItems';
 import SkedModify from './SkedModify';
 import Modal from '../common/Modal';
+
+import EditIcon from '@/assets/icons/editPaper.svg';
+import TrashIcon from '@/assets/icons/trash.svg';
+import deleteSchedule from '@/services/schedule/deleteSchedule';
 import useMemberStore from '@/stores/MemberStore';
 
 type DetailProps = {
@@ -23,14 +25,14 @@ type DetailProps = {
 };
 
 function SkedDetailPanel({
-  isModify,
-  setModifyTrue,
-  schedule,
-  states,
-  handleChange,
-  setStates,
-  handleClose,
-}: DetailProps) {
+                           isModify,
+                           setModifyTrue,
+                           schedule,
+                           states,
+                           handleChange,
+                           setStates,
+                           handleClose,
+                         }: DetailProps) {
   const navigator = useNavigate();
   // const [schedule, setSchedule] = useState<ScheduleResponse | null>(null);
   const [canModify, setCanModify] = useState<boolean>(false);

@@ -1,7 +1,8 @@
-import { BgColors, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
 import Lottie from 'lottie-react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+
+import { BgColors, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
 
 const CreateGroupForm = styled.form`
   ${tw`
@@ -14,7 +15,7 @@ const CreateGroupForm = styled.form`
 `;
 
 const InputContainer = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-col
     justify-start

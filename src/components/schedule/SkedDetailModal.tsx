@@ -1,10 +1,12 @@
-import Modal from '../common/Modal';
-import SkedDetailPanel from './SkedDetailPanel';
-import putSchedule from '@/services/schedule/putSchedule';
-import useForm from '@/hooks/useForm';
-import initialSchedule from '@/constants/ScheduleFormInit';
-import getScheduleDetail from '@/services/schedule/getScheduleDetail';
 import { useEffect, useState } from 'react';
+
+import SkedDetailPanel from './SkedDetailPanel';
+import Modal from '../common/Modal';
+
+import initialSchedule from '@/constants/ScheduleFormInit';
+import useForm from '@/hooks/useForm';
+import getScheduleDetail from '@/services/schedule/getScheduleDetail';
+import putSchedule from '@/services/schedule/putSchedule';
 import { padding0, stringToDate } from '@/utils/DateUtils';
 import { isAllday } from '@/utils/DateUtils';
 
@@ -61,11 +63,11 @@ function createInit(schedule: ScheduleResponse) {
 }
 
 function SkedDetailModal({
-  isOpen,
-  scheduleId,
-  handleClose,
-  setUpdateTrue
-}: DetailModalProps) {
+                           isOpen,
+                           scheduleId,
+                           handleClose,
+                           setUpdateTrue,
+                         }: DetailModalProps) {
   const handlePut = async (state: Schedule & Repeat) => {
     await putSchedule(state);
   };
@@ -79,7 +81,7 @@ function SkedDetailModal({
   const handelConfirm = async () => {
     await handleSubmit();
     setUpdateTrue();
-  }
+  };
 
   const setModifyTrue = () => {
     setIsModify(true);
@@ -101,12 +103,12 @@ function SkedDetailModal({
   useEffect(() => {
     if (schedule) {
       setForm(createInit(schedule));
-      console.log(createInit(schedule))
+      console.log(createInit(schedule));
     }
   }, [schedule]);
 
   useEffect(() => {
-  }, [form])
+  }, [form]);
 
   return (
     <Modal

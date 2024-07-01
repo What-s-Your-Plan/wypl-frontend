@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import * as S from './GoogleOAuth.styled';
+
 import GoogleLoadingAnimation from '@/components/animation/GoogleLoading';
-
-import useQueryParams from '@/hooks/useSearchParams';
-import useJsonWebTokens from '@/hooks/api/useJsonWebTokens';
-
 import OAUTH_PROVIDER from '@/constants/OAuth';
 import { BROWSER_PATH } from '@/constants/Path';
-
-import * as S from './GoogleOAuth.styled';
+import useJsonWebTokens from '@/hooks/api/useJsonWebTokens';
+import useQueryParams from '@/hooks/useSearchParams';
 
 function GoogleOAuth() {
   const navigate = useNavigate();

@@ -1,13 +1,13 @@
-import { splitTTime } from '@/utils/DateUtils';
-
-import { WhiteContainer } from '@/components/common/Container';
-import LabelButton from '@/components/common/LabelButton';
 import Calendar from '@/assets/icons/calendar.svg';
 import Tag from '@/assets/icons/tag.svg';
 import Users from '@/assets/icons/users.svg';
+
 import Logo from '/logo.png';
 
 import { LabelColorsType } from '@/assets/styles/colorThemes';
+import { WhiteContainer } from '@/components/common/Container';
+import LabelButton from '@/components/common/LabelButton';
+import { splitTTime } from '@/utils/DateUtils';
 
 type VScheduleProps = {
   schedule: ScheduleSimpleResponse;

@@ -1,5 +1,5 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
 type InputTextProps = {
   $width?: string;
@@ -9,7 +9,7 @@ type InputTextProps = {
 };
 
 const InputDefault = styled.input<InputTextProps>`
-  ${tw`
+    ${tw`
     h-8
     rounded-md
     px-2
@@ -21,16 +21,16 @@ const InputDefault = styled.input<InputTextProps>`
     focus:ring
     focus:ring-main
     `}
-  ${(props) => (props.$void ? '' : tw`outline outline-1`)}
-  ${(props) =>
-    props.$isValid === false
-      ? tw`outline-label-red text-label-red`
-      : tw`outline-gray-300`}
-  ${(props) => (props.$width ? `width:${props.$width};` : tw`grow`)}
+    ${(props) => (props.$void ? '' : tw`outline outline-1`)}
+    ${(props) =>
+            props.$isValid === false
+                    ? tw`outline-label-red text-label-red`
+                    : tw`outline-gray-300`}
+    ${(props) => (props.$width ? `width:${props.$width};` : tw`grow`)}
 `;
 
 const InputTitle = styled.input<InputTextProps>`
-  ${tw`
+    ${tw`
       h-8
       bg-transparent
       font-bold
@@ -42,16 +42,16 @@ const InputTitle = styled.input<InputTextProps>`
       focus:!outline-none
       focus:border-main
   `}
-  ${(props) => (props.$void ? '' : tw`border-b-2`)}
-  ${(props) =>
-    props.$isValid === false
-      ? tw`border-label-red text-label-red`
-      : tw`border-gray-300`}
-  ${(props) => (props.$width ? `width:${props.$width};` : tw`grow`)}
+    ${(props) => (props.$void ? '' : tw`border-b-2`)}
+    ${(props) =>
+            props.$isValid === false
+                    ? tw`border-label-red text-label-red`
+                    : tw`border-gray-300`}
+    ${(props) => (props.$width ? `width:${props.$width};` : tw`grow`)}
 `;
 
 const InputTextArea = styled.textarea<InputTextProps>`
-  ${tw`
+    ${tw`
     rounded-md
     px-2
     transition
@@ -62,13 +62,13 @@ const InputTextArea = styled.textarea<InputTextProps>`
     focus:ring
     focus:ring-main
     `}
-  ${(props) => (props.$void ? '' : tw`outline outline-1`)}
-  ${(props) =>
-    props.$isValid === false
-      ? tw`outline-label-red text-label-red`
-      : tw`outline-gray-300`}
-  ${(props) => (props.$width ? `width:${props.$width};` : tw`grow`)}
-  ${(props) => (props.$resize === false ? tw`resize-none` : '')}
+    ${(props) => (props.$void ? '' : tw`outline outline-1`)}
+    ${(props) =>
+            props.$isValid === false
+                    ? tw`outline-label-red text-label-red`
+                    : tw`outline-gray-300`}
+    ${(props) => (props.$width ? `width:${props.$width};` : tw`grow`)}
+    ${(props) => (props.$resize === false ? tw`resize-none` : '')}
 `;
 
 export { InputDefault, InputTitle, InputTextArea };

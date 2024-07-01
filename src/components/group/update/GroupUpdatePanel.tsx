@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react';
 
+
+import PalettePanel from '../../color/PalettePanel';
+import ColorCircle from '../../common/ColorCircle';
+import { InputDefault } from '../../common/InputText';
+import PopOver from '../../common/PopOver';
+
+import noContent from '@/assets/lottie/noContent.json';
+import { BgColors } from '@/assets/styles/colorThemes';
+import * as S from '@/components/group/create/GroupCreatePanel.styled';
 import getMemberByEmail, {
   FindMemberByEmailResponse,
   FindMemberProfile,
 } from '@/services/member/getMemberbyEmail';
-
-import { InputDefault } from '../../common/InputText';
-import PopOver from '../../common/PopOver';
-import ColorCircle from '../../common/ColorCircle';
-import PalettePanel from '../../color/PalettePanel';
-
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
-import { BgColors } from '@/assets/styles/colorThemes';
-import noContent from '@/assets/lottie/noContent.json';
-
-import * as S from '@/components/group/create/GroupCreatePanel.styled';
 
 type GroupUpdatePanelProps = {
   groupUpdateInfo: GroupUpdateInfo;
@@ -23,10 +22,10 @@ type GroupUpdatePanelProps = {
 };
 
 function GroupUpdatePanel({
-  groupUpdateInfo,
-  groupUpdateInfoEvent,
-  inviteMemberIdsEvent,
-}: GroupUpdatePanelProps) {
+                            groupUpdateInfo,
+                            groupUpdateInfoEvent,
+                            inviteMemberIdsEvent,
+                          }: GroupUpdatePanelProps) {
   const [searchMember, setSearchMember] = useState<string>('');
   const [searchedMembers, setSearchMembers] = useState<
     Array<FindMemberProfile>

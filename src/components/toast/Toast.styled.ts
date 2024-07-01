@@ -9,12 +9,13 @@ import {
 } from '@/assets/styles/colorThemes';
 
 const show = keyframes`
-  from {
-    transform: translateX(100%);
-  } to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 `;
 
 type ContainerProps = {
@@ -23,7 +24,7 @@ type ContainerProps = {
 };
 
 const Container = styled.div<ContainerProps>`
-  ${tw`
+    ${tw`
         flex
         items-center
         justify-between
@@ -32,13 +33,13 @@ const Container = styled.div<ContainerProps>`
         h-[60px]
         mt-4
     `}
-  ${(props) => BgTheme[props.$bgColor]}
-  ${(props) => TextTheme[props.$textColor]}
-  animation: ${show} 500ms ease-in-out;
+    ${(props) => BgTheme[props.$bgColor]}
+    ${(props) => TextTheme[props.$textColor]}
+    animation: ${show} 500ms ease-in-out;
 `;
 
 const ShowWrapper = styled.div`
-  ${tw`
+    ${tw`
     h-1
 
     w-full
@@ -47,7 +48,7 @@ const ShowWrapper = styled.div`
 `;
 
 const HeaderWrapper = styled.div`
-  ${tw`
+    ${tw`
         flex
         justify-end
         items-start
@@ -58,14 +59,14 @@ const HeaderWrapper = styled.div`
 `;
 
 const Icon = styled.img`
-  ${tw` 
+    ${tw` 
         scale-75
         cursor-pointer
     `}
 `;
 
 const MessageWrapper = styled.div`
-  ${tw`
+    ${tw`
         flex
         items-center
         w-[90%]

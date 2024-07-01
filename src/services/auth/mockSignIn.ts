@@ -1,6 +1,5 @@
-import { axios } from '@/services/axios';
-
 import { API_PATH } from '@/constants/Path';
+import { axios } from '@/services/axios';
 
 const mockIssueTokens = (params: MockIssueTokenParams) => {
   return axios

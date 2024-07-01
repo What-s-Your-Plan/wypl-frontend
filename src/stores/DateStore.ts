@@ -51,8 +51,8 @@ const useDateStore = create<DateStates & DateActions>()((set, get) => ({
       //   return label.id;
       // }),
       selectedLabels: {
-        ...get().labels
-      }
+        ...get().labels,
+      },
     });
   },
 }));

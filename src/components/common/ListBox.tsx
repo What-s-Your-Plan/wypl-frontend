@@ -1,5 +1,7 @@
 import { Fragment, SetStateAction, Dispatch } from 'react';
+
 import { Listbox, Transition } from '@headlessui/react';
+
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 
 type ListBoxProps = {
@@ -18,15 +20,15 @@ function renderSpan(value: string | number): JSX.Element {
 }
 
 function ListBox({
-  width = 'w-72',
-  height = 'h-8',
-  list,
-  render = renderSpan,
-  selected,
-  setSelected,
-  topList,
-  bottomList,
-}: ListBoxProps) {
+                   width = 'w-72',
+                   height = 'h-8',
+                   list,
+                   render = renderSpan,
+                   selected,
+                   setSelected,
+                   topList,
+                   bottomList,
+                 }: ListBoxProps) {
   return (
     <div className={`${width}`}>
       <Listbox value={selected} onChange={setSelected}>
@@ -45,7 +47,8 @@ function ListBox({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="scrollBar absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-default-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+            <Listbox.Options
+              className="scrollBar absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-default-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
               {topList ? (
                 <li className="relative cursor-pointer select-none">
                   {topList}

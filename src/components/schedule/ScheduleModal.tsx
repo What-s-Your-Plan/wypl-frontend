@@ -1,9 +1,10 @@
-import Modal from '@/components/common/Modal';
-import useForm from '@/hooks/useForm';
-import SchedulePanel from '@/components/schedule/SchedulePanel';
-import postSchedule from '@/services/schedule/postSchedule';
-import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+import Modal from '@/components/common/Modal';
+import SchedulePanel from '@/components/schedule/SchedulePanel';
+import useForm from '@/hooks/useForm';
+import postSchedule from '@/services/schedule/postSchedule';
 
 type ScheduleModalProps = {
   isOpen: boolean;
@@ -13,11 +14,11 @@ type ScheduleModalProps = {
 };
 
 function ScheduleModal({
-  isOpen,
-  init,
-  handleClose,
-  handleConfirm,
-}: ScheduleModalProps) {
+                         isOpen,
+                         init,
+                         handleClose,
+                         handleConfirm,
+                       }: ScheduleModalProps) {
   const { form, setForm, handleChange, handleSubmit } = useForm<
     Schedule & Repeat,
     void

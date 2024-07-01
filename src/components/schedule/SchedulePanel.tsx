@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+
 import * as Items from '@/components/schedule/ScheduleItems';
 
 type SchedulePanelProps = {
@@ -12,10 +13,10 @@ type SchedulePanelProps = {
 };
 
 function SchedulePanel({
-  states,
-  handleChange,
-  setStates,
-}: SchedulePanelProps) {
+                         states,
+                         handleChange,
+                         setStates,
+                       }: SchedulePanelProps) {
   return (
     <form
       className="w-[580px] flex flex-col justify-center"

@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
+
 import { BgColors, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
 
 const Container = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-col
     gap-2
@@ -12,7 +13,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  ${tw`
+    ${tw`
   flex 
   items-center
   justify-between
@@ -20,7 +21,7 @@ const Wrapper = styled.div`
 `;
 
 const Box = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-row
     gap-4
@@ -30,7 +31,7 @@ const Box = styled.div`
 `;
 
 const ProfileImg = styled.img`
-  ${tw`
+    ${tw`
   w-8
   h-8
   rounded-full
@@ -48,7 +49,7 @@ type CheckProps = {
 const Icon = styled.img``;
 
 const Check = styled.div<CheckProps>`
-  ${tw`
+    ${tw`
   text-white
   h-4
   w-4
@@ -57,8 +58,8 @@ const Check = styled.div<CheckProps>`
   border-4
   `}
 
-  ${(props) => props.$isAccepted && BgTheme[props.$color]}
-  ${(props) => props.$isAccepted && BorderTheme[props.$color]}
+    ${(props) => props.$isAccepted && BgTheme[props.$color]}
+    ${(props) => props.$isAccepted && BorderTheme[props.$color]}
 `;
 
 export { Container, Wrapper, Box, ProfileImg, Text, Icon, Check };

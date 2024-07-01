@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 const Container = styled.div``;
 
 const Wrapper = styled.div`
-  ${tw`
+    ${tw`
         flex 
         justify-between 
         items-center
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const Box = styled.div`
-  ${tw`
+    ${tw`
     flex
     gap-4
     `}

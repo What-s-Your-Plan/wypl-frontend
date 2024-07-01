@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom';
 
 import ViewBlockList from '@/components/review/view/ViewBlockList';
 import WriteBlockList from '@/components/review/write/WriteBlockList';
-
-import useReviewStore from '@/stores/ReviewStore';
-import getReviewDetail from '@/services/review/getReviewDetail';
 import { Content } from '@/objects/Content';
+import getReviewDetail from '@/services/review/getReviewDetail';
+import useReviewStore from '@/stores/ReviewStore';
 
 function ReviewModifyPage() {
   const { scheduleId, reviewId } = useParams();

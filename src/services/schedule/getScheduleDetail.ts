@@ -9,7 +9,7 @@ async function getScheduleDetail(scheduleId: number) {
     if (response.status === 200) {
       return response.data.body as Promise<ScheduleResponse>;
     } else {
-      console.log(response)
+      console.log(response);
     }
   } catch (err) {
     throw new Error(`${err}`);

@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
 
-import Navbar from '@/components/navbar/Navbar';
 import * as S from './MainLayout.styled';
+
+import Navbar from '@/components/navbar/Navbar';
 
 function MainLayout() {
   return (

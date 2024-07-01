@@ -14,14 +14,14 @@ interface WhiteContainerProps {
 }
 
 const Container = styled.div<ContainerProps>`
-  ${tw`container p-4 mx-7 shadow-md bg-default-white/40 rounded-2xl`}
-  ${(props) => props.$width && containerTheme.width[props.$width]}
+    ${tw`container p-4 mx-7 shadow-md bg-default-white/40 rounded-2xl`}
+    ${(props) => props.$width && containerTheme.width[props.$width]}
 `;
 
 const WhiteContainer = styled.div<WhiteContainerProps>`
-  ${tw`container p-3 mb-4 shadow-md rounded-xl bg-default-white`}
-  ${(props) => props.$width && containerTheme.width[props.$width]}
-  ${(props) => (props.$height ? containerTheme.height[props.$height] : '')}
+    ${tw`container p-3 mb-4 shadow-md rounded-xl bg-default-white`}
+    ${(props) => props.$width && containerTheme.width[props.$width]}
+    ${(props) => (props.$height ? containerTheme.height[props.$height] : '')}
 `;
 
 const containerTheme = {

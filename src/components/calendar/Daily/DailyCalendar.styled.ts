@@ -1,9 +1,10 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import tw from 'twin.macro';
+
 import { BgTheme, LabelColorsType } from '@/assets/styles/colorThemes';
 
 const VerticalLine = styled.span`
-  ${tw`
+    ${tw`
     border-t
     border-b
     h-10
@@ -13,7 +14,7 @@ const VerticalLine = styled.span`
 `;
 
 const ScheduleContainer = styled.div`
-  ${tw`
+    ${tw`
     flex
     gap-4
     content-center
@@ -22,15 +23,15 @@ const ScheduleContainer = styled.div`
 `;
 
 const LabelDiv = styled.div<{ $bgColor: LabelColorsType }>`
-  ${tw`
+    ${tw`
     rounded-xl
     w-8
   `}
-  ${(props) => BgTheme[props.$bgColor]}
+    ${(props) => BgTheme[props.$bgColor]}
 `;
 
 const ScheduleContents = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-col
   `}

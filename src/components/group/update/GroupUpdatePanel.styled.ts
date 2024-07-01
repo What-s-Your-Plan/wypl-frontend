@@ -1,10 +1,11 @@
-import { BgColors, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
 import Lottie from 'lottie-react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
+import { BgColors, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
+
 const CreateGroupForm = styled.form`
-  ${tw`
+    ${tw`
     flex 
     flex-col 
     justify-start
@@ -15,7 +16,7 @@ const CreateGroupForm = styled.form`
 `;
 
 const InputContainer = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-col
     justify-start
@@ -27,7 +28,7 @@ const InputContainer = styled.div`
 `;
 
 const InputWrapper = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-col
 
@@ -37,7 +38,7 @@ const InputWrapper = styled.div`
 `;
 
 const InputBox = styled.div`
-  ${tw`
+    ${tw`
         flex
         flex-row
         
@@ -47,19 +48,19 @@ const InputBox = styled.div`
 `;
 
 const InputLabel = styled.label`
-  ${tw`
+    ${tw`
     mb-2
     `}
 `;
 
 const MemberWrapper = styled.div`
-  ${tw`
+    ${tw`
     mt-3
     `}
 `;
 
 const MemberContainer = styled.div`
-  ${tw`
+    ${tw`
     flex
     items-center
 
@@ -72,7 +73,7 @@ type MemberProfileWrapperProps = {
 };
 
 const MemberProfileWrapper = styled.div<MemberProfileWrapperProps>`
-  ${tw`
+    ${tw`
     flex
     items-center
 
@@ -83,16 +84,15 @@ const MemberProfileWrapper = styled.div<MemberProfileWrapperProps>`
     w-[22vw]
     shadow-md
   `}
-
-  ${(props) => BorderTheme[props.$color]}
-  &:hover {
-    background-color: ${(props) => BgTheme[props.$color]};
-    color: white;
-  }
+    ${(props) => BorderTheme[props.$color]}
+    &:hover {
+        background-color: ${(props) => BgTheme[props.$color]};
+        color: white;
+    }
 `;
 
 const SelectMemberProfileWrapper = styled.div<MemberProfileWrapperProps>`
-  ${tw`
+    ${tw`
     flex
     items-center
 
@@ -103,22 +103,21 @@ const SelectMemberProfileWrapper = styled.div<MemberProfileWrapperProps>`
     w-[22vw]
     shadow-md
   `}
-
-  ${(props) => BorderTheme[props.$color]}
-  &:hover {
-    background-color: ${(props) => BgTheme[props.$color]};
-    color: white;
-  }
+    ${(props) => BorderTheme[props.$color]}
+    &:hover {
+        background-color: ${(props) => BgTheme[props.$color]};
+        color: white;
+    }
 `;
 
 const MemberProfileBox = styled.div`
-  ${tw`
+    ${tw`
         pl-4
     `}
 `;
 
 const MemberProfileImg = styled.img`
-  ${tw`
+    ${tw`
     w-9
     h-9
     rounded-full
@@ -126,7 +125,7 @@ const MemberProfileImg = styled.img`
 `;
 
 const MemberProfileSpan = styled.span`
-  ${tw`
+    ${tw`
         flex
         flex-col
     `}
@@ -137,18 +136,18 @@ type BarProps = {
 };
 
 const Bar = styled.div<BarProps>`
-  ${tw`
+    ${tw`
       p-[0.5px]
       w-full
 
       mt-5
       mb-3
     `}
-  ${(props) => BgTheme[props.$color]}
+    ${(props) => BgTheme[props.$color]}
 `;
 
 const AnimationBox = styled.div`
-  ${tw`
+    ${tw`
     flex
     justify-center
     items-center
@@ -156,7 +155,7 @@ const AnimationBox = styled.div`
 `;
 
 const Animation = styled(Lottie)`
-  ${tw`
+    ${tw`
     h-[200px]
   `}
 `;

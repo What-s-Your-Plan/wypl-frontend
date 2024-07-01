@@ -1,9 +1,9 @@
 import Axios, { HttpStatusCode } from 'axios';
 
-import useJsonWebTokensStore from '@/stores/TokenStore';
-import useToastStore from '@/stores/ToastStore';
-
 import reissueTokens from './auth/reissue';
+
+import useToastStore from '@/stores/ToastStore';
+import useJsonWebTokensStore from '@/stores/TokenStore';
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -98,7 +98,7 @@ const handle5xxError = async () => {
   useToastStore.getState().addToast(newToast);
 };
 
-axiosWithAccessToken.interceptors.response.use(null, async function (error) {
+axiosWithAccessToken.interceptors.response.use(null, async function(error) {
   if (
     error.response.status === HttpStatusCode.Unauthorized ||
     error.response.status === HttpStatusCode.Forbidden
@@ -112,7 +112,7 @@ axiosWithAccessToken.interceptors.response.use(null, async function (error) {
   return Promise.reject(error);
 });
 
-axiosWithMultiPart.interceptors.response.use(null, async function (error) {
+axiosWithMultiPart.interceptors.response.use(null, async function(error) {
   if (
     error.response.status === HttpStatusCode.Unauthorized ||
     error.response.status === HttpStatusCode.Forbidden

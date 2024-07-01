@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const Container = styled.div`
-  ${tw`
+    ${tw`
         flex
         justify-center
         items-center
@@ -11,13 +11,13 @@ const Container = styled.div`
 `;
 
 const Nickname = styled.p`
-  ${tw`
+    ${tw`
     text-lg
     `}
 `;
 
 const NicknameUpdateWrapper = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-row
     
@@ -26,20 +26,20 @@ const NicknameUpdateWrapper = styled.div`
 `;
 
 const NicknameUpdateBox = styled.span`
-  ${tw`
+    ${tw`
     underline
     cursor-pointer
   `}
 `;
 
 const IconWrapper = styled.div`
-  ${tw`
+    ${tw`
     flex
   `}
 `;
 
 const IconBox = styled.div`
-  ${tw`
+    ${tw`
       flex
       items-center
       justify-center
@@ -56,7 +56,7 @@ const IconBox = styled.div`
 `;
 
 const Icon = styled.img`
-  ${tw`
+    ${tw`
     cursor-pointer
   `}
 `;

@@ -1,8 +1,8 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
 const CreateDiv = styled.div`
-  ${tw`
+    ${tw`
     flex
     px-2
     gap-3

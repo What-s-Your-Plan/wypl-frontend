@@ -1,3 +1,14 @@
+import V4F from './V4F';
+import VEmotion from './VEmotion';
+import VKpt from './VKpt';
+import VPicture from './VPicture';
+import VSchedule from './VSchedule';
+import VText from './VText';
+import VTitle from './VTitle';
+import VWeather from './VWeather';
+
+import { ReviewResponse } from '@/@types/ReviewResponse';
+import { Divider } from '@/components/common/Divider';
 import {
   TextContent,
   PictureContent,
@@ -6,17 +17,6 @@ import {
   KPTContent,
   FourFContent,
 } from '@/objects/Content';
-import { ReviewResponse } from '@/@types/ReviewResponse';
-
-import VTitle from './VTitle';
-import VEmotion from './VEmotion';
-import VText from './VText';
-import VPicture from './VPicture';
-import VWeather from './VWeather';
-import VKpt from './VKpt';
-import V4F from './V4F';
-import VSchedule from './VSchedule';
-import { Divider } from '@/components/common/Divider';
 
 type DetailBlockListProps = {
   detail: ReviewResponse;

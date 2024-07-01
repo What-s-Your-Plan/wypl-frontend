@@ -1,5 +1,6 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import tw from 'twin.macro';
+
 import { BgColors, BgTheme } from '@/assets/styles/colorThemes';
 
 type CircleProps = {
@@ -10,14 +11,14 @@ type CircleProps = {
 };
 
 const ColorCircle = styled.div<CircleProps>`
-  ${tw`
+    ${tw`
     rounded-full
     aspect-square
   `}
-  ${(props) => BgTheme[props.$bgColor]}
-  ${(props) => (props.$size ? `width: ${props.$size};` : tw`size-6`)}
-  ${(props) => (props.$cursor ? `cursor: ${props.$cursor};` : '')}
-  ${(props) => (props.$hover ? tw`hover:scale-110` : '')}
+    ${(props) => BgTheme[props.$bgColor]}
+    ${(props) => (props.$size ? `width: ${props.$size};` : tw`size-6`)}
+    ${(props) => (props.$cursor ? `cursor: ${props.$cursor};` : '')}
+    ${(props) => (props.$hover ? tw`hover:scale-110` : '')}
 `;
 
 export default ColorCircle;

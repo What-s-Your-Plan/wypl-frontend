@@ -2,9 +2,8 @@ import {
   UpdateLabelColorRequest,
   UpdateLabelColorResponse,
 } from '@/@types/Member';
-import { axiosWithAccessToken } from '@/services/axios';
-
 import { API_PATH } from '@/constants/Path';
+import { axiosWithAccessToken } from '@/services/axios';
 
 const patchMemberLabelColor = (request: UpdateLabelColorRequest) => {
   return axiosWithAccessToken

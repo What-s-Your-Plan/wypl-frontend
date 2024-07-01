@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 const Container = styled.div``;
 
 const Wrapper = styled.div`
-  ${tw`
+    ${tw`
     absolute
 
     flex
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 `;
 
 const Logo = styled.img`
-  ${tw`
+    ${tw`
     mt-5
 
     w-[60px]
@@ -33,7 +33,7 @@ const Logo = styled.img`
 `;
 
 const ContentWrapper = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-col
 

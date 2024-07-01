@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const LoadingBarContainer = styled.div`
-  ${tw`
+    ${tw`
         h-[5px]
         mt-2
         w-full
@@ -12,12 +13,12 @@ const LoadingBarContainer = styled.div`
 `;
 
 const LoadingBarProgress = styled.div<{ width: number }>`
-  ${tw`
+    ${tw`
     h-5
     bg-default-coolgray
   `}
-  width: ${(props) => props.width}%;
-  transition: width 1ms ease-in-out;
+    width: ${(props) => props.width}%;
+    transition: width 1ms ease-in-out;
 `;
 
 type LoadingBarProps = {

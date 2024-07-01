@@ -1,5 +1,16 @@
 import { Dispatch, SetStateAction, useState } from 'react';
+
 import * as S from './Schedule.styled';
+
+import ArrowRightIcon from '@/assets/icons/arrowRight.svg';
+import CalendarAddIcon from '@/assets/icons/calendarAdd.svg';
+import ClockIcon from '@/assets/icons/clock.svg';
+import Plus from '@/assets/icons/plus.svg';
+import RepeatIcon from '@/assets/icons/repeat.svg';
+import LabelIcon from '@/assets/icons/tag.svg';
+import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
+import UsersIcon from '@/assets/icons/users.svg';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import {
   InputDefault,
   InputTitle,
@@ -9,17 +20,8 @@ import LabelButton from '@/components/common/LabelButton';
 import ListBox from '@/components/common/ListBox';
 import Toggle from '@/components/common/Toggle';
 import CreateLabel from '@/components/label/CreateLabel';
-import useDateStore from '@/stores/DateStore';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
-import CalendarAddIcon from '@/assets/icons/calendarAdd.svg';
-import ClockIcon from '@/assets/icons/clock.svg';
-import ArrowRightIcon from '@/assets/icons/arrowRight.svg';
-import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
-import LabelIcon from '@/assets/icons/tag.svg';
-import UsersIcon from '@/assets/icons/users.svg';
-import RepeatIcon from '@/assets/icons/repeat.svg';
-import Plus from '@/assets/icons/plus.svg';
 import getLabelList from '@/services/label/getLabelList';
+import useDateStore from '@/stores/DateStore';
 
 type ChangeProps = {
   states: Schedule & Repeat;

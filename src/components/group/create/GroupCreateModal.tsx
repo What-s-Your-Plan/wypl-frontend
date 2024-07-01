@@ -1,18 +1,16 @@
 import { useState } from 'react';
 
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import Modal from '@/components/common/Modal';
+import * as S from '@/components/group/create/GroupCreateModal.styled';
 import GroupCreatePanel from '@/components/group/create/GroupCreatePanel';
-
+import useForm from '@/hooks/useForm';
+import { FindGroupResponse as MemberGroup } from '@/services/group/getMemberGroupList';
 import postGroupRegister, {
   GroupResponse as CreateGroup,
 } from '@/services/group/postGroupRegister';
-import { FindGroupResponse as MemberGroup } from '@/services/group/getMemberGroupList';
 
-import useForm from '@/hooks/useForm';
 
-import { LabelColorsType } from '@/assets/styles/colorThemes';
-
-import * as S from '@/components/group/create/GroupCreateModal.styled';
 
 type GroupCreateModalProps = {
   isOpen: boolean;
@@ -22,11 +20,11 @@ type GroupCreateModalProps = {
 };
 
 function GroupCreateModal({
-  isOpen,
-  init,
-  handleClose,
-  handleConfirm,
-}: GroupCreateModalProps) {
+                            isOpen,
+                            init,
+                            handleClose,
+                            handleConfirm,
+                          }: GroupCreateModalProps) {
   const { form, setForm, handleChange, handleSubmit } = useForm<
     GroupInfo,
     CreateGroup

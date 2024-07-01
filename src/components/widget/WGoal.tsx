@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import useMemberStore from '@/stores/MemberStore';
-import getUserGoal from '@/services/widget/getUserGoal';
-import patchUserGoal from '@/services/widget/patchUserGoal';
-
 import Button from '../common/Button';
+import { InputDefault } from '../common/InputText';
 
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
-import { InputDefault } from '../common/InputText';
+import getUserGoal from '@/services/widget/getUserGoal';
+import patchUserGoal from '@/services/widget/patchUserGoal';
+import useMemberStore from '@/stores/MemberStore';
 
 function WGoal() {
   const { memberId } = useMemberStore();

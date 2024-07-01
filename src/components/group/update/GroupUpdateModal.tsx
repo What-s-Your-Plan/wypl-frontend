@@ -1,16 +1,14 @@
 import { useState } from 'react';
 
-import Button from '@/components/common/Button';
-import Modal from '@/components/common/Modal';
+import * as S from './GroupUpdateModal.styled';
 import GroupUpdatePanel from './GroupUpdatePanel';
 
+import { BgColors } from '@/assets/styles/colorThemes';
+import Button from '@/components/common/Button';
+import Modal from '@/components/common/Modal';
 import deleteGroup from '@/services/group/deleteGroup';
-
 import useToastStore from '@/stores/ToastStore';
 
-import { BgColors } from '@/assets/styles/colorThemes';
-
-import * as S from './GroupUpdateModal.styled';
 
 type GroupUpdateModalProps = {
   isOpen: boolean;
@@ -25,12 +23,12 @@ type GroupUpdateModalProps = {
 };
 
 function GroupUpdateModal({
-  isOpen,
-  init,
-  handleClose,
-  groupUpdateEvent,
-  groupDeleteEvent,
-}: GroupUpdateModalProps) {
+                            isOpen,
+                            init,
+                            handleClose,
+                            groupUpdateEvent,
+                            groupDeleteEvent,
+                          }: GroupUpdateModalProps) {
   const { addToast } = useToastStore();
   const [groupUpdateInfo, setGroupUpdateInfo] = useState<GroupUpdateInfo>(init);
   const handleGroupUpdateInfo = (newName: string, newColor: BgColors) => {

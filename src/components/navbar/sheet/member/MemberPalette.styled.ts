@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const Container = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-col
 
@@ -19,7 +19,7 @@ const Container = styled.div`
 `;
 
 const SelectLabelColorWrapper = styled.div`
-  ${tw`
+    ${tw`
         flex
         flex-row
         
@@ -30,7 +30,7 @@ const SelectLabelColorWrapper = styled.div`
 `;
 
 const LabelColor = styled.div`
-  ${tw`
+    ${tw`
         w-4
         h-4
         rounded-full
@@ -38,7 +38,7 @@ const LabelColor = styled.div`
 `;
 
 const SelectLabelColorsWrapper = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-col
     justify-center
@@ -49,7 +49,7 @@ const SelectLabelColorsWrapper = styled.div`
 `;
 
 const SelectLabelColorsBox = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-row
     
@@ -65,7 +65,7 @@ const SelectLabelColorsBox = styled.div`
 const SelectLabelColor = styled.div``;
 
 const Icon = styled.img`
-  ${tw`
+    ${tw`
     fixed
   `}
 `;

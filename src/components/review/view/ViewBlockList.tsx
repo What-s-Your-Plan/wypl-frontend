@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
-import { Container } from '@/components/common/Container';
-import ReviewView from '@/components/review/view/ReviewView';
-import TextAlignLeft from '@/assets/icons/textAlignLeft.svg';
 import Image from '@/assets/icons/image.svg';
+import Pen from '@/assets/icons/pen.svg';
 import Smiley from '@/assets/icons/smiley.svg';
 import SunDim from '@/assets/icons/sunDim.svg';
-import Pen from '@/assets/icons/pen.svg';
+import TextAlignLeft from '@/assets/icons/textAlignLeft.svg';
+import { Container } from '@/components/common/Container';
+import ReviewView from '@/components/review/view/ReviewView';
 
 function BlockList() {
   const blocks = [

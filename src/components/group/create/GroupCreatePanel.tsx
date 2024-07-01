@@ -1,20 +1,19 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
+
+import PalettePanel from '../../color/PalettePanel';
+import ColorCircle from '../../common/ColorCircle';
+import { InputDefault } from '../../common/InputText';
+import PopOver from '../../common/PopOver';
+
+import noContent from '@/assets/lottie/noContent.json';
+import { BgColors, LabelColorsType } from '@/assets/styles/colorThemes';
+import * as S from '@/components/group/create/GroupCreatePanel.styled';
 import getMemberByEmail, {
   FindMemberByEmailResponse,
   FindMemberProfile,
 } from '@/services/member/getMemberbyEmail';
-
-import { InputDefault } from '../../common/InputText';
-import PopOver from '../../common/PopOver';
-import ColorCircle from '../../common/ColorCircle';
-import PalettePanel from '../../color/PalettePanel';
-
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
-import { BgColors, LabelColorsType } from '@/assets/styles/colorThemes';
-import noContent from '@/assets/lottie/noContent.json';
-
-import * as S from '@/components/group/create/GroupCreatePanel.styled';
 
 type GroupCreatePanelProps = {
   states: GroupInfo;
@@ -29,12 +28,12 @@ type GroupCreatePanelProps = {
 };
 
 function GroupCreatePanel({
-  states,
-  handleChange,
-  setStates,
-  color,
-  setColor,
-}: GroupCreatePanelProps) {
+                            states,
+                            handleChange,
+                            setStates,
+                            color,
+                            setColor,
+                          }: GroupCreatePanelProps) {
   const [selectedMembers, setSelectedMembers] = useState<FindMemberProfile[]>(
     [],
   );

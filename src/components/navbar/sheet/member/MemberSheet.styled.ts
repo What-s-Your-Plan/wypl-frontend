@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const Container = styled.div`
-  ${tw`
+    ${tw`
       flex
       flex-col
       items-center
@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const Icon = styled.img`
-  ${tw`
+    ${tw`
     h-4
     w-4
 
@@ -22,7 +22,7 @@ const Icon = styled.img`
 `;
 
 const LogoutButtonWrapper = styled.div`
-  ${tw`
+    ${tw`
     flex
     justify-center
     

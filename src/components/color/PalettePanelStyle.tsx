@@ -1,8 +1,8 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
 const Panel = styled.div`
-  ${tw`
+    ${tw`
     grid
     grid-cols-7
     grid-rows-2
@@ -12,15 +12,15 @@ const Panel = styled.div`
     rounded-lg
     shadow-lg
   `}
-`
+`;
 
 const Element = styled.div`
-  ${tw`
+    ${tw`
     flex
     justify-center
     items-center
     size-8
   `}
-`
+`;
 
-export { Panel, Element }
+export { Panel, Element };

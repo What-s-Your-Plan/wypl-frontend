@@ -1,9 +1,8 @@
 import LoadingBar from './LoadingBar';
-
-import { BgColors } from '@/assets/styles/colorThemes';
-import X from '@/assets/icons/x.svg';
-
 import * as S from './Toast.styled';
+
+import X from '@/assets/icons/x.svg';
+import { BgColors } from '@/assets/styles/colorThemes';
 
 type ToastProps = {
   content: ToastContent;

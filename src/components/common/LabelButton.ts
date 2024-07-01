@@ -1,5 +1,6 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import tw from 'twin.macro';
+
 import { LabelColorsType, BgTheme } from '@/assets/styles/colorThemes';
 
 type LabelProps = {
@@ -7,7 +8,7 @@ type LabelProps = {
 };
 
 const LabelButton = styled.button<LabelProps>`
-  ${tw`rounded-full
+    ${tw`rounded-full
     flex
     justify-center
     items-center
@@ -19,7 +20,7 @@ const LabelButton = styled.button<LabelProps>`
     text-default-white
     font-semibold
   `}
-  ${(props) => BgTheme[props.$bgColor]}
+    ${(props) => BgTheme[props.$bgColor]}
 `;
 
 export default LabelButton;

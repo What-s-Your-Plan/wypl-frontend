@@ -1,15 +1,17 @@
 import { useState, useEffect, useCallback, Fragment } from 'react';
-import getGroupCalendars from '@/services/calendar/getGroupCalendars';
-import getCalendars from '@/services/calendar/getCalendars';
-import useDateStore from '@/stores/DateStore';
-import { dateToString, getTime } from '@/utils/DateUtils';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
-import useMemberStore from '@/stores/MemberStore';
-import { labelFilter } from '@/utils/FilterUtils';
 
 import * as S from './DailyCalendar.styled';
-import useLoading from '@/hooks/useLoading';
+
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import NoContentAnimation from '@/components/animation/NoContent';
+import useLoading from '@/hooks/useLoading';
+import getCalendars from '@/services/calendar/getCalendars';
+import getGroupCalendars from '@/services/calendar/getGroupCalendars';
+import useDateStore from '@/stores/DateStore';
+import useMemberStore from '@/stores/MemberStore';
+import { dateToString, getTime } from '@/utils/DateUtils';
+import { labelFilter } from '@/utils/FilterUtils';
+
 
 type DailyProps = {
   category: 'MEMBER' | 'GROUP';
@@ -20,12 +22,12 @@ type DailyProps = {
 };
 
 function DailyCalendar({
-  category,
-  groupId,
-  needUpdate,
-  setUpdateFalse,
-  handleSkedClick,
-}: DailyProps) {
+                         category,
+                         groupId,
+                         needUpdate,
+                         setUpdateFalse,
+                         handleSkedClick,
+                       }: DailyProps) {
   const { canStartLoading, endLoading } = useLoading();
   const { selectedDate, selectedLabels } = useDateStore();
   const [originSked, setOriginSked] = useState<Array<CalendarSchedule>>([]);

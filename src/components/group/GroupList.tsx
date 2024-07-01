@@ -1,26 +1,27 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { Disclosure } from '@headlessui/react';
 
-import Tooltip from '../tooltip/Tooltip';
-import { Container } from '../common/Container';
-import { Divider } from '../common/Divider';
-import Button from '../common/Button';
 import GroupCreateModal from './create/GroupCreateModal';
 import InvitedGroupInfo from './invited/InvitedGroupInfo';
 import GroupDetailList from './list/GroupDetailList';
+import Button from '../common/Button';
+import { Container } from '../common/Container';
+import { Divider } from '../common/Divider';
+import Tooltip from '../tooltip/Tooltip';
 
+
+import ChevronDown from '@/assets/icons/chevronDown.svg';
+import Envelope from '@/assets/icons/envelope.svg';
+import Plus from '@/assets/icons/plus.svg';
+import Users from '@/assets/icons/users.svg';
+import { BgColors } from '@/assets/styles/colorThemes';
+import { BROWSER_PATH } from '@/constants/Path';
 import getMemberGroupList, {
   FindMemberGroupsResponse as MemberGroups,
   FindGroupResponse as MemberGroup,
 } from '@/services/group/getMemberGroupList';
-
-import Envelope from '@/assets/icons/envelope.svg';
-import Users from '@/assets/icons/users.svg';
-import Plus from '@/assets/icons/plus.svg';
-import ChevronDown from '@/assets/icons/chevronDown.svg';
-import { BROWSER_PATH } from '@/constants/Path';
-import { BgColors } from '@/assets/styles/colorThemes';
 
 function GroupList() {
   const navigate = useNavigate();
@@ -142,7 +143,8 @@ function GroupList() {
   const openModal = () => {
     setIsModalOpen(true);
   };
-  useEffect(() => {}, [isModalOpen]);
+  useEffect(() => {
+  }, [isModalOpen]);
 
   const renderInvitedGroupList = () => {
     if (memberGroups.invited_group_count === 0) {

@@ -1,11 +1,10 @@
-import { PictureContent } from '@/objects/Content';
-import { WhiteContainer } from '@/components/common/Container';
 import Upload from '@/assets/icons/upload.svg';
-import useReviewStore from '@/stores/ReviewStore';
-import postPicture from '@/services/review/postPicture';
-
-import useLoading from '@/hooks/useLoading';
 import CircleLoadingAnimation from '@/components/animation/CircleLoading';
+import { WhiteContainer } from '@/components/common/Container';
+import useLoading from '@/hooks/useLoading';
+import { PictureContent } from '@/objects/Content';
+import postPicture from '@/services/review/postPicture';
+import useReviewStore from '@/stores/ReviewStore';
 
 type RPictureProps = {
   index: number;

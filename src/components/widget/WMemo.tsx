@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 
-import useMemberStore from '@/stores/MemberStore';
-import getUserMemo from '@/services/widget/getUserMemo';
-import patchUserMemo from '@/services/widget/patchUserMemo';
-
 import Button from '../common/Button';
 import { InputTextArea } from '../common/InputText';
 
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
+import getUserMemo from '@/services/widget/getUserMemo';
+import patchUserMemo from '@/services/widget/patchUserMemo';
+import useMemberStore from '@/stores/MemberStore';
 
 function WMemo() {
   const { memberId } = useMemberStore();

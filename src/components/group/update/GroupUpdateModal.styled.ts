@@ -1,15 +1,16 @@
-import { BgColors, BgTheme } from '@/assets/styles/colorThemes';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
+import { BgColors, BgTheme } from '@/assets/styles/colorThemes';
+
 const Container = styled.div`
-  ${tw`
+    ${tw`
   
   `}
 `;
 
 const Wrapper = styled.div`
-  ${tw`
+    ${tw`
     flex
     justify-between
     items-center
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.p`
-  ${tw`
+    ${tw`
       mb-4
   `}
 `;
@@ -27,11 +28,11 @@ type BarProps = {
 };
 
 const Bar = styled.div<BarProps>`
-  ${tw`
+    ${tw`
     h-[0.5px]
     mb-5
   `}
-  ${(props) => BgTheme[props.$color]}
+    ${(props) => BgTheme[props.$color]}
 `;
 
 export { Container, Wrapper, Title, Bar };

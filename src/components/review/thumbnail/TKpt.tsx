@@ -1,5 +1,5 @@
-import { KPTContent } from '@/objects/Content';
 import Text from '@/components/common/Text';
+import { KPTContent } from '@/objects/Content';
 
 type TKptProps = {
   thumbnailContent: KPTContent;

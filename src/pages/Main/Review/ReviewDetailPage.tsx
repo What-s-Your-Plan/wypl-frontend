@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import getReviewDetail from '@/services/review/getReviewDetail';
-import deleteReview from '@/services/review/deleteReview';
-import { splitTTime } from '@/utils/DateUtils';
-
 import { ReviewResponse } from '@/@types/ReviewResponse';
-import { Content } from '@/objects/Content';
-
-import DetailBlockList from '@/components/review/view/DetailBlockList';
-import { Container } from '@/components/common/Container';
-import Button from '@/components/common/Button';
 import ArrowLeft from '@/assets/icons/arrowLeft.svg';
 import MoreVertical from '@/assets/icons/moreVertical.svg';
+import Button from '@/components/common/Button';
+import { Container } from '@/components/common/Container';
 import PopOver from '@/components/common/PopOver';
+import DetailBlockList from '@/components/review/view/DetailBlockList';
+import { Content } from '@/objects/Content';
+import deleteReview from '@/services/review/deleteReview';
+import getReviewDetail from '@/services/review/getReviewDetail';
+import { splitTTime } from '@/utils/DateUtils';
 
 function ReviewDetailPage() {
   const navigator = useNavigate();

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 
 const Container = styled.div`
-  ${tw`
+    ${tw`
     flex
     flex-col
     justify-between
@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 const PopOverWrapper = styled.div`
-  ${tw`
+    ${tw`
     h-6
     w-6
 
@@ -23,7 +23,7 @@ const PopOverWrapper = styled.div`
 const Wrapper = styled.div``;
 
 const GroupContainer = styled.div`
-  ${tw`
+    ${tw`
     flex 
     justify-between
     items-center
@@ -31,7 +31,7 @@ const GroupContainer = styled.div`
 `;
 
 const GroupWrapper = styled.div`
-  ${tw`
+    ${tw`
     flex 
     justify-between
     items-center
@@ -42,7 +42,7 @@ const GroupWrapper = styled.div`
 `;
 
 const Box = styled.div`
-  ${tw`
+    ${tw`
     flex 
     `}
 `;

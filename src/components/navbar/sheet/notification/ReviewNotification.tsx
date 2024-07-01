@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '@/components/common/Button';
 
 import Pen from '@/assets/icons/pen.svg';
+import Button from '@/components/common/Button';
 
 type ReviewNotificationProps = {
   notification: WYPLNotification;

@@ -1,6 +1,14 @@
 import { useEffect, useState, useCallback } from 'react';
 
 import MonthlyDay from './MonthlyDay';
+import { Chevrons } from '../DatePicker.styled';
+
+import ChevronLeft from '@/assets/icons/chevronLeft.svg';
+import ChevronRight from '@/assets/icons/chevronRight.svg';
+import useLoading from '@/hooks/useLoading';
+import getCalendars from '@/services/calendar/getCalendars';
+import getGroupCalendars from '@/services/calendar/getGroupCalendars';
+import useDateStore from '@/stores/DateStore';
 import {
   isSameDay,
   isCurrentMonth,
@@ -8,14 +16,6 @@ import {
   dateToString,
 } from '@/utils/DateUtils';
 import { labelFilter } from '@/utils/FilterUtils';
-import useDateStore from '@/stores/DateStore';
-import getCalendars from '@/services/calendar/getCalendars';
-import getGroupCalendars from '@/services/calendar/getGroupCalendars';
-import { Chevrons } from '../DatePicker.styled';
-
-import ChevronRight from '@/assets/icons/chevronRight.svg';
-import ChevronLeft from '@/assets/icons/chevronLeft.svg';
-import useLoading from '@/hooks/useLoading';
 
 export type DateSchedule = Array<Array<CalendarSchedule>>;
 
@@ -29,13 +29,13 @@ type MonthlyProps = {
 };
 
 function MonthlyCalender({
-  category,
-  groupId,
-  needUpdate,
-  setUpdateFalse,
-  handleSkedClick,
-  goDay,
-}: MonthlyProps) {
+                           category,
+                           groupId,
+                           needUpdate,
+                           setUpdateFalse,
+                           handleSkedClick,
+                           goDay,
+                         }: MonthlyProps) {
   const createInit = (): Array<DateSchedule> => {
     const init = [];
     for (let i = 0; i < 42; i++) {

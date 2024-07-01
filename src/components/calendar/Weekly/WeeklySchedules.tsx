@@ -1,7 +1,8 @@
-import { stringToDate, padding0 } from '@/utils/DateUtils';
 import * as S from './WeeklyCalendar.styled';
+
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import useMemberStore from '@/stores/MemberStore';
+import { stringToDate, padding0 } from '@/utils/DateUtils';
 
 type WSchedulesProps = {
   schedules: Array<CalendarSchedule>;
@@ -43,7 +44,9 @@ function WeeklySchedules({ schedules, handleSkedClick }: WSchedulesProps) {
                 schedule.group?.color ||
                 mainColor) as LabelColorsType
             }
-            onClick={() => {handleSkedClick(schedule.schedule_id)}}
+            onClick={() => {
+              handleSkedClick(schedule.schedule_id);
+            }}
           >
             <p className="order-1 font-semibold text-default-white text-left">
               {schedule.title}

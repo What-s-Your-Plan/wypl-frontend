@@ -1,6 +1,7 @@
-import { LabelColorsType } from '@/assets/styles/colorThemes';
 import { LongSchedule } from './WeeklyCalendar';
 import * as S from './WeeklyCalendar.styled';
+
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import useMemberStore from '@/stores/MemberStore';
 
 type LSchedulesProps = {
@@ -10,10 +11,10 @@ type LSchedulesProps = {
 };
 
 function WeeklyLSchedules({
-  lSchedules,
-  row,
-  handleSkedClick,
-}: LSchedulesProps) {
+                            lSchedules,
+                            row,
+                            handleSkedClick,
+                          }: LSchedulesProps) {
   const gridRow = Math.max(2, row);
   const { mainColor } = useMemberStore();
 

@@ -1,8 +1,9 @@
-import { axiosWithAccessToken } from "../axios";
+import { axiosWithAccessToken } from '../axios';
+
 import { dateTimeToString } from '@/utils/DateUtils';
 
 async function putSchedule(schedule: Schedule & Repeat) {
-  console.log(schedule)
+  console.log(schedule);
   const body: any = {
     title: schedule.title,
     category: schedule.category,
@@ -36,9 +37,9 @@ async function putSchedule(schedule: Schedule & Repeat) {
     endDate.setMinutes(59);
   } else if (schedule.isAllday === false) {
     let startHour = schedule.startHour === 12 ? 0 : Number(schedule.startHour);
-    let startMinute = schedule.startMinute;
+    const startMinute = schedule.startMinute;
     let endHour = schedule.endHour === 12 ? 0 : Number(schedule.endHour);
-    let endMinute = schedule.endMinute;
+    const endMinute = schedule.endMinute;
 
     schedule.startAMPM === 'PM' ? (startHour += 12) : null;
     schedule.endAMPM === 'PM' ? (endHour += 12) : null;
@@ -82,7 +83,7 @@ async function putSchedule(schedule: Schedule & Repeat) {
     }
   }
   try {
-    console.log(body)
+    console.log(body);
     const response = await axiosWithAccessToken.put(`/schedule/v1/schedules/${schedule.scheduleId}`, body);
     if (response.status !== 201) {
       console.log(response.status);
@@ -90,7 +91,7 @@ async function putSchedule(schedule: Schedule & Repeat) {
       console.log(response);
     }
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 }
 

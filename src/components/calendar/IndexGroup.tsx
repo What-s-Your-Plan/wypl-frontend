@@ -1,5 +1,7 @@
-import IndexButton from '@/components/common/IndexButton';
 import { Dispatch, SetStateAction } from 'react';
+
+import IndexButton from '@/components/common/IndexButton';
+
 
 type IndexGroupProps = {
   calendarType: CalenderType;

@@ -1,27 +1,24 @@
 import { useEffect, useState } from 'react';
 
-import Tooltip from '@/components/tooltip/Tooltip';
-
-import getGroupMember, {
-  FindGroupMembersResponse as GroupMembers,
-  GroupMemberResponse as GroupMember,
-} from '@/services/group/getGroupMember';
-
-import useMemberStore from '@/stores/MemberStore';
-
-import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
-
 import styled from 'styled-components';
-import { BgColors } from '@/assets/styles/colorThemes';
-import X from '@/assets/icons/x.svg';
 
 import * as S from './GroupMemberList.styled';
+
+import X from '@/assets/icons/x.svg';
+import { BgColors } from '@/assets/styles/colorThemes';
+import Tooltip from '@/components/tooltip/Tooltip';
+import useLoading from '@/hooks/useLoading';
 import deleteGroupMemberForceOut, {
   DeleteGroupMemberForceOutRequest,
   DeleteGroupMemberForceOutResponse,
 } from '@/services/group/deleteGroupMemberForceOut';
 import deleteGroupWithdraw from '@/services/group/deleteGroupWithdraw';
-import useLoading from '@/hooks/useLoading';
+import getGroupMember, {
+  FindGroupMembersResponse as GroupMembers,
+  GroupMemberResponse as GroupMember,
+} from '@/services/group/getGroupMember';
+import useMemberStore from '@/stores/MemberStore';
+import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupMemberProps = {
   groupId: number;
@@ -31,11 +28,11 @@ type GroupMemberProps = {
 };
 
 function GroupMemberList({
-  groupId,
-  color,
-  isOwner,
-  groupDeleteEvent,
-}: GroupMemberProps) {
+                           groupId,
+                           color,
+                           isOwner,
+                           groupDeleteEvent,
+                         }: GroupMemberProps) {
   const { memberId } = useMemberStore();
   const { canStartLoading, endLoading } = useLoading();
 
@@ -130,9 +127,8 @@ function GroupMemberList({
 }
 
 const ForceOutImg = styled.img`
-  filter: brightness(0) saturate(100%) invert(58%) sepia(92%) saturate(4683%)
-    hue-rotate(335deg) brightness(109%) contrast(90%);
-  cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(58%) sepia(92%) saturate(4683%) hue-rotate(335deg) brightness(109%) contrast(90%);
+    cursor: pointer;
 `;
 
 export default GroupMemberList;

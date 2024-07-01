@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import GroupList from '@/components/group/GroupList';
 import CalendarContent from '@/components/calendar/CalendarContent';
-import { useEffect, useState } from 'react';
+import GroupList from '@/components/group/GroupList';
 
 function GroupPage() {
   const { groupId } = useParams();

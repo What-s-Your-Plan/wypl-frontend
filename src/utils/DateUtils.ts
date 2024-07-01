@@ -64,7 +64,7 @@ function getTime(date: string) {
   let hour = time[0];
   const minute = time[1];
   const ampm = Number(hour) >= 12 ? 'PM' : 'AM';
-  hour = Number(hour) ? hour : '12'
+  hour = Number(hour) ? hour : '12';
 
   return `${ampm} ${hour}:${minute}`;
 }

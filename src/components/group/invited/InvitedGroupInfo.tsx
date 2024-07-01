@@ -1,14 +1,15 @@
-import ColorCircle from '@/components/common/ColorCircle';
-import Tooltip from '@/components/tooltip/Tooltip';
-
 import styled from 'styled-components';
-import { BgColors } from '@/assets/styles/colorThemes';
-import Check from '@/assets/icons/check.svg';
-import X from '@/assets/icons/x.svg';
-import patchGroupInviteAccepted from '@/services/group/patchGroupInviteAccepted';
-import deleteGroupInvite from '@/services/group/deleteGroupInvite';
 
 import * as S from './InvitedGroupInfo.styled';
+
+import Check from '@/assets/icons/check.svg';
+import X from '@/assets/icons/x.svg';
+import { BgColors } from '@/assets/styles/colorThemes';
+import ColorCircle from '@/components/common/ColorCircle';
+import Tooltip from '@/components/tooltip/Tooltip';
+import deleteGroupInvite from '@/services/group/deleteGroupInvite';
+import patchGroupInviteAccepted from '@/services/group/patchGroupInviteAccepted';
+
 
 type InvitedGroupInfoProps = {
   group: Group;
@@ -17,10 +18,10 @@ type InvitedGroupInfoProps = {
 };
 
 function InvitedGroupInfo({
-  group,
-  acceptedEvent,
-  refusedEvent,
-}: InvitedGroupInfoProps) {
+                            group,
+                            acceptedEvent,
+                            refusedEvent,
+                          }: InvitedGroupInfoProps) {
   const handleAccept = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     patchGroupInviteAccepted(group.id).then(() => {
@@ -83,13 +84,11 @@ function InvitedGroupInfo({
 }
 
 const GreenImg = styled.img`
-  filter: brightness(0) saturate(100%) invert(61%) sepia(99%) saturate(355%)
-    hue-rotate(55deg) brightness(91%) contrast(87%);
+    filter: brightness(0) saturate(100%) invert(61%) sepia(99%) saturate(355%) hue-rotate(55deg) brightness(91%) contrast(87%);
 `;
 
 const RedImg = styled.img`
-  filter: brightness(0) saturate(100%) invert(58%) sepia(92%) saturate(4683%)
-    hue-rotate(335deg) brightness(109%) contrast(90%);
+    filter: brightness(0) saturate(100%) invert(58%) sepia(92%) saturate(4683%) hue-rotate(335deg) brightness(109%) contrast(90%);
 `;
 
 export default InvitedGroupInfo;

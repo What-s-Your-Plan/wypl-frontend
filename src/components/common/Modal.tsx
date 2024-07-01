@@ -1,5 +1,7 @@
-import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
+
+import { Dialog, Transition } from '@headlessui/react';
+
 import Button from '@/components/common/Button';
 
 type Confirm = {
@@ -17,13 +19,13 @@ type ModalProps = {
 };
 
 function Modal({
-  isOpen,
-  cancel = '닫기',
-  confirm,
-  title,
-  contents,
-  handleClose,
-}: ModalProps) {
+                 isOpen,
+                 cancel = '닫기',
+                 confirm,
+                 title,
+                 contents,
+                 handleClose,
+               }: ModalProps) {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -57,7 +59,8 @@ function Modal({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className="transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title as="div">
                     {/* 타이틀 */}
                     {title}

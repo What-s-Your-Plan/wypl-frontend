@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 
-import getReviewSchedule from '@/services/review/getReviewSchedule';
-
-import { splitTTime } from '@/utils/DateUtils';
-
-import LabelButton from '@/components/common/LabelButton';
-import { WhiteContainer } from '@/components/common/Container';
 import Calendar from '@/assets/icons/calendar.svg';
 import Tag from '@/assets/icons/tag.svg';
 import Users from '@/assets/icons/users.svg';
+
 import Logo from '/logo.png';
+
 import { LabelColorsType } from '@/assets/styles/colorThemes';
+import { WhiteContainer } from '@/components/common/Container';
+import LabelButton from '@/components/common/LabelButton';
+import getReviewSchedule from '@/services/review/getReviewSchedule';
+import { splitTTime } from '@/utils/DateUtils';
 
 type RScheduleProps = {
   scheduleId: number;

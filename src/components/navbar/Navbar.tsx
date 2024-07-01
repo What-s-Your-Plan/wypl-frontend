@@ -1,22 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { EventSourcePolyfill } from 'event-source-polyfill';
 
-import logo from '@/assets/images/logo.png';
+import * as S from './Navbar.styled';
 
-import MemberSheet from '@/components/navbar/sheet/member/MemberSheet';
+import logo from '@/assets/images/logo.png';
 import NavEventBar from '@/components/navbar/NavEventBar/NavEventBar';
+import MemberSheet from '@/components/navbar/sheet/member/MemberSheet';
 import NotificationSheet from '@/components/navbar/sheet/notification/NotificationSheet';
 import Sheet from '@/components/navbar/sheet/Sheet';
-
+import { BROWSER_PATH } from '@/constants/Path';
 import useMemberProfile from '@/hooks/api/useMemberProfile';
 import useMemberStore from '@/stores/MemberStore';
-import useJsonWebTokensStore from '@/stores/TokenStore';
-
-import { BROWSER_PATH } from '@/constants/Path';
-
-import * as S from './Navbar.styled';
 import useToastStore from '@/stores/ToastStore';
+import useJsonWebTokensStore from '@/stores/TokenStore';
 
 interface CustomEventMap {
   sse: MessageEvent;
@@ -49,6 +47,7 @@ function Navbar() {
     let source: ExtendedEventSource | null = null;
 
     const EventSource = EventSourcePolyfill;
+
     function connect() {
       source = new EventSource(
         `${import.meta.env.VITE_BASE_URL}/notification/v1/notifications/subscribe`,
@@ -61,11 +60,11 @@ function Navbar() {
         },
       ) as ExtendedEventSource;
 
-      source.onmessage = function (event) {
+      source.onmessage = function(event) {
         console.log(event);
       };
 
-      source.onerror = function (event) {
+      source.onerror = function(event) {
         console.error(event);
         if (source) {
           source.close();
@@ -73,14 +72,15 @@ function Navbar() {
       };
 
       // Connection
-      source.onopen = function () {};
+      source.onopen = function() {
+      };
 
       // Heart Beat
-      source.addEventListener('sse', function (event) {
+      source.addEventListener('sse', function(event) {
         setLastEventId(event.lastEventId);
       });
 
-      source.addEventListener('notification', function (event) {
+      source.addEventListener('notification', function(event) {
         const jsonAsString: string = event.data as string;
         const body: WYPLNotification = JSON.parse(jsonAsString);
         addToast({
