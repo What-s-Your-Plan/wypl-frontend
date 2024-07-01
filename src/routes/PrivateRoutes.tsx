@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import useJsonWebTokensStore from '@/stores/TokenStore';
-
 import { BROWSER_PATH } from '@/constants/Path';
+import useJsonWebTokensStore from '@/stores/TokenStore';
 
 function PrivateWrapper() {
   const navigate = useNavigate();
