@@ -57,7 +57,6 @@ const Container = styled.div`
     items-center
 
     bg-default-white
-    overflow-y-auto
 
     h-full
     w-full
@@ -154,16 +153,15 @@ const ThirdItemStyle = styled.div`
 `;
 
 const IntroductionStyle = styled.div`
-  ${flex.column}
+    ${flex.column}
 
-  align-items: flex-start;
-  gap: 3.75rem;
+    align-items: flex-start;
 
-  width: 100%;
+    width: 100%;
 
-  align-items: flex-end;
-  gap: 1.5rem;
-  text-align: right;
+    align-items: flex-end;
+    gap: 1.5rem;
+    text-align: right;
 `;
 
 const BlackTextStyle = styled.span`
