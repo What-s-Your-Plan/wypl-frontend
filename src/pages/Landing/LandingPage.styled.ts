@@ -49,14 +49,12 @@ const itemStyle = `
 `;
 
 const Container = styled.div`
-  ${tw`
+    ${tw`
     relative
 
     flex
     justify-center
     items-center
-
-    bg-default-white
 
     h-full
     w-full
@@ -64,100 +62,97 @@ const Container = styled.div`
 `;
 
 const ContentStyle = styled.div`
-  ${flex.row};
+    ${flex.row};
 
-  width: 100vw;
-  height: 100vh;
-  padding: 0 6.25rem;
+    height: 100vh;
+    padding: 0 6.25rem;
 `;
 
 const CalendarStyle = styled.div`
-  ${flex.column};
+    ${flex.column};
 
-  gap: 0.5rem;
-  position: relative;
-  left: -20%;
-  top: -2.5rem;
+    gap: 0.5rem;
+    position: relative;
+    left: -20%;
+    top: -2.5rem;
 
-  width: 50rem;
+    width: 50rem;
 
-  ${tw`
+    ${tw`
     border
     border-solid
     border-default-coolgray
   `}
-  box-sizing: content-box;
-  box-shadow: 1.25px 1.25px 1.25px rgba(0, 0, 0, 0.25);
+    box-sizing: content-box;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
 
-  opacity: 0;
+    opacity: 0;
 
-  transform: rotate(10deg);
+    transform: rotate(10deg);
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 
-    to {
-      opacity: 1;
-    }
-  }
-
-  animation-name: fadeIn;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 `;
 
 const DateItemStyle = styled.div`
-  width: 50rem;
-  height: 7.5rem;
-  padding: 1.5rem 1.5rem 1rem;
+    width: 50rem;
+    height: 7.5rem;
+    padding: 1.5rem 1.5rem 1rem;
 
-  ${tw`
+    ${tw`
     bg-default-white
   `}
 
-  font-size: 5rem;
-  text-align: right;
+    font-size: 5rem;
+    text-align: right;
 `;
 
 const FirstItemStyle = styled.div`
-  ${itemStyle};
+    ${itemStyle};
 
-  ${tw`
+    ${tw`
     bg-label-yellow
   `}
 
-  animation-delay: 0.5s;
+    animation-delay: 0.5s;
 `;
 
 const SecondItemStyle = styled.div`
-  ${itemStyle};
+    ${itemStyle};
 
-  ${tw`
+    ${tw`
     bg-label-orange
   `}
 
-  animation-delay: 1s;
+    animation-delay: 1s;
 `;
 
 const ThirdItemStyle = styled.div`
-  ${itemStyle};
+    ${itemStyle};
 
-  ${tw`
+    ${tw`
     bg-label-blue
   `}
 
-  animation-delay: 1.5s;
+    animation-delay: 1.5s;
 `;
 
 const IntroductionStyle = styled.div`
     ${flex.column}
 
-    align-items: flex-start;
-
-    width: 100%;
+    width: 400px;
 
     align-items: flex-end;
     gap: 1.5rem;
@@ -165,35 +160,35 @@ const IntroductionStyle = styled.div`
 `;
 
 const BlackTextStyle = styled.span`
-  width: 100%;
+    width: 100%;
 
-  font-size: 5rem;
-  font-weight: 700;
-  line-height: 6.25rem;
-  ${tw`
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 6.25rem;
+    ${tw`
     text-default-black
   `}
-  text-shadow: 1.25px 1.25px 2.5px rgba(0, 0, 0, 0.25);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
 `;
 
 const WhiteTextStyle = styled.span`
-  width: 100%;
+    width: 100%;
 
-  font-size: 5rem;
-  font-weight: 700;
-  line-height: 6.25rem;
-  ${tw`
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 6.25rem;
+    ${tw`
     text-default-white
   `}
-  text-shadow: 1.25px 1.25px 2.5px rgba(0, 0, 0, 0.25);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
 `;
 
 const DetailTextStyle = styled.span`
-  font-size: 1rem;
-  ${tw`
+    font-size: 1rem;
+    ${tw`
     text-label-charcoal
   `}
-  line-height: 120%;
+    line-height: 120%;
 `;
 
 export {
