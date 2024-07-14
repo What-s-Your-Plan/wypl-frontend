@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
 const LayoutStyle = styled.div`
-  display: none;
+    width: 100%;
+    height: 100%;
 
-  width: 100%;
-  height: 100%;
-
-  display: block;
+    display: block;
 `;
 
 export { LayoutStyle };
