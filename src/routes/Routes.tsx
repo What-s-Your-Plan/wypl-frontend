@@ -1,5 +1,8 @@
 import { Routes as BrowserRouter, Route } from 'react-router-dom';
 
+import PrivateWrapper from './PrivateRoutes';
+
+import { BROWSER_PATH } from '@/constants/Path';
 import {
   Landing,
   GoogleOAuth,
@@ -12,9 +15,6 @@ import {
   ReviewModify,
   NotFound,
 } from '@/pages/Pages';
-
-import PrivateWrapper from './PrivateRoutes';
-import { BROWSER_PATH } from '@/constants/Path';
 
 function Routes() {
   return (
