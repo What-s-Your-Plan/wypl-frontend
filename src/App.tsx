@@ -1,18 +1,21 @@
 import { Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import Routes from './routes/Routes';
-
 import LoadingAnimation from './components/animation/Loading';
 import Notification from './components/notification/Notification';
+import Routes from './routes/Routes';
+
+import Layout from '@/layout/Layout.tsx';
 
 function App() {
   return (
     <Router>
-      <Notification />
-      <Suspense fallback={<LoadingAnimation />}>
-        <Routes />
-      </Suspense>
+      <Layout>
+        <Notification />
+        <Suspense fallback={<LoadingAnimation />}>
+          <Routes />
+        </Suspense>
+      </Layout>
     </Router>
   );
 }
