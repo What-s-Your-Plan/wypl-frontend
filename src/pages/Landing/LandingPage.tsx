@@ -1,7 +1,4 @@
-import Responsive from './Responsive';
-
 import GoogleOAuthButton from './button/GoogleOAuthButton';
-
 import {
   Container,
   BlackTextStyle,
@@ -15,6 +12,7 @@ import {
   ThirdItemStyle,
   WhiteTextStyle,
 } from './LandingPage.styled';
+import Responsive from './Responsive';
 
 function LandingPage() {
   const getThisDate = (): string => {
