@@ -1,10 +1,9 @@
 import { Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import Routes from './routes/Routes';
-
 import LoadingAnimation from './components/animation/Loading';
 import Notification from './components/notification/Notification';
+import Routes from './routes/Routes';
 
 function App() {
   return (
