@@ -1,5 +1,5 @@
-import { axiosWithAccessToken } from '@/services/axios';
-import { dateTimeToString } from '@/utils/DateUtils';
+import { axiosWithAccessToken } from '@/api/axios';
+import { dateTimeToString }     from '@/utils/DateUtils';
 
 async function postSchedule(schedule: Schedule & Repeat) {
   const body: any = {

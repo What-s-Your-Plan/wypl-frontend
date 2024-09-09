@@ -7,8 +7,8 @@ import Button from '../common/Button';
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
 import { InputDefault } from '../common/InputText';
-import getUserDDay from '@/services/widget/getUserDDay';
-import patchUserDDay from '@/services/widget/patchUserDDay';
+import getUserDDay      from '@/api/widget/getUserDDay';
+import patchUserDDay    from '@/api/widget/patchUserDDay';
 
 function WDDay() {
   const { memberId } = useMemberStore();

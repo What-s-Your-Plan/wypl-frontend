@@ -1,4 +1,4 @@
-import { axiosWithAccessToken } from '@/services/axios';
+import { axiosWithAccessToken } from '@/api/axios';
 
 async function getLabelList() {
   const response = await axiosWithAccessToken.get('/label/v1/labels/main');

@@ -13,7 +13,7 @@ import GroupDetailList from './list/GroupDetailList';
 import getMemberGroupList, {
   FindMemberGroupsResponse as MemberGroups,
   FindGroupResponse as MemberGroup,
-} from '@/services/group/getMemberGroupList';
+} from '@/api/group/getMemberGroupList';
 
 import Envelope from '@/assets/icons/envelope.svg';
 import Users from '@/assets/icons/users.svg';

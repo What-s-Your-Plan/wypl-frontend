@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import useMemberStore from '@/stores/MemberStore';
-import getUserGoal from '@/services/widget/getUserGoal';
-import patchUserGoal from '@/services/widget/patchUserGoal';
+import getUserGoal    from '@/api/widget/getUserGoal';
+import patchUserGoal  from '@/api/widget/patchUserGoal';
 
 import Button from '../common/Button';
 

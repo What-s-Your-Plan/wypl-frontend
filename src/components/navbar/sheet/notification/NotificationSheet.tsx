@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-import getNotification from '@/services/notification/getNotification';
-import deleteNotification from '@/services/notification/deleteNotification';
+import getNotification    from '@/api/notification/getNotification';
+import deleteNotification from '@/api/notification/deleteNotification';
 
 import GroupNotification from './GroupNotification';
 import ReviewNotification from './ReviewNotification';

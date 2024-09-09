@@ -5,7 +5,7 @@ import Tooltip from '@/components/tooltip/Tooltip';
 import getGroupMember, {
   FindGroupMembersResponse as GroupMembers,
   GroupMemberResponse as GroupMember,
-} from '@/services/group/getGroupMember';
+} from '@/api/group/getGroupMember';
 
 import useMemberStore from '@/stores/MemberStore';
 
@@ -15,13 +15,13 @@ import styled from 'styled-components';
 import { BgColors } from '@/assets/styles/colorThemes';
 import X from '@/assets/icons/x.svg';
 
-import * as S from './GroupMemberList.styled';
+import * as S              from './GroupMemberList.styled';
 import deleteGroupMemberForceOut, {
   DeleteGroupMemberForceOutRequest,
   DeleteGroupMemberForceOutResponse,
-} from '@/services/group/deleteGroupMemberForceOut';
-import deleteGroupWithdraw from '@/services/group/deleteGroupWithdraw';
-import useLoading from '@/hooks/useLoading';
+}                          from '@/api/group/deleteGroupMemberForceOut';
+import deleteGroupWithdraw from '@/api/group/deleteGroupWithdraw';
+import useLoading          from '@/hooks/useLoading';
 
 type GroupMemberProps = {
   groupId: number;

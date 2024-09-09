@@ -3,8 +3,8 @@ import { LabelColorsType } from '@/assets/styles/colorThemes';
 import ColorSelectButton from '@/components/color/ColorSelectButton';
 import { CreateDiv } from '@/components/label/Styled';
 import { InputDefault } from '@/components/common/InputText';
-import postCreateLabel from '@/services/label/postCreateLabel';
-import useToastStore from '@/stores/ToastStore';
+import postCreateLabel  from '@/api/label/postCreateLabel';
+import useToastStore    from '@/stores/ToastStore';
 
 import useLoading from '@/hooks/useLoading';
 

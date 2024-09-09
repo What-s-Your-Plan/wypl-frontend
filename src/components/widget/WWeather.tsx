@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import getWeather from '@/services/widget/getWeather';
+import getWeather from '@/api/widget/getWeather';
 
 import Cloud from '@/assets/icons/weather/cloud.svg';
 import CloudAngledRain from '@/assets/icons/weather/cloudAngledRain.svg';

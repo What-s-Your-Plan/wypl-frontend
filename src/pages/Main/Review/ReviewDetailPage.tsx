@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import getReviewDetail from '@/services/review/getReviewDetail';
-import deleteReview from '@/services/review/deleteReview';
-import { splitTTime } from '@/utils/DateUtils';
+import getReviewDetail from '@/api/review/getReviewDetail';
+import deleteReview    from '@/api/review/deleteReview';
+import { splitTTime }  from '@/utils/DateUtils';
 
 import { ReviewResponse } from '@/@types/ReviewResponse';
 import { Content } from '@/objects/Content';

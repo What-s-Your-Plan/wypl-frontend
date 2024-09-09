@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 import useMemberStore from '@/stores/MemberStore';
-import getUserMemo from '@/services/widget/getUserMemo';
-import patchUserMemo from '@/services/widget/patchUserMemo';
+import getUserMemo    from '@/api/widget/getUserMemo';
+import patchUserMemo  from '@/api/widget/patchUserMemo';
 
 import Button from '../common/Button';
 import { InputTextArea } from '../common/InputText';

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, Fragment } from 'react';
-import getGroupCalendars from '@/services/calendar/getGroupCalendars';
-import getCalendars from '@/services/calendar/getCalendars';
-import useDateStore from '@/stores/DateStore';
+import getGroupCalendars                              from '@/api/calendar/getGroupCalendars';
+import getCalendars                                   from '@/api/calendar/getCalendars';
+import useDateStore                                   from '@/stores/DateStore';
 import { dateToString, getTime } from '@/utils/DateUtils';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import useMemberStore from '@/stores/MemberStore';

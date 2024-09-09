@@ -4,7 +4,7 @@ import Button from '@/components/common/Button';
 import Modal from '@/components/common/Modal';
 import GroupUpdatePanel from './GroupUpdatePanel';
 
-import deleteGroup from '@/services/group/deleteGroup';
+import deleteGroup from '@/api/group/deleteGroup';
 
 import useToastStore from '@/stores/ToastStore';
 

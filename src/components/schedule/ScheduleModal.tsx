@@ -1,7 +1,7 @@
 import Modal from '@/components/common/Modal';
 import useForm from '@/hooks/useForm';
 import SchedulePanel from '@/components/schedule/SchedulePanel';
-import postSchedule from '@/services/schedule/postSchedule';
+import postSchedule  from '@/api/schedule/postSchedule';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 

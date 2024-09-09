@@ -1,10 +1,9 @@
 import Axios, { HttpStatusCode } from 'axios';
 
-import reissueTokens from './auth/reissue';
+import { reissueTokens } from './auth/v1/reissue/reissue.ts';
 
 import useToastStore from '@/stores/ToastStore';
 import useJsonWebTokensStore from '@/stores/TokenStore';
-
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -57,10 +56,12 @@ const handleUnauthorizedError = async (error: any, axiosInstance: any) => {
         const params: ReissueTokenParams = {
           refresh_token: refreshToken,
         };
-        const body = await reissueTokens(params);
-        if (body !== null) {
-          useJsonWebTokensStore.getState().setAccessToken(body.access_token);
-          useJsonWebTokensStore.getState().setRefreshToken(body.refresh_token);
+        const data = await reissueTokens(params);
+
+        if (data !== null) {
+          const { access_token, refresh_token } = data.body;
+          useJsonWebTokensStore.getState().setAccessToken(access_token);
+          useJsonWebTokensStore.getState().setRefreshToken(refresh_token);
         } else {
           useJsonWebTokensStore.getState().resetTokens();
         }

@@ -12,11 +12,11 @@ import GroupMemberList from '../member/GroupMemberList';
 
 import patchGroupInfo, {
   UpdateGroupInfoRequest,
-} from '@/services/group/patchGroupInfo';
+}                              from '@/api/group/patchGroupInfo';
 import postGroupInvite, {
   GroupInviteRequest,
-} from '@/services/group/postGroupInvite';
-import patchPersonalGroupColor from '@/services/group/patchGroupColor';
+}                              from '@/api/group/postGroupInvite';
+import patchPersonalGroupColor from '@/api/group/patchGroupColor';
 
 import useToastStore from '@/stores/ToastStore';
 

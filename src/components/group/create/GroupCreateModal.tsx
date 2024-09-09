@@ -5,8 +5,8 @@ import GroupCreatePanel from '@/components/group/create/GroupCreatePanel';
 
 import postGroupRegister, {
   GroupResponse as CreateGroup,
-} from '@/services/group/postGroupRegister';
-import { FindGroupResponse as MemberGroup } from '@/services/group/getMemberGroupList';
+}                                           from '@/api/group/postGroupRegister';
+import { FindGroupResponse as MemberGroup } from '@/api/group/getMemberGroupList';
 
 import useForm from '@/hooks/useForm';
 

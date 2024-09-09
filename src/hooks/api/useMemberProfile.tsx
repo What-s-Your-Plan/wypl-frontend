@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import getMemberProfile from '@/services/member/getMemberProfile';
-import useMemberStore from '@/stores/MemberStore';
+import getMemberProfile from '@/api/member/getMemberProfile';
+import useMemberStore   from '@/stores/MemberStore';
 
 export default function useMemberProfile() {
   const [isLoading, setLoading] = useState<boolean>(false);

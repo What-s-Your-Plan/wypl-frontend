@@ -8,10 +8,10 @@ import {
   dateToString,
 } from '@/utils/DateUtils';
 import { labelFilter } from '@/utils/FilterUtils';
-import useDateStore from '@/stores/DateStore';
-import getCalendars from '@/services/calendar/getCalendars';
-import getGroupCalendars from '@/services/calendar/getGroupCalendars';
-import { Chevrons } from '../DatePicker.styled';
+import useDateStore      from '@/stores/DateStore';
+import getCalendars      from '@/api/calendar/getCalendars';
+import getGroupCalendars from '@/api/calendar/getGroupCalendars';
+import { Chevrons }      from '../DatePicker.styled';
 
 import ChevronRight from '@/assets/icons/chevronRight.svg';
 import ChevronLeft from '@/assets/icons/chevronLeft.svg';

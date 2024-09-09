@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Review } from '@/@types/ReviewResponse';
-import getReviewList from '@/services/review/getReviewList';
+import { Review }    from '@/@types/ReviewResponse';
+import getReviewList from '@/api/review/getReviewList';
 
 import { Container, WhiteContainer } from '@/components/common/Container';
 import ReviewThumbnail from '@/components/review/thumbnail/ReviewThumbnail';

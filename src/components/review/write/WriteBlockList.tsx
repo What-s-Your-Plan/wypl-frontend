@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import useReviewStore from '@/stores/ReviewStore';
 
-import postReview from '@/services/review/postReview';
+import postReview from '@/api/review/postReview';
 
 import RTitle from './RTitle';
 import RSchedule from './RSchedule';

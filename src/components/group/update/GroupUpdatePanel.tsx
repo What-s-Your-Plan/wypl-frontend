@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import getMemberByEmail, {
   FindMemberByEmailResponse,
   FindMemberProfile,
-} from '@/services/member/getMemberbyEmail';
+} from '@/api/member/getMemberbyEmail';
 
 import { InputDefault } from '../../common/InputText';
 import PopOver from '../../common/PopOver';

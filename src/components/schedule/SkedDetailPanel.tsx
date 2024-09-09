@@ -1,6 +1,6 @@
 import { useEffect, useState, Dispatch, SetStateAction } from 'react';
-import deleteSchedule from '@/services/schedule/deleteSchedule';
-import * as Items from './SkedDetailItems';
+import deleteSchedule                                    from '@/api/schedule/deleteSchedule';
+import * as Items                                        from './SkedDetailItems';
 import TrashIcon from '@/assets/icons/trash.svg';
 import EditIcon from '@/assets/icons/editPaper.svg';
 import { useNavigate } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import { axiosWithAccessToken } from '@/services/axios';
+import { axiosWithAccessToken } from '@/api/axios';
 
 async function getTodoList() : Promise<todoType[]>{
     const response = await axiosWithAccessToken.get('/todo/v1/todos');

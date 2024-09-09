@@ -1,6 +1,6 @@
 import { UpdateProfileImageResponse } from '@/@types/Member';
-import { API_PATH } from '@/constants/Path';
-import { axiosWithMultiPart } from '@/services/axios';
+import { API_PATH }           from '@/constants/Path';
+import { axiosWithMultiPart } from '@/api/axios';
 
 const postProfileImage = (formData: FormData) => {
   return axiosWithMultiPart

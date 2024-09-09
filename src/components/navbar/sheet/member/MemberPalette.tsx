@@ -1,8 +1,8 @@
 import ColorCircle from '@/components/common/ColorCircle';
 
-import useLoading from '@/hooks/useLoading';
-import patchMemberLabelColor from '@/services/member/patchMemberLabelColor';
-import useMemberStore from '@/stores/MemberStore';
+import useLoading            from '@/hooks/useLoading';
+import patchMemberLabelColor from '@/api/member/patchMemberLabelColor';
+import useMemberStore        from '@/stores/MemberStore';
 
 import {
   UpdateLabelColorResponse,

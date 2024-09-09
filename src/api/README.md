@@ -1,4 +1,4 @@
-# Services
+# Api
 
 해당 패키지에서는 서버와 통신하기 위한 API를 위한 코드를 작성합니다.
 
@@ -8,7 +8,7 @@
 
 경로는 `/auth/v1/logout`이고 `delete`요청인 경우에는 다음과 같은 파일구조에다가 생성합니다.
 
-`auth/v1/logout/delete.ts`와 같이 파일을 작성하여 코드를 작성합니다.
+`auth/v1/logout/deleteJsonWebTokens.ts`와 같이 파일을 작성하여 코드를 작성합니다.
 
 ## API Request, Response
 
@@ -31,11 +31,10 @@ export type FindMemberProfile = {
   profile_image_url: string | null;
 };
 
-async function getMemberByEmail(email: string, size: number) {
+export const getMemberByEmail = async (email: string, size: number) => {
   // ETC...
-}
-
-export default getMemberByEmail;
+};
 ```
 
-`export type`을 사용하여 타입 작성합니다.
+- `export type`을 사용하여 타입 작성합니다.
+- `export const`를 사용하여 `function`을 작성합니다.

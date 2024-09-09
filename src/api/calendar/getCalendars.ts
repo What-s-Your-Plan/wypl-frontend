@@ -1,4 +1,4 @@
-import { axiosWithAccessToken } from '@/services/axios';
+import { axiosWithAccessToken } from '@/api/axios';
 
 async function getCalendars(type: 'DAY' | 'WEEK' | 'MONTH', date: string) {
   try {

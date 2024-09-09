@@ -1,9 +1,9 @@
 import Modal from '../common/Modal';
-import SkedDetailPanel from './SkedDetailPanel';
-import putSchedule from '@/services/schedule/putSchedule';
-import useForm from '@/hooks/useForm';
-import initialSchedule from '@/constants/ScheduleFormInit';
-import getScheduleDetail from '@/services/schedule/getScheduleDetail';
+import SkedDetailPanel         from './SkedDetailPanel';
+import putSchedule             from '@/api/schedule/putSchedule';
+import useForm                 from '@/hooks/useForm';
+import initialSchedule         from '@/constants/ScheduleFormInit';
+import getScheduleDetail       from '@/api/schedule/getScheduleDetail';
 import { useEffect, useState } from 'react';
 import { padding0, stringToDate } from '@/utils/DateUtils';
 import { isAllday } from '@/utils/DateUtils';

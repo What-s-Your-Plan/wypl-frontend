@@ -18,8 +18,8 @@ import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
 import LabelIcon from '@/assets/icons/tag.svg';
 import UsersIcon from '@/assets/icons/users.svg';
 import RepeatIcon from '@/assets/icons/repeat.svg';
-import Plus from '@/assets/icons/plus.svg';
-import getLabelList from '@/services/label/getLabelList';
+import Plus         from '@/assets/icons/plus.svg';
+import getLabelList from '@/api/label/getLabelList';
 
 type ChangeProps = {
   states: Schedule & Repeat;

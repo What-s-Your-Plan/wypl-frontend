@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import getCalendars from '@/services/calendar/getCalendars';
-import getGroupCalendars from '@/services/calendar/getGroupCalendars';
-import useDateStore from '@/stores/DateStore';
+import getCalendars                         from '@/api/calendar/getCalendars';
+import getGroupCalendars                    from '@/api/calendar/getGroupCalendars';
+import useDateStore                         from '@/stores/DateStore';
 import {
   dateToString,
   getDateDiff,

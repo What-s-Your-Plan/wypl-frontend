@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import patchGroupInviteAccepted from '@/services/group/patchGroupInviteAccepted';
-import deleteGroupInvite from '@/services/group/deleteGroupInvite';
+import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
+import deleteGroupInvite        from '@/api/group/deleteGroupInvite';
 
 import Button from '@/components/common/Button';
 import { BROWSER_PATH } from '@/constants/Path';

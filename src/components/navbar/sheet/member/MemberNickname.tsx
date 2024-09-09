@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { UpdateNicknameRequest, UpdateNicknameResponse } from '@/@types/Member';
 import { InputDefault } from '@/components/common/InputText';
 
-import patchNickname from '@/services/member/patchNickname';
+import patchNickname  from '@/api/member/patchNickname';
 import useMemberStore from '@/stores/MemberStore';
 
 import CheckIcon from '@/assets/icons/check.svg';

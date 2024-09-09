@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import getReviewSchedule from '@/services/review/getReviewSchedule';
+import getReviewSchedule from '@/api/review/getReviewSchedule';
 
 import { splitTTime } from '@/utils/DateUtils';
 

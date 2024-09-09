@@ -6,11 +6,11 @@ import editButton from '@/assets/icons/x.svg';
 import plusButton from '@/assets/icons/plus.svg';
 import updateButton from '@/assets/icons/edit.svg';
 import { InputDefault } from '../common/InputText';
-import postTodo from '@/services/todo/postTodo';
-import getTodoList from '@/services/todo/getTodoList';
-import deleteTodo from '@/services/todo/deleteTodo';
-import checkTodo from '@/services/todo/checkTodo';
-import patchTodo from '@/services/todo/patchTodo';
+import postTodo         from '@/api/todo/postTodo.ts';
+import getTodoList      from '@/api/todo/getTodoList.ts';
+import deleteTodo       from '@/api/todo/deleteTodo.ts';
+import checkTodo        from '@/api/todo/checkTodo.ts';
+import patchTodo        from '@/api/todo/patchTodo.ts';
 
 function Todo() {
   const [isOpen, setIsOpen] = useState<boolean>(false);

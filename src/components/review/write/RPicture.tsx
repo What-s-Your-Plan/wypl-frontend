@@ -2,7 +2,7 @@ import { PictureContent } from '@/objects/Content';
 import { WhiteContainer } from '@/components/common/Container';
 import Upload from '@/assets/icons/upload.svg';
 import useReviewStore from '@/stores/ReviewStore';
-import postPicture from '@/services/review/postPicture';
+import postPicture    from '@/api/review/postPicture';
 
 import useLoading from '@/hooks/useLoading';
 import CircleLoadingAnimation from '@/components/animation/CircleLoading';
