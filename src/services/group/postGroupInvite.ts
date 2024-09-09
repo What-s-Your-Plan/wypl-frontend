@@ -1,5 +1,6 @@
-import { API_PATH } from '@/constants/Path';
 import { axiosWithAccessToken } from '../axios';
+
+import { API_PATH } from '@/constants/Path';
 
 export type GroupInviteRequest = {
   member_id_list: number[];

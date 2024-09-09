@@ -1,9 +1,10 @@
 import Axios, { HttpStatusCode } from 'axios';
 
-import useJsonWebTokensStore from '@/stores/TokenStore';
-import useToastStore from '@/stores/ToastStore';
-
 import reissueTokens from './auth/reissue';
+
+import useToastStore from '@/stores/ToastStore';
+import useJsonWebTokensStore from '@/stores/TokenStore';
+
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 

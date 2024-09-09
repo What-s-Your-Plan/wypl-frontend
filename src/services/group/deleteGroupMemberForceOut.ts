@@ -1,5 +1,6 @@
-import { API_PATH } from '@/constants/Path';
 import { axiosWithAccessToken } from '../axios';
+
+import { API_PATH } from '@/constants/Path';
 
 export type DeleteGroupMemberForceOutRequest = {
   member_id: number;

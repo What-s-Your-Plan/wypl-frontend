@@ -1,4 +1,5 @@
 import { axiosWithAccessToken } from '../axios';
+
 import { API_PATH } from '@/constants/Path';
 
 async function deleteGroupInvite(groupId: number) {

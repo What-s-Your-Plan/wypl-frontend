@@ -1,4 +1,5 @@
 import { axiosWithAccessToken } from "../axios";
+
 import { dateTimeToString } from '@/utils/DateUtils';
 
 async function putSchedule(schedule: Schedule & Repeat) {
@@ -36,9 +37,9 @@ async function putSchedule(schedule: Schedule & Repeat) {
     endDate.setMinutes(59);
   } else if (schedule.isAllday === false) {
     let startHour = schedule.startHour === 12 ? 0 : Number(schedule.startHour);
-    let startMinute = schedule.startMinute;
+    const startMinute = schedule.startMinute;
     let endHour = schedule.endHour === 12 ? 0 : Number(schedule.endHour);
-    let endMinute = schedule.endMinute;
+    const endMinute = schedule.endMinute;
 
     schedule.startAMPM === 'PM' ? (startHour += 12) : null;
     schedule.endAMPM === 'PM' ? (endHour += 12) : null;

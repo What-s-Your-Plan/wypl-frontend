@@ -1,5 +1,6 @@
-import { Content } from '@/objects/Content';
 import { axiosWithAccessToken } from '../axios';
+
+import { Content } from '@/objects/Content';
 
 async function patchReview(
   review_id: number,

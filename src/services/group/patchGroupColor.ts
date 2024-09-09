@@ -1,7 +1,7 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { API_PATH } from '@/constants/Path';
 import { BgColors } from '@/assets/styles/colorThemes';
+import { API_PATH } from '@/constants/Path';
 
 type Request = {
   color: BgColors;

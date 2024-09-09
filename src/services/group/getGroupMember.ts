@@ -1,6 +1,7 @@
-import { API_PATH } from '@/constants/Path';
 import { axiosWithAccessToken } from '../axios';
+
 import { BgColors } from '@/assets/styles/colorThemes';
+import { API_PATH } from '@/constants/Path';
 
 export type FindGroupMembersResponse = {
   color: BgColors;
