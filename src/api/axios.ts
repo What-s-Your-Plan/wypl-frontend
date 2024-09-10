@@ -1,4 +1,4 @@
-import Axios, { HttpStatusCode } from 'axios';
+import Axios, { AxiosInstance, HttpStatusCode } from 'axios';
 
 import { ReissueTokenParams, reissueTokens } from './auth/reissue.ts';
 
@@ -7,26 +7,18 @@ import useJsonWebTokensStore from '@/stores/TokenStore';
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
-const axios = Axios.create({
-  baseURL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+const createAxiosInstance = (contentType: ContentType): AxiosInstance => {
+  return Axios.create({
+    baseURL,
+    headers: {
+      'Content-Type': contentType,
+    },
+  });
+};
 
-const axiosWithAccessToken = Axios.create({
-  baseURL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-const axiosWithMultiPart = Axios.create({
-  baseURL,
-  headers: {
-    'Content-Type': 'multipart/form-data',
-  },
-});
+const axios = createAxiosInstance('application/json');
+const axiosWithAccessToken = createAxiosInstance('application/json');
+const axiosWithMultiPart = createAxiosInstance('multipart/form-data');
 
 axiosWithAccessToken.interceptors.request.use((config) => {
   const accessToken = useJsonWebTokensStore.getState().accessToken;
