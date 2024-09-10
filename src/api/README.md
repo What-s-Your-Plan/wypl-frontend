@@ -17,24 +17,35 @@ API의 Request와 Response와 같이 필요한 타입의 경우에는 하나의 
 아래는 예제 코드입니다.
 
 ```ts
-import { axiosWithAccessToken } from '../axios';
-
-export type FindMemberByEmailResponse = {
-  members: FindMemberProfile[];
-  member_count: number;
+/* Request */
+export type CalendarPathVariable = {
+  type: CalenderType;
 };
 
-export type FindMemberProfile = {
-  id: number;
-  email: string;
-  nickname: string;
-  profile_image_url: string | null;
+export type CalendarParams = {
+  date: string;
 };
 
-export const getMemberByEmail = async (email: string, size: number) => {
-  // ETC...
+/* Response */
+export type CalendarsResponse = {
+  schedule_count: number;
+  schedules: Array<CalendarSchedule>;
+};
+
+/* API */
+export const getCalendars = async (
+  { type }: CalendarPathVariable,
+  params: CalendarParams,
+) => {
+  const { data } = await axiosWithAccessToken.get<
+    BaseResponse<CalendarsResponse>
+  >(`${CALENDAR.V1.CALENDARS.BASE}/${type}`, { params });
+
+  return data;
 };
 ```
 
 - `export type`을 사용하여 타입 작성합니다.
 - `export const`를 사용하여 `function`을 작성합니다.
+- 반환 값은 `data` 를 구조 분해 할당으로 가져와 반환합니다.
+- Request, Response, API와 같이 3개의 구조로 작성합니다.
