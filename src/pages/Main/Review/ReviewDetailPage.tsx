@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 import { ReviewResponse } from '@/@types/ReviewResponse';
-import deleteReview    from '@/api/review/deleteReview';
+import deleteReview       from '@/api/review/deleteReview';
 import getReviewDetail from '@/api/review/getReviewDetail';
 import ArrowLeft from '@/assets/icons/arrowLeft.svg';
 import MoreVertical from '@/assets/icons/moreVertical.svg';

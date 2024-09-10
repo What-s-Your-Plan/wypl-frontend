@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-
 import PalettePanel from '../../color/PalettePanel';
 import ColorCircle from '../../common/ColorCircle';
 import { InputDefault } from '../../common/InputText';
 import PopOver from '../../common/PopOver';
 
+import { GroupUpdateInfo } from '@/@types/Group';
 import getMemberByEmail, {
   FindMemberByEmailResponse,
   FindMemberProfile,

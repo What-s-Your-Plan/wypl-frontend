@@ -9,7 +9,7 @@ import VTitle from './VTitle';
 import VWeather from './VWeather';
 
 import { ReviewResponse } from '@/@types/ReviewResponse';
-import { Divider } from '@/components/common/Divider';
+import { Divider }        from '@/components/common/Divider';
 import {
   TextContent,
   PictureContent,

@@ -5,7 +5,7 @@ import useMemberStore from '@/stores/MemberStore';
 import { stringToDate, padding0 } from '@/utils/DateUtils';
 
 type WSchedulesProps = {
-  schedules: Array<CalendarSchedule>;
+  schedules: Array<CalendarScheduleData>;
   handleSkedClick: (id: number) => void;
 };
 

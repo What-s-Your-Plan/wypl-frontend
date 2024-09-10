@@ -24,7 +24,7 @@ import {
 } from '@/utils/DateUtils';
 import { labelFilter } from '@/utils/FilterUtils';
 
-export type DateSchedule = Array<Array<CalendarSchedule>>;
+export type DateSchedule = Array<Array<CalendarScheduleData>>;
 
 type MonthlyProps = {
   category: 'MEMBER' | 'GROUP';
@@ -51,7 +51,7 @@ function MonthlyCalender({
     return init;
   };
   const { selectedDate, setSelectedDate, selectedLabels } = useDateStore();
-  const [originSked, setOriginSked] = useState<Array<CalendarSchedule>>([]);
+  const [originSked, setOriginSked] = useState<Array<CalendarScheduleData>>([]);
   const [monthSchedules, setMonthSchedules] =
     useState<Array<DateSchedule>>(createInit());
   const [firstDay, setFirstDay] = useState<Date | null>(null);

@@ -11,9 +11,10 @@ import { Container } from '../common/Container';
 import { Divider } from '../common/Divider';
 import Tooltip from '../tooltip/Tooltip';
 
-import getMemberGroupList, {
+import { GroupInfo, GroupSummaryData, GroupUpdateInfo } from '@/@types/Group';
+import {
+  getMemberGroupList,
   FindMemberGroupsResponse as MemberGroups,
-  FindGroupResponse as MemberGroup,
 } from '@/api/group/getMemberGroupList';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Envelope from '@/assets/icons/envelope.svg';
@@ -32,18 +33,18 @@ function GroupList() {
   });
 
   const fetchMemberGroups = async () => {
-    const newMemberGroups: MemberGroups = await getMemberGroupList();
-    await setMemberGroups(newMemberGroups);
-    if (newMemberGroups.group_count > 0) {
-      navigate(BROWSER_PATH.GROUP.BASE + '/' + newMemberGroups.groups[0].id);
+    const { body } = await getMemberGroupList();
+    setMemberGroups(body);
+    if (body.group_count > 0) {
+      navigate(BROWSER_PATH.GROUP.BASE + '/' + body.groups[0].id);
     } else {
       navigate(BROWSER_PATH.GROUP.BASE);
     }
   };
 
-  const handleCreateGroup = (newGroup: MemberGroup) => {
+  const handleCreateGroup = (newGroup: GroupSummaryData) => {
     setMemberGroups((prev: MemberGroups) => {
-      const updatedGroups: MemberGroup[] = [newGroup, ...prev.groups];
+      const updatedGroups: GroupSummaryData[] = [newGroup, ...prev.groups];
       return {
         ...prev,
         groups: updatedGroups,
@@ -54,18 +55,19 @@ function GroupList() {
 
   const handleMoveAcceptedGroupById = (acceptedGroupId: number) => {
     setMemberGroups((prev: MemberGroups) => {
-      const acceptedGroup: MemberGroup | undefined = prev.invited_groups.find(
-        (group: MemberGroup) => group.id === acceptedGroupId,
-      );
+      const acceptedGroup: GroupSummaryData | undefined =
+        prev.invited_groups.find(
+          (group: GroupSummaryData) => group.id === acceptedGroupId,
+        );
       if (acceptedGroup === undefined) {
         return prev;
       }
 
       const updatedInvitedGroups = prev.invited_groups.filter(
-        (group: MemberGroup) => group.id !== acceptedGroupId,
+        (group: GroupSummaryData) => group.id !== acceptedGroupId,
       );
 
-      const updatedGroups: MemberGroup[] = [...prev.groups, acceptedGroup];
+      const updatedGroups: GroupSummaryData[] = [...prev.groups, acceptedGroup];
 
       return {
         groups: updatedGroups,
@@ -79,7 +81,7 @@ function GroupList() {
   const handleRefuseGroupById = (refuseGroupId: number) => {
     setMemberGroups((prev: MemberGroups) => {
       const updatedInvitedGroups = prev.invited_groups.filter(
-        (group: MemberGroup) => group.id !== refuseGroupId,
+        (group: GroupSummaryData) => group.id !== refuseGroupId,
       );
 
       return {
@@ -98,7 +100,7 @@ function GroupList() {
   const handleDeleteGroupById = (deleteGroupId: number) => {
     setMemberGroups((prev: MemberGroups) => {
       const updateGroups = prev.groups.filter(
-        (group: MemberGroup) => group.id !== deleteGroupId,
+        (group: GroupSummaryData) => group.id !== deleteGroupId,
       );
 
       return {
@@ -111,9 +113,9 @@ function GroupList() {
 
   const handleUpdateGroupById = (updateGroup: GroupUpdateInfo) => {
     setMemberGroups((prev: MemberGroups) => {
-      const updateGroups = prev.groups.map((group: MemberGroup) => {
+      const updateGroups = prev.groups.map((group: GroupSummaryData) => {
         if (group.id === updateGroup.id) {
-          const newMemberGroup: MemberGroup = {
+          const newMemberGroup: GroupSummaryData = {
             ...group,
             name: updateGroup.name,
             color: updateGroup.color as BgColors,
@@ -148,7 +150,7 @@ function GroupList() {
     if (memberGroups.invited_group_count === 0) {
       return <div>새로운 초대가 없어요</div>;
     }
-    return memberGroups.invited_groups.map((group: MemberGroup) => {
+    return memberGroups.invited_groups.map((group: GroupSummaryData) => {
       return (
         <InvitedGroupInfo
           key={group.id}
@@ -164,7 +166,7 @@ function GroupList() {
     if (memberGroups.group_count === 0) {
       return <div>속해있는 그룹이 없어요</div>;
     }
-    return memberGroups.groups.map((group: MemberGroup) => {
+    return memberGroups.groups.map((group: GroupSummaryData) => {
       return (
         <GroupDetailList
           key={group.id}

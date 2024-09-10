@@ -29,7 +29,7 @@ export type CalendarParams = {
 /* Response */
 export type CalendarsResponse = {
   schedule_count: number;
-  schedules: Array<CalendarSchedule>;
+  schedules: Array<CalendarScheduleData>;
 };
 
 /* API */

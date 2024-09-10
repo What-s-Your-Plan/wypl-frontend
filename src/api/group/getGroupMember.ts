@@ -1,30 +1,27 @@
 import { axiosWithAccessToken } from '../axios';
 
+import { GroupMemberData } from '@/@types/Group';
 import { BgColors } from '@/assets/styles/colorThemes';
 import { API_PATH } from '@/constants/Path';
 
-export type FindGroupMembersResponse = {
+/* Request */
+export type GetGroupMemberPathVariable = {
+  groupId: number;
+};
+
+/* Response */
+export type GetGroupMembersResponse = {
   color: BgColors;
   member_count: number;
-  members: GroupMemberResponse[];
+  members: GroupMemberData[];
 };
 
-export type GroupMemberResponse = {
-  profile_image: string | null;
-  is_accepted: boolean;
-  id: number;
-  email: string;
-  nickname: string;
+export const getGroupMember = async ({
+  groupId,
+}: GetGroupMemberPathVariable) => {
+  const { data } = await axiosWithAccessToken.get<
+    BaseResponse<GetGroupMembersResponse>
+  >(`${API_PATH.GROUP.BASE}/${groupId}`);
+
+  return data;
 };
-
-async function getGroupMember(groupId: number) {
-  return axiosWithAccessToken
-    .get<
-      BaseResponse<FindGroupMembersResponse>
-    >(API_PATH.GROUP.BASE + `/${groupId}`)
-    .then((res) => {
-      return res.data.body!;
-    });
-}
-
-export default getGroupMember;

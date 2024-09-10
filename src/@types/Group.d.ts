@@ -1,16 +1,10 @@
+import { BgColors } from '@/assets/styles/colorThemes.ts';
+
 type Group = {
   id: number;
   name: string;
   color: string;
   is_owner: boolean;
-};
-
-type GroupMember = {
-  member_id: number;
-  oauth_id: string;
-  nickname: string;
-  profile_image: string;
-  is_accepted: boolean;
 };
 
 type GroupInfo = {
@@ -24,3 +18,19 @@ type GroupUpdateInfo = {
   name: string;
   color: string;
 };
+
+/* Data */
+interface GroupMemberData {
+  profile_image: string | null;
+  is_accepted: boolean;
+  id: number;
+  email: string;
+  nickname: string;
+}
+
+interface GroupSummaryData {
+  id: number;
+  name: string;
+  color: BgColors;
+  is_owner: true;
+}

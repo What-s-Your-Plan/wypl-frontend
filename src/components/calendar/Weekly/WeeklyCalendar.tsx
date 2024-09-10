@@ -31,7 +31,7 @@ import {
 import { labelFilter } from '@/utils/FilterUtils';
 
 export type LongSchedule = {
-  schedule: CalendarSchedule;
+  schedule: CalendarScheduleData;
   startDay: number;
   row: number;
   period: number;
@@ -55,9 +55,9 @@ function WeeklyCalendar({
   const { selectedDate, setSelectedDate, selectedLabels } = useDateStore();
   const [firstDay, setFirstDay] = useState<Date | null>(null);
   const [height, setHeight] = useState<number>(0);
-  const [originSked, setOriginSked] = useState<Array<CalendarSchedule>>([]);
+  const [originSked, setOriginSked] = useState<Array<CalendarScheduleData>>([]);
   const [longSchedules, setLongSchedules] = useState<Array<LongSchedule>>([]);
-  const [schedules, setSchedules] = useState<Array<CalendarSchedule>>([]);
+  const [schedules, setSchedules] = useState<Array<CalendarScheduleData>>([]);
 
   const handleNextWeek = () => {
     const nextWeek = new Date(
@@ -117,7 +117,7 @@ function WeeklyCalendar({
     if (firstDay) {
       const bitArray = [0, 0, 0, 0, 0, 0, 0];
       const newLong: Array<LongSchedule> = [];
-      const newSchedule: Array<CalendarSchedule> = [];
+      const newSchedule: Array<CalendarScheduleData> = [];
       let maxIdx: number = 0;
 
       for (const sked of labelFilter(originSked, selectedLabels)) {

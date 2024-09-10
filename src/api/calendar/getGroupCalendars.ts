@@ -4,7 +4,7 @@ import {
   CalendarParams,
   CalendarPathVariable,
   CalendarsResponse,
-}                   from '@/api/calendar/getCalendars.ts';
+} from '@/api/calendar/getCalendars.ts';
 import { CALENDAR } from '@/api/endpoint.ts';
 
 /* Request */

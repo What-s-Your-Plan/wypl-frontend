@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import * as S from './InvitedGroupInfo.styled';
 
+import { Group } from '@/@types/Group';
 import {
   deleteGroupInvite,
   DeleteGroupInviteParams,

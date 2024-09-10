@@ -1,6 +1,6 @@
 import { IssueTokenResponse } from '@/api/auth/issueTokens.ts';
-import { axios }              from '@/api/axios.ts';
-import { AUTH }               from '@/api/endpoint.ts';
+import { axios } from '@/api/axios.ts';
+import { AUTH } from '@/api/endpoint.ts';
 
 /* Request */
 export type ReissueTokenParams = {

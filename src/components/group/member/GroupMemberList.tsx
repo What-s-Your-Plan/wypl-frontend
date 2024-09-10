@@ -4,20 +4,20 @@ import styled from 'styled-components';
 
 import * as S from './GroupMemberList.styled';
 
+import { GroupMemberData } from '@/@types/Group';
 import {
   deleteGroupMemberForceOut,
   DeleteGroupMemberForceOutPathVariable,
   DeleteGroupMemberForceOutRequest,
 } from '@/api/group/deleteGroupMemberForceOut';
 import { deleteGroupWithdraw } from '@/api/group/deleteGroupWithdraw';
-import getGroupMember, {
-  FindGroupMembersResponse as GroupMembers,
-  GroupMemberResponse as GroupMember,
+import {
+  getGroupMember,
+  GetGroupMembersResponse,
 } from '@/api/group/getGroupMember';
 import X from '@/assets/icons/x.svg';
 import { BgColors } from '@/assets/styles/colorThemes';
 import Tooltip from '@/components/tooltip/Tooltip';
-import useLoading from '@/hooks/useLoading';
 import useMemberStore from '@/stores/MemberStore';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
@@ -35,24 +35,16 @@ function GroupMemberList({
   groupDeleteEvent,
 }: GroupMemberProps) {
   const { memberId } = useMemberStore();
-  const { canStartLoading, endLoading } = useLoading();
 
-  const [groupMembers, setGroupMembers] = useState<GroupMembers>({
+  const [groupMembers, setGroupMembers] = useState<GetGroupMembersResponse>({
     color,
     member_count: 0,
     members: [],
   });
 
   const fetchGroupMember = async () => {
-    if (canStartLoading()) {
-      return;
-    }
-    const newGroupMembers: GroupMembers = await getGroupMember(groupId).finally(
-      () => {
-        endLoading();
-      },
-    );
-    setGroupMembers(newGroupMembers);
+    const data = await getGroupMember({ groupId });
+    setGroupMembers(data.body);
   };
 
   useEffect(() => {
@@ -90,7 +82,7 @@ function GroupMemberList({
 
   return (
     <S.Container>
-      {groupMembers.members.map((member: GroupMember) => {
+      {groupMembers.members.map((member: GroupMemberData) => {
         return (
           <S.Wrapper key={groupId + ' ' + member.id}>
             <S.Box>

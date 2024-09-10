@@ -3,6 +3,7 @@ import { useState } from 'react';
 import * as S from './GroupUpdateModal.styled';
 import GroupUpdatePanel from './GroupUpdatePanel';
 
+import { GroupUpdateInfo } from '@/@types/Group';
 import { deleteGroup, DeleteGroupParams } from '@/api/group/deleteGroup';
 import { BgColors } from '@/assets/styles/colorThemes';
 import Button from '@/components/common/Button';

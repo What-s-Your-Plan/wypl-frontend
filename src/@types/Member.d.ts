@@ -12,12 +12,6 @@ type UpdateNicknameResponse = {
   nickname: string;
 };
 
-type FindMemberColorResponse = {
-  colors: string[];
-  color_count: number;
-  select_color: string;
-};
-
 type FindMemberProfileResponse = {
   id: number;
   email: string;

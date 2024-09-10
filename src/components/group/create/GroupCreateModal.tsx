@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { FindGroupResponse as MemberGroup } from '@/api/group/getMemberGroupList';
+import { GroupInfo, GroupSummaryData } from '@/@types/Group';
 import postGroupRegister, {
   GroupResponse as CreateGroup,
-}                                           from '@/api/group/postGroupRegister';
+} from '@/api/group/postGroupRegister';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import Modal from '@/components/common/Modal';
 import * as S from '@/components/group/create/GroupCreateModal.styled';
@@ -14,7 +14,7 @@ type GroupCreateModalProps = {
   isOpen: boolean;
   init: GroupInfo;
   handleClose: (() => void) | (() => Promise<void>);
-  handleConfirm: (memberGroup: MemberGroup) => void;
+  handleConfirm: (memberGroup: GroupSummaryData) => void;
 };
 
 function GroupCreateModal({
@@ -33,7 +33,7 @@ function GroupCreateModal({
     if (response === null) {
       return;
     }
-    const memberGroup: MemberGroup = {
+    const memberGroup: GroupSummaryData = {
       id: response.id,
       color: response.color,
       name: response.name,

@@ -35,8 +35,8 @@ function DailyCalendar({
   handleSkedClick,
 }: DailyProps) {
   const { selectedDate, selectedLabels } = useDateStore();
-  const [originSked, setOriginSked] = useState<Array<CalendarSchedule>>([]);
-  const [schedules, setSchedules] = useState<Array<CalendarSchedule>>([]);
+  const [originSked, setOriginSked] = useState<Array<CalendarScheduleData>>([]);
+  const [schedules, setSchedules] = useState<Array<CalendarScheduleData>>([]);
   const { mainColor } = useMemberStore();
 
   /**

@@ -9,13 +9,14 @@ import { Divider } from '../../common/Divider';
 import GroupMemberList from '../member/GroupMemberList';
 import GroupUpdateModal from '../update/GroupUpdateModal';
 
+import { Group, GroupUpdateInfo } from '@/@types/Group';
 import patchPersonalGroupColor from '@/api/group/patchGroupColor';
 import patchGroupInfo, {
   UpdateGroupInfoRequest,
-}                              from '@/api/group/patchGroupInfo';
+} from '@/api/group/patchGroupInfo';
 import postGroupInvite, {
   GroupInviteRequest,
-}                              from '@/api/group/postGroupInvite';
+} from '@/api/group/postGroupInvite';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Setting from '@/assets/icons/settings.svg';
 import { BgColors } from '@/assets/styles/colorThemes';
@@ -23,7 +24,6 @@ import PalettePanel from '@/components/color/PalettePanel';
 import PopOver from '@/components/common/PopOver';
 import Tooltip from '@/components/tooltip/Tooltip';
 import useToastStore from '@/stores/ToastStore';
-
 
 type GroupInfoProps = {
   group: Group;
