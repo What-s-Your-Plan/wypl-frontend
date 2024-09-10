@@ -1,8 +1,8 @@
-import { Dispatch, SetStateAction, useState, useEffect } from 'react';
+import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 function useForm<S, R>(
   initialState: S | (() => S), // Object
-  onSubmit: (state: S) => Promise<R>,
+  onSubmit: (state: S) => Promise<BaseResponse<R> | R>,
   validate?: (values: S) => Array<boolean>,
 ): {
   form: S;
@@ -48,7 +48,13 @@ function useForm<S, R>(
         return null;
       }
     }
-    return await onSubmit(form);
+    const response = await onSubmit(form);
+
+    if (response && typeof response === 'object' && 'body' in response) {
+      return (response as BaseResponse<R>).body as R;
+    }
+
+    return response as R;
   };
 
   return { form, errors, handleChange, handleSubmit, setForm };

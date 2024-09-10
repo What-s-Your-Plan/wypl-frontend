@@ -7,12 +7,6 @@ type Group = {
   is_owner: boolean;
 };
 
-type GroupInfo = {
-  name: string;
-  color: string;
-  member_id_list: Array<number>;
-};
-
 type GroupUpdateInfo = {
   id: number;
   name: string;
@@ -20,6 +14,12 @@ type GroupUpdateInfo = {
 };
 
 /* Data */
+interface GroupInfoData {
+  name: string;
+  color: BgColors;
+  member_id_list: Array<number>;
+}
+
 interface GroupMemberData {
   profile_image: string | null;
   is_accepted: boolean;

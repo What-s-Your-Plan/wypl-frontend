@@ -11,7 +11,11 @@ import { Container } from '../common/Container';
 import { Divider } from '../common/Divider';
 import Tooltip from '../tooltip/Tooltip';
 
-import { GroupInfo, GroupSummaryData, GroupUpdateInfo } from '@/@types/Group';
+import {
+  GroupInfoData,
+  GroupSummaryData,
+  GroupUpdateInfo,
+} from '@/@types/Group';
 import {
   getMemberGroupList,
   FindMemberGroupsResponse as MemberGroups,
@@ -131,7 +135,7 @@ function GroupList() {
     });
   };
 
-  const [groupCreateInit] = useState<GroupInfo>({
+  const [groupCreateInit] = useState<GroupInfoData>({
     name: '',
     color: 'labelBrown',
     member_id_list: [],

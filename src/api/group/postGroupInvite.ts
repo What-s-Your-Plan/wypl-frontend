@@ -2,15 +2,22 @@ import { axiosWithAccessToken } from '../axios';
 
 import { API_PATH } from '@/constants/Path';
 
+/* Request */
+export type GroupInvitePathVariable = {
+  groupId: number;
+};
+
 export type GroupInviteRequest = {
   member_id_list: number[];
 };
 
-async function postGroupInvite(groupId: number, request: GroupInviteRequest) {
-  return await axiosWithAccessToken.post(
+/* API */
+export const postGroupInvite = async (
+  { groupId }: GroupInvitePathVariable,
+  request: GroupInviteRequest,
+) => {
+  await axiosWithAccessToken.post<BaseResponse<void>>(
     API_PATH.GROUP.INVITE.replace(':groupId', groupId.toString()),
     request,
   );
-}
-
-export default postGroupInvite;
+};

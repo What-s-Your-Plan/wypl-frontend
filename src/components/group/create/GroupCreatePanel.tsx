@@ -5,24 +5,24 @@ import ColorCircle from '../../common/ColorCircle';
 import { InputDefault } from '../../common/InputText';
 import PopOver from '../../common/PopOver';
 
-import { GroupInfo } from '@/@types/Group';
+import { GroupInfoData } from '@/@types/Group';
 import getMemberByEmail, {
   FindMemberByEmailResponse,
   FindMemberProfile,
-} from '@/api/member/getMemberbyEmail';
+}                        from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
 import { BgColors, LabelColorsType } from '@/assets/styles/colorThemes';
 import * as S from '@/components/group/create/GroupCreatePanel.styled';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupCreatePanelProps = {
-  states: GroupInfo;
+  states: GroupInfoData;
   handleChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
-  setStates: Dispatch<SetStateAction<GroupInfo>>;
+  setStates: Dispatch<SetStateAction<GroupInfoData>>;
   color: BgColors;
   setColor: Dispatch<SetStateAction<LabelColorsType>>;
 };

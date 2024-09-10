@@ -20,7 +20,8 @@ import {
   GroupInfoUpdatePathVariable,
   GroupInfoUpdateRequest,
 } from '@/api/group/patchGroupInfo';
-import postGroupInvite, {
+import {
+  postGroupInvite,
   GroupInviteRequest,
 } from '@/api/group/postGroupInvite';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
@@ -106,7 +107,7 @@ function GroupDetailList({
       const request: GroupInviteRequest = {
         member_id_list: memberIds,
       };
-      await postGroupInvite(group.id, request);
+      await postGroupInvite({ groupId: group.id }, request);
       addToast({
         duration: 300,
         message: `그룹에 ${memberIds.length}명을 초대했습니다.`,

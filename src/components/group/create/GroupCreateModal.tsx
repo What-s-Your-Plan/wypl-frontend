@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import { GroupInfo, GroupSummaryData } from '@/@types/Group';
-import postGroupRegister, {
+import { GroupInfoData, GroupSummaryData } from '@/@types/Group';
+import {
+  postGroupRegister,
   GroupResponse as CreateGroup,
 } from '@/api/group/postGroupRegister';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
@@ -12,7 +13,7 @@ import useForm from '@/hooks/useForm';
 
 type GroupCreateModalProps = {
   isOpen: boolean;
-  init: GroupInfo;
+  init: GroupInfoData;
   handleClose: (() => void) | (() => Promise<void>);
   handleConfirm: (memberGroup: GroupSummaryData) => void;
 };
@@ -24,10 +25,9 @@ function GroupCreateModal({
   handleConfirm,
 }: GroupCreateModalProps) {
   const { form, setForm, handleChange, handleSubmit } = useForm<
-    GroupInfo,
+    GroupInfoData,
     CreateGroup
   >(init, postGroupRegister);
-
   const handleConfirmClick = async () => {
     const response = await handleSubmit();
     if (response === null) {
