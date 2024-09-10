@@ -37,8 +37,8 @@ interface Schedule {
   scheduleId?: number;
   title: string; // 필수
   description: string; // 선택
-  startDate: string; 
-  endDate: string; 
+  startDate: string;
+  endDate: string;
   isAllday: boolean;
   startAMPM: string;
   endAMPM: string;
