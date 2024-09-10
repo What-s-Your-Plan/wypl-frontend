@@ -3,25 +3,30 @@ import { axiosWithAccessToken } from '../axios';
 import { BgColors } from '@/assets/styles/colorThemes';
 import { API_PATH } from '@/constants/Path';
 
-type Request = {
+/* Request */
+export type PersonalGroupColorUpdatePathVariable = {
+  groupId: number;
+};
+
+export type PersonalGroupColorUpdateRequest = {
   color: BgColors;
 };
 
-type Response = {
+/* Response */
+export type PersonalGroupColorUpdateResponse = {
   color: BgColors;
 };
 
-async function patchPersonalGroupColor(groupId: number, color: BgColors) {
-  const request: Request = {
-    color,
-  };
-  return await axiosWithAccessToken
-    .patch<
-      BaseResponse<Response>
-    >(API_PATH.GROUP.PERSONAL_COLOR.replace(':groupId', groupId.toString()), request)
-    .then((res) => {
-      return res.data.body!.color;
-    });
-}
+export const patchPersonalGroupColor = async (
+  { groupId }: PersonalGroupColorUpdatePathVariable,
+  request: PersonalGroupColorUpdateRequest,
+) => {
+  const { data } = await axiosWithAccessToken.patch<
+    BaseResponse<PersonalGroupColorUpdateResponse>
+  >(
+    API_PATH.GROUP.PERSONAL_COLOR.replace(':groupId', groupId.toString()),
+    request,
+  );
 
-export default patchPersonalGroupColor;
+  return data;
+};

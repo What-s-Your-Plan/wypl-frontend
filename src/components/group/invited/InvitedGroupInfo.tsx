@@ -29,7 +29,7 @@ function InvitedGroupInfo({
 }: InvitedGroupInfoProps) {
   const handleAccept = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    patchGroupInviteAccepted(group.id).then(() => {
+    patchGroupInviteAccepted({ groupId: group.id }).then(() => {
       acceptedEvent(group.id);
     });
   };

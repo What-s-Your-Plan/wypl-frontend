@@ -3,24 +3,30 @@ import { axiosWithAccessToken } from '../axios';
 import { BgColors } from '@/assets/styles/colorThemes';
 import { API_PATH } from '@/constants/Path';
 
-export type UpdateGroupInfoRequest = {
+/* Request */
+export type GroupInfoUpdatePathVariable = {
+  groupId: number;
+};
+
+export type GroupInfoUpdateRequest = {
   name: string;
   color: BgColors;
 };
 
-export type UpdateGroupInfoResponse = {
+/* Response */
+export type GroupInfoUpdateResponse = {
   id: number;
   name: string;
   color: BgColors;
 };
 
-async function patchGroupInfo(
-  groupId: number,
-  request: UpdateGroupInfoRequest,
-) {
-  return await axiosWithAccessToken.patch<
-    BaseResponse<UpdateGroupInfoResponse>
-  >(API_PATH.GROUP.BASE + `/${groupId}`, request);
-}
+export const patchGroupInfo = async (
+  { groupId }: GroupInfoUpdatePathVariable,
+  request: GroupInfoUpdateRequest,
+) => {
+  const { data } = await axiosWithAccessToken.patch<
+    BaseResponse<GroupInfoUpdateResponse>
+  >(`${API_PATH.GROUP.BASE}/${groupId}`, request);
 
-export default patchGroupInfo;
+  return data;
+};

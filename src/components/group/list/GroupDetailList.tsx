@@ -10,9 +10,15 @@ import GroupMemberList from '../member/GroupMemberList';
 import GroupUpdateModal from '../update/GroupUpdateModal';
 
 import { Group, GroupUpdateInfo } from '@/@types/Group';
-import patchPersonalGroupColor from '@/api/group/patchGroupColor';
-import patchGroupInfo, {
-  UpdateGroupInfoRequest,
+import {
+  patchPersonalGroupColor,
+  PersonalGroupColorUpdatePathVariable,
+  PersonalGroupColorUpdateRequest,
+} from '@/api/group/patchGroupColor';
+import {
+  patchGroupInfo,
+  GroupInfoUpdatePathVariable,
+  GroupInfoUpdateRequest,
 } from '@/api/group/patchGroupInfo';
 import postGroupInvite, {
   GroupInviteRequest,
@@ -42,11 +48,14 @@ function GroupDetailList({
   const [color, setColor] = useState<BgColors>(group.color as BgColors);
 
   const handleChangeColor = async (color: BgColors) => {
-    const updateColor: BgColors = await patchPersonalGroupColor(
-      group.id,
+    const pathVariable: PersonalGroupColorUpdatePathVariable = {
+      groupId: group.id,
+    };
+    const request: PersonalGroupColorUpdateRequest = {
       color,
-    );
-    setColor(updateColor);
+    };
+    const data = await patchPersonalGroupColor(pathVariable, request);
+    setColor(data.body.color as BgColors);
   };
 
   const gotoGroupPage = (open: boolean) => {
@@ -76,25 +85,23 @@ function GroupDetailList({
     memberIds: Array<number>,
   ) => {
     if (newName !== group.name || newColor !== (group.color as BgColors)) {
-      const request: UpdateGroupInfoRequest = {
+      const pathVariable: GroupInfoUpdatePathVariable = {
+        groupId: group.id,
+      };
+      const request: GroupInfoUpdateRequest = {
         name: newName,
         color: newColor,
       };
-      await patchGroupInfo(group.id, request).then((res) => {
-        const body = res.data.body!;
-        groupUpdateEvent({
-          id: group.id,
-          name: body.name,
-          color: body.color,
-        });
-      });
+      const data = await patchGroupInfo(pathVariable, request);
+      groupUpdateEvent(data.body);
+
       addToast({
         duration: 300,
         message: `그룹 수정에 성공하였습니다.`,
         type: 'NOTIFICATION',
       });
     }
-    console.log(memberIds);
+
     if (memberIds.length > 0) {
       const request: GroupInviteRequest = {
         member_id_list: memberIds,
