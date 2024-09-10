@@ -1,6 +1,13 @@
 import { useEffect, useState, useCallback } from 'react';
 
 import MonthlyDay from './MonthlyDay';
+import { Chevrons } from '../DatePicker.styled';
+
+import { getCalendars } from '@/api/calendar/v1/calendars/getCalendars.ts';
+import { getGroupCalendars } from '@/api/calendar/v1/calendars/getGroupCalendars.ts';
+import ChevronLeft from '@/assets/icons/chevronLeft.svg';
+import ChevronRight from '@/assets/icons/chevronRight.svg';
+import useDateStore from '@/stores/DateStore';
 import {
   isSameDay,
   isCurrentMonth,
@@ -8,14 +15,6 @@ import {
   dateToString,
 } from '@/utils/DateUtils';
 import { labelFilter } from '@/utils/FilterUtils';
-import useDateStore      from '@/stores/DateStore';
-import getCalendars      from '@/api/calendar/getCalendars';
-import getGroupCalendars from '@/api/calendar/getGroupCalendars';
-import { Chevrons }      from '../DatePicker.styled';
-
-import ChevronRight from '@/assets/icons/chevronRight.svg';
-import ChevronLeft from '@/assets/icons/chevronLeft.svg';
-import useLoading from '@/hooks/useLoading';
 
 export type DateSchedule = Array<Array<CalendarSchedule>>;
 
@@ -43,7 +42,6 @@ function MonthlyCalender({
     }
     return init;
   };
-  const { canStartLoading, endLoading } = useLoading();
   const { selectedDate, setSelectedDate, selectedLabels } = useDateStore();
   const [originSked, setOriginSked] = useState<Array<CalendarSchedule>>([]);
   const [monthSchedules, setMonthSchedules] =
@@ -77,31 +75,20 @@ function MonthlyCalender({
   };
 
   const updateInfo = useCallback(async () => {
-    if (canStartLoading()) {
-      return;
-    }
     if (category === 'MEMBER') {
-      const response = await getCalendars(
-        'MONTH',
-        dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
+      const data = await getCalendars('MONTH', dateToString(selectedDate));
 
-      if (response) {
-        setOriginSked(response.schedules);
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
     } else if (category === 'GROUP' && groupId) {
-      const response = await getGroupCalendars(
+      const data = await getGroupCalendars(
         'MONTH',
         Number(groupId),
         dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
-
-      if (response) {
-        setOriginSked(response.schedules);
+      );
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
     }
   }, [selectedDate, groupId]);

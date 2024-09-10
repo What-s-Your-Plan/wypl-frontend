@@ -1,4 +1,4 @@
-const AUTH_ENDPOINT = {
+const AUTH = {
   V1: {
     LOGOUT: '/auth/v1/logout',
     REISSUE: '/auth/v1/reissue',
@@ -9,4 +9,12 @@ const AUTH_ENDPOINT = {
   },
 };
 
-export { AUTH_ENDPOINT };
+const CALENDAR = {
+  V1: {
+    CALENDARS: {
+      BASE: '/calendar/v1/calendars',
+    },
+  },
+};
+
+export { AUTH, CALENDAR };

@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback, Fragment } from 'react';
-import getGroupCalendars                              from '@/api/calendar/getGroupCalendars';
-import getCalendars                                   from '@/api/calendar/getCalendars';
-import useDateStore                                   from '@/stores/DateStore';
-import { dateToString, getTime } from '@/utils/DateUtils';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
-import useMemberStore from '@/stores/MemberStore';
-import { labelFilter } from '@/utils/FilterUtils';
 
 import * as S from './DailyCalendar.styled';
-import useLoading from '@/hooks/useLoading';
+
+import { getCalendars } from '@/api/calendar/v1/calendars/getCalendars.ts';
+import { getGroupCalendars } from '@/api/calendar/v1/calendars/getGroupCalendars.ts';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import NoContentAnimation from '@/components/animation/NoContent';
+import useDateStore from '@/stores/DateStore';
+import useMemberStore from '@/stores/MemberStore';
+import { dateToString, getTime } from '@/utils/DateUtils';
+import { labelFilter } from '@/utils/FilterUtils';
 
 type DailyProps = {
   category: 'MEMBER' | 'GROUP';
@@ -26,36 +26,25 @@ function DailyCalendar({
   setUpdateFalse,
   handleSkedClick,
 }: DailyProps) {
-  const { canStartLoading, endLoading } = useLoading();
   const { selectedDate, selectedLabels } = useDateStore();
   const [originSked, setOriginSked] = useState<Array<CalendarSchedule>>([]);
   const [schedules, setSchedules] = useState<Array<CalendarSchedule>>([]);
   const { mainColor } = useMemberStore();
 
   const updateInfo = useCallback(async () => {
-    if (canStartLoading()) {
-      return;
-    }
     if (category === 'MEMBER') {
-      const response = await getCalendars(
-        'DAY',
-        dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
-      if (response) {
-        setOriginSked(response.schedules);
+      const data = await getCalendars('DAY', dateToString(selectedDate));
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
     } else if (category === 'GROUP' && groupId) {
-      const response = await getGroupCalendars(
+      const data = await getGroupCalendars(
         'DAY',
         groupId,
         dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
-      if (response) {
-        setOriginSked(response.schedules);
+      );
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
     }
   }, [selectedDate, groupId]);
