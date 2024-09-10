@@ -1,8 +1,8 @@
 import { axiosWithAccessToken } from '../axios';
 
 import { GroupMemberData } from '@/@types/Group';
+import { GROUP } from '@/api/endpoint.ts';
 import { BgColors } from '@/assets/styles/colorThemes';
-import { API_PATH } from '@/constants/Path';
 
 /* Request */
 export type GetGroupMemberPathVariable = {
@@ -21,7 +21,7 @@ export const getGroupMember = async ({
 }: GetGroupMemberPathVariable) => {
   const { data } = await axiosWithAccessToken.get<
     BaseResponse<GetGroupMembersResponse>
-  >(`${API_PATH.GROUP.BASE}/${groupId}`);
+  >(`${GROUP.V1.GROUPS.BASE}/${groupId}`);
 
   return data;
 };

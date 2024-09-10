@@ -1,7 +1,7 @@
 import { axiosWithAccessToken } from '../axios';
 
+import { GROUP } from '@/api/endpoint.ts';
 import { BgColors } from '@/assets/styles/colorThemes';
-import { API_PATH } from '@/constants/Path';
 
 /* Request */
 export type PersonalGroupColorUpdatePathVariable = {
@@ -24,7 +24,10 @@ export const patchPersonalGroupColor = async (
   const { data } = await axiosWithAccessToken.patch<
     BaseResponse<PersonalGroupColorUpdateResponse>
   >(
-    API_PATH.GROUP.PERSONAL_COLOR.replace(':groupId', groupId.toString()),
+    GROUP.V1.GROUPS.MEMBER.PERSONAL_COLOR.replace(
+      ':groupId',
+      groupId.toString(),
+    ),
     request,
   );
 

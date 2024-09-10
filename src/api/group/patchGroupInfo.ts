@@ -1,7 +1,7 @@
 import { axiosWithAccessToken } from '../axios';
 
+import { GROUP } from '@/api/endpoint.ts';
 import { BgColors } from '@/assets/styles/colorThemes';
-import { API_PATH } from '@/constants/Path';
 
 /* Request */
 export type GroupInfoUpdatePathVariable = {
@@ -26,7 +26,7 @@ export const patchGroupInfo = async (
 ) => {
   const { data } = await axiosWithAccessToken.patch<
     BaseResponse<GroupInfoUpdateResponse>
-  >(`${API_PATH.GROUP.BASE}/${groupId}`, request);
+  >(`${GROUP.V1.GROUPS.BASE}/${groupId}`, request);
 
   return data;
 };

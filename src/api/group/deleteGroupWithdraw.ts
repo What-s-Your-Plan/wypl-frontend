@@ -1,6 +1,6 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { API_PATH } from '@/constants/Path';
+import { GROUP } from '@/api/endpoint.ts';
 
 /* Request */
 export type DeleteGroupWithDrawPathVariable = {
@@ -12,6 +12,6 @@ export const deleteGroupWithdraw = async ({
   groupId,
 }: DeleteGroupWithDrawPathVariable) => {
   await axiosWithAccessToken.delete<BaseResponse<void>>(
-    API_PATH.GROUP.WITHDRAW.replace(':groupId', groupId.toString()),
+    GROUP.V1.GROUPS.MEMBER.WITHDRAW.replace(':groupId', groupId.toString()),
   );
 };

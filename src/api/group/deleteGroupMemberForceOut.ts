@@ -1,6 +1,6 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { API_PATH } from '@/constants/Path';
+import { GROUP } from '@/api/endpoint.ts';
 
 /* Request */
 export type DeleteGroupMemberForceOutPathVariable = {
@@ -23,7 +23,10 @@ export const deleteGroupMemberForceOut = async (
 ) => {
   const { data } = await axiosWithAccessToken.patch<
     BaseResponse<DeleteGroupMemberForceOutResponse>
-  >(API_PATH.GROUP.FORCE_OUT.replace(':groupId', groupId.toString()), request);
+  >(
+    GROUP.V1.GROUPS.MEMBER.FORCE_OUT.replace(':groupId', groupId.toString()),
+    request,
+  );
 
   return data;
 };

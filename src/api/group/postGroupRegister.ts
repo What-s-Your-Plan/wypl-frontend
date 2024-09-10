@@ -1,7 +1,7 @@
 import { axiosWithAccessToken } from '../axios';
 
+import { GROUP } from '@/api/endpoint.ts';
 import { BgColors } from '@/assets/styles/colorThemes';
-import { API_PATH } from '@/constants/Path';
 
 /* Request */
 export type GroupRegisterRequest = {
@@ -20,7 +20,7 @@ export type GroupResponse = {
 /* API */
 export const postGroupRegister = async (request: GroupRegisterRequest) => {
   const { data } = await axiosWithAccessToken.post<BaseResponse<GroupResponse>>(
-    API_PATH.GROUP.BASE,
+    GROUP.V1.GROUPS.BASE,
     request,
   );
 

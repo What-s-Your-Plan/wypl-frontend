@@ -1,6 +1,6 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { API_PATH } from '@/constants/Path';
+import { GROUP } from '@/api/endpoint.ts';
 
 /* Request */
 export type GroupInviteAcceptedPathVariable = {
@@ -12,7 +12,7 @@ export const patchGroupInviteAccepted = async ({
   groupId,
 }: GroupInviteAcceptedPathVariable) => {
   const { data } = await axiosWithAccessToken.patch<BaseResponse<void>>(
-    API_PATH.GROUP.INVITE.replace(':groupId', groupId.toString()),
+    GROUP.V1.GROUPS.MEMBER.INVITE.replace(':groupId', groupId.toString()),
   );
 
   return data;
