@@ -1,19 +1,21 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useReviewStore from '@/stores/ReviewStore';
+
+import ReviewWrite from './ReviewWrite';
+import RSchedule from './RSchedule';
+import RTitle from './RTitle';
 
 import postReview from '@/api/review/postReview';
-
-import RTitle from './RTitle';
-import RSchedule from './RSchedule';
-import ReviewWrite from './ReviewWrite';
-import Button from '@/components/common/Button';
-import { Divider, DividerLabel } from '@/components/common/Divider';
-import useToastStore from '@/stores/ToastStore';
-
-import * as S from '@/components/common/Container';
-import Cancel from '@/assets/icons/x.svg';
 import Save from '@/assets/icons/save.svg';
-import { useEffect } from 'react';
+import Cancel from '@/assets/icons/x.svg';
+import Button from '@/components/common/Button';
+import * as S from '@/components/common/Container';
+import { Divider, DividerLabel } from '@/components/common/Divider';
+import useReviewStore from '@/stores/ReviewStore';
+
+
+
+import useToastStore from '@/stores/ToastStore';
 
 function WriteBlockList() {
   const { addToast } = useToastStore();
@@ -69,7 +71,7 @@ function WriteBlockList() {
       });
       return;
     } else {
-      for (var i = 0; i < body.contents.length; i++) {
+      for (let i = 0; i < body.contents.length; i++) {
         if (!reviewStore.isContentComplete(i)) {
           addToast({
             duration: 300,

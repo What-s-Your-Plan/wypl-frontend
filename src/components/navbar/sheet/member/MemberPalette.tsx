@@ -1,17 +1,16 @@
-import ColorCircle from '@/components/common/ColorCircle';
-
-import useLoading            from '@/hooks/useLoading';
-import patchMemberLabelColor from '@/api/member/patchMemberLabelColor';
-import useMemberStore        from '@/stores/MemberStore';
+import * as S from './MemberPalette.styled';
 
 import {
   UpdateLabelColorResponse,
   UpdateLabelColorRequest,
 } from '@/@types/Member';
-import { BgColors, LabelColors } from '@/assets/styles/colorThemes';
+import patchMemberLabelColor from '@/api/member/patchMemberLabelColor';
 import check from '@/assets/icons/check.svg';
+import { BgColors, LabelColors } from '@/assets/styles/colorThemes';
+import ColorCircle from '@/components/common/ColorCircle';
+import useLoading            from '@/hooks/useLoading';
+import useMemberStore        from '@/stores/MemberStore';
 
-import * as S from './MemberPalette.styled';
 
 function MemberPalette() {
   const { mainColor, setMainColor: setLabelColor } = useMemberStore();

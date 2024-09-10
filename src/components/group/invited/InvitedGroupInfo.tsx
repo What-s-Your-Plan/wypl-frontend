@@ -1,14 +1,16 @@
+import styled from 'styled-components';
+
+import * as S from './InvitedGroupInfo.styled';
+
+import deleteGroupInvite        from '@/api/group/deleteGroupInvite';
+import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
+import Check from '@/assets/icons/check.svg';
+import X                        from '@/assets/icons/x.svg';
+import { BgColors } from '@/assets/styles/colorThemes';
 import ColorCircle from '@/components/common/ColorCircle';
 import Tooltip from '@/components/tooltip/Tooltip';
 
-import styled from 'styled-components';
-import { BgColors } from '@/assets/styles/colorThemes';
-import Check from '@/assets/icons/check.svg';
-import X                        from '@/assets/icons/x.svg';
-import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
-import deleteGroupInvite        from '@/api/group/deleteGroupInvite';
 
-import * as S from './InvitedGroupInfo.styled';
 
 type InvitedGroupInfoProps = {
   group: Group;

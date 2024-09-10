@@ -6,7 +6,7 @@ import * as S from './GoogleOAuth.styled';
 import {
   IssueTokenParams,
   IssueTokenPathVariable,
-} from '@/api/auth/v1/sign-in/issueTokens.ts';
+}                             from '@/api/auth/issueTokens.ts';
 import GoogleLoadingAnimation from '@/components/animation/GoogleLoading';
 import OAUTH_PROVIDER from '@/constants/OAuth';
 import { BROWSER_PATH } from '@/constants/Path';

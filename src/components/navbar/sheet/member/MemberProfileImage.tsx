@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 
-import { UpdateProfileImageResponse } from '@/@types/Member';
-import editIcon from '@/assets/icons/editPaper.svg';
-import useImage         from '@/hooks/useImage';
-import postProfileImage from '@/api/member/postProfileImage';
-import useMemberStore   from '@/stores/MemberStore';
-
 import * as S from './MemberProfileImage.styled';
 import * as MS from './MemberSheet.styled';
+
+import { UpdateProfileImageResponse } from '@/@types/Member';
+import postProfileImage from '@/api/member/postProfileImage';
+import editIcon from '@/assets/icons/editPaper.svg';
+import useImage         from '@/hooks/useImage';
+import useMemberStore   from '@/stores/MemberStore';
+
 
 function MemberProfileImage() {
   const { profileImage, setProfileImage } = useMemberStore();

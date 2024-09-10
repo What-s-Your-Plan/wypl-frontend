@@ -1,6 +1,7 @@
-import { BgColors, BgTheme } from '@/assets/styles/colorThemes';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+
+import { BgColors, BgTheme } from '@/assets/styles/colorThemes';
 
 const TitleContainer = styled.div``;
 

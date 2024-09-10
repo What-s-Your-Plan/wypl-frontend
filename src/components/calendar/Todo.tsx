@@ -1,16 +1,18 @@
-import { WhiteContainer } from '../common/Container';
-import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
-import editButton from '@/assets/icons/x.svg';
-import plusButton from '@/assets/icons/plus.svg';
-import updateButton from '@/assets/icons/edit.svg';
+import styled from 'styled-components';
+
+import { WhiteContainer } from '../common/Container';
 import { InputDefault } from '../common/InputText';
-import postTodo         from '@/api/todo/postTodo.ts';
-import getTodoList      from '@/api/todo/getTodoList.ts';
-import deleteTodo       from '@/api/todo/deleteTodo.ts';
+
 import checkTodo        from '@/api/todo/checkTodo.ts';
+import deleteTodo       from '@/api/todo/deleteTodo.ts';
+import getTodoList      from '@/api/todo/getTodoList.ts';
 import patchTodo        from '@/api/todo/patchTodo.ts';
+import postTodo         from '@/api/todo/postTodo.ts';
+import updateButton from '@/assets/icons/edit.svg';
+import plusButton from '@/assets/icons/plus.svg';
+import editButton from '@/assets/icons/x.svg';
 
 function Todo() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -93,11 +95,11 @@ function Todo() {
   };
 
   const changeOriginContent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let updatedTodoIndex = todos.findIndex(
+    const updatedTodoIndex = todos.findIndex(
       (todo) => todo.todo_id === chosenTodo,
     );
 
-    let copiedTodos = [...todos];
+    const copiedTodos = [...todos];
     copiedTodos[updatedTodoIndex].content = e.target.value;
 
     setTodos(copiedTodos);

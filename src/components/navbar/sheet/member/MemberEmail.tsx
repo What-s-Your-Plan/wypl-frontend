@@ -1,6 +1,7 @@
+import * as S from './MemberEmail.styled';
+
 import useMemberStore from '@/stores/MemberStore';
 
-import * as S from './MemberEmail.styled';
 
 function MemberEmail() {
   const { email } = useMemberStore();

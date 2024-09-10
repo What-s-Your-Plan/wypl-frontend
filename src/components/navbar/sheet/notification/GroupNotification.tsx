@@ -1,13 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 
-import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
 import deleteGroupInvite        from '@/api/group/deleteGroupInvite';
-
+import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
+import Check from '@/assets/icons/check.svg';
+import X from '@/assets/icons/x.svg';
 import Button from '@/components/common/Button';
 import { BROWSER_PATH } from '@/constants/Path';
 
-import Check from '@/assets/icons/check.svg';
-import X from '@/assets/icons/x.svg';
 
 type GroupNotificationProps = {
   notification: WYPLNotification;

@@ -1,6 +1,6 @@
 import { UpdateNicknameRequest, UpdateNicknameResponse } from '@/@types/Member';
-import { API_PATH }             from '@/constants/Path';
 import { axiosWithAccessToken } from '@/api/axios';
+import { API_PATH }             from '@/constants/Path';
 
 
 const patchNickname = (request: UpdateNicknameRequest) => {

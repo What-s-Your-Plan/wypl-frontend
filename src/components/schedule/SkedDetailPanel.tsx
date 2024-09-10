@@ -1,11 +1,13 @@
 import { useEffect, useState, Dispatch, SetStateAction } from 'react';
-import deleteSchedule                                    from '@/api/schedule/deleteSchedule';
-import * as Items                                        from './SkedDetailItems';
-import TrashIcon from '@/assets/icons/trash.svg';
-import EditIcon from '@/assets/icons/editPaper.svg';
 import { useNavigate } from 'react-router-dom';
+
+import * as Items                                        from './SkedDetailItems';
 import SkedModify from './SkedModify';
 import Modal from '../common/Modal';
+
+import deleteSchedule                                    from '@/api/schedule/deleteSchedule';
+import EditIcon from '@/assets/icons/editPaper.svg';
+import TrashIcon from '@/assets/icons/trash.svg';
 import useMemberStore from '@/stores/MemberStore';
 
 type DetailProps = {

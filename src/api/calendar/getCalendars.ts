@@ -1,5 +1,5 @@
 import { axiosWithAccessToken } from '@/api/axios.ts';
-import { CALENDAR } from '@/api/endpoint.ts';
+import { CALENDAR }             from '@/api/endpoint.ts';
 
 /* Request */
 export type CalendarPathVariable = {

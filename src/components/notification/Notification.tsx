@@ -1,8 +1,8 @@
+import * as S from './Notification.styled';
 import Toast from '../toast/Toast';
 
 import useToastStore from '@/stores/ToastStore';
 
-import * as S from './Notification.styled';
 
 function Notification() {
   const { toasts, removeToast } = useToastStore();

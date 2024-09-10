@@ -1,16 +1,14 @@
 import { useState } from 'react';
 
-import Button from '@/components/common/Button';
-import Modal from '@/components/common/Modal';
+import * as S from './GroupUpdateModal.styled';
 import GroupUpdatePanel from './GroupUpdatePanel';
 
 import deleteGroup from '@/api/group/deleteGroup';
-
+import { BgColors } from '@/assets/styles/colorThemes';
+import Button from '@/components/common/Button';
+import Modal from '@/components/common/Modal';
 import useToastStore from '@/stores/ToastStore';
 
-import { BgColors } from '@/assets/styles/colorThemes';
-
-import * as S from './GroupUpdateModal.styled';
 
 type GroupUpdateModalProps = {
   isOpen: boolean;

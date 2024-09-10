@@ -8,11 +8,11 @@ import {
   CalendarPathVariable,
   CalendarsResponse,
   getCalendars,
-} from '@/api/calendar/v1/calendars/getCalendars.ts';
+}                  from '@/api/calendar/getCalendars.ts';
 import {
   getGroupCalendars,
   GroupCalendarPathVariable,
-} from '@/api/calendar/v1/calendars/getGroupCalendars.ts';
+}                  from '@/api/calendar/getGroupCalendars.ts';
 import ChevronLeft from '@/assets/icons/chevronLeft.svg';
 import ChevronRight from '@/assets/icons/chevronRight.svg';
 import useDateStore from '@/stores/DateStore';

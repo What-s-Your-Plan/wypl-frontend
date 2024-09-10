@@ -1,17 +1,15 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-import getNotification    from '@/api/notification/getNotification';
-import deleteNotification from '@/api/notification/deleteNotification';
-
 import GroupNotification from './GroupNotification';
+import * as S from './NotificationSheet.styled';
 import ReviewNotification from './ReviewNotification';
 
-import { Divider } from '@/components/common/Divider';
+import deleteNotification from '@/api/notification/deleteNotification';
+import getNotification    from '@/api/notification/getNotification';
 import Bell from '@/assets/icons/bell.svg';
 import Button from '@/components/common/Button';
-import * as S from './NotificationSheet.styled';
-
+import { Divider } from '@/components/common/Divider';
 import useLoading from '@/hooks/useLoading';
 import useToastStore from '@/stores/ToastStore';
 

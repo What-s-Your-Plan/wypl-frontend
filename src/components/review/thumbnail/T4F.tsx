@@ -1,5 +1,5 @@
-import { FourFContent } from '@/objects/Content';
 import Text from '@/components/common/Text';
+import { FourFContent } from '@/objects/Content';
 
 type T4FProps = {
   thumbnailContent: FourFContent;

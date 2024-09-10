@@ -1,10 +1,10 @@
-import { axiosWithAccessToken } from '../../../axios.ts';
+import { axiosWithAccessToken } from '../axios.ts';
 
 import {
   CalendarParams,
   CalendarPathVariable,
   CalendarsResponse,
-} from '@/api/calendar/v1/calendars/getCalendars.ts';
+}                   from '@/api/calendar/getCalendars.ts';
 import { CALENDAR } from '@/api/endpoint.ts';
 
 /* Request */

@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { EventSourcePolyfill } from 'event-source-polyfill';
 
-import logo from '@/assets/images/logo.png';
+import * as S from './Navbar.styled';
 
-import MemberSheet from '@/components/navbar/sheet/member/MemberSheet';
+import logo from '@/assets/images/logo.png';
 import NavEventBar from '@/components/navbar/NavEventBar/NavEventBar';
+import MemberSheet from '@/components/navbar/sheet/member/MemberSheet';
 import NotificationSheet from '@/components/navbar/sheet/notification/NotificationSheet';
 import Sheet from '@/components/navbar/sheet/Sheet';
-
+import { BROWSER_PATH } from '@/constants/Path';
 import useMemberProfile from '@/hooks/api/useMemberProfile';
 import useMemberStore from '@/stores/MemberStore';
+import useToastStore from '@/stores/ToastStore';
 import useJsonWebTokensStore from '@/stores/TokenStore';
 
-import { BROWSER_PATH } from '@/constants/Path';
 
-import * as S from './Navbar.styled';
-import useToastStore from '@/stores/ToastStore';
 
 interface CustomEventMap {
   sse: MessageEvent;

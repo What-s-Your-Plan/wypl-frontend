@@ -1,30 +1,29 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import { Disclosure } from '@headlessui/react';
 
-import PopOver from '@/components/common/PopOver';
-import Tooltip from '@/components/tooltip/Tooltip';
-import PalettePanel from '@/components/color/PalettePanel';
+import * as S from './GroupDetailList.styled';
 import ColorCircle from '../../common/ColorCircle';
 import { Divider } from '../../common/Divider';
-import GroupUpdateModal from '../update/GroupUpdateModal';
 import GroupMemberList from '../member/GroupMemberList';
+import GroupUpdateModal from '../update/GroupUpdateModal';
 
+import patchPersonalGroupColor from '@/api/group/patchGroupColor';
 import patchGroupInfo, {
   UpdateGroupInfoRequest,
 }                              from '@/api/group/patchGroupInfo';
 import postGroupInvite, {
   GroupInviteRequest,
 }                              from '@/api/group/postGroupInvite';
-import patchPersonalGroupColor from '@/api/group/patchGroupColor';
-
-import useToastStore from '@/stores/ToastStore';
-
-import { BgColors } from '@/assets/styles/colorThemes';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Setting from '@/assets/icons/settings.svg';
+import { BgColors } from '@/assets/styles/colorThemes';
+import PalettePanel from '@/components/color/PalettePanel';
+import PopOver from '@/components/common/PopOver';
+import Tooltip from '@/components/tooltip/Tooltip';
+import useToastStore from '@/stores/ToastStore';
 
-import * as S from './GroupDetailList.styled';
 
 type GroupInfoProps = {
   group: Group;

@@ -1,5 +1,5 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
 const TitleDiv = styled.div`
   ${tw`flex justify-center gap-3 items-center p-3`}

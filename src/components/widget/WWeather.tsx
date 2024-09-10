@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import getWeather from '@/api/widget/getWeather';
-
 import Cloud from '@/assets/icons/weather/cloud.svg';
 import CloudAngledRain from '@/assets/icons/weather/cloudAngledRain.svg';
 import CloudAngledRainZap from '@/assets/icons/weather/cloudAngledRainZap.svg';
 import CloudSnow from '@/assets/icons/weather/cloudSnow.svg';
+import MistMoon from '@/assets/icons/weather/mistMoon.svg';
+import MistSun from '@/assets/icons/weather/mistSun.svg';
 import Moon from '@/assets/icons/weather/moon.svg';
 import Sun from '@/assets/icons/weather/sun.svg';
 import Tornado from '@/assets/icons/weather/tornado.svg';
-import MistSun from '@/assets/icons/weather/mistSun.svg';
-import MistMoon from '@/assets/icons/weather/mistMoon.svg';
 
 function WWeather() {
   const [weather, setWeather] = useState<Weather>();

@@ -7,11 +7,11 @@ import {
   CalendarPathVariable,
   CalendarsResponse,
   getCalendars,
-} from '@/api/calendar/v1/calendars/getCalendars.ts';
+}                          from '@/api/calendar/getCalendars.ts';
 import {
   getGroupCalendars,
   GroupCalendarPathVariable,
-} from '@/api/calendar/v1/calendars/getGroupCalendars.ts';
+}                          from '@/api/calendar/getGroupCalendars.ts';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import NoContentAnimation from '@/components/animation/NoContent';
 import useDateStore from '@/stores/DateStore';

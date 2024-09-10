@@ -1,15 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 
-import { deleteJsonWebTokens } from '@/api/auth/v1/logout/deleteJsonWebTokens.ts';
-import {
-  ReissueTokenParams,
-  reissueTokens,
-} from '@/api/auth/v1/reissue/reissue.ts';
+import { deleteJsonWebTokens } from '@/api/auth/deleteJsonWebTokens.ts';
 import {
   issueTokens,
   IssueTokenParams,
   IssueTokenPathVariable,
-} from '@/api/auth/v1/sign-in/issueTokens.ts';
+}                       from '@/api/auth/issueTokens.ts';
+import {
+  ReissueTokenParams,
+  reissueTokens,
+}                       from '@/api/auth/reissue.ts';
 import { BROWSER_PATH } from '@/constants/Path';
 import useMemberStore from '@/stores/MemberStore';
 import useJsonWebTokensStore from '@/stores/TokenStore';

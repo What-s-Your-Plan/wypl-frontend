@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction, useRef } from 'react';
+
+import postCreateLabel  from '@/api/label/postCreateLabel';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import ColorSelectButton from '@/components/color/ColorSelectButton';
-import { CreateDiv } from '@/components/label/Styled';
 import { InputDefault } from '@/components/common/InputText';
-import postCreateLabel  from '@/api/label/postCreateLabel';
-import useToastStore    from '@/stores/ToastStore';
-
+import { CreateDiv } from '@/components/label/Styled';
 import useLoading from '@/hooks/useLoading';
+import useToastStore    from '@/stores/ToastStore';
 
 type CreateLabelProps = {
   color: LabelColorsType;

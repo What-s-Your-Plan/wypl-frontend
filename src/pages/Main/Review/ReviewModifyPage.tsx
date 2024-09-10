@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import getReviewDetail from '@/api/review/getReviewDetail';
 import ViewBlockList from '@/components/review/view/ViewBlockList';
 import WriteBlockList from '@/components/review/write/WriteBlockList';
-
-import useReviewStore  from '@/stores/ReviewStore';
-import getReviewDetail from '@/api/review/getReviewDetail';
 import { Content }     from '@/objects/Content';
+import useReviewStore  from '@/stores/ReviewStore';
 
 function ReviewModifyPage() {
   const { scheduleId, reviewId } = useParams();

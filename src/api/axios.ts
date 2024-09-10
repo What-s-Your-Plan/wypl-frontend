@@ -1,6 +1,6 @@
 import Axios, { HttpStatusCode } from 'axios';
 
-import { ReissueTokenParams, reissueTokens } from './auth/v1/reissue/reissue.ts';
+import { ReissueTokenParams, reissueTokens } from './auth/reissue.ts';
 
 import useToastStore from '@/stores/ToastStore';
 import useJsonWebTokensStore from '@/stores/TokenStore';

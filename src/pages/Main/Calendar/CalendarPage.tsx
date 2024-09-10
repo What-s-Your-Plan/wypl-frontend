@@ -1,5 +1,5 @@
-import WidgetList from '@/components/widget/WidgetList';
 import CalendarContent from '@/components/calendar/CalendarContent';
+import WidgetList from '@/components/widget/WidgetList';
 
 function CalendarPage() {
   return (

@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { Review }    from '@/@types/ReviewResponse';
 import getReviewList from '@/api/review/getReviewList';
-
-import { Container, WhiteContainer } from '@/components/common/Container';
-import ReviewThumbnail from '@/components/review/thumbnail/ReviewThumbnail';
-import { Divider } from '@/components/common/Divider';
 import NoContentAnimation from '@/components/animation/NoContent';
+import { Container, WhiteContainer } from '@/components/common/Container';
+import { Divider } from '@/components/common/Divider';
+import ReviewThumbnail from '@/components/review/thumbnail/ReviewThumbnail';
 
 function ReviewIndexPage() {
   const navigator = useNavigate();
