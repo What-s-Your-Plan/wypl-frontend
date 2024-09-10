@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import * as DS from './DummyOAuthButton.styled';
 import * as S from './GoogleOAuthButton.styled';
 
-import { mockIssueTokens } from '@/api/auth/v1/sign-in/mock/mockIssueTokens.ts';
+import { IssueTokenResponse } from '@/api/auth/v1/sign-in/issueTokens.ts';
+import {
+  MockIssueTokenParams,
+  mockIssueTokens,
+} from '@/api/auth/v1/sign-in/mock/mockIssueTokens.ts';
 import { BROWSER_PATH } from '@/constants/Path';
 import useMemberStore from '@/stores/MemberStore';
 import useJsonWebTokensStore from '@/stores/TokenStore';

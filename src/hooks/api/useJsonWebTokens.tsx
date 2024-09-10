@@ -1,8 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 
 import { deleteJsonWebTokens } from '@/api/auth/v1/logout/deleteJsonWebTokens.ts';
-import { reissueTokens } from '@/api/auth/v1/reissue/reissue.ts';
-import { issueTokens } from '@/api/auth/v1/sign-in/issueTokens.ts';
+import {
+  ReissueTokenParams,
+  reissueTokens,
+} from '@/api/auth/v1/reissue/reissue.ts';
+import {
+  issueTokens,
+  IssueTokenParams,
+  IssueTokenPathVariable,
+} from '@/api/auth/v1/sign-in/issueTokens.ts';
 import { BROWSER_PATH } from '@/constants/Path';
 import useMemberStore from '@/stores/MemberStore';
 import useJsonWebTokensStore from '@/stores/TokenStore';
@@ -15,10 +22,10 @@ export default function useJsonWebTokens() {
   const navigate = useNavigate();
 
   const requestIssueTokens = async (
-    params: IssueTokenParams,
-    provider: string,
+    issueTokenPathVariable: IssueTokenPathVariable,
+    issueTokenParams: IssueTokenParams,
   ) => {
-    const data = await issueTokens(params, provider);
+    const data = await issueTokens(issueTokenPathVariable, issueTokenParams);
     const { access_token, refresh_token, member_id } = data.body;
 
     setAccessToken(access_token);

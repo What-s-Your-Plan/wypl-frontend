@@ -1,12 +1,11 @@
-import Button from '@/components/common/Button';
 import MemberEmail from './MemberEmail';
-import MemberProfileImage from './MemberProfileImage';
 import MemberNickname from './MemberNickname';
 import MemberPalette from './MemberPalette';
-
-import useJsonWebTokens from '@/hooks/api/useJsonWebTokens';
-
+import MemberProfileImage from './MemberProfileImage';
 import * as S from './MemberSheet.styled';
+
+import Button from '@/components/common/Button';
+import useJsonWebTokens from '@/hooks/api/useJsonWebTokens';
 
 function MemberSheet() {
   const { requestDeleteTokens } = useJsonWebTokens();
