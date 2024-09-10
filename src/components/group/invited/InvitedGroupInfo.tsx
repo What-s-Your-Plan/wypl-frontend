@@ -1,16 +1,19 @@
+import React from 'react';
+
 import styled from 'styled-components';
 
 import * as S from './InvitedGroupInfo.styled';
 
-import deleteGroupInvite        from '@/api/group/deleteGroupInvite';
+import {
+  deleteGroupInvite,
+  DeleteGroupInviteParams,
+} from '@/api/group/deleteGroupInvite';
 import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
 import Check from '@/assets/icons/check.svg';
-import X                        from '@/assets/icons/x.svg';
+import X from '@/assets/icons/x.svg';
 import { BgColors } from '@/assets/styles/colorThemes';
 import ColorCircle from '@/components/common/ColorCircle';
 import Tooltip from '@/components/tooltip/Tooltip';
-
-
 
 type InvitedGroupInfoProps = {
   group: Group;
@@ -33,7 +36,10 @@ function InvitedGroupInfo({
   const handleReject = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     if (window.confirm('그룹 초대를 거절하시겠습니까?')) {
-      deleteGroupInvite(group.id).then(() => {
+      const deleteGroupInviteParam: DeleteGroupInviteParams = {
+        groupId: group.id,
+      };
+      deleteGroupInvite(deleteGroupInviteParam).then(() => {
         refusedEvent(group.id);
       });
     }

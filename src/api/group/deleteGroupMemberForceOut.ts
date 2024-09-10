@@ -2,25 +2,28 @@ import { axiosWithAccessToken } from '../axios';
 
 import { API_PATH } from '@/constants/Path';
 
+/* Request */
+export type DeleteGroupMemberForceOutPathVariable = {
+  groupId: number;
+};
+
 export type DeleteGroupMemberForceOutRequest = {
   member_id: number;
 };
 
+/* Response */
 export type DeleteGroupMemberForceOutResponse = {
   member_id: number;
 };
 
-async function deleteGroupMemberForceOut(
-  groupId: number,
+/* API */
+export const deleteGroupMemberForceOut = async (
+  { groupId }: DeleteGroupMemberForceOutPathVariable,
   request: DeleteGroupMemberForceOutRequest,
-) {
-  return await axiosWithAccessToken
-    .patch<
-      BaseResponse<DeleteGroupMemberForceOutResponse>
-    >(API_PATH.GROUP.FORCE_OUT.replace(':groupId', groupId.toString()), request)
-    .then((res) => {
-      return res.data.body!;
-    });
-}
+) => {
+  const { data } = await axiosWithAccessToken.patch<
+    BaseResponse<DeleteGroupMemberForceOutResponse>
+  >(API_PATH.GROUP.FORCE_OUT.replace(':groupId', groupId.toString()), request);
 
-export default deleteGroupMemberForceOut;
+  return data;
+};

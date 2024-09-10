@@ -1,19 +1,15 @@
 import { useEffect, useState } from 'react';
 
-
-
-
-
 import styled from 'styled-components';
 
+import * as S from './GroupMemberList.styled';
 
-import * as S              from './GroupMemberList.styled';
-
-import deleteGroupMemberForceOut, {
+import {
+  deleteGroupMemberForceOut,
+  DeleteGroupMemberForceOutPathVariable,
   DeleteGroupMemberForceOutRequest,
-  DeleteGroupMemberForceOutResponse,
-}                          from '@/api/group/deleteGroupMemberForceOut';
-import deleteGroupWithdraw from '@/api/group/deleteGroupWithdraw';
+} from '@/api/group/deleteGroupMemberForceOut';
+import { deleteGroupWithdraw } from '@/api/group/deleteGroupWithdraw';
 import getGroupMember, {
   FindGroupMembersResponse as GroupMembers,
   GroupMemberResponse as GroupMember,
@@ -21,7 +17,7 @@ import getGroupMember, {
 import X from '@/assets/icons/x.svg';
 import { BgColors } from '@/assets/styles/colorThemes';
 import Tooltip from '@/components/tooltip/Tooltip';
-import useLoading          from '@/hooks/useLoading';
+import useLoading from '@/hooks/useLoading';
 import useMemberStore from '@/stores/MemberStore';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
@@ -67,11 +63,13 @@ function GroupMemberList({
     const request: DeleteGroupMemberForceOutRequest = {
       member_id: deleteMemberId,
     };
-    const response: DeleteGroupMemberForceOutResponse =
-      await deleteGroupMemberForceOut(groupId, request);
+    const pathVariable: DeleteGroupMemberForceOutPathVariable = {
+      groupId,
+    };
+    const data = await deleteGroupMemberForceOut(pathVariable, request);
     setGroupMembers((prev) => {
       const updatedGroupMembers = prev.members.filter(
-        (member) => member.id !== response.member_id,
+        (member) => member.id !== data.body.member_id,
       );
       return {
         ...prev,
@@ -82,7 +80,10 @@ function GroupMemberList({
   };
 
   const requestWithdraw = async () => {
-    await deleteGroupWithdraw(groupId).then(() => {
+    const pathVariable: DeleteGroupMemberForceOutPathVariable = {
+      groupId,
+    };
+    await deleteGroupWithdraw(pathVariable).then(() => {
       groupDeleteEvent(groupId);
     });
   };
@@ -111,7 +112,7 @@ function GroupMemberList({
                   text={'회원 추방'}
                 />
               )}
-              {isOwner === false && member.id === memberId && (
+              {!isOwner && member.id === memberId && (
                 <Tooltip
                   children={
                     <ForceOutImg src={X} onClick={() => requestWithdraw()} />

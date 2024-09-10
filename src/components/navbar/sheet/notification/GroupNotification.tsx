@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 
-import deleteGroupInvite        from '@/api/group/deleteGroupInvite';
+import {
+  deleteGroupInvite,
+  DeleteGroupInviteParams,
+} from '@/api/group/deleteGroupInvite';
 import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
 import Check from '@/assets/icons/check.svg';
 import X from '@/assets/icons/x.svg';
 import Button from '@/components/common/Button';
 import { BROWSER_PATH } from '@/constants/Path';
-
 
 type GroupNotificationProps = {
   notification: WYPLNotification;
@@ -17,7 +19,10 @@ function GroupNotification({ notification }: GroupNotificationProps) {
   const groupId: number = notification.target_id;
 
   const handleReject = async () => {
-    await deleteGroupInvite(groupId);
+    const deleteGroupInviteParam: DeleteGroupInviteParams = {
+      groupId: groupId,
+    };
+    await deleteGroupInvite(deleteGroupInviteParam);
   };
 
   const handleAccept = async () => {

@@ -1,11 +1,16 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { API_PATH } from '@/constants/Path';
+import { GROUP } from '@/api/endpoint.ts';
+import { DeleteGroupParams } from '@/api/group/deleteGroup.ts';
 
-async function deleteGroupInvite(groupId: number) {
-  return await axiosWithAccessToken.delete(
-    API_PATH.GROUP.INVITE.replace(':groupId', groupId.toString()),
+/* Request */
+export type DeleteGroupInviteParams = DeleteGroupParams;
+
+/* API */
+export const deleteGroupInvite = async ({
+  groupId,
+}: DeleteGroupInviteParams) => {
+  await axiosWithAccessToken.delete(
+    GROUP.V1.GROUPS.MEMBER.INVITE.replace(':groupId', groupId.toString()),
   );
-}
-
-export default deleteGroupInvite;
+};

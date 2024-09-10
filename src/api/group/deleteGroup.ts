@@ -1,9 +1,15 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { API_PATH } from '@/constants/Path';
+import { GROUP } from '@/api/endpoint.ts';
 
-async function deleteGroup(groupId: number) {
-  await axiosWithAccessToken.delete(API_PATH.GROUP.BASE + `/${groupId}`);
-}
+/* Request */
+export type DeleteGroupParams = {
+  groupId: number;
+};
 
-export default deleteGroup;
+/* API */
+export const deleteGroup = async ({ groupId }: DeleteGroupParams) => {
+  await axiosWithAccessToken.delete(
+    GROUP.V1.GROUPS.GROUP_ID.replace(':groupId', groupId.toString()),
+  );
+};
