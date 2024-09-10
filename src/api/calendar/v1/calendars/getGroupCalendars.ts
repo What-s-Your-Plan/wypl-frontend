@@ -1,15 +1,30 @@
 import { axiosWithAccessToken } from '../../../axios.ts';
 
+import {
+  CalendarParams,
+  CalendarPathVariable,
+  CalendarsResponse,
+} from '@/api/calendar/v1/calendars/getCalendars.ts';
 import { CALENDAR } from '@/api/endpoint.ts';
 
+/* Request */
+export type GroupCalendarPathVariable = CalendarPathVariable & {
+  groupId: number;
+};
+
+export type GroupCalendarParams = CalendarParams;
+
+/* Response */
+export type GroupCalendarsResponse = CalendarsResponse;
+
+/* API */
 export const getGroupCalendars = async (
-  type: string,
-  groupId: number,
-  date: string,
+  { groupId, type }: GroupCalendarPathVariable,
+  params: GroupCalendarParams,
 ) => {
   const { data } = await axiosWithAccessToken.get<
-    BaseResponse<CalendarsResponse>
-  >(`${CALENDAR.V1.CALENDARS.BASE}/${type}/${groupId}?date=${date}`);
+    BaseResponse<GroupCalendarsResponse>
+  >(`${CALENDAR.V1.CALENDARS.BASE}/${type}/${groupId}`, { params });
 
   return data;
 };

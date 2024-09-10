@@ -2,8 +2,16 @@ import { useState, useEffect, useCallback, Fragment } from 'react';
 
 import * as S from './DailyCalendar.styled';
 
-import { getCalendars } from '@/api/calendar/v1/calendars/getCalendars.ts';
-import { getGroupCalendars } from '@/api/calendar/v1/calendars/getGroupCalendars.ts';
+import {
+  CalendarParams,
+  CalendarPathVariable,
+  CalendarsResponse,
+  getCalendars,
+} from '@/api/calendar/v1/calendars/getCalendars.ts';
+import {
+  getGroupCalendars,
+  GroupCalendarPathVariable,
+} from '@/api/calendar/v1/calendars/getGroupCalendars.ts';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import NoContentAnimation from '@/components/animation/NoContent';
 import useDateStore from '@/stores/DateStore';
@@ -31,17 +39,32 @@ function DailyCalendar({
   const [schedules, setSchedules] = useState<Array<CalendarSchedule>>([]);
   const { mainColor } = useMemberStore();
 
+  /**
+   * 일별 달력을 조회한다.
+   */
   const updateInfo = useCallback(async () => {
+    const calendarPathVariable: CalendarPathVariable = {
+      type: 'DAY',
+    };
+    const calendarParams: CalendarParams = {
+      date: dateToString(selectedDate),
+    };
+
     if (category === 'MEMBER') {
-      const data = await getCalendars('DAY', dateToString(selectedDate));
+      const data = await getCalendars(calendarPathVariable, calendarParams);
       if (data.body) {
         setOriginSked(data.body.schedules);
       }
-    } else if (category === 'GROUP' && groupId) {
-      const data = await getGroupCalendars(
-        'DAY',
+    }
+
+    if (category === 'GROUP' && groupId) {
+      const groupCalendarPathVariable: GroupCalendarPathVariable = {
+        type: 'DAY',
         groupId,
-        dateToString(selectedDate),
+      };
+      const data: BaseResponse<CalendarsResponse> = await getGroupCalendars(
+        groupCalendarPathVariable,
+        calendarParams,
       );
       if (data.body) {
         setOriginSked(data.body.schedules);
