@@ -33,4 +33,13 @@ const GROUP = {
   },
 };
 
-export { AUTH, CALENDAR, GROUP };
+const LABEL = {
+  V1: {
+    LABELS: {
+      BASE: '/label/v1/labels',
+      MAIN: '/label/v1/labels/main',
+    },
+  },
+};
+
+export { AUTH, CALENDAR, GROUP, LABEL };

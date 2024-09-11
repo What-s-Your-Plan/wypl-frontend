@@ -3,16 +3,16 @@ import { create } from 'zustand';
 type DateStates = {
   today: Date;
   selectedDate: Date;
-  labels: FilterResponse[];
-  selectedLabels: Array<FilterResponse>;
+  labels: LabelFilterData[];
+  selectedLabels: Array<LabelFilterData>;
 };
 
 type DateActions = {
   updateToday: () => void;
   setSelectedDate: (date: Date) => void;
-  setLabels: (labels: FilterResponse[]) => void;
-  addSelectedLabels: (labelId: FilterResponse) => void;
-  removeSelectedLabels: (labelId: FilterResponse) => void;
+  setLabels: (labels: LabelFilterData[]) => void;
+  addSelectedLabels: (labelId: LabelFilterData) => void;
+  removeSelectedLabels: (labelId: LabelFilterData) => void;
   clearSelectedLabels: () => void;
   setAllSelected: () => void;
 };
@@ -29,17 +29,19 @@ const useDateStore = create<DateStates & DateActions>()((set, get) => ({
   setSelectedDate: (date: Date) => {
     set({ selectedDate: date });
   },
-  setLabels(labels: FilterResponse[]) {
+  setLabels(labels: LabelFilterData[]) {
     set({ labels: labels });
   },
-  addSelectedLabels: (newLabel: FilterResponse) => {
+  addSelectedLabels: (newLabel: LabelFilterData) => {
     set((state) => ({
       selectedLabels: [...state.selectedLabels, newLabel],
     }));
   },
-  removeSelectedLabels: (newLabel: FilterResponse) => {
+  removeSelectedLabels: (newLabel: LabelFilterData) => {
     set((state) => ({
-      selectedLabels: state.selectedLabels.filter((label) => label !== newLabel),
+      selectedLabels: state.selectedLabels.filter(
+        (label) => label !== newLabel,
+      ),
     }));
   },
   clearSelectedLabels: () => {
@@ -51,8 +53,8 @@ const useDateStore = create<DateStates & DateActions>()((set, get) => ({
       //   return label.id;
       // }),
       selectedLabels: {
-        ...get().labels
-      }
+        ...get().labels,
+      },
     });
   },
 }));

@@ -1,12 +1,12 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 
 import * as S from './Schedule.styled';
 
-import getLabelList from '@/api/label/getLabelList';
+import { getLabelList } from '@/api/label/getLabelList';
 import ArrowRightIcon from '@/assets/icons/arrowRight.svg';
 import CalendarAddIcon from '@/assets/icons/calendarAdd.svg';
 import ClockIcon from '@/assets/icons/clock.svg';
-import Plus         from '@/assets/icons/plus.svg';
+import Plus from '@/assets/icons/plus.svg';
 import RepeatIcon from '@/assets/icons/repeat.svg';
 import LabelIcon from '@/assets/icons/tag.svg';
 import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
@@ -263,8 +263,8 @@ function Label({ states, setStates }: SetProps) {
                   color={color}
                   setColor={setColor}
                   handleKeyDown={async () => {
-                    const newLabel = await getLabelList();
-                    setLabels(newLabel);
+                    const { body } = await getLabelList();
+                    setLabels(body.labels);
                     setCreate(false);
                   }}
                 />

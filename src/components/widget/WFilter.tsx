@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import LabelButton from '../common/LabelButton';
 
-import getLabelList        from '@/api/label/getLabelList';
+import { getLabelList } from '@/api/label/getLabelList';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import useDateStore from '@/stores/DateStore';
 
@@ -12,10 +12,10 @@ function WFilter() {
   const renderLabels = () => {
     return dateStore.labels.map((label: FilterResponse) => {
       const isSelected = dateStore.selectedLabels.includes(label);
-      const labelBgColor =
-        isSelected ? label.color : 'coolGray';
-      const labelClassName =
-        isSelected ? '' : '!text-default-black !font-medium';
+      const labelBgColor = isSelected ? label.color : 'coolGray';
+      const labelClassName = isSelected
+        ? ''
+        : '!text-default-black !font-medium';
       return (
         <LabelButton
           $bgColor={labelBgColor as LabelColorsType}
@@ -37,8 +37,8 @@ function WFilter() {
 
   useEffect(() => {
     const fetchLabelList = async () => {
-      const labelList = await getLabelList();
-      dateStore.setLabels(labelList);
+      const { body } = await getLabelList();
+      dateStore.setLabels(body.labels);
     };
 
     fetchLabelList();
@@ -51,7 +51,9 @@ function WFilter() {
       </div>
       <div id="labelList" className="scrollBar flex flex-wrap gap-2 h-28 mt-2">
         <LabelButton
-          $bgColor={dateStore.selectedLabels.length === 0 ? 'labelBrown' : 'coolGray'}
+          $bgColor={
+            dateStore.selectedLabels.length === 0 ? 'labelBrown' : 'coolGray'
+          }
           className={`h-8 ${dateStore.selectedLabels.length === 0 ? '' : '!text-default-black !font-medium'}`}
           onClick={dateStore.clearSelectedLabels}
         >

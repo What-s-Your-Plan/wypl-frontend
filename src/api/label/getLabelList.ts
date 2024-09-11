@@ -1,9 +1,16 @@
 import { axiosWithAccessToken } from '@/api/axios';
+import { LABEL } from '@/api/endpoint.ts';
 
-async function getLabelList() {
-  const response = await axiosWithAccessToken.get('/label/v1/labels/main');
-  console.log(response.data);
-  return response.data.body.labels;
-}
+/* Response */
+export type LabelListResponse = {
+  labels: LabelFilterData[];
+};
 
-export default getLabelList;
+/* API */
+export const getLabelList = async () => {
+  const { data } = await axiosWithAccessToken.get<
+    BaseResponse<LabelListResponse>
+  >(LABEL.V1.LABELS.MAIN);
+
+  return data;
+};

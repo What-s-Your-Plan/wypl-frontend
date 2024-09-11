@@ -111,3 +111,10 @@ interface CalendarScheduleData {
   label: LabelResponse | null;
   group: GroupResponse | null;
 }
+
+interface LabelFilterData {
+  category: string;
+  id: number;
+  title: string;
+  color: string;
+}
