@@ -11,7 +11,7 @@ import Button from '@/components/common/Button';
 import { BROWSER_PATH } from '@/constants/Path';
 
 type GroupNotificationProps = {
-  notification: WYPLNotification;
+  notification: WYPLNotificationData;
 };
 
 function GroupNotification({ notification }: GroupNotificationProps) {

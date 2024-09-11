@@ -1,7 +1,12 @@
 import { axiosWithAccessToken } from '../axios';
 
-async function deleteNotification() {
-  return await axiosWithAccessToken.delete(`/notification/v1/notifications`);
-}
+import { NOTIFICATION } from '@/api/endpoint.ts';
 
-export default deleteNotification;
+/* API */
+export const deleteNotification = async () => {
+  const { data } = await axiosWithAccessToken.delete<BaseResponse<void>>(
+    NOTIFICATION.V1.NOTIFICATIONS.BASE,
+  );
+
+  return data;
+};

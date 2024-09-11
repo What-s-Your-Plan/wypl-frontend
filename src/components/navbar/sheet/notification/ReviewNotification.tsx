@@ -5,7 +5,7 @@ import Button from '@/components/common/Button';
 
 
 type ReviewNotificationProps = {
-  notification: WYPLNotification;
+  notification: WYPLNotificationData;
 };
 
 function ReviewNotification({ notification }: ReviewNotificationProps) {

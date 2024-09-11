@@ -82,7 +82,7 @@ function Navbar() {
 
       source.addEventListener('notification', function (event) {
         const jsonAsString: string = event.data as string;
-        const body: WYPLNotification = JSON.parse(jsonAsString);
+        const body: WYPLNotificationData = JSON.parse(jsonAsString);
         addToast({
           duration: 300,
           type: 'NOTIFICATION',

@@ -53,4 +53,12 @@ const MEMBER = {
   },
 };
 
-export { AUTH, CALENDAR, GROUP, LABEL, MEMBER };
+const NOTIFICATION = {
+  V1: {
+    NOTIFICATIONS: {
+      BASE: '/notification/v1/notifications',
+    },
+  },
+};
+
+export { AUTH, CALENDAR, GROUP, LABEL, MEMBER, NOTIFICATION };

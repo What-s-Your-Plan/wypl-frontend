@@ -1,23 +1,28 @@
 import { axiosWithAccessToken } from '../axios';
 
-const getNotification = async (lastId: string | undefined) => {
-  let response;
-  if (lastId !== undefined) {
-    response = await axiosWithAccessToken.get(
-      `/notification/v1/notifications?lastId=${lastId}`,
-    );
-  } else {
-    response = await axiosWithAccessToken.get(`/notification/v1/notifications`);
-  }
+import { NOTIFICATION } from '@/api/endpoint.ts';
 
-  const res = {
-    notification: response.data.body.notifications,
-    last_id: response.data.body.last_id,
-    has_next: response.data.body.has_next,
-    page_size: response.data.body.page_size,
-  };
-
-  return res;
+/* Request */
+export type GetNotificationParams = {
+  lastId: string | undefined;
 };
 
-export default getNotification;
+/* Response */
+export type WYPLNotificationResponse = {
+  notification: WYPLNotificationData[];
+  last_id: string;
+  has_next: boolean;
+  page_size: number;
+};
+
+/* API */
+export const getNotification = async (params: GetNotificationParams) => {
+  const { data } = await axiosWithAccessToken.get<
+    BaseResponse<WYPLNotificationResponse>
+  >(
+    NOTIFICATION.V1.NOTIFICATIONS.BASE,
+    params.lastId !== undefined ? { params } : undefined,
+  );
+
+  return data;
+};
