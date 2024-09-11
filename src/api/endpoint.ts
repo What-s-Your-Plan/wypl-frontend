@@ -23,7 +23,7 @@ const GROUP = {
       BASE: '/group/v1/groups',
       GROUP_ID: '/group/v1/groups/:groupId',
       MEMBER: {
-        BASE: '/member/v1/groups/members',
+        BASE: '/group/v1/groups/members',
         WITHDRAW: '/group/v1/groups/:groupId/members',
         FORCE_OUT: '/group/v1/groups/:groupId/members/force-out',
         PERSONAL_COLOR: '/group/v1/groups/:groupId/members/colors',
