@@ -1,25 +1,26 @@
 import { axiosWithAccessToken } from '../axios';
 
+import { MEMBER } from '@/api/endpoint.ts';
+
+/* Request */
+export type FindMemberByEmailParams = {
+  email: string;
+  size: number;
+};
+
+/* Response */
 export type FindMemberByEmailResponse = {
-  members: FindMemberProfile[];
+  members: SearchMemberForCreateGroupData[];
   member_count: number;
 };
 
-export type FindMemberProfile = {
-  id: number;
-  email: string;
-  nickname: string;
-  profile_image_url: string | null;
-};
-
-async function getMemberByEmail(email: string, size: number) {
+/* API */
+export const getMemberByEmail = async (params: FindMemberByEmailParams) => {
   return await axiosWithAccessToken
     .get<
       BaseResponse<FindMemberByEmailResponse>
-    >(`/member/v1/members?q=${email}&size=${size}`)
+    >(MEMBER.V1.MEMBERS.BASE, { params })
     .then((res) => {
       return res.data.body!;
     });
-}
-
-export default getMemberByEmail;
+};

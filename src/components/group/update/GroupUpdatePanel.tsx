@@ -6,9 +6,9 @@ import { InputDefault } from '../../common/InputText';
 import PopOver from '../../common/PopOver';
 
 import { GroupUpdateInfo } from '@/@types/Group';
-import getMemberByEmail, {
+import {
+  getMemberByEmail,
   FindMemberByEmailResponse,
-  FindMemberProfile,
 } from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
 import { BgColors } from '@/assets/styles/colorThemes';
@@ -28,7 +28,7 @@ function GroupUpdatePanel({
 }: GroupUpdatePanelProps) {
   const [searchMember, setSearchMember] = useState<string>('');
   const [searchedMembers, setSearchMembers] = useState<
-    Array<FindMemberProfile>
+    Array<SearchMemberForCreateGroupData>
   >([]);
 
   const handleSearchMemberChange = async (
@@ -36,10 +36,10 @@ function GroupUpdatePanel({
   ) => {
     setSearchMember(e.target.value);
     if (e.target.value.length >= 2) {
-      const response: FindMemberByEmailResponse = await getMemberByEmail(
-        e.target.value,
-        49,
-      );
+      const response: FindMemberByEmailResponse = await getMemberByEmail({
+        email: e.target.value,
+        size: 49,
+      });
       setSearchMembers(response.members);
     } else {
       setSearchMembers([]);
@@ -47,14 +47,15 @@ function GroupUpdatePanel({
   };
 
   const [selectedMembers, setSelectedMembers] = useState<
-    Array<FindMemberProfile>
+    Array<SearchMemberForCreateGroupData>
   >([]);
 
-  const handleAddMember = async (member: FindMemberProfile) => {
-    await setSelectedMembers((prev: Array<FindMemberProfile>) => {
+  const handleAddMember = async (member: SearchMemberForCreateGroupData) => {
+    await setSelectedMembers((prev: Array<SearchMemberForCreateGroupData>) => {
       if (
         !prev.some(
-          (memberProfile: FindMemberProfile) => memberProfile.id === member.id,
+          (memberProfile: SearchMemberForCreateGroupData) =>
+            memberProfile.id === member.id,
         )
       ) {
         return [...prev, member];
@@ -71,7 +72,7 @@ function GroupUpdatePanel({
 
   useEffect(() => {
     inviteMemberIdsEvent(
-      selectedMembers.map((m: FindMemberProfile) => {
+      selectedMembers.map((m: SearchMemberForCreateGroupData) => {
         return m.id;
       }),
     );
@@ -87,7 +88,7 @@ function GroupUpdatePanel({
   }, [color, name]);
 
   const renderSearchedMembers = () => {
-    return searchedMembers.map((member: FindMemberProfile) => {
+    return searchedMembers.map((member: SearchMemberForCreateGroupData) => {
       return (
         <S.MemberContainer
           key={'memberSearchContainer' + member.id}
@@ -109,7 +110,7 @@ function GroupUpdatePanel({
   };
 
   const renderSelectedMembers = () => {
-    return selectedMembers.map((member: FindMemberProfile) => {
+    return selectedMembers.map((member: SearchMemberForCreateGroupData) => {
       return (
         <S.MemberContainer
           key={'memberSelectContainer' + member.id}

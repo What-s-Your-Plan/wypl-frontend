@@ -1,29 +1,14 @@
-import { BgColors } from '@/assets/styles/colorThemes';
-
-type UpdateProfileImageResponse = {
-  profile_image_url: string;
-};
-
-type UpdateNicknameRequest = {
+interface SearchMemberForCreateGroupData {
+  id: number;
+  email: string;
   nickname: string;
-};
+  profile_image_url: string | null;
+}
 
-type UpdateNicknameResponse = {
-  nickname: string;
-};
-
-type FindMemberProfileResponse = {
+type MemberProfileData = {
   id: number;
   email: string;
   nickname: string;
   profile_image_url: string | null;
   main_color: string;
-};
-
-type UpdateLabelColorRequest = {
-  color: BgColors;
-};
-
-type UpdateLabelColorResponse = {
-  color: BgColors;
 };

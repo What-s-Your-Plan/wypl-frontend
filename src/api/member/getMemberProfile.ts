@@ -1,15 +1,21 @@
-import { FindMemberProfileResponse } from '@/@types/Member';
 import { axiosWithAccessToken } from '@/api/axios';
-import { API_PATH }             from '@/constants/Path';
+import { MEMBER } from '@/api/endpoint.ts';
 
-const getMemberProfile = (memberId: number) => {
-  return axiosWithAccessToken
-    .get<
-      BaseResponse<FindMemberProfileResponse>
-    >(API_PATH.MEMBER.BASE + `/${memberId}`)
-    .then((res) => {
-      return res.data.body!;
-    });
+/* Request */
+export type GetMemberProfileRequest = {
+  memberId: number;
 };
 
-export default getMemberProfile;
+/* Response */
+export type GetMemberProfileResponse = MemberProfileData;
+
+/* API */
+export const getMemberProfile = async ({
+  memberId,
+}: GetMemberProfileRequest) => {
+  const { data } = await axiosWithAccessToken.get<
+    BaseResponse<GetMemberProfileResponse>
+  >(`${MEMBER.V1.MEMBERS.BASE}/${memberId}`);
+
+  return data;
+};

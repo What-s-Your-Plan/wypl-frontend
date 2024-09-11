@@ -1,14 +1,12 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import * as S from './MemberNickname.styled';
 
-import { UpdateNicknameRequest, UpdateNicknameResponse } from '@/@types/Member';
-import patchNickname  from '@/api/member/patchNickname';
+import { patchNickname } from '@/api/member/patchNickname';
 import CheckIcon from '@/assets/icons/check.svg';
 import XIcon from '@/assets/icons/x.svg';
 import { InputDefault } from '@/components/common/InputText';
 import useMemberStore from '@/stores/MemberStore';
-
 
 function MemberNickname() {
   const { nickname, setNickname } = useMemberStore();
@@ -41,11 +39,9 @@ function MemberNickname() {
       setEdit(false);
       return;
     }
-    const request: UpdateNicknameRequest = {
-      nickname: inputNickname,
-    };
-    const response: UpdateNicknameResponse = await patchNickname(request);
-    setNickname(response.nickname);
+
+    const { body } = await patchNickname({ nickname: inputNickname });
+    setNickname(body.nickname);
     setEdit(false);
   };
 

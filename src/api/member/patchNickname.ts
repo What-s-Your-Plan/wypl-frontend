@@ -1,16 +1,21 @@
-import { UpdateNicknameRequest, UpdateNicknameResponse } from '@/@types/Member';
 import { axiosWithAccessToken } from '@/api/axios';
-import { API_PATH }             from '@/constants/Path';
+import { MEMBER } from '@/api/endpoint.ts';
 
-
-const patchNickname = (request: UpdateNicknameRequest) => {
-  return axiosWithAccessToken
-    .patch<
-      BaseResponse<UpdateNicknameResponse>
-    >(API_PATH.MEMBER.NICKNAME, request)
-    .then((res) => {
-      return res.data.body!;
-    });
+/* Request */
+type UpdateNicknameRequest = {
+  nickname: string;
 };
 
-export default patchNickname;
+/* Response */
+export type UpdateNicknameResponse = {
+  nickname: string;
+};
+
+/* API */
+export const patchNickname = async (request: UpdateNicknameRequest) => {
+  const { data } = await axiosWithAccessToken.patch<
+    BaseResponse<UpdateNicknameResponse>
+  >(MEMBER.V1.MEMBERS.NICKNAME, request);
+
+  return data;
+};

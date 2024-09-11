@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { FindMemberProfileResponse } from '@/@types/Member';
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type MemberState = {
@@ -14,8 +14,8 @@ type MemberState = {
   setProfileImage: (newProfileImage: string | null) => void;
   setEmail: (newEmail: string) => void;
   setNickname: (newNickname: string) => void;
-  setMainColor: (newMainColor: string) => void;
-  setProfile: (profile: FindMemberProfileResponse) => void;
+  setMainColor: (newMainColor: LabelColorsType) => void;
+  setProfile: (profile: MemberProfileData) => void;
   resetMember: () => void;
 };
 
@@ -50,7 +50,7 @@ const useMemberStore = create<MemberState>()(
           mainColor: newLabelColor,
         }));
       },
-      setProfile: (profile: FindMemberProfileResponse) => {
+      setProfile: (profile: MemberProfileData) => {
         set(() => ({
           nickname: profile.nickname,
           email: profile.email,

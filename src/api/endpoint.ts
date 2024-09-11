@@ -42,4 +42,15 @@ const LABEL = {
   },
 };
 
-export { AUTH, CALENDAR, GROUP, LABEL };
+const MEMBER = {
+  V1: {
+    MEMBERS: {
+      BASE: '/member/v1/members',
+      COLOR: '/member/v1/members/colors',
+      NICKNAME: '/member/v1/members/nickname',
+      PROFILE_IMAGE: '/member/v1/members/profile-image',
+    },
+  },
+};
+
+export { AUTH, CALENDAR, GROUP, LABEL, MEMBER };

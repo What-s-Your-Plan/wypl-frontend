@@ -1,25 +1,14 @@
-import { useState } from 'react';
-
-import getMemberProfile from '@/api/member/getMemberProfile';
-import useMemberStore   from '@/stores/MemberStore';
+import { getMemberProfile } from '@/api/member/getMemberProfile';
+import useMemberStore from '@/stores/MemberStore';
 
 export default function useMemberProfile() {
-  const [isLoading, setLoading] = useState<boolean>(false);
   const { setProfile } = useMemberStore();
 
   const requestMemberProfile = async (memberId: number) => {
-    if (isLoading) {
-      return;
-    }
-    setLoading(true);
-    await getMemberProfile(memberId)
-      .then((res) => {
-        setProfile(res);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const { body } = await getMemberProfile({ memberId });
+
+    setProfile(body);
   };
 
-  return { isLoading, requestMemberProfile };
+  return { requestMemberProfile };
 }

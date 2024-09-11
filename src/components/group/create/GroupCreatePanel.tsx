@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import PalettePanel from '../../color/PalettePanel';
 import ColorCircle from '../../common/ColorCircle';
@@ -6,10 +6,10 @@ import { InputDefault } from '../../common/InputText';
 import PopOver from '../../common/PopOver';
 
 import { GroupInfoData } from '@/@types/Group';
-import getMemberByEmail, {
+import {
+  getMemberByEmail,
   FindMemberByEmailResponse,
-  FindMemberProfile,
-}                        from '@/api/member/getMemberbyEmail';
+} from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
 import { BgColors, LabelColorsType } from '@/assets/styles/colorThemes';
 import * as S from '@/components/group/create/GroupCreatePanel.styled';
@@ -34,12 +34,12 @@ function GroupCreatePanel({
   color,
   setColor,
 }: GroupCreatePanelProps) {
-  const [selectedMembers, setSelectedMembers] = useState<FindMemberProfile[]>(
-    [],
-  );
+  const [selectedMembers, setSelectedMembers] = useState<
+    SearchMemberForCreateGroupData[]
+  >([]);
   const [searchMember, setSearchMember] = useState<string>('');
   const [searchedMemberList, setSearchMemberList] = useState<
-    FindMemberProfile[]
+    SearchMemberForCreateGroupData[]
   >([]);
 
   const handleSearchMemberChange = async (
@@ -47,10 +47,10 @@ function GroupCreatePanel({
   ) => {
     setSearchMember(e.target.value);
     if (e.target.value.length >= 2) {
-      const response: FindMemberByEmailResponse = await getMemberByEmail(
-        e.target.value,
-        49,
-      );
+      const response: FindMemberByEmailResponse = await getMemberByEmail({
+        email: e.target.value,
+        size: 49,
+      });
       setSearchMemberList(response.members);
     } else {
       setSearchMemberList([]);
@@ -85,7 +85,7 @@ function GroupCreatePanel({
   }, [selectedMembers]);
 
   const renderSearchedMembers = () => {
-    return searchedMemberList.map((member: FindMemberProfile) => {
+    return searchedMemberList.map((member: SearchMemberForCreateGroupData) => {
       return (
         <S.MemberContainer
           key={'memberSearchContainer' + member.id}
