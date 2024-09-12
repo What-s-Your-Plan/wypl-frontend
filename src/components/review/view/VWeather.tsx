@@ -6,7 +6,7 @@ import CloudSnow from '@/assets/icons/weather/cloudSnow.svg';
 import FastWind from '@/assets/icons/weather/fastWinds.svg';
 import Sun from '@/assets/icons/weather/sun.svg';
 import { WhiteContainer } from '@/components/common/Container';
-import { WeatherContent } from '@/objects/Content';
+import { WeatherContent } from '@/objects/ReviewContent.ts';
 
 type VWeatherProps = {
   content: WeatherContent;

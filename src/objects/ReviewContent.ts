@@ -1,12 +1,12 @@
-abstract class Content {
+abstract class ReviewContent {
   blockType: ReviewType;
 
-  constructor(blockType: ReviewType) {
+  protected constructor(blockType: ReviewType) {
     this.blockType = blockType;
   }
 }
 
-class TextContent extends Content {
+class TextContent extends ReviewContent {
   text: string;
 
   constructor(text: string) {
@@ -15,7 +15,7 @@ class TextContent extends Content {
   }
 }
 
-class PictureContent extends Content {
+class PictureContent extends ReviewContent {
   path: string;
 
   constructor(path: string) {
@@ -24,7 +24,7 @@ class PictureContent extends Content {
   }
 }
 
-class EmotionContent extends Content {
+class EmotionContent extends ReviewContent {
   emoji: string;
   description: string;
 
@@ -35,7 +35,7 @@ class EmotionContent extends Content {
   }
 }
 
-class WeatherContent extends Content {
+class WeatherContent extends ReviewContent {
   weather: string;
   description: string;
 
@@ -46,7 +46,7 @@ class WeatherContent extends Content {
   }
 }
 
-class KPTContent extends Content {
+class KPTContent extends ReviewContent {
   keepStr: string;
   problemStr: string;
   tryStr: string;
@@ -59,7 +59,7 @@ class KPTContent extends Content {
   }
 }
 
-class FourFContent extends Content {
+class FourFContent extends ReviewContent {
   facts: string;
   feeling: string;
   finding: string;
@@ -75,7 +75,7 @@ class FourFContent extends Content {
 }
 
 export {
-  Content,
+  ReviewContent,
   TextContent,
   PictureContent,
   EmotionContent,

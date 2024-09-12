@@ -12,7 +12,7 @@ import Stareyes from '@/assets/icons/emoji/stareyes.svg';
 import Tired from '@/assets/icons/emoji/tired.svg';
 import Smiley from '@/assets/icons/smiley.svg';
 import { WhiteContainer } from '@/components/common/Container';
-import { EmotionContent } from '@/objects/Content';
+import { EmotionContent } from '@/objects/ReviewContent.ts';
 
 type VEmotionProps = {
   content: EmotionContent;

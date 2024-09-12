@@ -6,18 +6,18 @@ import TText from './TText';
 import TWeather from './TWeather';
 
 import {
-  Content,
+  ReviewContent,
   TextContent,
   PictureContent,
   EmotionContent,
   WeatherContent,
   KPTContent,
   FourFContent,
-} from '@/objects/Content';
+} from '@/objects/ReviewContent.ts';
 
 type ReviewThumbnailProps = {
   blockType: ReviewType;
-  thumbnailContent: Content;
+  thumbnailContent: ReviewContent;
 };
 
 const ReviewThumbnail = ({

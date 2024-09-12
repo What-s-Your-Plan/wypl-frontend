@@ -1,13 +1,13 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { Content } from '@/objects/Content';
+import { ReviewContent } from '@/objects/ReviewContent.ts';
 
 async function patchReview(
   review_id: number,
   body: {
     title: string;
     schedule_id: number;
-    contents: Content[];
+    contents: ReviewContent[];
   },
 ): Promise<number> {
   const response = await axiosWithAccessToken.patch(

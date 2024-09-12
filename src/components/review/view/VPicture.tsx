@@ -1,5 +1,5 @@
 import { WhiteContainer } from '@/components/common/Container';
-import { PictureContent } from '@/objects/Content';
+import { PictureContent } from '@/objects/ReviewContent.ts';
 
 type VPictureProps = {
   content: PictureContent;

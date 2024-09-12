@@ -9,21 +9,21 @@ import RWeather from './RWeather';
 import ArrowDown from '@/assets/icons/arrowDown.svg';
 import ArrowUp from '@/assets/icons/arrowUp.svg';
 import Trash from '@/assets/icons/trash.svg';
-import Button from '@/components/common/Button';
+import Button         from '@/components/common/Button';
 import {
-  Content,
+  ReviewContent,
   TextContent,
   PictureContent,
   EmotionContent,
   WeatherContent,
   KPTContent,
   FourFContent,
-} from '@/objects/Content';
+}                     from '@/objects/ReviewContent.ts';
 import useReviewStore from '@/stores/ReviewStore';
 
 type ReviewWriteProps = {
   index: number;
-  content: Content;
+  content: ReviewContent;
 };
 
 function ReviewWrite({ index, content }: ReviewWriteProps) {

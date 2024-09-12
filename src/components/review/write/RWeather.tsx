@@ -6,9 +6,9 @@ import CloudSnow from '@/assets/icons/weather/cloudSnow.svg';
 import FastWind from '@/assets/icons/weather/fastWinds.svg';
 import Sun from '@/assets/icons/weather/sun.svg';
 import { WhiteContainer } from '@/components/common/Container';
-import { InputDefault } from '@/components/common/InputText';
-import { WeatherContent } from '@/objects/Content';
-import useReviewStore from '@/stores/ReviewStore';
+import { InputDefault }   from '@/components/common/InputText';
+import { WeatherContent } from '@/objects/ReviewContent.ts';
+import useReviewStore     from '@/stores/ReviewStore';
 
 type RWeatherProps = {
   index: number;

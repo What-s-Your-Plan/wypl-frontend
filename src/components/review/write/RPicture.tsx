@@ -2,9 +2,9 @@ import postPicture    from '@/api/review/postPicture';
 import Upload from '@/assets/icons/upload.svg';
 import CircleLoadingAnimation from '@/components/animation/CircleLoading';
 import { WhiteContainer } from '@/components/common/Container';
-import useLoading from '@/hooks/useLoading';
-import { PictureContent } from '@/objects/Content';
-import useReviewStore from '@/stores/ReviewStore';
+import useLoading         from '@/hooks/useLoading';
+import { PictureContent } from '@/objects/ReviewContent.ts';
+import useReviewStore     from '@/stores/ReviewStore';
 
 type RPictureProps = {
   index: number;

@@ -13,9 +13,9 @@ import Stareyes from '@/assets/icons/emoji/stareyes.svg';
 import Tired from '@/assets/icons/emoji/tired.svg';
 import Smiley from '@/assets/icons/smiley.svg';
 import { WhiteContainer } from '@/components/common/Container';
-import { InputDefault } from '@/components/common/InputText';
-import { EmotionContent } from '@/objects/Content';
-import useReviewStore from '@/stores/ReviewStore';
+import { InputDefault }   from '@/components/common/InputText';
+import { EmotionContent } from '@/objects/ReviewContent.ts';
+import useReviewStore     from '@/stores/ReviewStore';
 
 type REmotionProps = {
   index: number;

@@ -10,9 +10,9 @@ import MoreVertical from '@/assets/icons/moreVertical.svg';
 import Button from '@/components/common/Button';
 import { Container } from '@/components/common/Container';
 import PopOver from '@/components/common/PopOver';
-import DetailBlockList from '@/components/review/view/DetailBlockList';
-import { Content } from '@/objects/Content';
-import { splitTTime }  from '@/utils/DateUtils';
+import DetailBlockList   from '@/components/review/view/DetailBlockList';
+import { ReviewContent } from '@/objects/ReviewContent.ts';
+import { splitTTime }    from '@/utils/DateUtils';
 
 function ReviewDetailPage() {
   const navigator = useNavigate();
@@ -45,7 +45,7 @@ function ReviewDetailPage() {
         const response = await getReviewDetail(reviewId);
         const mappedResponse = {
           ...response,
-          contents: response.contents.map((content: Content) => ({
+          contents: response.contents.map((content: ReviewContent) => ({
             ...content,
             blockType: content.blockType as ReviewType,
           })),

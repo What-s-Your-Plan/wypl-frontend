@@ -1,11 +1,11 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { Content } from '@/objects/Content';
+import { ReviewContent } from '@/objects/ReviewContent.ts';
 
 async function postReview(body: {
   title: string;
   schedule_id: number;
-  contents: Content[];
+  contents: ReviewContent[];
 }): Promise<number> {
   const response = await axiosWithAccessToken.post('/review/v1/reviews', body);
   console.log(response);

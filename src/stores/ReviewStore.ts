@@ -2,19 +2,19 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 import {
-  Content,
+  ReviewContent,
   TextContent,
   PictureContent,
   EmotionContent,
   WeatherContent,
   KPTContent,
   FourFContent,
-} from '@/objects/Content';
+} from '@/objects/ReviewContent.ts';
 
 type ReviewState = {
   title: string;
   scheduleId: number;
-  contents: Content[];
+  contents: ReviewContent[];
   focusIndex: number;
 };
 
@@ -22,8 +22,8 @@ type ReviewAction = {
   setTitle: (newTitle: string) => void;
   setScheduleId: (newScheduleId: number) => void;
   setFocusIndex: (newFocusIndex: number) => void;
-  setContent: (index: number, content: Content) => void;
-  setContents: (contents: Content[]) => void;
+  setContent: (index: number, content: ReviewContent) => void;
+  setContents: (contents: ReviewContent[]) => void;
   addContent: (index: number, type: ReviewType) => void;
   moveContent: (fromIndex: number, toIndex: number) => void;
   deleteContent: (targetIndex: number) => void;
@@ -51,7 +51,7 @@ const useReviewStore = create<ReviewState & ReviewAction>()(
       console.log(newFocusIndex);
       set({ focusIndex: newFocusIndex });
     },
-    setContent(index: number, newContent: Content) {
+    setContent(index: number, newContent: ReviewContent) {
       set((state) => ({
         contents: [
           ...state.contents.slice(0, index),
@@ -60,11 +60,11 @@ const useReviewStore = create<ReviewState & ReviewAction>()(
         ],
       }));
     },
-    setContents(newContents: Content[]) {
+    setContents(newContents: ReviewContent[]) {
       set({ contents: newContents });
     },
     addContent(index: number, blockType: ReviewType) {
-      let newContent: Content;
+      let newContent: ReviewContent;
       switch (blockType) {
         case 'text':
           newContent = new TextContent('');

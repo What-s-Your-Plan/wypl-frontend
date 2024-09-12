@@ -2,8 +2,8 @@ import { useRef } from 'react';
 
 import { WhiteContainer } from '@/components/common/Container';
 import { InputTextArea } from '@/components/common/InputText';
-import { TextContent } from '@/objects/Content';
-import useReviewStore from '@/stores/ReviewStore';
+import { TextContent }   from '@/objects/ReviewContent.ts';
+import useReviewStore    from '@/stores/ReviewStore';
 
 type RTextProps = {
   index: number;
