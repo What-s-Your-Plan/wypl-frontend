@@ -1,8 +1,11 @@
 import { axiosWithAccessToken } from '../axios';
 
-async function getWeather() {
-  const response = await axiosWithAccessToken.get(`/side/v1/weathers`);
-  return response.data.body;
-}
+/* Response */
+export type WeatherResponse = WeatherDetailData;
 
-export default getWeather;
+/* API */
+export const getWeather = async () => {
+  const { data } = await axiosWithAccessToken.get<BaseResponse<WeatherResponse>>(`/side/v1/weathers`);
+
+  return data;
+};

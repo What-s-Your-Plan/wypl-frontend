@@ -11,7 +11,7 @@ type MemberState = {
   nickname: string | undefined;
   mainColor: string | undefined;
   setId: (newId: number) => void;
-  setProfileImage: (newProfileImage: string | null) => void;
+  setProfileImage: (newProfileImage: string | undefined) => void;
   setEmail: (newEmail: string) => void;
   setNickname: (newNickname: string) => void;
   setMainColor: (newMainColor: LabelColorsType) => void;
@@ -23,14 +23,14 @@ const useMemberStore = create<MemberState>()(
   persist(
     (set): MemberState => ({
       memberId: undefined,
-      profileImage: getMemberProfileImageOrDefault(null),
+      profileImage: getMemberProfileImageOrDefault(undefined),
       email: undefined,
       nickname: undefined,
       mainColor: undefined,
       setId: (newMemberId: number) => {
         set(() => ({ memberId: newMemberId }));
       },
-      setProfileImage: (newProfileImage: string | null) => {
+      setProfileImage: (newProfileImage: string | undefined) => {
         set(() => ({
           profileImage: getMemberProfileImageOrDefault(newProfileImage),
         }));

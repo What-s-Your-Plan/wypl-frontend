@@ -94,6 +94,15 @@ const TODO = {
   },
 };
 
+const SIDE = {
+  V1: {
+    WEATHER: '/side/v1/weathers',
+    D_DAY: '/side/v1/d-day',
+    GOAL: '/side/v1/goals',
+    MEMO: '/side/v1/memo',
+  },
+};
+
 export {
   AUTH,
   CALENDAR,
@@ -105,4 +114,5 @@ export {
   REVIVE,
   SCHEDULE,
   TODO,
+  SIDE,
 };

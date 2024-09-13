@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import getWeather from '@/api/widget/getWeather';
+import { getWeather } from '@/api/widget/getWeather';
 import Cloud from '@/assets/icons/weather/cloud.svg';
 import CloudAngledRain from '@/assets/icons/weather/cloudAngledRain.svg';
 import CloudAngledRainZap from '@/assets/icons/weather/cloudAngledRainZap.svg';
@@ -12,10 +12,10 @@ import Sun from '@/assets/icons/weather/sun.svg';
 import Tornado from '@/assets/icons/weather/tornado.svg';
 
 function WWeather() {
-  const [weather, setWeather] = useState<Weather>();
+  const [weather, setWeather] = useState<WeatherDetailData>();
 
-  const renderWeatherIcon = (weather_id: number) => {
-    switch (weather_id) {
+  const renderWeatherIcon = (weatherId: number) => {
+    switch (weatherId) {
       case 1:
         if (weather?.is_sunrise) return Sun;
         return Moon;
@@ -49,8 +49,8 @@ function WWeather() {
 
   useEffect(() => {
     const fetchWeather = async () => {
-      const weather = await getWeather();
-      setWeather(weather);
+      const { body } = await getWeather();
+      setWeather(body);
     };
 
     fetchWeather();

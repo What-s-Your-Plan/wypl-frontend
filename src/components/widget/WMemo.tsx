@@ -3,23 +3,23 @@ import { useEffect, useRef, useState } from 'react';
 import Button from '../common/Button';
 import { InputTextArea } from '../common/InputText';
 
-import getUserMemo    from '@/api/widget/getUserMemo';
-import patchUserMemo  from '@/api/widget/patchUserMemo';
+import { getMemberMemo } from '@/api/widget/getMemberMemo.ts';
+import { patchMemberMemo } from '@/api/widget/patchMemberMemo.ts';
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
 import useMemberStore from '@/stores/MemberStore';
 
 function WMemo() {
   const { memberId } = useMemberStore();
-
-  const [userMemo, setUserMemo] = useState<string>('');
   const [isModifyingMemo, setIsModifyingMemo] = useState<boolean>(false);
+  const isMounted = useRef<boolean>(false);
+  const [userMemo, setUserMemo] = useState<string>('');
 
   const handleModify = async () => {
     setIsModifyingMemo(!isModifyingMemo);
     if (memberId !== undefined) {
-      const memo = await patchUserMemo(memberId, userMemo);
-      setUserMemo(memo);
+      const { body } = await patchMemberMemo({ memberId }, { memo: userMemo });
+      setUserMemo(body.memo);
     }
   };
 
@@ -41,12 +41,18 @@ function WMemo() {
   useEffect(() => {
     const fetchUserMemo = async () => {
       if (memberId) {
-        const goal = await getUserMemo(memberId);
-        setUserMemo(goal);
+        const { body } = await getMemberMemo({ memberId });
+        setUserMemo(body.memo);
       }
     };
-    fetchUserMemo();
-  }, []);
+
+    if (isMounted.current) {
+      return;
+    }
+    fetchUserMemo().then(() => {
+      isMounted.current = true;
+    });
+  }, [memberId]);
 
   return (
     <div>

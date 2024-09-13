@@ -21,7 +21,7 @@ interface GroupInfoData {
 }
 
 interface GroupMemberData {
-  profile_image: string | null;
+  profile_image: string | undefined;
   is_accepted: boolean;
   id: number;
   email: string;
