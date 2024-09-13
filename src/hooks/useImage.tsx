@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function useImage<T>(initialState: T | File | null) {
   const [value, setValue] = useState<T | File | null>(initialState);

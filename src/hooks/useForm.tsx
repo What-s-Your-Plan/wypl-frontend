@@ -1,11 +1,21 @@
 import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
-function useForm<S, R>(
-  initialState: S | (() => S), // Object
-  onSubmit: (state: S) => Promise<BaseResponse<R> | R>,
-  validate?: (values: S) => Array<boolean>,
+/**
+ * 폼을 사용하여 관리합니다.
+ *
+ * T: Form Type
+ * R: onSubmit Return Type
+ *
+ * @param initialState 초기 설정 값
+ * @param onSubmit  이벤트를 동작시킬 함수
+ * @param validate  검증이 필요한 경우
+ */
+function useForm<T, R>(
+  initialState: T | (() => T),
+  onSubmit: (state: T) => Promise<BaseResponse<R> | R>,
+  validate?: (values: T) => Array<boolean>,
 ): {
-  form: S;
+  form: T;
   errors: boolean[];
   handleChange: (
     event:
@@ -13,9 +23,9 @@ function useForm<S, R>(
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
   handleSubmit: () => Promise<R | null>;
-  setForm: Dispatch<SetStateAction<S>>;
+  setForm: Dispatch<SetStateAction<T>>;
 } {
-  const [form, setForm] = useState({ ...initialState } as S);
+  const [form, setForm] = useState({ ...initialState } as T);
   const [errors, setErrors] = useState<Array<boolean>>(
     Object.keys(initialState as object).map(() => {
       return true;
@@ -23,7 +33,7 @@ function useForm<S, R>(
   );
 
   useEffect(() => {
-    setForm({ ...initialState } as S);
+    setForm({ ...initialState } as T);
   }, [initialState]);
 
   const handleChange = (
