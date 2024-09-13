@@ -1,5 +1,6 @@
 import { axiosWithAccessToken } from '../axios';
 
+import { SCHEDULE } from '@/api/endpoint.ts';
 import {
   getScheduleRequest,
   PostScheduleRequest,
@@ -17,7 +18,7 @@ export const putSchedule = async (schedule: ScheduleData & RepeatData) => {
 
   const { data } = await axiosWithAccessToken.put<
     BaseResponse<PutScheduleResponse>
-  >(`/schedule/v1/schedules/${schedule.scheduleId}`, request);
+  >(`${SCHEDULE.V1.SCHEDULES.BASE}/${schedule.scheduleId}`, request);
 
   return data;
 };
