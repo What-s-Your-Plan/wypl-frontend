@@ -1,35 +1,14 @@
-import { BgColors } from '@/assets/styles/colorThemes';
-
-type UpdateProfileImageResponse = {
-  profile_image_url: string;
-};
-
-type UpdateNicknameRequest = {
-  nickname: string;
-};
-
-type UpdateNicknameResponse = {
-  nickname: string;
-};
-
-type FindMemberColorResponse = {
-  colors: string[];
-  color_count: number;
-  select_color: string;
-};
-
-type FindMemberProfileResponse = {
+interface SearchMemberForCreateGroupData {
   id: number;
   email: string;
   nickname: string;
-  profile_image_url: string | null;
+  profile_image_url: string | undefined;
+}
+
+interface MemberProfileData {
+  id: number;
+  email: string;
+  nickname: string;
+  profile_image_url: string | undefined;
   main_color: string;
-};
-
-type UpdateLabelColorRequest = {
-  color: BgColors;
-};
-
-type UpdateLabelColorResponse = {
-  color: BgColors;
-};
+}

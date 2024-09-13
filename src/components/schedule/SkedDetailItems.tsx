@@ -1,17 +1,17 @@
 import * as S from './Schedule.styled';
-import LabelButton from '@/components/common/LabelButton';
-import { isAllday, padding0, stringToDate } from '@/utils/DateUtils';
+
+import ArrowRightIcon from '@/assets/icons/arrowRight.svg';
+import CalendarIcon from '@/assets/icons/calendar.svg';
+import ClockIcon from '@/assets/icons/clock.svg';
+import PenIcon from '@/assets/icons/pen.svg';
+import RepeatIcon from '@/assets/icons/repeat.svg';
+import LabelIcon from '@/assets/icons/tag.svg';
+import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
+import UsersIcon from '@/assets/icons/users.svg';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import Button from '@/components/common/Button';
-
-import CalendarIcon from '@/assets/icons/calendar.svg';
-import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
-import ClockIcon from '@/assets/icons/clock.svg';
-import ArrowRightIcon from '@/assets/icons/arrowRight.svg';
-import LabelIcon from '@/assets/icons/tag.svg';
-import UsersIcon from '@/assets/icons/users.svg';
-import RepeatIcon from '@/assets/icons/repeat.svg';
-import PenIcon from '@/assets/icons/pen.svg';
+import LabelButton                          from '@/components/common/LabelButton';
+import { isAllDay, padding0, stringToDate } from '@/utils/DateUtils';
 
 function Title({ title }: { title: string }) {
   return (
@@ -27,7 +27,7 @@ function Title({ title }: { title: string }) {
 function Time({ startDate, endDate }: { startDate: string; endDate: string }) {
   const start = stringToDate(startDate);
   const end = stringToDate(endDate);
-  const allday = isAllday(start, end);
+  const allday = isAllDay(start, end);
   const startAmPm = start.getHours() > 12 ? 'PM' : 'AM';
   const endAmPm = end.getHours() > 12 ? 'PM' : 'AM';
   const startHour = padding0(
@@ -122,7 +122,7 @@ function Member({ member }: { member: Array<Member> }) {
 
 const day = ['일', '월', '화', '수', '목', '금', '토'];
 
-function Repeat({ repeat }: { repeat: RepetitionResponse }) {
+function Repeat({ repeat }: { repeat: RepetitionDetailData }) {
   let cycle: string;
   const dayOfWeek: Array<string> = [];
   if (repeat.repetition_cycle === 'YEAR') {

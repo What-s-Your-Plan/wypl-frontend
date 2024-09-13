@@ -1,52 +1,88 @@
-import { useEffect, useState } from 'react';
-
-import useMemberStore from '@/stores/MemberStore';
+import React, { useEffect, useRef, useState } from 'react';
 
 import Button from '../common/Button';
+import { InputDefault } from '../common/InputText';
 
+import { getMemberDDay } from '@/api/widget/getMemberDDay.ts';
+import patchMemberDDay from '@/api/widget/patchMemberDDay.ts';
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
-import { InputDefault } from '../common/InputText';
-import getUserDDay from '@/services/widget/getUserDDay';
-import patchUserDDay from '@/services/widget/patchUserDDay';
+import useMemberStore from '@/stores/MemberStore';
 
 function WDDay() {
   const { memberId } = useMemberStore();
-
-  const [userTitle, setUserTitle] = useState<string>('');
-  const [userDDay, setUserDDay] = useState<string>('');
-  const [targetDate, setTargetDate] = useState<string>('');
   const [isModifyingDDay, setIsModifyingDDay] = useState<boolean>(false);
+  const isMounted = useRef<boolean>(false);
+  const [dDayInfo, setDDayInfo] = useState<DDayData>({
+    d_day: '',
+    title: '',
+    date: '',
+    local_date: '',
+  });
 
   const handleModify = async () => {
     setIsModifyingDDay(!isModifyingDDay);
     if (memberId) {
-      const dday = await patchUserDDay(memberId, userTitle, targetDate);
-      setUserTitle(dday.title);
-      setUserDDay(dday.d_day);
-      setTargetDate(dday.local_date);
+      const { body } = await patchMemberDDay(
+        { memberId },
+        {
+          title: dDayInfo.title,
+          dDay: dDayInfo.local_date,
+        },
+      );
+
+      setDDayInfo(body);
     }
   };
 
-  const getFontSize = (dday: string) => {
-    if (!dday) return 'text-3xl'; // 기본 폰트 사이즈
-    const length = dday.length;
-    if (length < 4) return 'text-3xl';
+  /**
+   * 디데이의 글씨가 너무 긴 경우 CSS 가 깨지기 때문에 폰트를 조절한다.
+   */
+  const getFontSize = (dDay: string): string => {
+    const defaultFontSize = 'text-3xl';
+
+    if (!dDay) return defaultFontSize;
+
+    const length = dDay.length;
+    if (length < 4) return defaultFontSize;
     if (length < 6) return 'text-xl';
-    return 'text-base'; // 긴 텍스트에 대한 작은 폰트 사이즈
+
+    return 'text-base';
   };
+
+  /**
+   * 입력받은 디데이의 정보를 처리한다.
+   *
+   * @param field 변경하고자 하는 필드
+   */
+  const handleInputChange =
+    (field: keyof typeof dDayInfo) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setDDayInfo((prevState) => ({
+        ...prevState,
+        [field]: e.target.value,
+      }));
+    };
+
+  const setDDayTitle = handleInputChange('title');
+  const setTargetDate = handleInputChange('local_date');
 
   useEffect(() => {
     const fetchUserDDay = async () => {
       if (memberId) {
-        const dday = await getUserDDay(memberId);
-        setUserDDay(dday.d_day);
-        setUserTitle(dday.title);
-        setTargetDate(dday.local_date);
+        const { body } = await getMemberDDay({ memberId });
+        setDDayInfo(body);
       }
     };
-    fetchUserDDay();
-  }, []);
+
+    if (isMounted.current) {
+      return;
+    }
+
+    fetchUserDDay().then(() => {
+      isMounted.current = true;
+    });
+  }, [memberId]);
 
   return (
     <div>
@@ -59,15 +95,15 @@ function WDDay() {
               $void={true}
               id="ddayTitle"
               type="string"
-              value={userTitle}
+              value={dDayInfo.title}
               disabled={!isModifyingDDay}
-              onChange={(e) => setUserTitle(e.target.value)}
+              onChange={(e) => setDDayTitle(e)}
               maxLength={10}
               placeholder="디데이 제목(10자 이내)"
             />
           ) : (
             <span className="w-[80%] break-keep font-semibold overflow-hidden text-ellipsis">
-              {userTitle}
+              {dDayInfo.title}
             </span>
           )}
 
@@ -90,18 +126,18 @@ function WDDay() {
             $void={true}
             id="targetDate"
             type="date"
-            value={targetDate}
+            value={dDayInfo.local_date}
             disabled={!isModifyingDDay}
-            onChange={(e) => setTargetDate(e.target.value)}
+            onChange={(e) => setTargetDate(e)}
             min={'1970-01-01'}
             max={'2199-12-31'}
             placeholder="디데이 날짜 선택"
           />
         ) : (
           <div
-            className={`${getFontSize(userDDay)} text-center mt-1 font-semibold`}
+            className={`${getFontSize(dDayInfo.d_day)} text-center mt-1 font-semibold`}
           >
-            {userDDay}
+            {dDayInfo.d_day}
           </div>
         )}
       </div>

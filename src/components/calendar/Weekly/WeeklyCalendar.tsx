@@ -1,30 +1,37 @@
 import { useCallback, useEffect, useState } from 'react';
-import getCalendars from '@/services/calendar/getCalendars';
-import getGroupCalendars from '@/services/calendar/getGroupCalendars';
+
+import { LScheduleContainer } from './WeeklyCalendar.styled';
+import WeeklyDays from './WeeklyDays';
+import WeeklyHorizontal from './WeeklyHorizontal';
+import WeeklyLSchedules from './WeeklyLSchedules';
+import WeeklySchedules from './WeeklySchedules';
+import WeeklyVertical from './WeeklyVertical';
+import { Chevrons } from '../DatePicker.styled';
+
+import {
+  CalendarParams,
+  CalendarPathVariable,
+  CalendarsResponse,
+  getCalendars,
+}                  from '@/api/calendar/getCalendars.ts';
+import {
+  getGroupCalendars,
+  GroupCalendarPathVariable,
+}                  from '@/api/calendar/getGroupCalendars.ts';
+import ChevronLeft from '@/assets/icons/chevronLeft.svg';
+import ChevronRight from '@/assets/icons/chevronRight.svg';
 import useDateStore from '@/stores/DateStore';
 import {
   dateToString,
   getDateDiff,
   isSameDay,
   stringToDate,
-  isAllday,
+  isAllDay,
 } from '@/utils/DateUtils';
 import { labelFilter } from '@/utils/FilterUtils';
 
-import { LScheduleContainer } from './WeeklyCalendar.styled';
-import WeeklyDays from './WeeklyDays';
-import WeeklyHorizontal from './WeeklyHorizontal';
-import WeeklyVertical from './WeeklyVertical';
-import WeeklySchedules from './WeeklySchedules';
-import WeeklyLSchedules from './WeeklyLSchedules';
-import { Chevrons } from '../DatePicker.styled';
-
-import ChevronRight from '@/assets/icons/chevronRight.svg';
-import ChevronLeft from '@/assets/icons/chevronLeft.svg';
-import useLoading from '@/hooks/useLoading';
-
 export type LongSchedule = {
-  schedule: CalendarSchedule;
+  schedule: CalendarScheduleData;
   startDay: number;
   row: number;
   period: number;
@@ -45,13 +52,12 @@ function WeeklyCalendar({
   setUpdateFalse,
   handleSkedClick,
 }: WeeklyProps) {
-  const { canStartLoading, endLoading } = useLoading();
   const { selectedDate, setSelectedDate, selectedLabels } = useDateStore();
   const [firstDay, setFirstDay] = useState<Date | null>(null);
   const [height, setHeight] = useState<number>(0);
-  const [originSked, setOriginSked] = useState<Array<CalendarSchedule>>([]);
+  const [originSked, setOriginSked] = useState<Array<CalendarScheduleData>>([]);
   const [longSchedules, setLongSchedules] = useState<Array<LongSchedule>>([]);
-  const [schedules, setSchedules] = useState<Array<CalendarSchedule>>([]);
+  const [schedules, setSchedules] = useState<Array<CalendarScheduleData>>([]);
 
   const handleNextWeek = () => {
     const nextWeek = new Date(
@@ -74,30 +80,31 @@ function WeeklyCalendar({
   };
 
   const updateInfo = useCallback(async () => {
-    if (canStartLoading()) {
-      return;
-    }
-    if (category === 'MEMBER') {
-      const response = await getCalendars(
-        'WEEK',
-        dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
+    const calendarPathVariable: CalendarPathVariable = {
+      type: 'WEEK',
+    };
+    const calendarParams: CalendarParams = {
+      date: dateToString(selectedDate),
+    };
 
-      if (response) {
-        setOriginSked(response.schedules);
+    if (category === 'MEMBER') {
+      const data = await getCalendars(calendarPathVariable, calendarParams);
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
-    } else if (category === 'GROUP' && groupId) {
-      const response = await getGroupCalendars(
-        'WEEK',
+    }
+
+    if (category === 'GROUP' && groupId) {
+      const groupCalendarPathVariable: GroupCalendarPathVariable = {
+        type: 'DAY',
         groupId,
-        dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
-      if (response) {
-        setOriginSked(response.schedules);
+      };
+      const data: BaseResponse<CalendarsResponse> = await getGroupCalendars(
+        groupCalendarPathVariable,
+        calendarParams,
+      );
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
     }
   }, [selectedDate, groupId]);
@@ -110,7 +117,7 @@ function WeeklyCalendar({
     if (firstDay) {
       const bitArray = [0, 0, 0, 0, 0, 0, 0];
       const newLong: Array<LongSchedule> = [];
-      const newSchedule: Array<CalendarSchedule> = [];
+      const newSchedule: Array<CalendarScheduleData> = [];
       let maxIdx: number = 0;
 
       for (const sked of labelFilter(originSked, selectedLabels)) {
@@ -122,7 +129,7 @@ function WeeklyCalendar({
         );
         const startDay = startDate < firstDay ? 0 : startDate.getDay();
 
-        if (period > 0 || isAllday(startDate, endDate)) {
+        if (period > 0 || isAllDay(startDate, endDate)) {
           const maxPeriod = Math.min(6 - startDay, period);
           let row: number | null = null;
           let i = 0;

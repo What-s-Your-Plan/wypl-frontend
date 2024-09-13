@@ -1,19 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 
-import deleteJsonWebTokens from '@/services/auth/logout';
-import issueTokens from '@/services/auth/signIn';
-import reissueTokens from '@/services/auth/reissue';
-
+import { deleteJsonWebTokens } from '@/api/auth/deleteJsonWebTokens.ts';
+import {
+  issueTokens,
+  IssueTokenParams,
+  IssueTokenPathVariable,
+} from '@/api/auth/issueTokens.ts';
+import { ReissueTokenParams, reissueTokens } from '@/api/auth/reissue.ts';
+import { BROWSER_PATH } from '@/constants/Path';
 import useMemberStore from '@/stores/MemberStore';
 import useJsonWebTokensStore from '@/stores/TokenStore';
 
-import useLoading from '@/hooks/useLoading';
-
-import { BROWSER_PATH } from '@/constants/Path';
-
 export default function useJsonWebTokens() {
-  const { canStartLoading, endLoading } = useLoading();
-
   const { refreshToken, setAccessToken, setRefreshToken, resetTokens } =
     useJsonWebTokensStore();
   const { setId, resetMember } = useMemberStore();
@@ -21,51 +19,39 @@ export default function useJsonWebTokens() {
   const navigate = useNavigate();
 
   const requestIssueTokens = async (
-    params: IssueTokenParams,
-    provider: string,
+    issueTokenPathVariable: IssueTokenPathVariable,
+    issueTokenParams: IssueTokenParams,
   ) => {
-    if (canStartLoading()) {
-      return;
-    }
-    await issueTokens(params, provider)
-      .then(({ access_token, refresh_token, member_id }) => {
-        setAccessToken(access_token);
-        setRefreshToken(refresh_token);
-        setId(member_id);
-      })
-      .finally(() => {
-        endLoading();
-      });
+    const data = await issueTokens(issueTokenPathVariable, issueTokenParams);
+    const { access_token, refresh_token, member_id } = data.body;
+
+    setAccessToken(access_token);
+    setRefreshToken(refresh_token);
+    setId(member_id);
   };
 
   const requestDeleteTokens = async () => {
-    if (canStartLoading()) {
-      return;
-    }
     await deleteJsonWebTokens().finally(() => {
       resetTokens();
       resetMember();
       navigate(BROWSER_PATH.LANDING);
-      endLoading();
     });
   };
 
   const requestReissueTokens = async () => {
-    if (canStartLoading() || refreshToken === null) {
+    if (refreshToken === null) {
       return;
     }
+
     const params: ReissueTokenParams = {
       refresh_token: refreshToken,
     };
-    await reissueTokens(params)
-      .then(({ access_token, refresh_token, member_id }) => {
-        setAccessToken(access_token);
-        setRefreshToken(refresh_token);
-        setId(member_id);
-      })
-      .finally(() => {
-        endLoading();
-      });
+    const data = await reissueTokens(params);
+    const { access_token, refresh_token, member_id } = data.body;
+
+    setAccessToken(access_token);
+    setRefreshToken(refresh_token);
+    setId(member_id);
   };
 
   return { requestIssueTokens, requestDeleteTokens, requestReissueTokens };

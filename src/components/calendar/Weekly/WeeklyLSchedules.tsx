@@ -1,6 +1,7 @@
-import { LabelColorsType } from '@/assets/styles/colorThemes';
 import { LongSchedule } from './WeeklyCalendar';
 import * as S from './WeeklyCalendar.styled';
+
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import useMemberStore from '@/stores/MemberStore';
 
 type LSchedulesProps = {

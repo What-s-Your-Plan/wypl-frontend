@@ -1,0 +1,6 @@
+const MAX_VALUE = {
+  INTEGER: 2_147_483_647,
+  LONG: 9_223_372_036_854_775_807n,
+};
+
+export { MAX_VALUE };

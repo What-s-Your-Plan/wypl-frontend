@@ -1,4 +1,12 @@
 import { useState, useEffect } from 'react';
+
+import ChevronLeft from '@/assets/icons/chevronLeft.svg';
+import ChevronRight from '@/assets/icons/chevronRight.svg';
+import {
+  DateWrapper,
+  DateButton,
+  Chevrons,
+} from '@/components/calendar/DatePicker.styled';
 import useDateStore from '@/stores/DateStore';
 import {
   padding0,
@@ -6,13 +14,6 @@ import {
   isCurrentMonth,
   dateToString,
 } from '@/utils/DateUtils';
-import {
-  DateWrapper,
-  DateButton,
-  Chevrons,
-} from '@/components/calendar/DatePicker.styled';
-import ChevronLeft from '@/assets/icons/chevronLeft.svg';
-import ChevronRight from '@/assets/icons/chevronRight.svg';
 
 function DatePicker() {
   const { today, selectedDate, setSelectedDate } = useDateStore();

@@ -1,17 +1,17 @@
-import { EmotionContent } from '@/objects/Content';
 
-import Smiley from '@/assets/icons/smiley.svg';
 import Bad from '@/assets/icons/emoji/bad.svg';
 import Congrats from '@/assets/icons/emoji/congrats.svg';
 import Cry from '@/assets/icons/emoji/cry.svg';
 import Funny from '@/assets/icons/emoji/funny.svg';
 import Noone from '@/assets/icons/emoji/noone.svg';
 import Nyah from '@/assets/icons/emoji/nyah.svg';
+import Question from '@/assets/icons/emoji/question.svg';
 import Sick from '@/assets/icons/emoji/sick.svg';
 import Smile from '@/assets/icons/emoji/smile.svg';
 import Stareyes from '@/assets/icons/emoji/stareyes.svg';
 import Tired from '@/assets/icons/emoji/tired.svg';
-import Question from '@/assets/icons/emoji/question.svg';
+import Smiley             from '@/assets/icons/smiley.svg';
+import { EmotionContent } from '@/objects/ReviewContent.ts';
 
 type TEmotionProps = {
   thumbnailContent: EmotionContent;

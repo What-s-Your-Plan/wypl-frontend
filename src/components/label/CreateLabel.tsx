@@ -1,12 +1,11 @@
 import { Dispatch, SetStateAction, useRef } from 'react';
+
+import postCreateLabel from '@/api/label/postCreateLabel';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import ColorSelectButton from '@/components/color/ColorSelectButton';
-import { CreateDiv } from '@/components/label/Styled';
 import { InputDefault } from '@/components/common/InputText';
-import postCreateLabel from '@/services/label/postCreateLabel';
+import { CreateDiv } from '@/components/label/Styled';
 import useToastStore from '@/stores/ToastStore';
-
-import useLoading from '@/hooks/useLoading';
 
 type CreateLabelProps = {
   color: LabelColorsType;
@@ -15,7 +14,6 @@ type CreateLabelProps = {
 };
 
 function CreateLabel({ color, setColor, handleKeyDown }: CreateLabelProps) {
-  const { canStartLoading, endLoading } = useLoading();
   const { addToast } = useToastStore();
   const inputRef = useRef<HTMLInputElement>(null);
   const handleCreate = async () => {
@@ -31,13 +29,8 @@ function CreateLabel({ color, setColor, handleKeyDown }: CreateLabelProps) {
           e.stopPropagation();
           if (e.key === 'Enter') {
             if (inputRef.current) {
-              if (canStartLoading()) {
-                return;
-              }
-              await postCreateLabel(color, inputRef.current.value).finally(() =>
-                endLoading(),
-              );
-              handleCreate();
+              await postCreateLabel({ color, title: inputRef.current.value });
+              await handleCreate();
             } else {
               addToast({
                 duration: 300,

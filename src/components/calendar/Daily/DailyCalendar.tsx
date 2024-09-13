@@ -1,15 +1,23 @@
 import { useState, useEffect, useCallback, Fragment } from 'react';
-import getGroupCalendars from '@/services/calendar/getGroupCalendars';
-import getCalendars from '@/services/calendar/getCalendars';
-import useDateStore from '@/stores/DateStore';
-import { dateToString, getTime } from '@/utils/DateUtils';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
-import useMemberStore from '@/stores/MemberStore';
-import { labelFilter } from '@/utils/FilterUtils';
 
 import * as S from './DailyCalendar.styled';
-import useLoading from '@/hooks/useLoading';
+
+import {
+  CalendarParams,
+  CalendarPathVariable,
+  CalendarsResponse,
+  getCalendars,
+}                          from '@/api/calendar/getCalendars.ts';
+import {
+  getGroupCalendars,
+  GroupCalendarPathVariable,
+}                          from '@/api/calendar/getGroupCalendars.ts';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import NoContentAnimation from '@/components/animation/NoContent';
+import useDateStore from '@/stores/DateStore';
+import useMemberStore from '@/stores/MemberStore';
+import { dateToString, getTime } from '@/utils/DateUtils';
+import { labelFilter } from '@/utils/FilterUtils';
 
 type DailyProps = {
   category: 'MEMBER' | 'GROUP';
@@ -26,36 +34,40 @@ function DailyCalendar({
   setUpdateFalse,
   handleSkedClick,
 }: DailyProps) {
-  const { canStartLoading, endLoading } = useLoading();
   const { selectedDate, selectedLabels } = useDateStore();
-  const [originSked, setOriginSked] = useState<Array<CalendarSchedule>>([]);
-  const [schedules, setSchedules] = useState<Array<CalendarSchedule>>([]);
+  const [originSked, setOriginSked] = useState<Array<CalendarScheduleData>>([]);
+  const [schedules, setSchedules] = useState<Array<CalendarScheduleData>>([]);
   const { mainColor } = useMemberStore();
 
+  /**
+   * 일별 달력을 조회한다.
+   */
   const updateInfo = useCallback(async () => {
-    if (canStartLoading()) {
-      return;
-    }
+    const calendarPathVariable: CalendarPathVariable = {
+      type: 'DAY',
+    };
+    const calendarParams: CalendarParams = {
+      date: dateToString(selectedDate),
+    };
+
     if (category === 'MEMBER') {
-      const response = await getCalendars(
-        'DAY',
-        dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
-      if (response) {
-        setOriginSked(response.schedules);
+      const data = await getCalendars(calendarPathVariable, calendarParams);
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
-    } else if (category === 'GROUP' && groupId) {
-      const response = await getGroupCalendars(
-        'DAY',
+    }
+
+    if (category === 'GROUP' && groupId) {
+      const groupCalendarPathVariable: GroupCalendarPathVariable = {
+        type: 'DAY',
         groupId,
-        dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
-      if (response) {
-        setOriginSked(response.schedules);
+      };
+      const data: BaseResponse<CalendarsResponse> = await getGroupCalendars(
+        groupCalendarPathVariable,
+        calendarParams,
+      );
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
     }
   }, [selectedDate, groupId]);

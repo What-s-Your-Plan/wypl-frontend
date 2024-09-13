@@ -1,4 +1,4 @@
-import { PictureContent } from '@/objects/Content';
+import { PictureContent } from '@/objects/ReviewContent.ts';
 
 type TPictureProps = {
   thumbnailContent: PictureContent;

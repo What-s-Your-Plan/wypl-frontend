@@ -1,28 +1,29 @@
-import useReviewStore from '@/stores/ReviewStore';
+import R4F from './R4F';
+import REmotion from './REmotion';
+import RKpt from './RKpt';
+import RPicture from './RPicture';
+import RText from './RText';
+import RWeather from './RWeather';
+
+import { ReviewType } from '@/@types/Review';
+import ArrowDown from '@/assets/icons/arrowDown.svg';
+import ArrowUp from '@/assets/icons/arrowUp.svg';
+import Trash from '@/assets/icons/trash.svg';
+import Button from '@/components/common/Button';
 import {
-  Content,
+  ReviewContent,
   TextContent,
   PictureContent,
   EmotionContent,
   WeatherContent,
   KPTContent,
   FourFContent,
-} from '@/objects/Content';
-
-import RText from './RText';
-import RPicture from './RPicture';
-import REmotion from './REmotion';
-import RWeather from './RWeather';
-import RKpt from './RKpt';
-import R4F from './R4F';
-import Button from '@/components/common/Button';
-import ArrowUp from '@/assets/icons/arrowUp.svg';
-import ArrowDown from '@/assets/icons/arrowDown.svg';
-import Trash from '@/assets/icons/trash.svg';
+} from '@/objects/ReviewContent.ts';
+import useReviewStore from '@/stores/ReviewStore';
 
 type ReviewWriteProps = {
   index: number;
-  content: Content;
+  content: ReviewContent;
 };
 
 function ReviewWrite({ index, content }: ReviewWriteProps) {

@@ -1,5 +1,17 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+
 import * as S from './Schedule.styled';
+
+import { getLabelList } from '@/api/label/getLabelList';
+import ArrowRightIcon from '@/assets/icons/arrowRight.svg';
+import CalendarAddIcon from '@/assets/icons/calendarAdd.svg';
+import ClockIcon from '@/assets/icons/clock.svg';
+import Plus from '@/assets/icons/plus.svg';
+import RepeatIcon from '@/assets/icons/repeat.svg';
+import LabelIcon from '@/assets/icons/tag.svg';
+import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
+import UsersIcon from '@/assets/icons/users.svg';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import {
   InputDefault,
   InputTitle,
@@ -10,19 +22,9 @@ import ListBox from '@/components/common/ListBox';
 import Toggle from '@/components/common/Toggle';
 import CreateLabel from '@/components/label/CreateLabel';
 import useDateStore from '@/stores/DateStore';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
-import CalendarAddIcon from '@/assets/icons/calendarAdd.svg';
-import ClockIcon from '@/assets/icons/clock.svg';
-import ArrowRightIcon from '@/assets/icons/arrowRight.svg';
-import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
-import LabelIcon from '@/assets/icons/tag.svg';
-import UsersIcon from '@/assets/icons/users.svg';
-import RepeatIcon from '@/assets/icons/repeat.svg';
-import Plus from '@/assets/icons/plus.svg';
-import getLabelList from '@/services/label/getLabelList';
 
 type ChangeProps = {
-  states: Schedule & Repeat;
+  states: ScheduleData & RepeatData;
   handleChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -31,8 +33,8 @@ type ChangeProps = {
 };
 
 type SetProps = {
-  states: Schedule & Repeat;
-  setStates: Dispatch<SetStateAction<Schedule & Repeat>>;
+  states: ScheduleData & RepeatData;
+  setStates: Dispatch<SetStateAction<ScheduleData & RepeatData>>;
 };
 
 function Title({ states, handleChange }: ChangeProps) {
@@ -76,7 +78,7 @@ function Time({ states, handleChange, setStates }: ChangeProps & SetProps) {
     setStates((prev) => {
       return {
         ...prev,
-        isAllday: value,
+        isAllDay: value,
       };
     });
   };
@@ -106,7 +108,7 @@ function Time({ states, handleChange, setStates }: ChangeProps & SetProps) {
         <S.BetweenDiv>
           <span>하루 종일</span>
           <Toggle
-            enabled={states.isAllday}
+            enabled={states.isAllDay}
             setEnabled={handleAllday as Dispatch<SetStateAction<boolean>>}
           />
         </S.BetweenDiv>
@@ -118,7 +120,7 @@ function Time({ states, handleChange, setStates }: ChangeProps & SetProps) {
               name="startDate"
               onChange={handleChange}
             />
-            {states.isAllday ? null : (
+            {states.isAllDay ? null : (
               <S.TimeContainer>
                 <ListBox
                   list={ampm}
@@ -160,7 +162,7 @@ function Time({ states, handleChange, setStates }: ChangeProps & SetProps) {
               name="endDate"
               onChange={handleChange}
             />
-            {states.isAllday ? null : (
+            {states.isAllDay ? null : (
               <S.TimeContainer>
                 <ListBox
                   list={ampm}
@@ -261,8 +263,8 @@ function Label({ states, setStates }: SetProps) {
                   color={color}
                   setColor={setColor}
                   handleKeyDown={async () => {
-                    const newLabel = await getLabelList();
-                    setLabels(newLabel);
+                    const { body } = await getLabelList();
+                    setLabels(body.labels);
                     setCreate(false);
                   }}
                 />

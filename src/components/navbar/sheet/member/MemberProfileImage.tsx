@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 
-import { UpdateProfileImageResponse } from '@/@types/Member';
-import editIcon from '@/assets/icons/editPaper.svg';
-import useImage from '@/hooks/useImage';
-import postProfileImage from '@/services/member/postProfileImage';
-import useMemberStore from '@/stores/MemberStore';
-
 import * as S from './MemberProfileImage.styled';
 import * as MS from './MemberSheet.styled';
+
+import { postProfileImage } from '@/api/member/postProfileImage';
+import editIcon from '@/assets/icons/editPaper.svg';
+import useImage from '@/hooks/useImage';
+import useMemberStore from '@/stores/MemberStore';
 
 function MemberProfileImage() {
   const { profileImage, setProfileImage } = useMemberStore();
@@ -16,7 +15,7 @@ function MemberProfileImage() {
   const requestUpdateMemberProfileImage = async () => {
     const formData = new FormData();
     formData.append('image', image!);
-    const body: UpdateProfileImageResponse = await postProfileImage(formData);
+    const { body } = await postProfileImage({ formData });
     setProfileImage(body.profile_image_url);
   };
 

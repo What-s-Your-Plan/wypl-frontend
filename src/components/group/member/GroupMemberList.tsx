@@ -1,27 +1,25 @@
 import { useEffect, useState } from 'react';
 
-import Tooltip from '@/components/tooltip/Tooltip';
-
-import getGroupMember, {
-  FindGroupMembersResponse as GroupMembers,
-  GroupMemberResponse as GroupMember,
-} from '@/services/group/getGroupMember';
-
-import useMemberStore from '@/stores/MemberStore';
-
-import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
-
 import styled from 'styled-components';
-import { BgColors } from '@/assets/styles/colorThemes';
-import X from '@/assets/icons/x.svg';
 
 import * as S from './GroupMemberList.styled';
-import deleteGroupMemberForceOut, {
+
+import { GroupMemberData } from '@/@types/Group';
+import {
+  deleteGroupMemberForceOut,
+  DeleteGroupMemberForceOutPathVariable,
   DeleteGroupMemberForceOutRequest,
-  DeleteGroupMemberForceOutResponse,
-} from '@/services/group/deleteGroupMemberForceOut';
-import deleteGroupWithdraw from '@/services/group/deleteGroupWithdraw';
-import useLoading from '@/hooks/useLoading';
+} from '@/api/group/deleteGroupMemberForceOut';
+import { deleteGroupWithdraw } from '@/api/group/deleteGroupWithdraw';
+import {
+  getGroupMember,
+  GetGroupMembersResponse,
+} from '@/api/group/getGroupMember';
+import X from '@/assets/icons/x.svg';
+import { BgColors } from '@/assets/styles/colorThemes';
+import Tooltip from '@/components/tooltip/Tooltip';
+import useMemberStore from '@/stores/MemberStore';
+import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupMemberProps = {
   groupId: number;
@@ -37,24 +35,16 @@ function GroupMemberList({
   groupDeleteEvent,
 }: GroupMemberProps) {
   const { memberId } = useMemberStore();
-  const { canStartLoading, endLoading } = useLoading();
 
-  const [groupMembers, setGroupMembers] = useState<GroupMembers>({
+  const [groupMembers, setGroupMembers] = useState<GetGroupMembersResponse>({
     color,
     member_count: 0,
     members: [],
   });
 
   const fetchGroupMember = async () => {
-    if (canStartLoading()) {
-      return;
-    }
-    const newGroupMembers: GroupMembers = await getGroupMember(groupId).finally(
-      () => {
-        endLoading();
-      },
-    );
-    setGroupMembers(newGroupMembers);
+    const data = await getGroupMember({ groupId });
+    setGroupMembers(data.body);
   };
 
   useEffect(() => {
@@ -65,11 +55,13 @@ function GroupMemberList({
     const request: DeleteGroupMemberForceOutRequest = {
       member_id: deleteMemberId,
     };
-    const response: DeleteGroupMemberForceOutResponse =
-      await deleteGroupMemberForceOut(groupId, request);
+    const pathVariable: DeleteGroupMemberForceOutPathVariable = {
+      groupId,
+    };
+    const data = await deleteGroupMemberForceOut(pathVariable, request);
     setGroupMembers((prev) => {
       const updatedGroupMembers = prev.members.filter(
-        (member) => member.id !== response.member_id,
+        (member) => member.id !== data.body.member_id,
       );
       return {
         ...prev,
@@ -80,14 +72,17 @@ function GroupMemberList({
   };
 
   const requestWithdraw = async () => {
-    await deleteGroupWithdraw(groupId).then(() => {
+    const pathVariable: DeleteGroupMemberForceOutPathVariable = {
+      groupId,
+    };
+    await deleteGroupWithdraw(pathVariable).then(() => {
       groupDeleteEvent(groupId);
     });
   };
 
   return (
     <S.Container>
-      {groupMembers.members.map((member: GroupMember) => {
+      {groupMembers.members.map((member: GroupMemberData) => {
         return (
           <S.Wrapper key={groupId + ' ' + member.id}>
             <S.Box>
@@ -109,7 +104,7 @@ function GroupMemberList({
                   text={'회원 추방'}
                 />
               )}
-              {isOwner === false && member.id === memberId && (
+              {!isOwner && member.id === memberId && (
                 <Tooltip
                   children={
                     <ForceOutImg src={X} onClick={() => requestWithdraw()} />

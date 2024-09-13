@@ -1,37 +1,46 @@
-import { useEffect, useState } from 'react';
-
-import useMemberStore from '@/stores/MemberStore';
-import getUserGoal from '@/services/widget/getUserGoal';
-import patchUserGoal from '@/services/widget/patchUserGoal';
+import { useEffect, useRef, useState } from 'react';
 
 import Button from '../common/Button';
+import { InputDefault } from '../common/InputText';
 
+import { getMemberGoal } from '@/api/widget/getMemberGoal.ts';
+import { patchMemberGoal } from '@/api/widget/patchMemberGoal.ts';
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
-import { InputDefault } from '../common/InputText';
+import useMemberStore from '@/stores/MemberStore';
 
 function WGoal() {
   const { memberId } = useMemberStore();
-  const [userGoal, setUserGoal] = useState<string>('');
   const [isModifyingGoal, setIsModifyingGoal] = useState<boolean>(false);
+  const isMounted = useRef<boolean>(false);
+  const [content, setContent] = useState<string>('');
 
   const handleModify = async () => {
     setIsModifyingGoal(!isModifyingGoal);
     if (memberId !== undefined) {
-      const goal = await patchUserGoal(memberId, userGoal);
-      setUserGoal(goal);
+      const { body } = await patchMemberGoal(
+        { memberId },
+        { content: content },
+      );
+      setContent(body.content);
     }
   };
 
   useEffect(() => {
     const fetchUserGoal = async () => {
       if (memberId) {
-        const goal = await getUserGoal(memberId);
-        setUserGoal(goal);
+        const { body } = await getMemberGoal({ memberId });
+        setContent(body.content);
       }
     };
-    fetchUserGoal();
-  }, []);
+
+    if (isMounted.current) {
+      return;
+    }
+    fetchUserGoal().then(() => {
+      isMounted.current = true;
+    });
+  }, [memberId]);
 
   return (
     <div>
@@ -52,9 +61,9 @@ function WGoal() {
           className="disabled:bg-transparent mt-3"
           $width="100%"
           $void={true}
-          value={userGoal}
+          value={content}
           disabled={!isModifyingGoal}
-          onChange={(e) => setUserGoal(e.target.value)}
+          onChange={(e) => setContent(e.target.value)}
           maxLength={60}
           placeholder="목표를 입력해주세요(60자 이내)"
         />

@@ -1,22 +1,24 @@
+import T4F from './T4F';
+import TEmotion from './TEmotion';
+import TKpt from './TKpt';
+import TPicture from './TPicture';
+import TText from './TText';
+import TWeather from './TWeather';
+
+import { ReviewType } from '@/@types/Review';
 import {
-  Content,
+  ReviewContent,
   TextContent,
   PictureContent,
   EmotionContent,
   WeatherContent,
   KPTContent,
   FourFContent,
-} from '@/objects/Content';
-import TText from './TText';
-import TPicture from './TPicture';
-import TEmotion from './TEmotion';
-import TWeather from './TWeather';
-import TKpt from './TKpt';
-import T4F from './T4F';
+} from '@/objects/ReviewContent.ts';
 
 type ReviewThumbnailProps = {
   blockType: ReviewType;
-  thumbnailContent: Content;
+  thumbnailContent: ReviewContent;
 };
 
 const ReviewThumbnail = ({

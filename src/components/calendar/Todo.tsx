@@ -1,55 +1,45 @@
-import { WhiteContainer } from '../common/Container';
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import editButton from '@/assets/icons/x.svg';
-import plusButton from '@/assets/icons/plus.svg';
-import updateButton from '@/assets/icons/edit.svg';
+import styled from 'styled-components';
+
+import { WhiteContainer } from '../common/Container';
 import { InputDefault } from '../common/InputText';
-import postTodo from '@/services/todo/postTodo';
-import getTodoList from '@/services/todo/getTodoList';
-import deleteTodo from '@/services/todo/deleteTodo';
-import checkTodo from '@/services/todo/checkTodo';
-import patchTodo from '@/services/todo/patchTodo';
+
+import { checkTodo } from '@/api/todo/checkTodo.ts';
+import { deleteTodo } from '@/api/todo/deleteTodo.ts';
+import { getTodoList } from '@/api/todo/getTodoList.ts';
+import { patchTodo } from '@/api/todo/patchTodo.ts';
+import { postTodo } from '@/api/todo/postTodo.ts';
+import updateButton from '@/assets/icons/edit.svg';
+import plusButton from '@/assets/icons/plus.svg';
+import editButton from '@/assets/icons/x.svg';
 
 function Todo() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [content, setContent] = useState<string>('');
-  const [todos, setTodos] = useState<todoType[]>([]);
+  const [todos, setTodos] = useState<TodoData[]>([]);
   const [chosenTodo, setChosenTodo] = useState(-1);
 
   async function fetchTodoList() {
-    try {
-      const todoList = await getTodoList();
-      setTodos(todoList);
-      setChosenTodo(-1);
-    } catch (error) {
-      console.error('투두 리스트 호출 실패:', error);
-    }
+    const { body } = await getTodoList();
+    setTodos(body.todos);
+    setChosenTodo(-1);
   }
 
   useEffect(() => {
     fetchTodoList();
   }, []);
 
-  const clickTodo = async (id: string) => {
-    await checkTodo(id)
-      .then(() => {
-        fetchTodoList();
-      })
-      .catch((error) => {
-        console.log('투두 체크 실패: ', error);
-      });
+  const clickTodo = async (todoId: string) => {
+    await checkTodo({ todoId }).then(() => {
+      fetchTodoList();
+    });
   };
 
-  const deleteTodoElement = async (id: string) => {
-    await deleteTodo(id)
-      .then(() => {
-        fetchTodoList();
-      })
-      .catch((error) => {
-        console.log('투두 삭제 실패: ', error);
-      });
+  const deleteTodoElement = async (todoId: string) => {
+    await deleteTodo({ todoId }).then(() => {
+      fetchTodoList();
+    });
   };
 
   const clickPlusButton = () => {
@@ -61,31 +51,26 @@ function Todo() {
 
     await postTodo({
       content: content,
-    })
-      .then(() => {
-        setContent('');
-        setIsOpen(false);
-        fetchTodoList();
-      })
-      .catch((error) => {
-        console.log('투두리스트 생성 실패 : ', error);
-      });
+    }).then(() => {
+      setContent('');
+      setIsOpen(false);
+      fetchTodoList();
+    });
   };
 
   const updateTodo = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    await patchTodo(chosenTodo, {
-      content:
-        todos[todos.findIndex((todo) => todo.todo_id === chosenTodo)].content,
-    })
-      .then(() => {
-        setChosenTodo(-1);
-        fetchTodoList();
-      })
-      .catch((error) => {
-        console.log('투두 리스트 없뎃 실패 : ', error);
-      });
+    await patchTodo(
+      { todoId: chosenTodo },
+      {
+        content:
+          todos[todos.findIndex((todo) => todo.todo_id === chosenTodo)].content,
+      },
+    ).then(() => {
+      setChosenTodo(-1);
+      fetchTodoList();
+    });
   };
 
   const changeContent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,11 +78,11 @@ function Todo() {
   };
 
   const changeOriginContent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let updatedTodoIndex = todos.findIndex(
+    const updatedTodoIndex = todos.findIndex(
       (todo) => todo.todo_id === chosenTodo,
     );
 
-    let copiedTodos = [...todos];
+    const copiedTodos = [...todos];
     copiedTodos[updatedTodoIndex].content = e.target.value;
 
     setTodos(copiedTodos);
@@ -108,7 +93,7 @@ function Todo() {
       <Header>
         <div className="font-bold">Todo</div>
         <IconButton style={{ marginTop: 0 }} onClick={clickPlusButton}>
-          <img src={plusButton}></img>
+          <img src={plusButton} alt=""></img>
         </IconButton>
       </Header>
       <div className="scrollBar h-[85%]">

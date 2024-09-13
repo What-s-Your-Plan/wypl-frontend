@@ -1,24 +1,21 @@
 import { useState } from 'react';
 
-import Modal from '@/components/common/Modal';
-import GroupCreatePanel from '@/components/group/create/GroupCreatePanel';
-
-import postGroupRegister, {
+import { GroupInfoData, GroupSummaryData } from '@/@types/Group';
+import {
+  postGroupRegister,
   GroupResponse as CreateGroup,
-} from '@/services/group/postGroupRegister';
-import { FindGroupResponse as MemberGroup } from '@/services/group/getMemberGroupList';
-
-import useForm from '@/hooks/useForm';
-
+} from '@/api/group/postGroupRegister';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
-
+import Modal from '@/components/common/Modal';
 import * as S from '@/components/group/create/GroupCreateModal.styled';
+import GroupCreatePanel from '@/components/group/create/GroupCreatePanel';
+import useForm from '@/hooks/useForm';
 
 type GroupCreateModalProps = {
   isOpen: boolean;
-  init: GroupInfo;
+  init: GroupInfoData;
   handleClose: (() => void) | (() => Promise<void>);
-  handleConfirm: (memberGroup: MemberGroup) => void;
+  handleConfirm: (memberGroup: GroupSummaryData) => void;
 };
 
 function GroupCreateModal({
@@ -28,16 +25,15 @@ function GroupCreateModal({
   handleConfirm,
 }: GroupCreateModalProps) {
   const { form, setForm, handleChange, handleSubmit } = useForm<
-    GroupInfo,
+    GroupInfoData,
     CreateGroup
   >(init, postGroupRegister);
-
   const handleConfirmClick = async () => {
     const response = await handleSubmit();
     if (response === null) {
       return;
     }
-    const memberGroup: MemberGroup = {
+    const memberGroup: GroupSummaryData = {
       id: response.id,
       color: response.color,
       name: response.name,

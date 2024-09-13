@@ -11,7 +11,15 @@ interface Widget {
   layout: Layout;
 }
 
-type Weather = {
+/* Data */
+interface DDayData {
+  title: string;
+  d_day: string;
+  date: string;
+  local_date: string;
+}
+
+interface WeatherDetailData {
   city: string;
   weather_id: number;
   temp: number;
@@ -21,4 +29,4 @@ type Weather = {
   main: string;
   desc: string;
   is_sunrise: boolean;
-};
+}

@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import getReviewDetail from '@/services/review/getReviewDetail';
-import deleteReview from '@/services/review/deleteReview';
-import { splitTTime } from '@/utils/DateUtils';
-
-import { ReviewResponse } from '@/@types/ReviewResponse';
-import { Content } from '@/objects/Content';
-
-import DetailBlockList from '@/components/review/view/DetailBlockList';
-import { Container } from '@/components/common/Container';
-import Button from '@/components/common/Button';
+import { ReviewType } from '@/@types/Review';
+import { ReviewDetailData } from '@/@types/ReviewResponse';
+import { deleteReview } from '@/api/review/deleteReview';
+import { getReviewDetail } from '@/api/review/getReviewDetail';
 import ArrowLeft from '@/assets/icons/arrowLeft.svg';
 import MoreVertical from '@/assets/icons/moreVertical.svg';
+import Button from '@/components/common/Button';
+import { Container } from '@/components/common/Container';
 import PopOver from '@/components/common/PopOver';
+import DetailBlockList from '@/components/review/view/DetailBlockList';
+import { ReviewContent } from '@/objects/ReviewContent.ts';
+import { splitTTime } from '@/utils/DateUtils';
 
 function ReviewDetailPage() {
   const navigator = useNavigate();
   const { reviewId } = useParams();
-  const [detail, setDetail] = useState<ReviewResponse>();
+  const [detail, setDetail] = useState<ReviewDetailData>();
 
   if (typeof reviewId !== 'string') {
     navigator('/notfound');
@@ -28,25 +27,20 @@ function ReviewDetailPage() {
     navigator(`/review/modify/${detail?.schedule.schedule_id}/${reviewId}`);
   };
 
-  const hanldeDelete = async () => {
+  const handleDelete = async () => {
     if (window.confirm('정말로 회고록을 삭제하시겠습니까?')) {
-      try {
-        await deleteReview(reviewId as string);
-        alert('리뷰가 삭제되었습니다.'); // 성공적으로 삭제되었음을 사용자에게 알림
-        navigator('/review'); // 삭제 후 리뷰 목록 페이지로 리다이렉트
-      } catch (error) {
-        alert('리뷰 삭제에 실패했습니다.'); // 에러 처리
-      }
+      await deleteReview({ review_id: reviewId as string });
+      navigator('/review'); // 삭제 후 리뷰 목록 페이지로 리다이렉트
     }
   };
 
   useEffect(() => {
     const fetchReviewDetail = async () => {
       if (reviewId) {
-        const response = await getReviewDetail(reviewId);
+        const { body } = await getReviewDetail({ reviewId });
         const mappedResponse = {
-          ...response,
-          contents: response.contents.map((content: Content) => ({
+          ...body,
+          contents: body.contents.map((content: ReviewContent) => ({
             ...content,
             blockType: content.blockType as ReviewType,
           })),
@@ -88,7 +82,7 @@ function ReviewDetailPage() {
                         수정
                       </div>
                       <div
-                        onClick={hanldeDelete}
+                        onClick={handleDelete}
                         className="text-label-red cursor-pointer"
                       >
                         삭제

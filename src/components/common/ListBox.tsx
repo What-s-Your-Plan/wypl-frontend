@@ -1,5 +1,7 @@
 import { Fragment, SetStateAction, Dispatch } from 'react';
+
 import { Listbox, Transition } from '@headlessui/react';
+
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 
 type ListBoxProps = {

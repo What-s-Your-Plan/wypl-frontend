@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import * as S from './GoogleOAuth.styled';
+
+import {
+  IssueTokenParams,
+  IssueTokenPathVariable,
+}                             from '@/api/auth/issueTokens.ts';
 import GoogleLoadingAnimation from '@/components/animation/GoogleLoading';
-
-import useQueryParams from '@/hooks/useSearchParams';
-import useJsonWebTokens from '@/hooks/api/useJsonWebTokens';
-
 import OAUTH_PROVIDER from '@/constants/OAuth';
 import { BROWSER_PATH } from '@/constants/Path';
-
-import * as S from './GoogleOAuth.styled';
+import useJsonWebTokens from '@/hooks/api/useJsonWebTokens';
+import useQueryParams from '@/hooks/useSearchParams';
 
 function GoogleOAuth() {
   const navigate = useNavigate();
@@ -17,9 +19,12 @@ function GoogleOAuth() {
   const { code } = useQueryParams();
   const { requestIssueTokens } = useJsonWebTokens();
 
-  const fetchJsonWebTokens = async () => {
+  const fetchJsonWebTokens = () => {
+    const issueTokenPathVariable: IssueTokenPathVariable = {
+      provider: OAUTH_PROVIDER.GOOGLE,
+    };
     const param: IssueTokenParams = { code };
-    const body = await requestIssueTokens(param, OAUTH_PROVIDER.GOOGLE);
+    const body = requestIssueTokens(issueTokenPathVariable, param);
     if (body === null) {
       navigate(BROWSER_PATH.LANDING);
       return;

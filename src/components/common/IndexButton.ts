@@ -1,5 +1,5 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import tw from 'twin.macro';
 
 const IndexButton = styled.button<{ $isActive: boolean }>`
   writing-mode: vertical-rl;

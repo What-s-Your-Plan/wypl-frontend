@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
+
 import { BgColors, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
 
 const Container = styled.div`

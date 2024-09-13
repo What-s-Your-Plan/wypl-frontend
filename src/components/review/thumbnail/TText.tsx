@@ -1,5 +1,5 @@
-import { TextContent } from '@/objects/Content';
-import Text from '@/components/common/Text';
+import Text            from '@/components/common/Text';
+import { TextContent } from '@/objects/ReviewContent.ts';
 
 type TTextProps = {
   thumbnailContent: TextContent;

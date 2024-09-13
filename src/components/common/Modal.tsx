@@ -1,5 +1,7 @@
-import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
+
+import { Dialog, Transition } from '@headlessui/react';
+
 import Button from '@/components/common/Button';
 
 type Confirm = {

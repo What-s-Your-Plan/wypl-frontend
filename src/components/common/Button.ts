@@ -1,6 +1,6 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
-import { ButtonSize, ButtonSizeTheme } from '@/assets/styles/sizeThemes';
+import tw from 'twin.macro';
+
 import {
   BgColors,
   TextColors,
@@ -9,6 +9,7 @@ import {
   TextTheme,
   BorderTheme,
 } from '@/assets/styles/colorThemes';
+import { ButtonSize, ButtonSizeTheme } from '@/assets/styles/sizeThemes';
 
 type StyleProps = {
   $size: ButtonSize;

@@ -1,19 +1,19 @@
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useReviewStore from '@/stores/ReviewStore';
 
-import postReview from '@/services/review/postReview';
-
-import RTitle from './RTitle';
-import RSchedule from './RSchedule';
 import ReviewWrite from './ReviewWrite';
-import Button from '@/components/common/Button';
-import { Divider, DividerLabel } from '@/components/common/Divider';
-import useToastStore from '@/stores/ToastStore';
+import RSchedule from './RSchedule';
+import RTitle from './RTitle';
 
-import * as S from '@/components/common/Container';
-import Cancel from '@/assets/icons/x.svg';
+import { ReviewType } from '@/@types/Review';
+import { postReview } from '@/api/review/postReview';
 import Save from '@/assets/icons/save.svg';
-import { useEffect } from 'react';
+import Cancel from '@/assets/icons/x.svg';
+import Button from '@/components/common/Button';
+import * as S from '@/components/common/Container';
+import { Divider, DividerLabel } from '@/components/common/Divider';
+import useReviewStore from '@/stores/ReviewStore';
+import useToastStore from '@/stores/ToastStore';
 
 function WriteBlockList() {
   const { addToast } = useToastStore();
@@ -48,12 +48,12 @@ function WriteBlockList() {
   };
 
   const handleSaveClick = async () => {
-    const body = {
+    const request = {
       title: reviewStore.title,
       schedule_id: reviewStore.scheduleId,
       contents: reviewStore.contents,
     };
-    if (body.title === '') {
+    if (request.title === '') {
       addToast({
         duration: 300,
         message: '회고 제목은 필수입니다.',
@@ -61,7 +61,7 @@ function WriteBlockList() {
       });
       return;
     }
-    if (body.contents.length === 0) {
+    if (request.contents.length === 0) {
       addToast({
         duration: 300,
         message: '회고 내용은 필수입니다.',
@@ -69,7 +69,7 @@ function WriteBlockList() {
       });
       return;
     } else {
-      for (var i = 0; i < body.contents.length; i++) {
+      for (let i = 0; i < request.contents.length; i++) {
         if (!reviewStore.isContentComplete(i)) {
           addToast({
             duration: 300,
@@ -81,11 +81,10 @@ function WriteBlockList() {
         }
       }
     }
-    const reviewId = await postReview(body);
-    console.log(reviewId);
-    if (reviewId) {
+    const { body } = await postReview(request);
+    if (body.review_id) {
       reviewStore.resetReview();
-      navigator(`/review/${reviewId}`);
+      navigator(`/review/${body.review_id}`);
     }
   };
 

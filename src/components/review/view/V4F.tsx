@@ -1,8 +1,8 @@
-import { FourFContent } from '@/objects/Content';
 
 import { WhiteContainer } from '@/components/common/Container';
-import Text from '@/components/common/Text';
 import { Divider, DividerY } from '@/components/common/Divider';
+import Text             from '@/components/common/Text';
+import { FourFContent } from '@/objects/ReviewContent.ts';
 
 type V4FProps = {
   content: FourFContent;

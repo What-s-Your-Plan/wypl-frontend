@@ -1,16 +1,14 @@
 import { useState } from 'react';
 
-import Button from '@/components/common/Button';
-import Modal from '@/components/common/Modal';
+import * as S from './GroupUpdateModal.styled';
 import GroupUpdatePanel from './GroupUpdatePanel';
 
-import deleteGroup from '@/services/group/deleteGroup';
-
-import useToastStore from '@/stores/ToastStore';
-
+import { GroupUpdateInfo } from '@/@types/Group';
+import { deleteGroup, DeleteGroupParams } from '@/api/group/deleteGroup';
 import { BgColors } from '@/assets/styles/colorThemes';
-
-import * as S from './GroupUpdateModal.styled';
+import Button from '@/components/common/Button';
+import Modal from '@/components/common/Modal';
+import useToastStore from '@/stores/ToastStore';
 
 type GroupUpdateModalProps = {
   isOpen: boolean;
@@ -44,12 +42,12 @@ function GroupUpdateModal({
   };
 
   const [inviteMemberIds, setInviteMemberIds] = useState<Array<number>>([]);
-  const handleInviteMemberIds = async (newMemberIds: Array<number>) => {
-    await setInviteMemberIds(newMemberIds);
+  const handleInviteMemberIds = (newMemberIds: Array<number>) => {
+    setInviteMemberIds(newMemberIds);
   };
 
   const handleConfirmClick = async () => {
-    await groupUpdateEvent(
+    groupUpdateEvent(
       groupUpdateInfo.name,
       groupUpdateInfo.color as BgColors,
       inviteMemberIds,
@@ -58,11 +56,13 @@ function GroupUpdateModal({
 
   const handleDeleteGroup = async () => {
     confirm('그룹 삭제할 시 복구할 수 없습니다.');
-    const groupId: number = groupUpdateInfo.id;
-    await deleteGroup(groupId);
-    groupDeleteEvent(groupId);
+    const deleteGroupParams: DeleteGroupParams = {
+      groupId: groupUpdateInfo.id,
+    };
+    await deleteGroup(deleteGroupParams);
+    groupDeleteEvent(groupUpdateInfo.id);
     handleClose();
-    await addToast({
+    addToast({
       duration: 300,
       message: '그룹을 삭제하였습니다.',
       type: 'NOTIFICATION',

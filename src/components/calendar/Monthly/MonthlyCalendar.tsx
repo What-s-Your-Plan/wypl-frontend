@@ -1,6 +1,21 @@
 import { useEffect, useState, useCallback } from 'react';
 
 import MonthlyDay from './MonthlyDay';
+import { Chevrons } from '../DatePicker.styled';
+
+import {
+  CalendarParams,
+  CalendarPathVariable,
+  CalendarsResponse,
+  getCalendars,
+}                  from '@/api/calendar/getCalendars.ts';
+import {
+  getGroupCalendars,
+  GroupCalendarPathVariable,
+}                  from '@/api/calendar/getGroupCalendars.ts';
+import ChevronLeft from '@/assets/icons/chevronLeft.svg';
+import ChevronRight from '@/assets/icons/chevronRight.svg';
+import useDateStore from '@/stores/DateStore';
 import {
   isSameDay,
   isCurrentMonth,
@@ -8,16 +23,8 @@ import {
   dateToString,
 } from '@/utils/DateUtils';
 import { labelFilter } from '@/utils/FilterUtils';
-import useDateStore from '@/stores/DateStore';
-import getCalendars from '@/services/calendar/getCalendars';
-import getGroupCalendars from '@/services/calendar/getGroupCalendars';
-import { Chevrons } from '../DatePicker.styled';
 
-import ChevronRight from '@/assets/icons/chevronRight.svg';
-import ChevronLeft from '@/assets/icons/chevronLeft.svg';
-import useLoading from '@/hooks/useLoading';
-
-export type DateSchedule = Array<Array<CalendarSchedule>>;
+export type DateSchedule = Array<Array<CalendarScheduleData>>;
 
 type MonthlyProps = {
   category: 'MEMBER' | 'GROUP';
@@ -43,9 +50,8 @@ function MonthlyCalender({
     }
     return init;
   };
-  const { canStartLoading, endLoading } = useLoading();
   const { selectedDate, setSelectedDate, selectedLabels } = useDateStore();
-  const [originSked, setOriginSked] = useState<Array<CalendarSchedule>>([]);
+  const [originSked, setOriginSked] = useState<Array<CalendarScheduleData>>([]);
   const [monthSchedules, setMonthSchedules] =
     useState<Array<DateSchedule>>(createInit());
   const [firstDay, setFirstDay] = useState<Date | null>(null);
@@ -77,31 +83,31 @@ function MonthlyCalender({
   };
 
   const updateInfo = useCallback(async () => {
-    if (canStartLoading()) {
-      return;
-    }
+    const calendarPathVariable: CalendarPathVariable = {
+      type: 'MONTH',
+    };
+    const calendarParams: CalendarParams = {
+      date: dateToString(selectedDate),
+    };
+
     if (category === 'MEMBER') {
-      const response = await getCalendars(
-        'MONTH',
-        dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
-
-      if (response) {
-        setOriginSked(response.schedules);
+      const data = await getCalendars(calendarPathVariable, calendarParams);
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
-    } else if (category === 'GROUP' && groupId) {
-      const response = await getGroupCalendars(
-        'MONTH',
-        Number(groupId),
-        dateToString(selectedDate),
-      ).finally(() => {
-        endLoading();
-      });
+    }
 
-      if (response) {
-        setOriginSked(response.schedules);
+    if (category === 'GROUP' && groupId) {
+      const groupCalendarPathVariable: GroupCalendarPathVariable = {
+        type: 'DAY',
+        groupId,
+      };
+      const data: BaseResponse<CalendarsResponse> = await getGroupCalendars(
+        groupCalendarPathVariable,
+        calendarParams,
+      );
+      if (data.body) {
+        setOriginSked(data.body.schedules);
       }
     }
   }, [selectedDate, groupId]);

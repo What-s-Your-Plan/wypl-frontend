@@ -1,29 +1,26 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-import getNotification from '@/services/notification/getNotification';
-import deleteNotification from '@/services/notification/deleteNotification';
-
 import GroupNotification from './GroupNotification';
+import * as S from './NotificationSheet.styled';
 import ReviewNotification from './ReviewNotification';
 
-import { Divider } from '@/components/common/Divider';
+import { deleteNotification } from '@/api/notification/deleteNotification';
+import { getNotification } from '@/api/notification/getNotification';
 import Bell from '@/assets/icons/bell.svg';
 import Button from '@/components/common/Button';
-import * as S from './NotificationSheet.styled';
-
-import useLoading from '@/hooks/useLoading';
+import { Divider } from '@/components/common/Divider';
 import useToastStore from '@/stores/ToastStore';
 
 function NotificationSheet() {
   const { addToast } = useToastStore();
-  const { canStartLoading, endLoading } = useLoading();
-  const [notifications, setNotifications] = useState<WYPLNotificationResponse>({
-    notification: [],
-    last_id: '',
-    has_next: true,
-    page_size: 10,
-  });
+
+  const [notifications, setNotifications] =
+    useState<WYPLNotificationPagingData>({
+      notification: [],
+      last_id: '',
+      has_next: true,
+    });
 
   const renderNotification = () => {
     return notifications?.notification.map((notification) => {
@@ -47,36 +44,31 @@ function NotificationSheet() {
   };
 
   const handleRemoveAll = async () => {
-    if (canStartLoading()) {
-      return;
-    }
-    await deleteNotification()
-      .then(() => {
-        setNotifications((prev: WYPLNotificationResponse) => {
-          return {
-            ...prev,
-            has_next: false,
-            last_id: '',
-            notification: [],
-          };
-        });
-        addToast({
-          duration: 300,
-          message: '전체 알림을 삭제하였습니다.',
-          type: 'NOTIFICATION',
-        });
-      })
-      .finally(() => {
-        endLoading();
+    await deleteNotification().then(() => {
+      setNotifications((prev: WYPLNotificationPagingData) => {
+        return {
+          ...prev,
+          has_next: false,
+          last_id: '',
+          notification: [],
+        };
       });
+      addToast({
+        duration: 300,
+        message: '전체 알림을 삭제하였습니다.',
+        type: 'NOTIFICATION',
+      });
+    });
   };
 
   const fetchNotifications = async () => {
-    const response = await getNotification(notifications?.last_id);
-    const newNotifications = response;
+    const { body } = await getNotification({
+      lastId: notifications?.last_id,
+    });
+    const newNotifications = body;
     newNotifications.notification = [
       ...notifications.notification,
-      ...response.notification,
+      ...body.notification,
     ];
     setNotifications(newNotifications);
   };

@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import mockIssueTokens from '@/services/auth/mockSignIn';
-import useJsonWebTokensStore from '@/stores/TokenStore';
-import useMemberStore from '@/stores/MemberStore';
-import { BROWSER_PATH } from '@/constants/Path';
-
-import * as S from './GoogleOAuthButton.styled';
 import * as DS from './DummyOAuthButton.styled';
+import * as S from './GoogleOAuthButton.styled';
+
+import { IssueTokenResponse } from '@/api/auth/issueTokens.ts';
+import {
+  MockIssueTokenParams,
+  mockIssueTokens,
+}                             from '@/api/auth/mock/mockIssueTokens.ts';
+import { BROWSER_PATH }       from '@/constants/Path';
+import useMemberStore from '@/stores/MemberStore';
+import useJsonWebTokensStore from '@/stores/TokenStore';
 
 function DummyOAuthButton() {
   const navigate = useNavigate();
@@ -29,12 +33,12 @@ function DummyOAuthButton() {
     }
 
     const params: MockIssueTokenParams = { email: dummyEmail };
-    const body = await mockIssueTokens(params);
-    if (body === null) {
+    const data = await mockIssueTokens(params);
+    if (data === null) {
       navigate(BROWSER_PATH.LANDING);
       return;
     }
-    await updateStores(body);
+    updateStores(data.body);
     navigate(BROWSER_PATH.CALENDAR);
   };
 

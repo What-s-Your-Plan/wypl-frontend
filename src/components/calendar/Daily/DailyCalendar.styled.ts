@@ -1,5 +1,6 @@
-import tw from 'twin.macro';
 import styled from 'styled-components';
+import tw from 'twin.macro';
+
 import { BgTheme, LabelColorsType } from '@/assets/styles/colorThemes';
 
 const VerticalLine = styled.span`

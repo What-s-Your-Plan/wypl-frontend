@@ -1,30 +1,36 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import { Disclosure } from '@headlessui/react';
 
-import PopOver from '@/components/common/PopOver';
-import Tooltip from '@/components/tooltip/Tooltip';
-import PalettePanel from '@/components/color/PalettePanel';
+import * as S from './GroupDetailList.styled';
 import ColorCircle from '../../common/ColorCircle';
 import { Divider } from '../../common/Divider';
-import GroupUpdateModal from '../update/GroupUpdateModal';
 import GroupMemberList from '../member/GroupMemberList';
+import GroupUpdateModal from '../update/GroupUpdateModal';
 
-import patchGroupInfo, {
-  UpdateGroupInfoRequest,
-} from '@/services/group/patchGroupInfo';
-import postGroupInvite, {
+import { Group, GroupUpdateInfo } from '@/@types/Group';
+import {
+  patchPersonalGroupColor,
+  PersonalGroupColorUpdatePathVariable,
+  PersonalGroupColorUpdateRequest,
+} from '@/api/group/patchGroupColor';
+import {
+  patchGroupInfo,
+  GroupInfoUpdatePathVariable,
+  GroupInfoUpdateRequest,
+} from '@/api/group/patchGroupInfo';
+import {
+  postGroupInvite,
   GroupInviteRequest,
-} from '@/services/group/postGroupInvite';
-import patchPersonalGroupColor from '@/services/group/patchGroupColor';
-
-import useToastStore from '@/stores/ToastStore';
-
-import { BgColors } from '@/assets/styles/colorThemes';
+} from '@/api/group/postGroupInvite';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Setting from '@/assets/icons/settings.svg';
-
-import * as S from './GroupDetailList.styled';
+import { BgColors } from '@/assets/styles/colorThemes';
+import PalettePanel from '@/components/color/PalettePanel';
+import PopOver from '@/components/common/PopOver';
+import Tooltip from '@/components/tooltip/Tooltip';
+import useToastStore from '@/stores/ToastStore';
 
 type GroupInfoProps = {
   group: Group;
@@ -43,11 +49,14 @@ function GroupDetailList({
   const [color, setColor] = useState<BgColors>(group.color as BgColors);
 
   const handleChangeColor = async (color: BgColors) => {
-    const updateColor: BgColors = await patchPersonalGroupColor(
-      group.id,
+    const pathVariable: PersonalGroupColorUpdatePathVariable = {
+      groupId: group.id,
+    };
+    const request: PersonalGroupColorUpdateRequest = {
       color,
-    );
-    setColor(updateColor);
+    };
+    const data = await patchPersonalGroupColor(pathVariable, request);
+    setColor(data.body.color as BgColors);
   };
 
   const gotoGroupPage = (open: boolean) => {
@@ -77,30 +86,28 @@ function GroupDetailList({
     memberIds: Array<number>,
   ) => {
     if (newName !== group.name || newColor !== (group.color as BgColors)) {
-      const request: UpdateGroupInfoRequest = {
+      const pathVariable: GroupInfoUpdatePathVariable = {
+        groupId: group.id,
+      };
+      const request: GroupInfoUpdateRequest = {
         name: newName,
         color: newColor,
       };
-      await patchGroupInfo(group.id, request).then((res) => {
-        const body = res.data.body!;
-        groupUpdateEvent({
-          id: group.id,
-          name: body.name,
-          color: body.color,
-        });
-      });
+      const data = await patchGroupInfo(pathVariable, request);
+      groupUpdateEvent(data.body);
+
       addToast({
         duration: 300,
         message: `그룹 수정에 성공하였습니다.`,
         type: 'NOTIFICATION',
       });
     }
-    console.log(memberIds);
+
     if (memberIds.length > 0) {
       const request: GroupInviteRequest = {
         member_id_list: memberIds,
       };
-      await postGroupInvite(group.id, request);
+      await postGroupInvite({ groupId: group.id }, request);
       addToast({
         duration: 300,
         message: `그룹에 ${memberIds.length}명을 초대했습니다.`,

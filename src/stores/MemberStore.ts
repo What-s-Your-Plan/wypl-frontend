@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { FindMemberProfileResponse } from '@/@types/Member';
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type MemberState = {
@@ -11,11 +11,11 @@ type MemberState = {
   nickname: string | undefined;
   mainColor: string | undefined;
   setId: (newId: number) => void;
-  setProfileImage: (newProfileImage: string | null) => void;
+  setProfileImage: (newProfileImage: string | undefined) => void;
   setEmail: (newEmail: string) => void;
   setNickname: (newNickname: string) => void;
-  setMainColor: (newMainColor: string) => void;
-  setProfile: (profile: FindMemberProfileResponse) => void;
+  setMainColor: (newMainColor: LabelColorsType) => void;
+  setProfile: (profile: MemberProfileData) => void;
   resetMember: () => void;
 };
 
@@ -23,14 +23,14 @@ const useMemberStore = create<MemberState>()(
   persist(
     (set): MemberState => ({
       memberId: undefined,
-      profileImage: getMemberProfileImageOrDefault(null),
+      profileImage: getMemberProfileImageOrDefault(undefined),
       email: undefined,
       nickname: undefined,
       mainColor: undefined,
       setId: (newMemberId: number) => {
         set(() => ({ memberId: newMemberId }));
       },
-      setProfileImage: (newProfileImage: string | null) => {
+      setProfileImage: (newProfileImage: string | undefined) => {
         set(() => ({
           profileImage: getMemberProfileImageOrDefault(newProfileImage),
         }));
@@ -50,7 +50,7 @@ const useMemberStore = create<MemberState>()(
           mainColor: newLabelColor,
         }));
       },
-      setProfile: (profile: FindMemberProfileResponse) => {
+      setProfile: (profile: MemberProfileData) => {
         set(() => ({
           nickname: profile.nickname,
           email: profile.email,
