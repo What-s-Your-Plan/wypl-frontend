@@ -1,4 +1,7 @@
-function labelFilter(schedules: CalendarScheduleData[], labels: FilterResponse[]) {
+function labelFilter(
+  schedules: CalendarScheduleData[],
+  labels: FilterResponse[],
+) {
   if (labels.length === 0) {
     return schedules;
   }

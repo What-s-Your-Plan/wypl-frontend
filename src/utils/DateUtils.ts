@@ -1,33 +1,9 @@
-function isCurrentMonth(date: Date, currMonth: number): boolean {
-  return date.getMonth() === currMonth;
-}
-
-function isSameDay(date1: Date, date2: Date): boolean {
-  return (
-    date1.getFullYear() === date2.getFullYear() &&
-    date1.getMonth() === date2.getMonth() &&
-    date1.getDate() === date2.getDate()
-  );
-}
-
-function dateToString(date: Date): string {
-  return `${date.getFullYear()}-${padding0(date.getMonth() + 1)}-${padding0(date.getDate())}`;
-}
-
 function dateTimeToString(date: Date): string {
   return `${date.getFullYear()}-${padding0(date.getMonth() + 1)}-${padding0(date.getDate())}T${padding0(date.getHours())}:${padding0(date.getMinutes())}`;
 }
 
-function getHour(hour: number): number {
-  return hour === 12 ? 0 : Number(hour);
-}
-
-function stringToDate(str: string): Date {
-  return new Date(str);
-}
-
-function padding0(num: number) {
-  return num.toString().padStart(2, '0');
+function dateToString(date: Date): string {
+  return `${date.getFullYear()}-${padding0(date.getMonth() + 1)}-${padding0(date.getDate())}`;
 }
 
 function getDateDiff(d1: Date | string, d2: Date | string) {
@@ -47,20 +23,8 @@ function getDateDiff(d1: Date | string, d2: Date | string) {
   return (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24);
 }
 
-function splitTTime(date: string) {
-  if (date) {
-    const result = date.split('T');
-    return result[0] + ' ' + result[1].slice(0, result[1].length - 3);
-  }
-}
-
-function isAllDay(start: Date, end: Date): boolean {
-  return (
-    start.getHours() === 0 &&
-    start.getMinutes() === 0 &&
-    end.getHours() === 23 &&
-    end.getMinutes() === 59
-  );
+function getHour(hour: number): number {
+  return hour === 12 ? 0 : Number(hour);
 }
 
 function getTime(date: string) {
@@ -73,16 +37,52 @@ function getTime(date: string) {
   return `${ampm} ${hour}:${minute}`;
 }
 
+function isAllDay(start: Date, end: Date): boolean {
+  return (
+    start.getHours() === 0 &&
+    start.getMinutes() === 0 &&
+    end.getHours() === 23 &&
+    end.getMinutes() === 59
+  );
+}
+
+function isCurrentMonth(date: Date, currMonth: number): boolean {
+  return date.getMonth() === currMonth;
+}
+
+function isSameDay(date1: Date, date2: Date): boolean {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+}
+
+function padding0(num: number) {
+  return num.toString().padStart(2, '0');
+}
+
+function splitTTime(date: string) {
+  if (date) {
+    const result = date.split('T');
+    return result[0] + ' ' + result[1].slice(0, result[1].length - 3);
+  }
+}
+
+function stringToDate(str: string): Date {
+  return new Date(str);
+}
+
 export {
+  dateTimeToString,
+  dateToString,
+  getDateDiff,
+  getHour,
+  getTime,
+  isAllDay,
   isCurrentMonth,
   isSameDay,
-  dateToString,
-  dateTimeToString,
-  stringToDate,
-  getHour,
   padding0,
-  getDateDiff,
   splitTTime,
-  isAllDay,
-  getTime,
+  stringToDate,
 };
