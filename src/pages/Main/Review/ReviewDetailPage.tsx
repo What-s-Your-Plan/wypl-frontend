@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-
+import { ReviewType } from '@/@types/Review';
 import { ReviewResponse } from '@/@types/ReviewResponse';
-import deleteReview       from '@/api/review/deleteReview';
-import getReviewDetail from '@/api/review/getReviewDetail';
+import { deleteReview } from '@/api/review/deleteReview';
+import { getReviewDetail } from '@/api/review/getReviewDetail';
 import ArrowLeft from '@/assets/icons/arrowLeft.svg';
 import MoreVertical from '@/assets/icons/moreVertical.svg';
 import Button from '@/components/common/Button';
 import { Container } from '@/components/common/Container';
 import PopOver from '@/components/common/PopOver';
-import DetailBlockList   from '@/components/review/view/DetailBlockList';
+import DetailBlockList from '@/components/review/view/DetailBlockList';
 import { ReviewContent } from '@/objects/ReviewContent.ts';
-import { splitTTime }    from '@/utils/DateUtils';
+import { splitTTime } from '@/utils/DateUtils';
 
 function ReviewDetailPage() {
   const navigator = useNavigate();
@@ -27,10 +27,10 @@ function ReviewDetailPage() {
     navigator(`/review/modify/${detail?.schedule.schedule_id}/${reviewId}`);
   };
 
-  const hanldeDelete = async () => {
+  const handleDelete = async () => {
     if (window.confirm('정말로 회고록을 삭제하시겠습니까?')) {
       try {
-        await deleteReview(reviewId as string);
+        await deleteReview({ review_id: reviewId as string });
         alert('리뷰가 삭제되었습니다.'); // 성공적으로 삭제되었음을 사용자에게 알림
         navigator('/review'); // 삭제 후 리뷰 목록 페이지로 리다이렉트
       } catch (error) {
@@ -42,7 +42,7 @@ function ReviewDetailPage() {
   useEffect(() => {
     const fetchReviewDetail = async () => {
       if (reviewId) {
-        const response = await getReviewDetail(reviewId);
+        const response = await getReviewDetail({ reviewId });
         const mappedResponse = {
           ...response,
           contents: response.contents.map((content: ReviewContent) => ({
@@ -87,7 +87,7 @@ function ReviewDetailPage() {
                         수정
                       </div>
                       <div
-                        onClick={hanldeDelete}
+                        onClick={handleDelete}
                         className="text-label-red cursor-pointer"
                       >
                         삭제

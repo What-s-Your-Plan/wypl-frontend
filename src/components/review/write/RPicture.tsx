@@ -1,10 +1,11 @@
-import postPicture    from '@/api/review/postPicture';
+import React, { useState } from 'react';
+
+import postPicture from '@/api/file/postPicture.ts';
 import Upload from '@/assets/icons/upload.svg';
 import CircleLoadingAnimation from '@/components/animation/CircleLoading';
 import { WhiteContainer } from '@/components/common/Container';
-import useLoading         from '@/hooks/useLoading';
 import { PictureContent } from '@/objects/ReviewContent.ts';
-import useReviewStore     from '@/stores/ReviewStore';
+import useReviewStore from '@/stores/ReviewStore';
 
 type RPictureProps = {
   index: number;
@@ -12,7 +13,7 @@ type RPictureProps = {
 };
 
 function RPicture({ index, content }: RPictureProps) {
-  const { isLoading, canStartLoading, endLoading } = useLoading();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { setContent } = useReviewStore();
 
@@ -21,26 +22,29 @@ function RPicture({ index, content }: RPictureProps) {
     if (e.target.files) {
       const formData = new FormData();
       formData.append('image', e.target.files[0]);
-      if (canStartLoading()) {
+      if (isLoading) {
         return;
       }
-      const previewImgUrl = await postPicture(formData).finally(() => {
-        endLoading();
-      });
+
+      setIsLoading(true);
+      const { body } = await postPicture(formData).finally(() =>
+        setIsLoading(false),
+      );
 
       const newContent = content;
-      newContent.path = previewImgUrl;
+      newContent.path = body.image_url;
       setContent(index, newContent);
     }
   };
 
   return (
     <WhiteContainer $width="900" className="flex justify-center !py-8">
-      {isLoading() && <CircleLoadingAnimation />}
+      {isLoading && <CircleLoadingAnimation />}
       <label htmlFor={`file${index}`}>
         <img
           src={content.path === '' ? Upload : content.path}
           className="object-fill h-40"
+          alt=""
         />
         <input
           type="file"

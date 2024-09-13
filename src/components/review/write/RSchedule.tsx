@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import getReviewSchedule from '@/api/review/getReviewSchedule';
+import getReviewSchedule from '@/api/schedule/getReviewSchedule.ts';
 import Calendar from '@/assets/icons/calendar.svg';
 import Tag from '@/assets/icons/tag.svg';
 import Users from '@/assets/icons/users.svg';
@@ -17,7 +17,7 @@ type RScheduleProps = {
 };
 
 function RSchedule({ scheduleId }: RScheduleProps) {
-  const [schedule, setSchedule] = useState<ScheduleSimpleResponse>();
+  const [schedule, setSchedule] = useState<ScheduleInfoData>();
 
   const renderMemberProfile = () => {
     return schedule?.members.map((member) => {
@@ -34,8 +34,8 @@ function RSchedule({ scheduleId }: RScheduleProps) {
 
   const fetchSchedule = async () => {
     if (scheduleId != -1) {
-      const response = await getReviewSchedule(scheduleId);
-      setSchedule(response);
+      const { body } = await getReviewSchedule({ scheduleId });
+      setSchedule(body);
     }
   };
 

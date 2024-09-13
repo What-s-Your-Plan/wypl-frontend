@@ -1,3 +1,5 @@
+import { ReviewType } from '@/@types/Review';
+
 abstract class ReviewContent {
   blockType: ReviewType;
 

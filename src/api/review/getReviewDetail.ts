@@ -1,10 +1,17 @@
 import { axiosWithAccessToken } from '../axios';
 
-const getReviewDetail = async (reviewId: string) => {
-  const response = await axiosWithAccessToken.get(
-    `/review/v1/reviews/detail/${reviewId}`,
-  );
-  return response.data.body;
+import { REVIVE } from '@/api/endpoint.ts';
+
+/* Request */
+export type GetReviewPathVariable = {
+  reviewId: string;
 };
 
-export default getReviewDetail;
+/* API */
+export const getReviewDetail = async ({ reviewId }: GetReviewPathVariable) => {
+  const { data } = await axiosWithAccessToken.get(
+    `${REVIVE.V1.REVIEWS.DETAIL}/${reviewId}`,
+  );
+
+  return data;
+};

@@ -1,15 +1,25 @@
 import { axiosWithAccessToken } from '../axios';
 
+import { REVIVE } from '@/api/endpoint.ts';
 import { ReviewContent } from '@/objects/ReviewContent.ts';
 
-async function postReview(body: {
+/* Request */
+export type PostReviewRequest = {
   title: string;
   schedule_id: number;
   contents: ReviewContent[];
-}): Promise<number> {
-  const response = await axiosWithAccessToken.post('/review/v1/reviews', body);
-  console.log(response);
-  return response.data.body.review_id;
-}
+};
 
-export default postReview;
+/* Response */
+export type PostReviewResponse = {
+  review_id: number;
+};
+
+/* API */
+export const postReview = async (request: PostReviewRequest) => {
+  const { data } = await axiosWithAccessToken.post<
+    BaseResponse<PostReviewResponse>
+  >(REVIVE.V1.REVIEWS.BASE, request);
+
+  return data;
+};

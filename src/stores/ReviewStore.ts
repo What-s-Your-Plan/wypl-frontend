@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
+import { ReviewType } from '@/@types/Review';
 import {
   ReviewContent,
   TextContent,

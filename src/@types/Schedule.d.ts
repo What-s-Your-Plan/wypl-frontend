@@ -81,7 +81,7 @@ type ScheduleSimpleResponse = {
   group_id: number | null;
   label: Label | null;
   member_count: number;
-  members: Member[]; //개인 일정일 경우 1명의 정보만 들어
+  members: Member[]; //개인 일정일 경우 1명의 정보만 들어있다.
 };
 
 type RepetitionResponse = {
@@ -117,4 +117,16 @@ interface LabelFilterData {
   id: number;
   title: string;
   color: string;
+}
+
+interface ScheduleInfoData {
+  schedule_id: number;
+  title: string;
+  start_date: string; //ex) "2024-04-16T15:00:00"
+  end_date: string; //ex) "2024-04-16T17:00:00",
+  category: string; //ex) "group"이거나 "member"
+  group_id: number | null;
+  label: Label | null;
+  member_count: number;
+  members: Member[]; //개인 일정일 경우 1명의 정보만 들어있다.
 }

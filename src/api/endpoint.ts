@@ -17,6 +17,12 @@ const CALENDAR = {
   },
 };
 
+const FILE = {
+  V1: {
+    IMAGE: '/file/v1/images',
+  },
+};
+
 const GROUP = {
   V1: {
     GROUPS: {
@@ -61,4 +67,31 @@ const NOTIFICATION = {
   },
 };
 
-export { AUTH, CALENDAR, GROUP, LABEL, MEMBER, NOTIFICATION };
+const REVIVE = {
+  V1: {
+    REVIEWS: {
+      BASE: '/revive/v1/revives',
+      DETAIL: '/revive/v1/revives/detail',
+    },
+  },
+};
+
+const SCHEDULE = {
+  V1: {
+    SCHEDULES: {
+      BASE: '/schedule/v1/schedules',
+    },
+  },
+};
+
+export {
+  AUTH,
+  CALENDAR,
+  FILE,
+  GROUP,
+  LABEL,
+  MEMBER,
+  NOTIFICATION,
+  REVIVE,
+  SCHEDULE,
+};

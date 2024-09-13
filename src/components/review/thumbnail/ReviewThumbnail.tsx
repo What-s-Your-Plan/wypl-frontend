@@ -5,6 +5,7 @@ import TPicture from './TPicture';
 import TText from './TText';
 import TWeather from './TWeather';
 
+import { ReviewType } from '@/@types/Review';
 import {
   ReviewContent,
   TextContent,

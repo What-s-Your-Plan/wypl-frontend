@@ -1,21 +1,34 @@
 import { axiosWithAccessToken } from '../axios';
 
+import { REVIVE } from '@/api/endpoint.ts';
 import { ReviewContent } from '@/objects/ReviewContent.ts';
 
-async function patchReview(
-  review_id: number,
-  body: {
-    title: string;
-    schedule_id: number;
-    contents: ReviewContent[];
-  },
-): Promise<number> {
-  const response = await axiosWithAccessToken.patch(
-    `/review/v1/reviews/${review_id}`,
-    body,
-  );
-  console.log(response);
-  return response.data.body.review_id;
-}
+/* Request */
+export type PathReviewPathVariable = {
+  reviewId: number;
+};
 
-export default patchReview;
+export type PatchReviewRequest = {
+  title: string;
+  schedule_id: number;
+  contents: ReviewContent[];
+};
+
+/* Response */
+export type PatchReviewResponse = {
+  schedule_id: number;
+  title: string;
+  contents: ReviewContent[];
+};
+
+/* API */
+export const patchReview = async (
+  { reviewId }: PathReviewPathVariable,
+  request: PatchReviewRequest,
+) => {
+  const { data } = await axiosWithAccessToken.patch<
+    BaseResponse<PatchReviewResponse>
+  >(`${REVIVE.V1.REVIEWS.BASE}/${reviewId}`, request);
+
+  return data;
+};
