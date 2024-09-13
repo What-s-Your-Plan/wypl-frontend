@@ -18,8 +18,8 @@ function PrivateWrapper() {
       navigate(BROWSER_PATH.LANDING);
     }
 
-    isMounted.current = true; // 플래그 설정
-  }, [accessToken, refreshToken, navigate]); // 의존성 배열을 안전하게 추가
+    isMounted.current = true;
+  }, [accessToken, refreshToken, navigate]);
 
   return <Outlet />;
 }
