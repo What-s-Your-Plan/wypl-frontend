@@ -1,11 +1,17 @@
 import { axiosWithAccessToken } from '../axios';
 
-async function deleteTodo(todo_id : string){
-    const response = await axiosWithAccessToken.delete(
-        `/todo/v1/todos/${todo_id}`,
-    );
-    console.log(response);
-    return;
-}
+import { TODO } from '@/api/endpoint.ts';
 
-export default deleteTodo;
+/* Request */
+export type DeleteTodoPathVariable = {
+  todoId: string;
+};
+
+/* API */
+export const deleteTodo = async ({ todoId }: DeleteTodoPathVariable) => {
+  const { data } = await axiosWithAccessToken.delete<BaseResponse<void>>(
+    `${TODO.V1.TODOS.BASE}/${todoId}`,
+  );
+
+  return data;
+};

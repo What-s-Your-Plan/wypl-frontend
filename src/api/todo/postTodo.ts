@@ -1,10 +1,18 @@
-import { axiosWithAccessToken } from "../axios";
+import { axiosWithAccessToken } from '../axios';
 
-async function postTodo(body : {
-    content : string;
-}) : Promise<void> {
-    const response = await axiosWithAccessToken.post('/todo/v1/todos', body);
-    console.log(response);
-}
+import { TODO } from '@/api/endpoint.ts';
 
-export default postTodo;
+/* Request */
+export type PostTodoRequest = {
+  content: string;
+};
+
+/* API */
+export const postTodo = async (request: PostTodoRequest) => {
+  const { data } = await axiosWithAccessToken.post<BaseResponse<void>>(
+    TODO.V1.TODOS.BASE,
+    request,
+  );
+
+  return data;
+};

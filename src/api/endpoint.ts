@@ -85,6 +85,15 @@ const SCHEDULE = {
   },
 };
 
+const TODO = {
+  V1: {
+    TODOS: {
+      BASE: '/todo/v1/todos',
+      CHECK: '/todo/v1/todos/check',
+    },
+  },
+};
+
 export {
   AUTH,
   CALENDAR,
@@ -95,4 +104,5 @@ export {
   NOTIFICATION,
   REVIVE,
   SCHEDULE,
+  TODO,
 };

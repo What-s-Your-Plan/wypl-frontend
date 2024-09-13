@@ -1,16 +1,25 @@
 import { axiosWithAccessToken } from '../axios';
 
-async function patchTodo(
-    todo_id : number,
-    body : {
-        content : string
-    }
-) : Promise<void> {
-    const response = await axiosWithAccessToken.patch(
-        `/todo/v1/todos/${todo_id}`,
-        body
-    );
-    console.log(response);
-}
+import { TODO } from '@/api/endpoint.ts';
 
-export default patchTodo;
+/* Request */
+export type PatchTodoPathVariable = {
+  todoId: number;
+};
+
+export type PatchTodoRequest = {
+  content: string;
+};
+
+/* API */
+export const patchTodo = async (
+  { todoId }: PatchTodoPathVariable,
+  request: PatchTodoRequest,
+) => {
+  const { data } = await axiosWithAccessToken.patch<BaseResponse<void>>(
+    `${TODO.V1.TODOS.BASE}/${todoId}`,
+    request,
+  );
+
+  return data;
+};
