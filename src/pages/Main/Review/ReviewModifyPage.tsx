@@ -15,10 +15,10 @@ function ReviewModifyPage() {
   useEffect(() => {
     const fetchReviewDetail = async () => {
       if (reviewId) {
-        const response = await getReviewDetail({ reviewId });
+        const { body } = await getReviewDetail({ reviewId });
         const mappedResponse = {
-          ...response,
-          contents: response.contents.map((content: ReviewContent) => ({
+          ...body,
+          contents: body.contents.map((content: ReviewContent) => ({
             ...content,
             blockType: content.blockType as ReviewType,
           })),

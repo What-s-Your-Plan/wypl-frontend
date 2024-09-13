@@ -8,8 +8,8 @@ import VText from './VText';
 import VTitle from './VTitle';
 import VWeather from './VWeather';
 
-import { ReviewResponse } from '@/@types/ReviewResponse';
-import { Divider } from '@/components/common/Divider';
+import { ReviewDetailData } from '@/@types/ReviewResponse';
+import { Divider }          from '@/components/common/Divider';
 import {
   TextContent,
   PictureContent,
@@ -20,7 +20,7 @@ import {
 }                  from '@/objects/ReviewContent.ts';
 
 type DetailBlockListProps = {
-  detail: ReviewResponse;
+  detail: ReviewDetailData;
 };
 
 function DetailBlockList({ detail }: DetailBlockListProps) {
