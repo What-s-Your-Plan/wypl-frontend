@@ -10,8 +10,8 @@ import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
 import UsersIcon from '@/assets/icons/users.svg';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
 import Button from '@/components/common/Button';
-import LabelButton from '@/components/common/LabelButton';
-import { isAllday, padding0, stringToDate } from '@/utils/DateUtils';
+import LabelButton                          from '@/components/common/LabelButton';
+import { isAllDay, padding0, stringToDate } from '@/utils/DateUtils';
 
 function Title({ title }: { title: string }) {
   return (
@@ -27,7 +27,7 @@ function Title({ title }: { title: string }) {
 function Time({ startDate, endDate }: { startDate: string; endDate: string }) {
   const start = stringToDate(startDate);
   const end = stringToDate(endDate);
-  const allday = isAllday(start, end);
+  const allday = isAllDay(start, end);
   const startAmPm = start.getHours() > 12 ? 'PM' : 'AM';
   const endAmPm = end.getHours() > 12 ? 'PM' : 'AM';
   const startHour = padding0(
@@ -122,7 +122,7 @@ function Member({ member }: { member: Array<Member> }) {
 
 const day = ['일', '월', '화', '수', '목', '금', '토'];
 
-function Repeat({ repeat }: { repeat: RepetitionResponse }) {
+function Repeat({ repeat }: { repeat: RepetitionDetailData }) {
   let cycle: string;
   const dayOfWeek: Array<string> = [];
   if (repeat.repetition_cycle === 'YEAR') {

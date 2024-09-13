@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import postSchedule  from '@/api/schedule/postSchedule';
+import {
+  postSchedule,
+  PostScheduleResponse,
+} from '@/api/schedule/postSchedule';
 import Modal from '@/components/common/Modal';
 import SchedulePanel from '@/components/schedule/SchedulePanel';
 import useForm from '@/hooks/useForm';
 
 type ScheduleModalProps = {
   isOpen: boolean;
-  init: Schedule & Repeat;
+  init: ScheduleData & RepeatData;
   handleClose: (() => void) | (() => Promise<void>);
   handleConfirm: (() => void) | (() => Promise<void>);
 };
@@ -20,8 +23,8 @@ function ScheduleModal({
   handleConfirm,
 }: ScheduleModalProps) {
   const { form, setForm, handleChange, handleSubmit } = useForm<
-    Schedule & Repeat,
-    void
+    ScheduleData & RepeatData,
+    PostScheduleResponse
   >(init, postSchedule);
 
   const { groupId } = useParams();

@@ -1,9 +1,9 @@
-const initialSchedule: Schedule & Repeat = {
+const initialSchedule: ScheduleData & RepeatData = {
   title: '',
   description: '',
   startDate: '',
   endDate: '',
-  isAllday: false,
+  isAllDay: false,
   startAMPM: 'AM',
   endAMPM: 'AM',
   startHour: 12,

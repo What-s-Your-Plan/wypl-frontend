@@ -1,30 +1,30 @@
-import { useEffect, useState, Dispatch, SetStateAction } from 'react';
+import React, { useEffect, useState, Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import * as Items                                        from './SkedDetailItems';
-import SkedModify from './SkedModify';
+import ScheduleModify from './ScheduleModify.tsx';
+import * as Items from './SkedDetailItems';
 import Modal from '../common/Modal';
 
-import deleteSchedule                                    from '@/api/schedule/deleteSchedule';
+import deleteSchedule from '@/api/schedule/deleteSchedule';
 import EditIcon from '@/assets/icons/editPaper.svg';
 import TrashIcon from '@/assets/icons/trash.svg';
 import useMemberStore from '@/stores/MemberStore';
 
 type DetailProps = {
-  isModify: boolean;
-  setModifyTrue: () => void;
-  schedule: ScheduleResponse | null;
-  states: Schedule & Repeat;
   handleChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
-  setStates: Dispatch<SetStateAction<Schedule & Repeat>>;
   handleClose: (() => void) | (() => Promise<void>);
+  isModify: boolean;
+  schedule: ScheduleDetailData | null;
+  setModifyTrue: () => void;
+  setStates: Dispatch<SetStateAction<ScheduleData & RepeatData>>;
+  states: ScheduleData & RepeatData;
 };
 
-function SkedDetailPanel({
+function ScheduleDetailPanel({
   isModify,
   setModifyTrue,
   schedule,
@@ -34,17 +34,10 @@ function SkedDetailPanel({
   handleClose,
 }: DetailProps) {
   const navigator = useNavigate();
-  // const [schedule, setSchedule] = useState<ScheduleResponse | null>(null);
   const [canModify, setCanModify] = useState<boolean>(false);
   const [deleteOpen, setDeleteOpen] = useState<boolean>(false);
   const [modificationType, setModificationType] = useState<string>('NOW');
   const { memberId } = useMemberStore();
-  // const getSchedule = async () => {
-  //   const response = await getScheduleDetail(scheduleId);
-  //   if (response) {
-  //     setSchedule(response);
-  //   }
-  // };
 
   const clickDeleteBtn = async () => {
     if (schedule?.repetition !== null) {
@@ -56,57 +49,14 @@ function SkedDetailPanel({
 
   const deleteAllSchedule = async () => {
     if (schedule) {
-      await deleteSchedule(schedule?.schedule_id, modificationType);
+      await deleteSchedule({
+        scheduleId: schedule?.schedule_id,
+        modificationType,
+      });
       setDeleteOpen(false);
       handleClose();
     }
   };
-
-  // useEffect(() => {
-  //   getSchedule();
-  // }, []);
-  // =======
-  // import useMemberStore from '@/stores/MemberStore';
-  // import Modal from '../common/Modal';
-
-  // type DetailProps = {
-  //   scheduleId: number;
-  //   handleClose: (() => void) | (() => Promise<void>);
-  // };
-
-  // function SkedDetailPanel({ scheduleId, handleClose}: DetailProps) {
-  //   const navigator = useNavigate();
-  //   // const [schedule, setSchedule] = useState<ScheduleResponse | null>(null);
-  //   const [canModify, setCanModify] = useState<boolean>(false);
-  //   const [deleteOpen, setDeleteOpen] = useState<boolean>(false);
-  //   const [modificationType, setModificationType] = useState<string>("NOW");
-  //   const {memberId} = useMemberStore();
-  //   // const getSchedule = async () => {
-  //   //   const response = await getScheduleDetail(scheduleId);
-  //   //   if (response) {
-  //   //     setSchedule(response);
-  //   //   }
-  //   // };
-
-  //   const clickDeleteBtn = async () => {
-  //     if(schedule?.repetition !== null){
-  //       setDeleteOpen(true);
-  //     }
-  //     else{
-  //       deleteAllSchedule();
-  //     }
-  //   }
-
-  //   const deleteAllSchedule = async() => {
-  //     await deleteSchedule(scheduleId, modificationType);
-  //     setDeleteOpen(false);
-  //     handleClose();
-  //   }
-
-  //   useEffect(() => {
-  //     getSchedule();
-  //   }, []);
-  // >>>>>>> 1ba8ed3f0062647ae078116d39ed9b5bdb6cf4ba
 
   useEffect(() => {
     //스케줄에 포함된 멤버인지 확인
@@ -122,7 +72,7 @@ function SkedDetailPanel({
     <div className="w-[580px] flex flex-col justify-center">
       {schedule &&
         (isModify ? (
-          <SkedModify
+          <ScheduleModify
             states={states}
             handleChange={handleChange}
             setStates={setStates}
@@ -214,52 +164,4 @@ function SkedDetailPanel({
   );
 }
 
-export default SkedDetailPanel;
-
-{
-  /* <<<<<<< HEAD
-      {schedule &&
-        (isModify ? (
-          <SkedModify states={states} handleChange={handleChange} setStates={setStates} />
-        ) : (
-          <>
-            <div className="flex flex-row-reverse gap-2">
-              <button>
-                <img src={TrashIcon} alt="trash" />
-              </button>
-              <button
-                onClick={() => {
-                  setModifyTrue();
-                }}
-              >
-                <img
-                  src={EditIcon}
-                  alt="edit"
-                />
-              </button>
-            </div>
-            <Items.Title title={schedule.title} />
-            <Items.Time
-              startDate={schedule.start_date}
-              endDate={schedule.end_date}
-            />
-            {schedule.description && (
-              <Items.Description content={schedule.description} />
-            )}
-            {schedule.category === 'MEMBER' ? (
-              <Items.Label label={schedule.label} />
-            ) : (
-              <Items.Member member={schedule.members} />
-            )}
-            {schedule.repetition && (
-              <Items.Repeat repeat={schedule.repetition} />
-            )}
-            <Items.WriteReview
-              handleClick={() => {
-                navigator(`/review/write/${schedule.schedule_id}`);
-              }}
-            />
-          </>
-        ))}
-======= */
-}
+export default ScheduleDetailPanel;

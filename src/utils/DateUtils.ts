@@ -18,6 +18,10 @@ function dateTimeToString(date: Date): string {
   return `${date.getFullYear()}-${padding0(date.getMonth() + 1)}-${padding0(date.getDate())}T${padding0(date.getHours())}:${padding0(date.getMinutes())}`;
 }
 
+function getHour(hour: number): number {
+  return hour === 12 ? 0 : Number(hour);
+}
+
 function stringToDate(str: string): Date {
   return new Date(str);
 }
@@ -50,7 +54,7 @@ function splitTTime(date: string) {
   }
 }
 
-function isAllday(start: Date, end: Date): boolean {
+function isAllDay(start: Date, end: Date): boolean {
   return (
     start.getHours() === 0 &&
     start.getMinutes() === 0 &&
@@ -64,7 +68,7 @@ function getTime(date: string) {
   let hour = time[0];
   const minute = time[1];
   const ampm = Number(hour) >= 12 ? 'PM' : 'AM';
-  hour = Number(hour) ? hour : '12'
+  hour = Number(hour) ? hour : '12';
 
   return `${ampm} ${hour}:${minute}`;
 }
@@ -75,9 +79,10 @@ export {
   dateToString,
   dateTimeToString,
   stringToDate,
+  getHour,
   padding0,
   getDateDiff,
   splitTTime,
-  isAllday,
+  isAllDay,
   getTime,
 };

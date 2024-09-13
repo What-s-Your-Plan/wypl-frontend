@@ -3,13 +3,13 @@ import { Dispatch, SetStateAction } from 'react';
 import * as Items from '@/components/schedule/ScheduleItems';
 
 type SchedulePanelProps = {
-  states: Schedule & Repeat;
+  states: ScheduleData & RepeatData;
   handleChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
-  setStates: Dispatch<SetStateAction<Schedule & Repeat>>;
+  setStates: Dispatch<SetStateAction<ScheduleData & RepeatData>>;
 };
 
 function SchedulePanel({

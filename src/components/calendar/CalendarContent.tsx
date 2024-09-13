@@ -10,9 +10,9 @@ import MonthlyCalender from '@/components/calendar/Monthly/MonthlyCalendar';
 import WeeklyCalendar from '@/components/calendar/Weekly/WeeklyCalendar';
 import Button from '@/components/common/Button';
 import * as Containers from '@/components/common/Container';
-import ScheduleModal from '@/components/schedule/ScheduleModal';
-import SkedDetailModal from '@/components/schedule/SkedDetailModal';
-import initialSchedule from '@/constants/ScheduleFormInit';
+import ScheduleModal       from '@/components/schedule/ScheduleModal';
+import ScheduleDetailModal from '@/components/schedule/ScheduleDetailModal.tsx';
+import initialSchedule     from '@/constants/ScheduleFormInit';
 import useDateStore from '@/stores/DateStore';
 import useMemberStore from '@/stores/MemberStore';
 import { dateToString } from '@/utils/DateUtils';
@@ -31,7 +31,7 @@ function CalendarContent({ category, groupId }: CalendarProps) {
   const [isDetailOpen, setDetailOpen] = useState<boolean>(false);
   const [detailId, setDetailId] = useState<number | null>(null);
   const [needUpdate, setNeedUpdate] = useState<boolean>(false);
-  const [skedInit, setSkedInit] = useState<Schedule & Repeat>({
+  const [skedInit, setSkedInit] = useState<ScheduleData & RepeatData>({
     ...initialSchedule,
     category,
     members: [{ member_id: memberId as number }],
@@ -142,7 +142,7 @@ function CalendarContent({ category, groupId }: CalendarProps) {
         handleClose={closeCreate}
         handleConfirm={setUpdateTrue}
       />
-      <SkedDetailModal
+      <ScheduleDetailModal
         isOpen={isDetailOpen}
         scheduleId={detailId as number}
         handleClose={closeDetail}

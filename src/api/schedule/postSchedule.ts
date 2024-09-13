@@ -1,98 +1,132 @@
 import { axiosWithAccessToken } from '@/api/axios';
-import { dateTimeToString }     from '@/utils/DateUtils';
+import { dateTimeToString, getHour } from '@/utils/DateUtils';
 
-async function postSchedule(schedule: Schedule & Repeat) {
-  const body: any = {
-    title: schedule.title,
-    category: schedule.category,
+/* Request */
+export type PostScheduleRequest = {
+  title: string;
+  description: string;
+  category: ScheduleCategory;
+  group_id: number | null;
+  label_id: number | null;
+  start_date: string;
+  end_date: string;
+  repetition: RepetitionData;
+  members: {
+    member_id: number;
+  }[];
+};
+
+/* Response */
+export type PostScheduleResponse = ScheduleDetailData;
+
+/* API */
+export const postSchedule = async (schedule: ScheduleData & RepeatData) => {
+  const request: PostScheduleRequest = getScheduleRequest(schedule);
+
+  const { data } = await axiosWithAccessToken.post<
+    BaseResponse<PostScheduleResponse>
+  >('/schedule/v1/schedules', request);
+
+  return data;
+};
+
+export function getScheduleRequest(schedule: ScheduleData & RepeatData) {
+  const {
+    title,
+    description,
+    category,
+    groupId,
+    label,
+    startDate,
+    endDate,
+    isAllDay,
+    startHour,
+    endHour,
+    startAMPM,
+    endAMPM,
+    startMinute,
+    endMinute,
+    members,
+  } = schedule;
+
+  const formattedDescription = description.length > 0 ? description : '';
+  const group_id = category === 'GROUP' ? groupId : null;
+  const label_id = category === 'MEMBER' && label ? label.id : null;
+
+  const scheduleStartDate = new Date(startDate);
+  const scheduleEndDate = new Date(endDate);
+  if (isAllDay) {
+    scheduleStartDate.setHours(0, 0); // 자정으로 설정
+    scheduleEndDate.setHours(23, 59); // 하루의 끝 시간으로 설정
+  } else {
+    const adjustedStartHour =
+      getHour(startHour) + (startAMPM === 'PM' ? 12 : 0);
+    const adjustedEndHour = getHour(endHour) + (endAMPM === 'PM' ? 12 : 0);
+
+    scheduleStartDate.setHours(adjustedStartHour, startMinute);
+    scheduleEndDate.setHours(adjustedEndHour, endMinute);
+  }
+  const start_date = dateTimeToString(scheduleStartDate);
+  const end_date = dateTimeToString(scheduleEndDate);
+
+  const memberIds = members.map(({ member_id }) => ({ member_id }));
+  const repetition = getRepetition(schedule);
+
+  const request: PostScheduleRequest = {
+    title,
+    category,
+    repetition,
+    group_id,
+    label_id,
+    members: memberIds,
+    description: formattedDescription,
+    start_date,
+    end_date,
   };
-
-  if (schedule.category === 'GROUP') {
-    body.group_id = schedule.groupId;
-  } else if (schedule.category === 'MEMBER') {
-    if (schedule.label) {
-      body.label_id = schedule.label.id;
-    }
-  }
-
-  body.members = schedule.members.map((member) => {
-    return {
-      member_id: member.member_id,
-    };
-  });
-
-  schedule.description.length > 0
-    ? (body.description = schedule.description)
-    : null;
-
-  const startDate = new Date(schedule.startDate);
-  const endDate = new Date(schedule.endDate);
-  if (schedule.isAllday === true) {
-    startDate.setHours(0);
-    startDate.setMinutes(0);
-    endDate.setHours(23);
-    endDate.setMinutes(59);
-  } else if (schedule.isAllday === false) {
-    let startHour = schedule.startHour === 12 ? 0 : Number(schedule.startHour);
-    const startMinute = schedule.startMinute;
-    let endHour = schedule.endHour === 12 ? 0 : Number(schedule.endHour);
-    const endMinute = schedule.endMinute;
-
-    schedule.startAMPM === 'PM' ? (startHour += 12) : null;
-    schedule.endAMPM === 'PM' ? (endHour += 12) : null;
-
-    startDate.setHours(startHour);
-    startDate.setMinutes(startMinute);
-    endDate.setHours(endHour);
-    endDate.setMinutes(endMinute);
-  }
-
-  body.start_date = dateTimeToString(startDate);
-  body.end_date = dateTimeToString(endDate);
-
-  if (schedule.isRepetition) {
-    body.repetition = {};
-    body.repetition.repetition_start_date = schedule.startDate;
-    switch (schedule.repetitionCycle) {
-      case '매일':
-        body.repetition.repetition_cycle = 'WEEK';
-        body.repetition.week = 1;
-        body.repetition.day_of_week = 2 ** 7 - 1;
-        break;
-      case '매 주':
-        body.repetition.repetition_cycle = 'WEEK';
-        body.repetition.week = schedule.week;
-        body.repetition.day_of_week = schedule.dayOfWeek;
-        break;
-      case '매 달':
-        body.repetition.repetition_cycle = 'MONTH';
-        body.repetition.day_of_week = 0;
-        break;
-      case '매 년':
-        body.repetition.repetition_cycle = 'YEAR';
-        body.repetition.day_of_week = 0;
-        break;
-      default:
-        break;
-    }
-    if (schedule.period === '종료 날짜') {
-      body.repetition.repetition_end_date = schedule.endRDate;
-    }
-  }
-
-  try {
-    const response = await axiosWithAccessToken.post(
-      '/schedule/v1/schedules',
-      body,
-    );
-    if (response.status !== 201) {
-      console.log(response.status);
-    } else {
-      console.log(response);
-    }
-  } catch (err) {
-    throw err;
-  }
+  return request;
 }
 
-export default postSchedule;
+/**
+ * 입력한 데이터에서 반복 주기 정보를 가져옵니다.
+ *  TODO: PutMapping 에서도 사용되므로 어떤 패키지로 옮기면 좋을지 고민해봅니다.
+ *
+ * @param schedule  사용자가 입력한 일정 정보
+ */
+export function getRepetition(
+  schedule: ScheduleData & RepeatData,
+): RepetitionData {
+  const endRepetitionDate =
+    schedule.period === '종료 날짜' ? schedule.endRDate : null;
+
+  const baseRepetitionData: RepetitionData = {
+    repetition_cycle: 'YEAR',
+    repetition_start_date: schedule.startDate,
+    repetition_end_date: endRepetitionDate,
+    day_of_week: 0,
+    week: null,
+  };
+
+  switch (schedule.repetitionCycle) {
+    case '매일':
+      return {
+        ...baseRepetitionData,
+        repetition_cycle: 'WEEK',
+        day_of_week: 2 ** 7 - 1, // 모든 요일
+        week: 1,
+      };
+    case '매 주':
+      return {
+        ...baseRepetitionData,
+        repetition_cycle: 'WEEK',
+        day_of_week: schedule.dayOfWeek,
+        week: schedule.week,
+      };
+    case '매 월':
+      return {
+        ...baseRepetitionData,
+        repetition_cycle: 'MONTH',
+      };
+    default:
+      return baseRepetitionData; // 'YEAR'에 해당
+  }
+}

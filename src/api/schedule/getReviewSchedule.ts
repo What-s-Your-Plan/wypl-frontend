@@ -8,7 +8,7 @@ export type GetReviewSchedulePathVariable = {
 };
 
 /* Response */
-export type GetReviewScheduleResponse = ScheduleInfoData;
+export type GetReviewScheduleResponse = ScheduleSummaryData;
 
 /* API */
 export const getReviewSchedule = async ({

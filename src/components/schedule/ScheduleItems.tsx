@@ -24,7 +24,7 @@ import CreateLabel from '@/components/label/CreateLabel';
 import useDateStore from '@/stores/DateStore';
 
 type ChangeProps = {
-  states: Schedule & Repeat;
+  states: ScheduleData & RepeatData;
   handleChange: (
     e:
       | React.ChangeEvent<HTMLInputElement>
@@ -33,8 +33,8 @@ type ChangeProps = {
 };
 
 type SetProps = {
-  states: Schedule & Repeat;
-  setStates: Dispatch<SetStateAction<Schedule & Repeat>>;
+  states: ScheduleData & RepeatData;
+  setStates: Dispatch<SetStateAction<ScheduleData & RepeatData>>;
 };
 
 function Title({ states, handleChange }: ChangeProps) {
@@ -78,7 +78,7 @@ function Time({ states, handleChange, setStates }: ChangeProps & SetProps) {
     setStates((prev) => {
       return {
         ...prev,
-        isAllday: value,
+        isAllDay: value,
       };
     });
   };
@@ -108,7 +108,7 @@ function Time({ states, handleChange, setStates }: ChangeProps & SetProps) {
         <S.BetweenDiv>
           <span>하루 종일</span>
           <Toggle
-            enabled={states.isAllday}
+            enabled={states.isAllDay}
             setEnabled={handleAllday as Dispatch<SetStateAction<boolean>>}
           />
         </S.BetweenDiv>
@@ -120,7 +120,7 @@ function Time({ states, handleChange, setStates }: ChangeProps & SetProps) {
               name="startDate"
               onChange={handleChange}
             />
-            {states.isAllday ? null : (
+            {states.isAllDay ? null : (
               <S.TimeContainer>
                 <ListBox
                   list={ampm}
@@ -162,7 +162,7 @@ function Time({ states, handleChange, setStates }: ChangeProps & SetProps) {
               name="endDate"
               onChange={handleChange}
             />
-            {states.isAllday ? null : (
+            {states.isAllDay ? null : (
               <S.TimeContainer>
                 <ListBox
                   list={ampm}

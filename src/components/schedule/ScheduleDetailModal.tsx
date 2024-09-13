@@ -1,31 +1,32 @@
 import { useEffect, useState } from 'react';
 
-import SkedDetailPanel         from './SkedDetailPanel';
+import ScheduleDetailPanel from './ScheduleDetailPanel.tsx';
 import Modal from '../common/Modal';
 
-import getScheduleDetail       from '@/api/schedule/getScheduleDetail';
-import putSchedule             from '@/api/schedule/putSchedule';
-import initialSchedule         from '@/constants/ScheduleFormInit';
-import useForm                 from '@/hooks/useForm';
+import getScheduleDetail from '@/api/schedule/getScheduleDetail';
+import { putSchedule } from '@/api/schedule/putSchedule';
+import initialSchedule from '@/constants/ScheduleFormInit';
+import useForm from '@/hooks/useForm';
 import { padding0, stringToDate } from '@/utils/DateUtils';
-import { isAllday } from '@/utils/DateUtils';
+import { isAllDay } from '@/utils/DateUtils';
 
 type DetailModalProps = {
+  handleClose: (() => void) | (() => Promise<void>);
   isOpen: boolean;
   scheduleId: number;
-  handleClose: (() => void) | (() => Promise<void>);
   setUpdateTrue: () => void;
 };
 
-function createInit(schedule: ScheduleResponse) {
+function createInit(schedule: ScheduleDetailData) {
   const startDate = stringToDate(schedule.start_date);
   const endDate = stringToDate(schedule.end_date);
-  const newInit = {
+
+  const newInit: any = {
     ...initialSchedule,
     scheduleId: schedule.schedule_id,
     title: schedule.title,
     category: schedule.category as 'MEMBER' | 'GROUP',
-    description: schedule.description ? schedule.description : '',
+    description: schedule.description || '',
     startDate: `${startDate.getFullYear()}-${padding0(startDate.getMonth() + 1)}-${padding0(startDate.getDate())}`,
     endDate: `${endDate.getFullYear()}-${padding0(endDate.getMonth() + 1)}-${padding0(endDate.getDate())}`,
     startHour: startDate.getHours(),
@@ -34,64 +35,62 @@ function createInit(schedule: ScheduleResponse) {
     endMinute: endDate.getMinutes(),
     startAMPM: startDate.getHours() >= 12 ? 'PM' : 'AM',
     endAMPM: endDate.getHours() >= 12 ? 'PM' : 'AM',
-    isAllday: isAllday(startDate, endDate),
+    isAllDay: isAllDay(startDate, endDate),
     groupId: schedule.group_id,
-    members: schedule.members.map((member) => {
-      return { member_id: member.member_id };
-    }),
-    repetition: schedule.repetition ? true : false,
+    members: schedule.members.map(({ member_id }) => ({ member_id })),
+    repetition: !!schedule.repetition,
   };
+
   if (schedule.repetition) {
-    (newInit.week = schedule.repetition.week),
-      (newInit.repetitionCycle = schedule.repetition.repetition_cycle),
-      (newInit.startDate = schedule.repetition.repetition_start_date),
-      (newInit.endDate = schedule.repetition.repetition_end_date),
-      (newInit.dayOfWeek = schedule.repetition.day_of_week);
+    Object.assign(newInit, {
+      week: schedule.repetition.week,
+      repetitionCycle: schedule.repetition.repetition_cycle,
+      startDate: schedule.repetition.repetition_start_date,
+      endDate: schedule.repetition.repetition_end_date,
+      dayOfWeek: schedule.repetition.day_of_week,
+    });
   }
 
   if (schedule.label) {
-    const newLabel = {
+    newInit.label = {
       category: 'MEMBER',
       id: schedule.label.label_id,
       title: schedule.label.title,
       color: schedule.label.color,
-    };
-    newInit.label = newLabel as Label;
+    } as Label;
   }
 
   return newInit;
 }
 
-function SkedDetailModal({
+function ScheduleDetailModal({
   isOpen,
   scheduleId,
   handleClose,
-  setUpdateTrue
+  setUpdateTrue,
 }: DetailModalProps) {
-  const handlePut = async (state: Schedule & Repeat) => {
+  const handlePut = async (state: ScheduleData & RepeatData) => {
     await putSchedule(state);
   };
   const [isModify, setIsModify] = useState<boolean>(false);
-  const [schedule, setSchedule] = useState<ScheduleResponse | null>(null);
+  const [schedule, setSchedule] = useState<ScheduleDetailData | null>(null);
   const { form, setForm, handleChange, handleSubmit } = useForm<
-    Schedule & Repeat,
+    ScheduleData & RepeatData,
     void
   >(initialSchedule, handlePut);
 
   const handelConfirm = async () => {
     await handleSubmit();
     setUpdateTrue();
-  }
+  };
 
   const setModifyTrue = () => {
     setIsModify(true);
   };
 
   const getSchedule = async () => {
-    const response = await getScheduleDetail(scheduleId);
-    if (response) {
-      setSchedule(response);
-    }
+    const { body } = await getScheduleDetail({ scheduleId });
+    setSchedule(body);
   };
 
   useEffect(() => {
@@ -103,12 +102,10 @@ function SkedDetailModal({
   useEffect(() => {
     if (schedule) {
       setForm(createInit(schedule));
-      console.log(createInit(schedule))
     }
   }, [schedule]);
 
-  useEffect(() => {
-  }, [form])
+  useEffect(() => {}, [form]);
 
   return (
     <Modal
@@ -122,7 +119,7 @@ function SkedDetailModal({
       }
       title={<></>}
       contents={
-        <SkedDetailPanel
+        <ScheduleDetailPanel
           isModify={isModify}
           setModifyTrue={setModifyTrue}
           states={form}
@@ -136,4 +133,4 @@ function SkedDetailModal({
   );
 }
 
-export default SkedDetailModal;
+export default ScheduleDetailModal;

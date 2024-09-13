@@ -26,7 +26,7 @@ import {
   getDateDiff,
   isSameDay,
   stringToDate,
-  isAllday,
+  isAllDay,
 } from '@/utils/DateUtils';
 import { labelFilter } from '@/utils/FilterUtils';
 
@@ -129,7 +129,7 @@ function WeeklyCalendar({
         );
         const startDay = startDate < firstDay ? 0 : startDate.getDay();
 
-        if (period > 0 || isAllday(startDate, endDate)) {
+        if (period > 0 || isAllDay(startDate, endDate)) {
           const maxPeriod = Math.min(6 - startDay, period);
           let row: number | null = null;
           let i = 0;

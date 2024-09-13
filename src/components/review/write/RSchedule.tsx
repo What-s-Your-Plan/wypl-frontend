@@ -17,7 +17,7 @@ type RScheduleProps = {
 };
 
 function RSchedule({ scheduleId }: RScheduleProps) {
-  const [schedule, setSchedule] = useState<ScheduleInfoData>();
+  const [schedule, setSchedule] = useState<ScheduleSummaryData>();
 
   const renderMemberProfile = () => {
     return schedule?.members.map((member) => {

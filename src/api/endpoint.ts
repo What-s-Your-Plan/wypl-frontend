@@ -80,6 +80,7 @@ const SCHEDULE = {
   V1: {
     SCHEDULES: {
       BASE: '/schedule/v1/schedules',
+      DETAIL: '/schedule/v1/schedules/detail',
     },
   },
 };
