@@ -1,5 +1,5 @@
 import { axiosWithMultiPart } from '@/api/axios';
-import { API_PATH } from '@/constants/Path';
+import { MEMBER } from '@/api/endpoint.ts';
 
 /* Request */
 export type UpdateProfileImageRequest = {
@@ -17,7 +17,7 @@ export const postProfileImage = async ({
 }: UpdateProfileImageRequest) => {
   const { data } = await axiosWithMultiPart.post<
     BaseResponse<UpdateProfileImageResponse>
-  >(API_PATH.MEMBER.PROFILE_IMAGE, formData);
+  >(MEMBER.V1.MEMBERS.PROFILE_IMAGE, formData);
 
   return data;
 };

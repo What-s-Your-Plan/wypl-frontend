@@ -5,11 +5,8 @@ import {
   issueTokens,
   IssueTokenParams,
   IssueTokenPathVariable,
-}                       from '@/api/auth/issueTokens.ts';
-import {
-  ReissueTokenParams,
-  reissueTokens,
-}                       from '@/api/auth/reissue.ts';
+} from '@/api/auth/issueTokens.ts';
+import { ReissueTokenParams, reissueTokens } from '@/api/auth/reissue.ts';
 import { BROWSER_PATH } from '@/constants/Path';
 import useMemberStore from '@/stores/MemberStore';
 import useJsonWebTokensStore from '@/stores/TokenStore';

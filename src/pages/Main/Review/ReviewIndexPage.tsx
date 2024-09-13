@@ -7,6 +7,7 @@ import NoContentAnimation from '@/components/animation/NoContent';
 import { Container, WhiteContainer } from '@/components/common/Container';
 import { Divider } from '@/components/common/Divider';
 import ReviewThumbnail from '@/components/review/thumbnail/ReviewThumbnail';
+import { MAX_VALUE } from '@/constants/JavaNumber.ts';
 
 function ReviewIndexPage() {
   const navigator = useNavigate();
@@ -16,7 +17,7 @@ function ReviewIndexPage() {
     useState<PagingCondition>({
       hasNext: true,
       sort: 'NEWEST',
-      lastId: 2_100_000_000,
+      lastId: MAX_VALUE.INTEGER,
     });
 
   /**
