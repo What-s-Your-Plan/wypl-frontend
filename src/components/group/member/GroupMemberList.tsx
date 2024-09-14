@@ -16,14 +16,14 @@ import {
   GetGroupMembersResponse,
 } from '@/api/group/getGroupMember';
 import X from '@/assets/icons/x.svg';
-import { BgColors } from '@/assets/styles/colorThemes';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import Tooltip from '@/components/tooltip/Tooltip';
 import useMemberStore from '@/stores/MemberStore';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupMemberProps = {
   groupId: number;
-  color: BgColors;
+  color: LabelColorsType;
   isOwner: boolean;
   groupDeleteEvent: (groupId: number) => void;
 };

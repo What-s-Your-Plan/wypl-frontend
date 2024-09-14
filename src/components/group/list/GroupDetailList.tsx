@@ -26,7 +26,7 @@ import {
 } from '@/api/group/postGroupInvite';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Setting from '@/assets/icons/settings.svg';
-import { BgColors } from '@/assets/styles/colorThemes';
+import { BgColors, LabelColorsType } from '@/assets/styles/colorThemes';
 import PalettePanel from '@/components/color/PalettePanel';
 import PopOver from '@/components/common/PopOver';
 import Tooltip from '@/components/tooltip/Tooltip';
@@ -46,9 +46,11 @@ function GroupDetailList({
   const navigate = useNavigate();
   const { groupId } = useParams();
   const { addToast } = useToastStore();
-  const [color, setColor] = useState<BgColors>(group.color as BgColors);
+  const [color, setColor] = useState<LabelColorsType>(
+    group.color as LabelColorsType,
+  );
 
-  const handleChangeColor = async (color: BgColors) => {
+  const handleChangeColor = async (color: LabelColorsType) => {
     const pathVariable: PersonalGroupColorUpdatePathVariable = {
       groupId: group.id,
     };
@@ -56,7 +58,7 @@ function GroupDetailList({
       color,
     };
     const data = await patchPersonalGroupColor(pathVariable, request);
-    setColor(data.body.color as BgColors);
+    setColor(data.body.color as LabelColorsType);
   };
 
   const gotoGroupPage = (open: boolean) => {
