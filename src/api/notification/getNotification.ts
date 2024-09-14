@@ -9,10 +9,12 @@ export type GetNotificationParams = {
 
 /* Response */
 export type WYPLNotificationResponse = {
-  notification: WYPLNotificationData[];
+  notifications: WYPLNotificationData[];
   last_id: string;
   has_next: boolean;
   page_size: number;
+  total_notification_count: number;
+  total_page_count: number;
 };
 
 /* API */

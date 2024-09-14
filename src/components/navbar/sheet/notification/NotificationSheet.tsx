@@ -17,13 +17,13 @@ function NotificationSheet() {
 
   const [notifications, setNotifications] =
     useState<WYPLNotificationPagingData>({
-      notification: [],
+      notifications: [],
       last_id: '',
       has_next: true,
     });
 
   const renderNotification = () => {
-    return notifications?.notification.map((notification) => {
+    return notifications?.notifications.map((notification) => {
       return (
         <div key={notification.id} className="w-full mb-4">
           <Divider />
@@ -50,7 +50,7 @@ function NotificationSheet() {
           ...prev,
           has_next: false,
           last_id: '',
-          notification: [],
+          notifications: [],
         };
       });
       addToast({
@@ -65,11 +65,13 @@ function NotificationSheet() {
     const { body } = await getNotification({
       lastId: notifications?.last_id,
     });
+
     const newNotifications = body;
-    newNotifications.notification = [
-      ...notifications.notification,
-      ...body.notification,
+    newNotifications.notifications = [
+      ...notifications.notifications,
+      ...body.notifications,
     ];
+
     setNotifications(newNotifications);
   };
 
@@ -82,7 +84,7 @@ function NotificationSheet() {
       <div className="h-[10%] flex items-center">
         <img src={Bell} alt="알림" />
       </div>
-      {notifications?.notification.length > 0 ? (
+      {notifications?.notifications.length > 0 ? (
         <div className="scrollBar w-full h-4/5 flex flex-col">
           {renderNotification()}
           {notifications.has_next && (
