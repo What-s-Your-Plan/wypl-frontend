@@ -16,8 +16,6 @@ import useMemberStore from '@/stores/MemberStore';
 import useToastStore from '@/stores/ToastStore';
 import useJsonWebTokensStore from '@/stores/TokenStore';
 
-
-
 interface CustomEventMap {
   sse: MessageEvent;
   notification: MessageEvent;
@@ -49,6 +47,7 @@ function Navbar() {
     let source: ExtendedEventSource | null = null;
 
     const EventSource = EventSourcePolyfill;
+
     function connect() {
       source = new EventSource(
         `${import.meta.env.VITE_BASE_URL}/notification/v1/notifications/subscribe`,
@@ -57,7 +56,7 @@ function Navbar() {
             Authorization: `Bearer ${accessToken}`,
             'Last-Event-ID': `${lastEventId}`,
           },
-          heartbeatTimeout: 1 * 1000 * 60,
+          heartbeatTimeout: 1000 * 60,
         },
       ) as ExtendedEventSource;
 
