@@ -9,7 +9,7 @@ import { GroupInfoData } from '@/@types/Group';
 import { SearchMemberForCreateGroupData } from '@/@types/Member';
 import { getMemberByEmail } from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
-import { BgColors, LabelColorsType } from '@/assets/styles/colorThemes';
+import { BgColors } from '@/assets/styles/colorThemes';
 import * as S from '@/components/group/create/GroupCreatePanel.styled';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 

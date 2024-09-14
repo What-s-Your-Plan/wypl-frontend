@@ -8,9 +8,8 @@ import RepeatIcon from '@/assets/icons/repeat.svg';
 import LabelIcon from '@/assets/icons/tag.svg';
 import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
 import UsersIcon from '@/assets/icons/users.svg';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
 import Button from '@/components/common/Button';
-import LabelButton                          from '@/components/common/LabelButton';
+import LabelButton from '@/components/common/LabelButton';
 import { isAllDay, padding0, stringToDate } from '@/utils/DateUtils';
 
 function Title({ title }: { title: string }) {
@@ -27,7 +26,7 @@ function Title({ title }: { title: string }) {
 function Time({ startDate, endDate }: { startDate: string; endDate: string }) {
   const start = stringToDate(startDate);
   const end = stringToDate(endDate);
-  const allday = isAllDay(start, end);
+  const allDay = isAllDay(start, end);
   const startAmPm = start.getHours() > 12 ? 'PM' : 'AM';
   const endAmPm = end.getHours() > 12 ? 'PM' : 'AM';
   const startHour = padding0(
@@ -48,7 +47,7 @@ function Time({ startDate, endDate }: { startDate: string; endDate: string }) {
             <span>
               {start.getFullYear()}.{start.getMonth() + 1}.{start.getDate()}
             </span>
-            {allday ? null : (
+            {allDay ? null : (
               <S.TimeContainer>
                 <span>{startAmPm} </span>
                 <span>{startHour} : </span>
@@ -61,7 +60,7 @@ function Time({ startDate, endDate }: { startDate: string; endDate: string }) {
             <span>
               {end.getFullYear()}.{end.getMonth() + 1}.{end.getDate()}
             </span>
-            {allday ? null : (
+            {allDay ? null : (
               <S.TimeContainer>
                 <span>{endAmPm} </span>
                 <span>{endHour} : </span>
@@ -101,7 +100,7 @@ function Label({ label }: { label: LabelResponse | null }) {
   );
 }
 
-function Member({ member }: { member: Array<Member> }) {
+function Member({ member }: { member: Array<MemberData> }) {
   const renderMembers = () => {
     return member.map((m) => {
       return (
@@ -157,22 +156,23 @@ function Repeat({ repeat }: { repeat: RepetitionDetailData }) {
           {cycle! === '주 마다' && `(${dayOfWeek.join(', ')})`}
         </span>
         <span>
-          {repeat.repetition_end_date && ` ~ ${endDate(repeat.repetition_end_date)}`}
+          {repeat.repetition_end_date &&
+            ` ~ ${endDate(repeat.repetition_end_date)}`}
         </span>
       </div>
     </S.ItemDiv>
   );
 }
 
-function WriteReview({handleClick}:{handleClick: () => void}) {
+function WriteReview({ handleClick }: { handleClick: () => void }) {
   return (
-    <div className='flex justify-center'>
-    <Button $width='80%' $size='lg' $border='black' onClick={handleClick}>
-      <img src={PenIcon} alt="write-review" />
-      <span>회고 작성하기</span>
-    </Button>
+    <div className="flex justify-center">
+      <Button $width="80%" $size="lg" $border="black" onClick={handleClick}>
+        <img src={PenIcon} alt="write-review" />
+        <span>회고 작성하기</span>
+      </Button>
     </div>
-  )
+  );
 }
 
 export { Title, Time, Description, Label, Member, Repeat, WriteReview };

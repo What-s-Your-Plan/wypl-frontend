@@ -11,7 +11,6 @@ import RepeatIcon from '@/assets/icons/repeat.svg';
 import LabelIcon from '@/assets/icons/tag.svg';
 import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
 import UsersIcon from '@/assets/icons/users.svg';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
 import {
   InputDefault,
   InputTitle,
@@ -288,7 +287,7 @@ function Label({ states, setStates }: SetProps) {
 
 function Users({ states, setStates }: SetProps) {
   // TODO: 추후 수정 예정
-  const handleSelected = (value: Member) => {
+  const handleSelected = (value: MemberData) => {
     setStates((prev) => {
       return {
         ...prev,
@@ -313,7 +312,7 @@ function Users({ states, setStates }: SetProps) {
           ]}
           selected={states.members}
           setSelected={handleSelected}
-          render={(member: Member | Array<Member>) => {
+          render={(member: MemberData | Array<MemberData>) => {
             if (Array.isArray(member)) {
               return member.map((item) => {
                 return (

@@ -14,11 +14,11 @@ type LabelResponse = {
   color: string;
 };
 
-type Member = {
+interface MemberData {
   member_id: number;
   nickname: string;
   profile_image: string;
-};
+}
 
 type GroupResponse = {
   group_id: number; // 그룹의 인덱스
@@ -86,7 +86,7 @@ interface LabelFilterData {
   category: string;
   id: number;
   title: string;
-  color: string;
+  color: LabelColorsType;
 }
 
 interface ScheduleSummaryData {

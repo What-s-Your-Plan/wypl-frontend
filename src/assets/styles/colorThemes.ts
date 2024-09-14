@@ -109,8 +109,6 @@ const BorderTheme = {
 
 export type AllColorsType = (typeof AllColors)[number];
 
-export type LabelColorsType = (typeof LabelColors)[number];
-
 export type BgColors = keyof typeof BgTheme;
 
 export type TextColors = keyof typeof TextTheme;

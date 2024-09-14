@@ -1,7 +1,6 @@
 import { DateSchedule } from './MonthlyCalendar';
 import * as S from './MonthlyCalendar.styled';
 
-import { LabelColorsType } from '@/assets/styles/colorThemes';
 import useDateStore from '@/stores/DateStore';
 import useMemberStore from '@/stores/MemberStore';
 import { isSameDay, stringToDate, getDateDiff } from '@/utils/DateUtils';
@@ -21,7 +20,7 @@ function MonthlyDay({
   schedules,
   isCurrentMonth,
   handleSkedClick,
-  goDay
+  goDay,
 }: MDayProps) {
   const { selectedDate, setSelectedDate } = useDateStore();
   const { mainColor } = useMemberStore();
@@ -79,8 +78,8 @@ function MonthlyDay({
               key={idx}
               className="flex items-center h-4 absolute top-8 pl-1 hover:bg-default-coolgray w-full transition-all"
               onClick={() => {
-                goDay()
-                setSelectedDate(date)
+                goDay();
+                setSelectedDate(date);
               }}
             >
               <span className="truncate">+ {schedule.length}</span>

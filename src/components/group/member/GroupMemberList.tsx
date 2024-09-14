@@ -16,7 +16,6 @@ import {
   GetGroupMembersResponse,
 } from '@/api/group/getGroupMember';
 import X from '@/assets/icons/x.svg';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
 import Tooltip from '@/components/tooltip/Tooltip';
 import useMemberStore from '@/stores/MemberStore';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';

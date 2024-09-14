@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import {
-  LabelColorsType,
-  BgTheme,
-  BgColors,
-} from '@/assets/styles/colorThemes';
+import { BgTheme, BgColors } from '@/assets/styles/colorThemes';
 
 type DateSpanProps = {
   $isHoliday?: boolean;
@@ -37,8 +33,8 @@ const DayWrapper = styled.div`
 const DateSpan = styled.span<DateSpanProps>`
   ${tw`flex size-4 items-center justify-center rounded-full sm:size-8`}
   ${(props) => (props.$isHoliday ? tw`text-label-red` : '')}
-  ${(props) => (props.$isSat ? tw`text-label-blue` : '')}
-  ${(props) =>
+    ${(props) => (props.$isSat ? tw`text-label-blue` : '')}
+    ${(props) =>
     props.$isSelected
       ? tw`bg-label-brown text-default-white font-semibold`
       : ''}
@@ -81,7 +77,7 @@ const ScheduleButton = styled.button<{ $bgColor: LabelColorsType }>`
     border
   `}
   ${(props) => BgTheme[props.$bgColor as BgColors]}
-  &:hover {
+    &:hover {
     scale: 103%;
     z-index: 10;
   }
@@ -100,6 +96,7 @@ const LScheduleContainer = styled.div<{ $height: number }>`
     transition-all
     `}
   height: ${(props) => `${props.$height}rem`};
+
   &:hover {
     scale: 103%;
     z-index: 10;
@@ -131,7 +128,7 @@ const LScheduleButton = styled.button<LScheduleButtonProps>`
     cursor-pointer
   `}
   ${(props) => BgTheme[props.$bgColor]}
-  grid-column: ${(props) =>
+    grid-column: ${(props) =>
     `${props.$startDay + 1} / span ${props.$period + 1}`};
   grid-row-start: ${(props) => `${props.$row + 1}`};
 `;

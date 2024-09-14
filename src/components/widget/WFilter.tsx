@@ -3,14 +3,13 @@ import { useEffect } from 'react';
 import LabelButton from '../common/LabelButton';
 
 import { getLabelList } from '@/api/label/getLabelList';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
 import useDateStore from '@/stores/DateStore';
 
 function WFilter() {
   const dateStore = useDateStore();
 
   const renderLabels = () => {
-    return dateStore.labels.map((label: FilterResponse) => {
+    return dateStore.labels.map((label: LabelFilterData) => {
       const isSelected = dateStore.selectedLabels.includes(label);
       const labelBgColor = isSelected ? label.color : 'coolGray';
       const labelClassName = isSelected
