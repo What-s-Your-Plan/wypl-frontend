@@ -1,12 +1,12 @@
 import { http, HttpResponse, RequestHandler } from 'msw';
 
-import { REVIVE } from '@/api/endpoint.ts';
+import { REVIVE }            from '@/api/endpoint.ts';
 import { GetReviewResponse } from '@/api/review/getReviewDetail.ts';
 import {
   EmotionContent,
   FourFContent,
   WeatherContent,
-} from '@/objects/ReviewContent.ts';
+}                            from '@/objects/ReviewContent.ts';
 
 const response: BaseResponse<GetReviewResponse> = {
   message: '리뷰 상세 조회에 성공했습니다.',
