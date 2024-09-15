@@ -35,7 +35,7 @@ const response: BaseResponse<GroupCalendarsResponse> = {
 
 const getGroupCalendars: RequestHandler = http.get(
   new RegExp(
-    `http://localhost:8080${CALENDAR.V1.CALENDARS.BASE}/(DAY|WEEK|MONTH)/1`,
+    `http://localhost:8080${CALENDAR.V1.CALENDARS.BASE}/(DAY|WEEK|MONTH)/\\d`,
   ),
   () => {
     return HttpResponse.json(response, {
