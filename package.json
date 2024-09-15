@@ -93,5 +93,10 @@
     "twin": {
       "preset": "styled-components"
     }
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

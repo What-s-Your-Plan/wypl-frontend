@@ -1,7 +1,6 @@
 import { axiosWithAccessToken } from '../axios';
 
 import { GROUP } from '@/api/endpoint.ts';
-import { BgColors } from '@/assets/styles/colorThemes';
 
 /* Request */
 export type PersonalGroupColorUpdatePathVariable = {
@@ -9,12 +8,12 @@ export type PersonalGroupColorUpdatePathVariable = {
 };
 
 export type PersonalGroupColorUpdateRequest = {
-  color: BgColors;
+  color: LabelColorsType;
 };
 
 /* Response */
 export type PersonalGroupColorUpdateResponse = {
-  color: BgColors;
+  color: LabelColorsType;
 };
 
 export const patchPersonalGroupColor = async (

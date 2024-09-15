@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import PalettePanel from '../../color/PalettePanel';
 import ColorCircle from '../../common/ColorCircle';
@@ -6,10 +6,8 @@ import { InputDefault } from '../../common/InputText';
 import PopOver from '../../common/PopOver';
 
 import { GroupUpdateInfo } from '@/@types/Group';
-import {
-  getMemberByEmail,
-  FindMemberByEmailResponse,
-} from '@/api/member/getMemberbyEmail';
+import { SearchMemberForCreateGroupData } from '@/@types/Member';
+import { getMemberByEmail } from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
 import { BgColors } from '@/assets/styles/colorThemes';
 import * as S from '@/components/group/create/GroupCreatePanel.styled';
@@ -36,11 +34,11 @@ function GroupUpdatePanel({
   ) => {
     setSearchMember(e.target.value);
     if (e.target.value.length >= 2) {
-      const response: FindMemberByEmailResponse = await getMemberByEmail({
+      const { body } = await getMemberByEmail({
         email: e.target.value,
         size: 49,
       });
-      setSearchMembers(response.members);
+      setSearchMembers(body.members);
     } else {
       setSearchMembers([]);
     }

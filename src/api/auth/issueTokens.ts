@@ -1,5 +1,5 @@
 import { axios } from '@/api/axios.ts';
-import { AUTH }  from '@/api/endpoint.ts';
+import { AUTH } from '@/api/endpoint.ts';
 
 /* Request */
 export type IssueTokenPathVariable = {

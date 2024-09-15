@@ -1,0 +1,17 @@
+type LabelColorsType =
+  | 'labelRed'
+  | 'labelPink'
+  | 'labelOrange'
+  | 'labelYellow'
+  | 'labelGreen'
+  | 'labelLeaf'
+  | 'labelBlue'
+  | 'labelSky'
+  | 'labelNavy'
+  | 'labelIndigo'
+  | 'labelPurple'
+  | 'labelLavender'
+  | 'labelCharcoal'
+  | 'labelBrown'
+  | 'warmGray'
+  | 'coolGray';

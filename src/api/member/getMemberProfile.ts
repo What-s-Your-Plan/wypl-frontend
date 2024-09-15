@@ -1,3 +1,4 @@
+import { MemberProfileData } from '@/@types/Member';
 import { axiosWithAccessToken } from '@/api/axios';
 import { MEMBER } from '@/api/endpoint.ts';
 

@@ -1,5 +1,5 @@
 interface WYPLNotificationPagingData {
-  notification: WYPLNotificationData[];
+  notifications: WYPLNotificationData[];
   last_id: string;
   has_next: boolean;
 }

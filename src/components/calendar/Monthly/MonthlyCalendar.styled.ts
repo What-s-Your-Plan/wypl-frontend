@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { LabelColorsType, BgTheme } from '@/assets/styles/colorThemes';
+import { BgTheme } from '@/assets/styles/colorThemes';
 
 const DateContainer = styled.div`
   ${tw`flex flex-col border-t-2 border-t-main h-20`}
@@ -30,10 +30,9 @@ const ScheduleButton = styled.button<{
     transition-all
     `}
   ${(props) => BgTheme[props.$color]}
-  ${(props) => `top: ${props.$top}rem;`}
-  ${(props) => `width: ${props.$width}00%;`}
-
-  &:hover {
+    ${(props) => `top: ${props.$top}rem;`}
+    ${(props) => `width: ${props.$width}00%;`}
+    &:hover {
     scale: 103%;
     z-index: 10;
   }
@@ -53,9 +52,10 @@ const DateSpan = styled.span<{
     }
     return '';
   }}
-  ${(props) =>
+    ${(props) =>
     props.$isCurrentMonth ? tw`text-default-black` : tw`text-gray-400`}
-  ${(props) => (props.$isSelected ? tw`bg-label-brown text-default-white` : '')}
+    ${(props) =>
+    props.$isSelected ? tw`bg-label-brown text-default-white` : ''}
 `;
 
 const NoSchedule = styled.div<{ $top: number }>`

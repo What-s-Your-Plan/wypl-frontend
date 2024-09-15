@@ -3,7 +3,7 @@ import { axiosWithAccessToken } from '../axios';
 import { GroupSummaryData } from '@/@types/Group';
 import { GROUP } from '@/api/endpoint.ts';
 
-export type FindMemberGroupsResponse = {
+export type MemberGroupsResponse = {
   group_count: number;
   invited_group_count: number;
   groups: GroupSummaryData[];
@@ -12,7 +12,7 @@ export type FindMemberGroupsResponse = {
 
 export const getMemberGroupList = async () => {
   const { data } = await axiosWithAccessToken.get<
-    BaseResponse<FindMemberGroupsResponse>
+    BaseResponse<MemberGroupsResponse>
   >(GROUP.V1.GROUPS.MEMBER.BASE);
 
   return data;

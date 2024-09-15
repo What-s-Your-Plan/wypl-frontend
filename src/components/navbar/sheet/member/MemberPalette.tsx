@@ -5,7 +5,7 @@ import {
   UpdateLabelColorRequest,
 } from '@/api/member/patchMemberLabelColor';
 import check from '@/assets/icons/check.svg';
-import { LabelColors, LabelColorsType } from '@/assets/styles/colorThemes';
+import { LabelColors } from '@/assets/styles/colorThemes';
 import ColorCircle from '@/components/common/ColorCircle';
 import useMemberStore from '@/stores/MemberStore';
 

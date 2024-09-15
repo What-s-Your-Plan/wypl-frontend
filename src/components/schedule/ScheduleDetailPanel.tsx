@@ -60,7 +60,7 @@ function ScheduleDetailPanel({
 
   useEffect(() => {
     //스케줄에 포함된 멤버인지 확인
-    schedule?.members.map((member) => {
+    schedule?.members.map((member: MemberData) => {
       if (member.member_id === memberId) {
         setCanModify(true);
         return;

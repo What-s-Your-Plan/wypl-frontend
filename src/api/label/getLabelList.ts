@@ -3,6 +3,7 @@ import { LABEL } from '@/api/endpoint.ts';
 
 /* Response */
 export type LabelListResponse = {
+  label_count: number;
   labels: LabelFilterData[];
 };
 

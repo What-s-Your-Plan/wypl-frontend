@@ -32,5 +32,5 @@ interface GroupSummaryData {
   id: number;
   name: string;
   color: BgColors;
-  is_owner: true;
+  is_owner: boolean;
 }

@@ -1,4 +1,4 @@
-import { LabelColorsType, BgColors } from '@/assets/styles/colorThemes';
+import { BgColors } from '@/assets/styles/colorThemes';
 import * as S from '@/components/color/PalettePanelStyle';
 import ColorCircle from '@/components/common/ColorCircle';
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { LabelColorsType, BgTheme } from '@/assets/styles/colorThemes';
+import { BgTheme } from '@/assets/styles/colorThemes';
 
 type LabelProps = {
   $bgColor: LabelColorsType;

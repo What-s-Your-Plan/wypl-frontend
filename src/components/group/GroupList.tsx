@@ -18,7 +18,7 @@ import {
 } from '@/@types/Group';
 import {
   getMemberGroupList,
-  FindMemberGroupsResponse as MemberGroups,
+  MemberGroupsResponse as MemberGroups,
 } from '@/api/group/getMemberGroupList';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Envelope from '@/assets/icons/envelope.svg';

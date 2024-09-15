@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
 import * as Items from '@/components/schedule/ScheduleItems';
 
@@ -46,4 +46,4 @@ function ScheduleModify({
   );
 }
 
-export default ScheduleModify
+export default ScheduleModify;
