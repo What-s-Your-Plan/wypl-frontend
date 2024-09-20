@@ -2,25 +2,26 @@ import styled, { keyframes } from 'styled-components';
 import tw from 'twin.macro';
 
 import {
-  LabelColorsType,
   BgTheme,
   TextColors,
   TextTheme,
-} from '@/assets/styles/colorThemes';
+  BgColorsType,
+} from '@/styles/colorThemes.ts';
 
 const show = keyframes`
-  from {
-    transform: translateX(100%);
-  } to {
-    opacity: 1;
-    transform: translateX(0px);
-  }
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 `;
 
-type ContainerProps = {
-  $bgColor: LabelColorsType;
+export interface ContainerProps {
+  $bgColor: BgColorsType;
   $textColor: TextColors;
-};
+}
 
 const Container = styled.div<ContainerProps>`
   ${tw`
@@ -33,20 +34,11 @@ const Container = styled.div<ContainerProps>`
         mt-4
     `}
   ${(props) => BgTheme[props.$bgColor]}
-  ${(props) => TextTheme[props.$textColor]}
-  animation: ${show} 500ms ease-in-out;
+    ${(props) => TextTheme[props.$textColor]}
+    animation: ${show} 500ms ease-in-out;
 `;
 
-const ShowWrapper = styled.div`
-  ${tw`
-    h-1
-
-    w-full
-    bg-default-black
-    `}
-`;
-
-const HeaderWrapper = styled.div`
+const CloseButtonWrapper = styled.div`
   ${tw`
         flex
         justify-end
@@ -74,4 +66,4 @@ const MessageWrapper = styled.div`
 
 const Message = styled.span``;
 
-export { Container, ShowWrapper, HeaderWrapper, Icon, MessageWrapper, Message };
+export { Container, CloseButtonWrapper, Icon, MessageWrapper, Message };
