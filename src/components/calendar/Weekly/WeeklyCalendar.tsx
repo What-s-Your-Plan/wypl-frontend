@@ -244,7 +244,7 @@ function WeeklyCalendar({
               <WeeklyLSchedules
                 lSchedules={longSchedules}
                 row={height + 1}
-                handleSkedClick={handleSkedClick}
+                handleScheduleClick={handleSkedClick}
               />
             </LScheduleContainer>
           </div>
@@ -260,7 +260,7 @@ function WeeklyCalendar({
               {/* Schedules */}
               <WeeklySchedules
                 schedules={schedules}
-                handleSkedClick={handleSkedClick}
+                handleScheduleClick={handleSkedClick}
               />
 
               {/* LongSchedules */}

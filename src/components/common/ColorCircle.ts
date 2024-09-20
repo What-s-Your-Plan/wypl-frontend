@@ -1,13 +1,14 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
-import { BgColors, BgTheme } from '@/assets/styles/colorThemes';
+import { LabelColorsType, LabelTheme } from '@/assets/styles/colorThemes';
 
 type CircleProps = {
-  $bgColor: BgColors;
+  $labelColor: LabelColorsType;
   $size?: string;
   $cursor?: string;
   $hover?: boolean;
+  $isRounded?: boolean;
 };
 
 const ColorCircle = styled.div<CircleProps>`
@@ -15,10 +16,10 @@ const ColorCircle = styled.div<CircleProps>`
     rounded-full
     aspect-square
   `}
-  ${(props) => BgTheme[props.$bgColor]}
-  ${(props) => (props.$size ? `width: ${props.$size};` : tw`size-6`)}
-  ${(props) => (props.$cursor ? `cursor: ${props.$cursor};` : '')}
-  ${(props) => (props.$hover ? tw`hover:scale-110` : '')}
+  ${(props) => LabelTheme[props.$labelColor]}
+    ${(props) => (props.$size ? `width: ${props.$size};` : tw`size-6`)}
+    ${(props) => (props.$cursor ? `cursor: ${props.$cursor};` : '')}
+    ${(props) => (props.$hover ? tw`hover:scale-110` : '')}
 `;
 
 export default ColorCircle;

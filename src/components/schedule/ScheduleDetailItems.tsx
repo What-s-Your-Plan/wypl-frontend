@@ -8,6 +8,7 @@ import RepeatIcon from '@/assets/icons/repeat.svg';
 import LabelIcon from '@/assets/icons/tag.svg';
 import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
 import UsersIcon from '@/assets/icons/users.svg';
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 import Button from '@/components/common/Button';
 import LabelButton from '@/components/common/LabelButton';
 import { isAllDay, padding0, stringToDate } from '@/utils/DateUtils';
@@ -89,7 +90,7 @@ function Label({ label }: { label: LabelResponse | null }) {
       <img src={LabelIcon} alt="label" />
       <div className="grow">
         {label ? (
-          <LabelButton $bgColor={label.color as LabelColorsType}>
+          <LabelButton $labelColor={label.color as LabelColorsType}>
             {label.title}
           </LabelButton>
         ) : (

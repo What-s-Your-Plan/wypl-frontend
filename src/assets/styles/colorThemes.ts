@@ -15,8 +15,6 @@ const LabelColors = [
   'labelLavender',
   'labelCharcoal',
   'labelBrown',
-  'warmGray',
-  'coolGray',
 ] as const;
 
 const AllColors = [
@@ -61,6 +59,23 @@ const BgTheme = {
   warmGray: tw`bg-default-warmgray`,
   coolGray: tw`bg-default-coolgray`,
   main: tw`bg-main`,
+};
+
+const LabelTheme = {
+  labelRed: tw`bg-label-red`,
+  labelPink: tw`bg-label-pink`,
+  labelOrange: tw`bg-label-orange`,
+  labelYellow: tw`bg-label-yellow`,
+  labelGreen: tw`bg-label-green`,
+  labelLeaf: tw`bg-label-leaf`,
+  labelBlue: tw`bg-label-blue`,
+  labelSky: tw`bg-label-sky`,
+  labelNavy: tw`bg-label-navy`,
+  labelIndigo: tw`bg-label-indigo`,
+  labelPurple: tw`bg-label-purple`,
+  labelLavender: tw`bg-label-lavender`,
+  labelCharcoal: tw`bg-label-charcoal`,
+  labelBrown: tw`bg-label-brown`,
 };
 
 const TextTheme = {
@@ -109,10 +124,9 @@ const BorderTheme = {
 
 export type AllColorsType = (typeof AllColors)[number];
 
-export type BgColors = keyof typeof BgTheme;
-
+export type BgColorsType = keyof typeof BgTheme;
+export type BorderColors = keyof typeof BorderTheme;
+export type LabelColorsType = keyof typeof LabelTheme;
 export type TextColors = keyof typeof TextTheme;
 
-export type BorderColors = keyof typeof BorderTheme;
-
-export { AllColors, LabelColors, BgTheme, TextTheme, BorderTheme };
+export { AllColors, LabelColors, BgTheme, LabelTheme, TextTheme, BorderTheme };

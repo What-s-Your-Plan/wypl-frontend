@@ -23,9 +23,9 @@ import {
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Envelope from '@/assets/icons/envelope.svg';
 import Plus from '@/assets/icons/plus.svg';
-import Users from '@/assets/icons/users.svg';
-import { BgColors } from '@/assets/styles/colorThemes';
-import { BROWSER_PATH } from '@/constants/Path';
+import Users               from '@/assets/icons/users.svg';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
+import { BROWSER_PATH }    from '@/constants/Path';
 
 function GroupList() {
   const navigate = useNavigate();
@@ -122,7 +122,7 @@ function GroupList() {
           const newMemberGroup: GroupSummaryData = {
             ...group,
             name: updateGroup.name,
-            color: updateGroup.color as BgColors,
+            color: updateGroup.color as LabelColorsType,
           };
           return newMemberGroup;
         }

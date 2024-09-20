@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useRef } from 'react';
 
 import postCreateLabel from '@/api/label/postCreateLabel';
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 import ColorSelectButton from '@/components/color/ColorSelectButton';
 import { InputDefault } from '@/components/common/InputText';
 import { CreateDiv } from '@/components/label/Styled';

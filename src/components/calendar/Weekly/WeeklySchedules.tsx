@@ -1,14 +1,15 @@
 import * as S from './WeeklyCalendar.styled';
 
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 import useMemberStore from '@/stores/MemberStore';
 import { stringToDate, padding0 } from '@/utils/DateUtils';
 
 type WSchedulesProps = {
   schedules: Array<CalendarScheduleData>;
-  handleSkedClick: (id: number) => void;
+  handleScheduleClick: (id: number) => void;
 };
 
-function WeeklySchedules({ schedules, handleSkedClick }: WSchedulesProps) {
+function WeeklySchedules({ schedules, handleScheduleClick }: WSchedulesProps) {
   const { mainColor } = useMemberStore();
   const renderSchedules = () => {
     return schedules.map((schedule, index) => {
@@ -44,7 +45,7 @@ function WeeklySchedules({ schedules, handleSkedClick }: WSchedulesProps) {
                 mainColor) as LabelColorsType
             }
             onClick={() => {
-              handleSkedClick(schedule.schedule_id);
+              handleScheduleClick(schedule.schedule_id);
             }}
           >
             <p className="order-1 font-semibold text-default-white text-left">

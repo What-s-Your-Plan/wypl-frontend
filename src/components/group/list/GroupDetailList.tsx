@@ -25,9 +25,9 @@ import {
   GroupInviteRequest,
 } from '@/api/group/postGroupInvite';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
-import Setting from '@/assets/icons/settings.svg';
-import { BgColors } from '@/assets/styles/colorThemes';
-import PalettePanel from '@/components/color/PalettePanel';
+import Setting             from '@/assets/icons/settings.svg';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
+import PalettePanel        from '@/components/color/PalettePanel';
 import PopOver from '@/components/common/PopOver';
 import Tooltip from '@/components/tooltip/Tooltip';
 import useToastStore from '@/stores/ToastStore';
@@ -84,10 +84,10 @@ function GroupDetailList({
 
   const handleUpdateGroup = async (
     newName: string,
-    newColor: BgColors,
+    newColor: LabelColorsType,
     memberIds: Array<number>,
   ) => {
-    if (newName !== group.name || newColor !== (group.color as BgColors)) {
+    if (newName !== group.name || newColor !== (group.color as LabelColorsType)) {
       const pathVariable: GroupInfoUpdatePathVariable = {
         groupId: group.id,
       };
@@ -166,7 +166,7 @@ function GroupDetailList({
           button={
             <ColorCircle
               as="button"
-              $bgColor={color as BgColors}
+              $labelColor={color as LabelColorsType}
               $cursor="pointer"
               className="!rounded-md"
             />

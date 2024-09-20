@@ -1,18 +1,19 @@
 import { LongSchedule } from './WeeklyCalendar';
 import * as S from './WeeklyCalendar.styled';
 
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 import useMemberStore from '@/stores/MemberStore';
 
 type LSchedulesProps = {
   lSchedules: Array<LongSchedule>;
   row: number;
-  handleSkedClick: (id: number) => void;
+  handleScheduleClick: (id: number) => void;
 };
 
 function WeeklyLSchedules({
   lSchedules,
   row,
-  handleSkedClick,
+  handleScheduleClick,
 }: LSchedulesProps) {
   const gridRow = Math.max(2, row);
   const { mainColor } = useMemberStore();
@@ -32,7 +33,7 @@ function WeeklyLSchedules({
           $row={schedule.row}
           $period={schedule.period}
           onClick={() => {
-            handleSkedClick(schedule.schedule.schedule_id);
+            handleScheduleClick(schedule.schedule.schedule_id);
           }}
         >
           {schedule.schedule.title}

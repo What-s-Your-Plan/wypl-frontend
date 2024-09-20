@@ -2,7 +2,7 @@ import Lottie from 'lottie-react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { BgColors, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
+import { LabelColorsType, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
 
 const CreateGroupForm = styled.form`
   ${tw`
@@ -69,7 +69,7 @@ const MemberContainer = styled.div`
 `;
 
 type MemberProfileWrapperProps = {
-  $color: BgColors;
+  $color: LabelColorsType;
 };
 
 const MemberProfileWrapper = styled.div<MemberProfileWrapperProps>`
@@ -134,7 +134,7 @@ const MemberProfileSpan = styled.span`
 `;
 
 type BarProps = {
-  $color: BgColors;
+  $color: LabelColorsType;
 };
 
 const Bar = styled.div<BarProps>`

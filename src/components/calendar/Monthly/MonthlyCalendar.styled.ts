@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { BgTheme } from '@/assets/styles/colorThemes';
+import { BgTheme, LabelColorsType } from '@/assets/styles/colorThemes';
 
 const DateContainer = styled.div`
   ${tw`flex flex-col border-t-2 border-t-main h-20`}

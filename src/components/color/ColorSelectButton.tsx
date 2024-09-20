@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { BgColors } from '@/assets/styles/colorThemes';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 import PalettePanel from '@/components/color/PalettePanel';
 import ColorCircle from '@/components/common/ColorCircle';
 import PopOver from '@/components/common/PopOver';
@@ -17,7 +17,9 @@ function ColorSelectButton({ color, setColor }: ColorSelectProps) {
   return (
     <PopOver
       panelPosition="top-8"
-      button={<ColorCircle $bgColor={color as BgColors} $cursor="pointer" />}
+      button={
+        <ColorCircle $labelColor={color as LabelColorsType} $cursor="pointer" />
+      }
       panel={<PalettePanel setColor={changeColor} />}
     />
   );

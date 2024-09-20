@@ -1,6 +1,7 @@
 import { DateSchedule } from './MonthlyCalendar';
 import * as S from './MonthlyCalendar.styled';
 
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 import useDateStore from '@/stores/DateStore';
 import useMemberStore from '@/stores/MemberStore';
 import { isSameDay, stringToDate, getDateDiff } from '@/utils/DateUtils';
@@ -10,7 +11,7 @@ type MDayProps = {
   firstDay: Date;
   schedules: DateSchedule;
   isCurrentMonth: boolean;
-  handleSkedClick: (id: number) => void;
+  handleScheduleClick: (id: number) => void;
   goDay: () => void;
 };
 
@@ -19,7 +20,7 @@ function MonthlyDay({
   firstDay,
   schedules,
   isCurrentMonth,
-  handleSkedClick,
+  handleScheduleClick,
   goDay,
 }: MDayProps) {
   const { selectedDate, setSelectedDate } = useDateStore();
@@ -51,7 +52,7 @@ function MonthlyDay({
                 $top={idx}
                 $width={width}
                 onClick={() => {
-                  handleSkedClick(schedule[0].schedule_id);
+                  handleScheduleClick(schedule[0].schedule_id);
                 }}
               >
                 <span className="truncate">{schedule[0].title}</span>

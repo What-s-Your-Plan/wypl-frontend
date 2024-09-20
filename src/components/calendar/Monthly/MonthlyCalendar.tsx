@@ -188,7 +188,7 @@ function MonthlyCalender({
         calendar.push(
           <MonthlyDay
             key={i}
-            handleSkedClick={handleSkedClick}
+            handleScheduleClick={handleSkedClick}
             date={date}
             firstDay={firstDay}
             schedules={monthSchedules[i]}

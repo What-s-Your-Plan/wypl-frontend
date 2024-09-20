@@ -1,4 +1,4 @@
-import { BgColors } from '@/assets/styles/colorThemes.ts';
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 
 type Group = {
   id: number;
@@ -16,7 +16,7 @@ type GroupUpdateInfo = {
 /* Data */
 interface GroupInfoData {
   name: string;
-  color: BgColors;
+  color: LabelColorsType;
   member_id_list: Array<number>;
 }
 
@@ -31,6 +31,6 @@ interface GroupMemberData {
 interface GroupSummaryData {
   id: number;
   name: string;
-  color: BgColors;
+  color: LabelColorsType;
   is_owner: boolean;
 }

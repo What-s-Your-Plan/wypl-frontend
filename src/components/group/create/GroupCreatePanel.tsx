@@ -8,9 +8,9 @@ import PopOver from '../../common/PopOver';
 import { GroupInfoData } from '@/@types/Group';
 import { SearchMemberForCreateGroupData } from '@/@types/Member';
 import { getMemberByEmail } from '@/api/member/getMemberbyEmail';
-import noContent from '@/assets/lottie/noContent.json';
-import { BgColors } from '@/assets/styles/colorThemes';
-import * as S from '@/components/group/create/GroupCreatePanel.styled';
+import noContent           from '@/assets/lottie/noContent.json';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
+import * as S              from '@/components/group/create/GroupCreatePanel.styled';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupCreatePanelProps = {
@@ -21,7 +21,7 @@ type GroupCreatePanelProps = {
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
   setStates: Dispatch<SetStateAction<GroupInfoData>>;
-  color: BgColors;
+  color: LabelColorsType;
   setColor: Dispatch<SetStateAction<LabelColorsType>>;
 };
 
@@ -156,7 +156,7 @@ function GroupCreatePanel({
               button={
                 <ColorCircle
                   as="button"
-                  $bgColor={color as BgColors}
+                  $labelColor={color as LabelColorsType}
                   $cursor="pointer"
                   className="!rounded-md"
                 />

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { BgTheme, BgColors } from '@/assets/styles/colorThemes';
+import { BgTheme, LabelColorsType } from '@/assets/styles/colorThemes';
 
 type DateSpanProps = {
   $isHoliday?: boolean;
@@ -76,7 +76,7 @@ const ScheduleButton = styled.button<{ $bgColor: LabelColorsType }>`
     transition-all
     border
   `}
-  ${(props) => BgTheme[props.$bgColor as BgColors]}
+  ${(props) => BgTheme[props.$bgColor as LabelColorsType]}
     &:hover {
     scale: 103%;
     z-index: 10;

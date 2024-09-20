@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
 const Panel = styled.div`
-  ${tw`
+    ${tw`
     grid
     grid-cols-7
     grid-rows-2
@@ -12,7 +12,7 @@ const Panel = styled.div`
     rounded-lg
     shadow-lg
   `}
-`
+`;
 
 const Element = styled.div`
   ${tw`
@@ -21,6 +21,6 @@ const Element = styled.div`
     items-center
     size-8
   `}
-`
+`;
 
-export { Panel, Element }
+export { Panel, Element };

@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import tw from 'twin.macro';
 
 import {
-  BgColors,
+  LabelColorsType,
   BgTheme,
   TextColors,
   TextTheme,
@@ -18,7 +18,7 @@ const show = keyframes`
 `;
 
 type ContainerProps = {
-  $bgColor: BgColors;
+  $bgColor: LabelColorsType;
   $textColor: TextColors;
 };
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { BgTheme } from '@/assets/styles/colorThemes';
+import { LabelColorsType, LabelTheme } from '@/assets/styles/colorThemes';
 
 const VerticalLine = styled.span`
   ${tw`
@@ -27,7 +27,7 @@ const LabelDiv = styled.div<{ $bgColor: LabelColorsType }>`
     rounded-xl
     w-8
   `}
-  ${(props) => BgTheme[props.$bgColor]}
+  ${(props) => LabelTheme[props.$bgColor]}
 `;
 
 const ScheduleContents = styled.div`

@@ -1,8 +1,8 @@
 import LoadingBar from './LoadingBar';
 import * as S from './Toast.styled';
 
-import X from '@/assets/icons/x.svg';
-import { BgColors } from '@/assets/styles/colorThemes';
+import X                   from '@/assets/icons/x.svg';
+import { LabelColorsType } from '@/assets/styles/colorThemes';
 
 
 type ToastProps = {
@@ -11,7 +11,7 @@ type ToastProps = {
 };
 
 function Toast({ content, removeEvent }: ToastProps) {
-  const changeColor = (): BgColors => {
+  const changeColor = (): LabelColorsType => {
     if (content.type === 'NOTIFICATION') {
       return 'labelGreen';
     }

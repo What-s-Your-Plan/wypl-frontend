@@ -4,6 +4,7 @@ import Users from '@/assets/icons/users.svg';
 
 import Logo from '/logo.png';
 
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 import { WhiteContainer } from '@/components/common/Container';
 import LabelButton from '@/components/common/LabelButton';
 import { splitTTime } from '@/utils/DateUtils';
@@ -43,7 +44,7 @@ function VSchedule({ schedule }: VScheduleProps) {
           <img src={Tag} alt="라벨" className="w-5" />
           <LabelButton
             className="text-base"
-            $bgColor={schedule.label?.color as LabelColorsType}
+            $labelColor={schedule.label?.color as LabelColorsType}
           >
             {schedule.label?.title}
           </LabelButton>

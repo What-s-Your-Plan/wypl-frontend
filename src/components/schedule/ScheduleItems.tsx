@@ -21,6 +21,7 @@ import ListBox from '@/components/common/ListBox';
 import Toggle from '@/components/common/Toggle';
 import CreateLabel from '@/components/label/CreateLabel';
 import useDateStore from '@/stores/DateStore';
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
 
 type ChangeProps = {
   states: ScheduleData & RepeatData;
@@ -248,7 +249,7 @@ function Label({ states, setStates }: SetProps) {
           setSelected={handleLabel}
           render={(item: Label | null) => {
             return item ? (
-              <LabelButton as="div" $bgColor={item.color as LabelColorsType}>
+              <LabelButton as="div" $labelColor={item.color as LabelColorsType}>
                 {item.title}
               </LabelButton>
             ) : (
