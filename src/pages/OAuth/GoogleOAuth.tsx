@@ -7,8 +7,8 @@ import {
   IssueTokenParams,
   IssueTokenPathVariable,
 }                             from '@/api/auth/issueTokens.ts';
-import GoogleLoadingAnimation from '@/components/animation/GoogleLoading';
-import OAUTH_PROVIDER from '@/constants/OAuth';
+import GoogleLoadingAnimation from '@/components/Animation/GoogleLoading';
+import OAUTH_PROVIDER         from '@/constants/OAuth';
 import { BROWSER_PATH } from '@/constants/Path';
 import useJsonWebTokens from '@/hooks/api/useJsonWebTokens';
 import useQueryParams from '@/hooks/useSearchParams';

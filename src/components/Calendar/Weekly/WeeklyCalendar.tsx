@@ -6,18 +6,18 @@ import WeeklyHorizontal from './WeeklyHorizontal';
 import WeeklyLSchedules from './WeeklyLSchedules';
 import WeeklySchedules from './WeeklySchedules';
 import WeeklyVertical from './WeeklyVertical';
-import { Chevrons } from '../DatePicker.styled';
+import { Chevrons } from '../DatePicker/DatePicker.styled.ts';
 
 import {
   CalendarParams,
   CalendarPathVariable,
   CalendarsResponse,
   getCalendars,
-}                  from '@/api/calendar/getCalendars.ts';
+} from '@/api/calendar/getCalendars.ts';
 import {
   getGroupCalendars,
   GroupCalendarPathVariable,
-}                  from '@/api/calendar/getGroupCalendars.ts';
+} from '@/api/calendar/getGroupCalendars.ts';
 import ChevronLeft from '@/assets/icons/chevronLeft.svg';
 import ChevronRight from '@/assets/icons/chevronRight.svg';
 import useDateStore from '@/stores/DateStore';
@@ -42,7 +42,7 @@ type WeeklyProps = {
   groupId?: number;
   needUpdate: boolean;
   setUpdateFalse: () => void;
-  handleSkedClick: (id: number) => void;
+  handleScheduleClick: (id: number) => void;
 };
 
 function WeeklyCalendar({
@@ -50,7 +50,7 @@ function WeeklyCalendar({
   groupId,
   needUpdate,
   setUpdateFalse,
-  handleSkedClick,
+  handleScheduleClick,
 }: WeeklyProps) {
   const { selectedDate, setSelectedDate, selectedLabels } = useDateStore();
   const [firstDay, setFirstDay] = useState<Date | null>(null);
@@ -244,7 +244,7 @@ function WeeklyCalendar({
               <WeeklyLSchedules
                 lSchedules={longSchedules}
                 row={height + 1}
-                handleScheduleClick={handleSkedClick}
+                handleScheduleClick={handleScheduleClick}
               />
             </LScheduleContainer>
           </div>
@@ -260,7 +260,7 @@ function WeeklyCalendar({
               {/* Schedules */}
               <WeeklySchedules
                 schedules={schedules}
-                handleScheduleClick={handleSkedClick}
+                handleScheduleClick={handleScheduleClick}
               />
 
               {/* LongSchedules */}

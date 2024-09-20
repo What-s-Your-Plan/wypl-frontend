@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
 const Panel = styled.div`
-    ${tw`
+  ${tw`
     grid
     grid-cols-7
     grid-rows-2

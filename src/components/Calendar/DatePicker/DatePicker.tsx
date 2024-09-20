@@ -6,14 +6,14 @@ import {
   DateWrapper,
   DateButton,
   Chevrons,
-} from '@/components/calendar/DatePicker.styled';
-import useDateStore from '@/stores/DateStore';
+} from '@/components/Calendar/DatePicker/DatePicker.styled.ts';
+import useDateStore from '@/stores/DateStore.ts';
 import {
   padding0,
   isSameDay,
   isCurrentMonth,
   dateToString,
-} from '@/utils/DateUtils';
+} from '@/utils/DateUtils.ts';
 
 function DatePicker() {
   const { today, selectedDate, setSelectedDate } = useDateStore();

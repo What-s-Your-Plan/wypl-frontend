@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import CircleLoading from '@/components/animation/CircleLoading.tsx';
+import CircleLoading from '@/components/Animation/CircleLoading.tsx';
 
 const meta: Meta<typeof CircleLoading> = {
   title: 'Animation/CircleLoading',

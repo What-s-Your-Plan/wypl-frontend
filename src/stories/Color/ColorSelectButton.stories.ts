@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ColorSelectButton from '@/components/color/ColorSelectButton.tsx';
+import ColorSelectButton from '@/components/PalettePanel/ColorSelectButton/ColorSelectButton.tsx';
 
 const meta: Meta<typeof ColorSelectButton> = {
-  title: 'Color/ColorSelectButton',
+  title: 'PalettePanel/ColorSelectButton',
   component: ColorSelectButton,
   tags: ['autodocs'],
 };

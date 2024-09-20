@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import CalendarContent from '@/components/calendar/CalendarContent';
+import Calendar  from '@/components/Calendar/Calendar.tsx';
 import GroupList from '@/components/group/GroupList';
 
 function GroupPage() {
@@ -14,7 +14,7 @@ function GroupPage() {
   return (
     <div className="container flex items-center justify-around ss:max-sm:block h-dvh">
       <GroupList />
-      <CalendarContent category="GROUP" groupId={id} />
+      <Calendar category="GROUP" groupId={id} />
     </div>
   );
 }

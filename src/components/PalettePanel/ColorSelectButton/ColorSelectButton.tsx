@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import { LabelColorsType } from '@/assets/styles/colorThemes';
-import PalettePanel from '@/components/color/PalettePanel';
-import ColorCircle from '@/components/common/ColorCircle';
-import PopOver from '@/components/common/PopOver';
+import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
+import ColorCircle from '@/components/common/ColorCircle.ts';
+import PopOver from '@/components/common/PopOver.tsx';
+import PalettePanel from '@/components/PalettePanel/PalettePanel.tsx';
 
 type ColorSelectProps = {
   color: LabelColorsType;

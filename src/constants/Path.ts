@@ -3,7 +3,7 @@ const BROWSER_PATH = {
     GOOGLE: '/login/oauth2/code/google',
   },
   LANDING: '/',
-  CALENDAR: '/calendar',
+  CALENDAR: '/Calendar',
   NOT_FOUND: '*',
   GROUP: {
     BASE: '/group',

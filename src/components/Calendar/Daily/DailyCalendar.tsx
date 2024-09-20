@@ -13,8 +13,8 @@ import {
   GroupCalendarPathVariable,
 } from '@/api/calendar/getGroupCalendars.ts';
 import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
-import NoContentAnimation from '@/components/animation/NoContent';
-import useDateStore from '@/stores/DateStore';
+import NoContentAnimation  from '@/components/Animation/NoContent';
+import useDateStore        from '@/stores/DateStore';
 import useMemberStore from '@/stores/MemberStore';
 import { dateToString, getTime } from '@/utils/DateUtils';
 import { labelFilter } from '@/utils/FilterUtils';
@@ -24,7 +24,7 @@ type DailyProps = {
   groupId?: number;
   needUpdate: boolean;
   setUpdateFalse: () => void;
-  handleSkedClick: (id: number) => void;
+  handleScheduleClick: (id: number) => void;
 };
 
 function DailyCalendar({
@@ -32,7 +32,7 @@ function DailyCalendar({
   groupId,
   needUpdate,
   setUpdateFalse,
-  handleSkedClick,
+  handleScheduleClick,
 }: DailyProps) {
   const { selectedDate, selectedLabels } = useDateStore();
   const [originSked, setOriginSked] = useState<Array<CalendarScheduleData>>([]);
@@ -103,7 +103,7 @@ function DailyCalendar({
           <S.ScheduleContainer
             key={schedule.schedule_id}
             onClick={() => {
-              handleSkedClick(schedule.schedule_id);
+              handleScheduleClick(schedule.schedule_id);
             }}
           >
             <S.LabelDiv

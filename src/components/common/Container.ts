@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
 type Width = keyof typeof containerTheme.width;
@@ -21,7 +21,7 @@ const Container = styled.div<ContainerProps>`
 const WhiteContainer = styled.div<WhiteContainerProps>`
   ${tw`container p-3 mb-4 shadow-md rounded-xl bg-default-white`}
   ${(props) => props.$width && containerTheme.width[props.$width]}
-  ${(props) => (props.$height ? containerTheme.height[props.$height] : '')}
+    ${(props) => (props.$height ? containerTheme.height[props.$height] : '')}
 `;
 
 const containerTheme = {

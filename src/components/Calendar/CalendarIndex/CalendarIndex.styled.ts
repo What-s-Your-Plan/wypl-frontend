@@ -1,7 +1,21 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
-const IndexButton = styled.button<{ $isActive: boolean }>`
+const Container = styled.div`
+  ${tw`
+  flex 
+  flex-col
+  `}
+`;
+
+const Wrapper = styled.div`
+  ${tw`
+     invisible
+     h-6
+    `}
+`;
+
+const Button = styled.button<{ $isActive: boolean }>`
   writing-mode: vertical-rl;
   ${tw`
     flex 
@@ -19,9 +33,9 @@ const IndexButton = styled.button<{ $isActive: boolean }>`
     hover:w-12
   `}
   ${(props) => (props.$isActive ? tw`w-12` : tw`w-9`)}
-  ${(props) => (props.$isActive ? tw`bg-default-white` : tw`bg-label-brown`)}
-  ${(props) =>
+    ${(props) => (props.$isActive ? tw`bg-default-white` : tw`bg-label-brown`)}
+    ${(props) =>
     props.$isActive ? tw`text-label-brown` : tw`text-default-white`}
 `;
 
-export default IndexButton;
+export { Container, Wrapper, Button };

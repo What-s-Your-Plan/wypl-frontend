@@ -1,18 +1,18 @@
 import { useEffect, useState, useCallback } from 'react';
 
 import MonthlyDay from './MonthlyDay';
-import { Chevrons } from '../DatePicker.styled';
+import { Chevrons } from '../DatePicker/DatePicker.styled.ts';
 
 import {
   CalendarParams,
   CalendarPathVariable,
   CalendarsResponse,
   getCalendars,
-}                  from '@/api/calendar/getCalendars.ts';
+} from '@/api/calendar/getCalendars.ts';
 import {
   getGroupCalendars,
   GroupCalendarPathVariable,
-}                  from '@/api/calendar/getGroupCalendars.ts';
+} from '@/api/calendar/getGroupCalendars.ts';
 import ChevronLeft from '@/assets/icons/chevronLeft.svg';
 import ChevronRight from '@/assets/icons/chevronRight.svg';
 import useDateStore from '@/stores/DateStore';
@@ -31,7 +31,7 @@ type MonthlyProps = {
   groupId?: number;
   needUpdate: boolean;
   setUpdateFalse: () => void;
-  handleSkedClick: (id: number) => void;
+  handleScheduleClick: (id: number) => void;
   goDay: () => void;
 };
 
@@ -40,7 +40,7 @@ function MonthlyCalender({
   groupId,
   needUpdate,
   setUpdateFalse,
-  handleSkedClick,
+  handleScheduleClick,
   goDay,
 }: MonthlyProps) {
   const createInit = (): Array<DateSchedule> => {
@@ -51,7 +51,9 @@ function MonthlyCalender({
     return init;
   };
   const { selectedDate, setSelectedDate, selectedLabels } = useDateStore();
-  const [originSked, setOriginSked] = useState<Array<CalendarScheduleData>>([]);
+  const [originSchedule, setOriginSchedule] = useState<
+    Array<CalendarScheduleData>
+  >([]);
   const [monthSchedules, setMonthSchedules] =
     useState<Array<DateSchedule>>(createInit());
   const [firstDay, setFirstDay] = useState<Date | null>(null);
@@ -93,7 +95,7 @@ function MonthlyCalender({
     if (category === 'MEMBER') {
       const data = await getCalendars(calendarPathVariable, calendarParams);
       if (data.body) {
-        setOriginSked(data.body.schedules);
+        setOriginSchedule(data.body.schedules);
       }
     }
 
@@ -107,7 +109,7 @@ function MonthlyCalender({
         calendarParams,
       );
       if (data.body) {
-        setOriginSked(data.body.schedules);
+        setOriginSchedule(data.body.schedules);
       }
     }
   }, [selectedDate, groupId]);
@@ -120,7 +122,7 @@ function MonthlyCalender({
     if (firstDay) {
       const init: Array<DateSchedule> = createInit();
 
-      for (const sked of labelFilter(originSked, selectedLabels)) {
+      for (const sked of labelFilter(originSchedule, selectedLabels)) {
         let idx = getDateDiff(firstDay, sked.start_date);
         let period = getDateDiff(sked.start_date, sked.end_date);
         if (idx < 0) {
@@ -147,7 +149,7 @@ function MonthlyCalender({
 
       setMonthSchedules(init);
     }
-  }, [originSked, selectedLabels]);
+  }, [originSchedule, selectedLabels]);
 
   useEffect(() => {
     const newFirst = new Date(
@@ -188,7 +190,7 @@ function MonthlyCalender({
         calendar.push(
           <MonthlyDay
             key={i}
-            handleScheduleClick={handleSkedClick}
+            handleScheduleClick={handleScheduleClick}
             date={date}
             firstDay={firstDay}
             schedules={monthSchedules[i]}

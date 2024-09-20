@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import postPicture from '@/api/file/postPicture.ts';
-import Upload from '@/assets/icons/upload.svg';
-import CircleLoadingAnimation from '@/components/animation/CircleLoading';
-import { WhiteContainer } from '@/components/common/Container';
+import Upload                 from '@/assets/icons/upload.svg';
+import CircleLoadingAnimation from '@/components/Animation/CircleLoading';
+import { WhiteContainer }     from '@/components/common/Container';
 import { PictureContent } from '@/objects/ReviewContent.ts';
 import useReviewStore from '@/stores/ReviewStore';
 

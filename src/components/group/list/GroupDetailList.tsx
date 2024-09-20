@@ -27,8 +27,8 @@ import {
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Setting             from '@/assets/icons/settings.svg';
 import { LabelColorsType } from '@/assets/styles/colorThemes';
-import PalettePanel        from '@/components/color/PalettePanel';
-import PopOver from '@/components/common/PopOver';
+import PalettePanel        from '@/components/PalettePanel/PalettePanel';
+import PopOver             from '@/components/common/PopOver';
 import Tooltip from '@/components/tooltip/Tooltip';
 import useToastStore from '@/stores/ToastStore';
 

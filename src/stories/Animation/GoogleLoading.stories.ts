@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import GoogleLoading from '@/components/animation/GoogleLoading.tsx';
+import GoogleLoading from '@/components/Animation/GoogleLoading.tsx';
 
 const meta: Meta<typeof GoogleLoading> = {
   title: 'Animation/GoogleLoading',

@@ -24,30 +24,34 @@ const DateButton = styled.button<DButtonProps>`
     text-xs
   `}
   ${(props) => props.$isSelected && tw`text-default-white`}
-  ${(props) => !props.$isSelected && props.$isToday && tw`text-indigo-600 border border-indigo-600`}
-  ${(props) =>
+    ${(props) =>
+    !props.$isSelected &&
+    props.$isToday &&
+    tw`text-indigo-600 border border-indigo-600`}
+    ${(props) =>
     !props.$isSelected &&
     props.$isToday &&
     !props.$isCurrentMonth &&
     tw`text-indigo-400`}
-  ${(props) =>
+    ${(props) =>
     !props.$isSelected &&
     !props.$isToday &&
     props.$isCurrentMonth &&
     tw`text-default-black`}
-  ${(props) =>
+    ${(props) =>
     !props.$isSelected &&
     !props.$isToday &&
     !props.$isCurrentMonth &&
     tw`text-gray-400`}
-  ${(props) => props.$isSelected && tw`bg-label-brown`}
-  ${(props) => !props.$isSelected && tw`hover:bg-gray-200`}
-  ${(props) => (!props.$isSelected || props.$isToday) && tw`font-semibold`}
+    ${(props) => props.$isSelected && tw`bg-label-brown`}
+    ${(props) => !props.$isSelected && tw`hover:bg-gray-200`}
+    ${(props) => (!props.$isSelected || props.$isToday) && tw`font-semibold`}
 `;
 
 const Chevrons = styled.img`
   filter: invert(30%) sepia(8%) saturate(1109%) hue-rotate(176deg)
     brightness(96%) contrast(83%);
+
   &:hover {
     filter: none;
   }

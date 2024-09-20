@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import NotFound from '@/components/animation/NotFound.tsx';
+import Loading from '@/components/Animation/Loading.tsx';
 
-const meta: Meta<typeof NotFound> = {
-  title: 'Animation/NotFound',
-  component: NotFound,
+const meta: Meta<typeof Loading> = {
+  title: 'Animation/Loading',
+  component: Loading,
   tags: ['autodocs'],
 };
 

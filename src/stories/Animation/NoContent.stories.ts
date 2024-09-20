@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import PalettePanel from '@/components/color/PalettePanel.tsx';
+import NoContent from '@/components/Animation/NoContent.tsx';
 
-const meta: Meta<typeof PalettePanel> = {
-  title: 'Color/PalettePanel',
-  component: PalettePanel,
+const meta: Meta<typeof NoContent> = {
+  title: 'Animation/NoContent',
+  component: NoContent,
   tags: ['autodocs'],
 };
 

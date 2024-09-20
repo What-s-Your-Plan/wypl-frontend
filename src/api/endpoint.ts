@@ -12,7 +12,7 @@ const AUTH = {
 const CALENDAR = {
   V1: {
     CALENDARS: {
-      BASE: '/calendar/v1/calendars',
+      BASE: '/Calendar/v1/calendars',
     },
   },
 };

@@ -58,10 +58,10 @@ function WeeklyDays({ firstDay }: WDaysProps) {
     return <></>;
   };
   return (
-      <S.DayContainer>
-        <div className="col-end-1 w-14"></div>
-        {renderDays()}
-      </S.DayContainer>
+    <S.DayContainer>
+      <div className="col-end-1 w-14"></div>
+      {renderDays()}
+    </S.DayContainer>
   );
 }
 

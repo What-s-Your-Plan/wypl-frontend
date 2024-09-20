@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import PalettePanel from '../../color/PalettePanel';
-import ColorCircle from '../../common/ColorCircle';
+import PalettePanel from '@/components/PalettePanel/PalettePanel';
+import ColorCircle  from '../../common/ColorCircle';
 import { InputDefault } from '../../common/InputText';
 import PopOver from '../../common/PopOver';
 
