@@ -5,7 +5,7 @@ import GroupUpdatePanel from './GroupUpdatePanel';
 
 import { GroupUpdateInfo } from '@/@types/Group';
 import { deleteGroup, DeleteGroupParams } from '@/api/group/deleteGroup';
-import { LabelColorsType }                from '@/assets/styles/colorThemes';
+import { LabelColorsType }                from '@/styles/colorThemes.ts';
 import Button                             from '@/components/common/Button';
 import Modal from '@/components/common/Modal';
 import useToastStore from '@/stores/ToastStore';

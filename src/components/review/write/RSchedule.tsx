@@ -7,8 +7,8 @@ import Users from '@/assets/icons/users.svg';
 
 import Logo from '/logo.png';
 
-import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
-import { WhiteContainer } from '@/components/common/Container';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { WhiteContainer }  from '@/components/common/Container';
 import LabelButton from '@/components/common/LabelButton';
 import { splitTTime } from '@/utils/DateUtils';
 

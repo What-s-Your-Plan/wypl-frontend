@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { BgTheme, LabelColorsType } from '@/assets/styles/colorThemes';
+import { BgTheme, LabelColorsType } from '@/styles/colorThemes.ts';
 
 type DateSpanProps = {
   $isHoliday?: boolean;

@@ -8,8 +8,8 @@ import {
   TextTheme,
   BorderTheme,
   BgColorsType,
-} from '@/assets/styles/colorThemes';
-import { ButtonSize, ButtonSizeTheme } from '@/assets/styles/sizeThemes';
+}                                      from '@/styles/colorThemes.ts';
+import { ButtonSize, ButtonSizeTheme } from '@/styles/sizeThemes.ts';
 
 type StyleProps = {
   $bgColor?: BgColorsType;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { LabelColorsType, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
+import { LabelColorsType, BgTheme, BorderTheme } from '@/styles/colorThemes.ts';
 
 const Container = styled.div`
   ${tw`

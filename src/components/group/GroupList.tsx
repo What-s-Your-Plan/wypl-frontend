@@ -24,7 +24,7 @@ import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Envelope from '@/assets/icons/envelope.svg';
 import Plus from '@/assets/icons/plus.svg';
 import Users               from '@/assets/icons/users.svg';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
 import { BROWSER_PATH }    from '@/constants/Path';
 
 function GroupList() {

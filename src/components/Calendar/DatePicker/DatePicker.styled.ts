@@ -1,18 +1,26 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
+const Header = styled.h2`
+  ${tw`
+text-lg
+font-semibold
+text-gray-900
+`}
+`;
+
 const DateWrapper = styled.div<{ $idx: number }>`
   ${tw`py-1`}
   ${(props) => props.$idx > 6 && tw`border-t border-gray-200`}
 `;
 
-type DButtonProps = {
+export interface DateButtonProps {
   $isSelected: boolean;
   $isToday: boolean;
   $isCurrentMonth: boolean;
-};
+}
 
-const DateButton = styled.button<DButtonProps>`
+const DateButton = styled.button<DateButtonProps>`
   ${tw`
     cursor-pointer
     rounded-full
@@ -57,4 +65,4 @@ const Chevrons = styled.img`
   }
 `;
 
-export { DateWrapper, DateButton, Chevrons };
+export { Header, DateWrapper, DateButton, Chevrons };

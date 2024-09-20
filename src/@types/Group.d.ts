@@ -1,4 +1,4 @@
-import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
 
 type Group = {
   id: number;

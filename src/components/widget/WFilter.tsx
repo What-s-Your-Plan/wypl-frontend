@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 
 import LabelButton from '../common/LabelButton';
 
-import { getLabelList } from '@/api/label/getLabelList';
-import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
-import useDateStore from '@/stores/DateStore';
+import { getLabelList }    from '@/api/label/getLabelList';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import useDateStore        from '@/stores/DateStore';
 
 function WFilter() {
   const dateStore = useDateStore();

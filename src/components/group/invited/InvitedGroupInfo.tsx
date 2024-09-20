@@ -12,7 +12,7 @@ import {
 import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
 import Check from '@/assets/icons/check.svg';
 import X                   from '@/assets/icons/x.svg';
-import { LabelColorsType } from '@/assets/styles/colorThemes';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
 import ColorCircle         from '@/components/common/ColorCircle';
 import Tooltip from '@/components/tooltip/Tooltip';
 

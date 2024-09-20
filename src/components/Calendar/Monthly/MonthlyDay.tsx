@@ -1,8 +1,8 @@
 import { DateSchedule } from './MonthlyCalendar';
 import * as S from './MonthlyCalendar.styled';
 
-import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
-import useDateStore from '@/stores/DateStore';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import useDateStore        from '@/stores/DateStore';
 import useMemberStore from '@/stores/MemberStore';
 import { isSameDay, stringToDate, getDateDiff } from '@/utils/DateUtils';
 

@@ -11,8 +11,8 @@ import {
 import {
   getGroupCalendars,
   GroupCalendarPathVariable,
-} from '@/api/calendar/getGroupCalendars.ts';
-import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
+}                          from '@/api/calendar/getGroupCalendars.ts';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
 import NoContentAnimation  from '@/components/Animation/NoContent';
 import useDateStore        from '@/stores/DateStore';
 import useMemberStore from '@/stores/MemberStore';

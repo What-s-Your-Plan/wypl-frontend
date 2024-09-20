@@ -1,13 +1,14 @@
 import * as S from './PalettePanel.styled.ts';
 
-import { LabelColors, LabelColorsType } from '@/assets/styles/colorThemes.ts';
 import ColorCircle from '@/components/common/ColorCircle';
+import { LabelColors, LabelColorsType } from '@/styles/colorThemes.ts';
 
 type PalettePanelProps = {
   setColor: (color: LabelColorsType) => void;
+  isRounded?: boolean;
 };
 
-function PalettePanel({ setColor }: PalettePanelProps) {
+function PalettePanel({ setColor, isRounded }: PalettePanelProps) {
   const renderColors = () => {
     return LabelColors.map((color: LabelColorsType) => {
       return (
@@ -15,6 +16,7 @@ function PalettePanel({ setColor }: PalettePanelProps) {
           <ColorCircle
             $labelColor={color as LabelColorsType}
             $cursor="pointer"
+            $isRounded={isRounded}
             onClick={() => {
               setColor(color as LabelColorsType);
             }}

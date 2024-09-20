@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
 
+import * as S from './DatePicker.styled.ts';
+
 import ChevronLeft from '@/assets/icons/chevronLeft.svg';
 import ChevronRight from '@/assets/icons/chevronRight.svg';
-import {
-  DateWrapper,
-  DateButton,
-  Chevrons,
-} from '@/components/Calendar/DatePicker/DatePicker.styled.ts';
 import useDateStore from '@/stores/DateStore.ts';
 import {
   padding0,
@@ -19,42 +16,30 @@ function DatePicker() {
   const { today, selectedDate, setSelectedDate } = useDateStore();
   const [currCalendar, setCurrCalendar] = useState<Date>(selectedDate);
 
+  // 선택한 날짜의 월이 바뀌면 currCalendar 업데이트
   useEffect(() => {
     if (currCalendar.getMonth() !== selectedDate.getMonth()) {
-      const newMonth = new Date(
-        selectedDate.getFullYear(),
-        selectedDate.getMonth(),
-        1,
+      setCurrCalendar(
+        new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1),
       );
-      setCurrCalendar(newMonth);
     }
   }, [selectedDate]);
 
-  const handlePrevMonth = () => {
-    const prevMonth = new Date(
-      currCalendar.getFullYear(),
-      currCalendar.getMonth() - 1,
-      1,
+  /**
+   * 이전/다음 달 이동
+   */
+  const handleMonthChange = (months: number) => {
+    setCurrCalendar(
+      new Date(currCalendar.getFullYear(), currCalendar.getMonth() + months, 1),
     );
-    setCurrCalendar(prevMonth);
   };
 
-  const handleNextMonth = () => {
-    const nextMonth = new Date(
-      currCalendar.getFullYear(),
-      currCalendar.getMonth() + 1,
-      1,
-    );
-    setCurrCalendar(nextMonth);
-  };
-
+  /**
+   * 오늘로 이동
+   */
   const goToday = () => {
     setSelectedDate(today);
     setCurrCalendar(today);
-  };
-
-  const changeSelectedDate = (newDate: Date) => {
-    setSelectedDate(newDate);
   };
 
   const renderCalendar = () => {
@@ -63,31 +48,28 @@ function DatePicker() {
       currCalendar.getMonth(),
       1,
     );
-    firstDay.setDate(firstDay.getDate() - firstDay.getDay());
+    firstDay.setDate(firstDay.getDate() - firstDay.getDay()); // 달력 시작일을 해당 월의 첫 번째 요일로 맞춤
 
     const calendar: Array<JSX.Element> = [];
-
-    for (let i = 0; i < 42; i++) {
+    for (let gridIndex = 0; gridIndex < 42; gridIndex++) {
       const date = new Date(
         firstDay.getFullYear(),
         firstDay.getMonth(),
-        firstDay.getDate() + i,
+        firstDay.getDate() + gridIndex,
       );
       const dateString = dateToString(date);
 
       calendar.push(
-        <DateWrapper key={dateString} $idx={i}>
-          <DateButton
+        <S.DateWrapper key={dateString} $idx={gridIndex}>
+          <S.DateButton
             $isToday={isSameDay(date, today)}
             $isSelected={isSameDay(date, selectedDate)}
             $isCurrentMonth={isCurrentMonth(date, currCalendar.getMonth())}
-            onClick={() => {
-              changeSelectedDate(date);
-            }}
+            onClick={() => setSelectedDate(date)}
           >
             <time dateTime={dateString}>{date.getDate()}</time>
-          </DateButton>
-        </DateWrapper>,
+          </S.DateButton>
+        </S.DateWrapper>,
       );
     }
 
@@ -96,26 +78,25 @@ function DatePicker() {
 
   return (
     <div className="flex flex-col h-full justify-center">
-      <h2 className="text-lg font-semibold text-gray-900">
+      <S.Header>
         {currCalendar.getFullYear()}.{padding0(currCalendar.getMonth() + 1)}
-      </h2>
+      </S.Header>
       <div className="flex items-center justify-between mt-1">
         <button
           className="text-xs w-fit h-fit p-1 rounded-md border font-medium border-gray-500"
-          onClick={() => {
-            goToday();
-          }}
+          onClick={goToday}
         >
+          {/* TODO: `오늘`이 좋은지, `Today`가 좋은지 */}
           오늘
         </button>
         <div className="flex">
           <button
             type="button"
             className="flex flex-none items-center justify-center p-1"
-            onClick={handlePrevMonth}
+            onClick={() => handleMonthChange(-1)}
           >
             <span className="sr-only">Previous month</span>
-            <Chevrons
+            <S.Chevrons
               src={ChevronLeft}
               alt="prev-month"
               className="h-5 w-5"
@@ -124,11 +105,11 @@ function DatePicker() {
           </button>
           <button
             type="button"
-            className=" flex flex-none items-center justify-center p-1"
-            onClick={handleNextMonth}
+            className="flex flex-none items-center justify-center p-1"
+            onClick={() => handleMonthChange(1)}
           >
             <span className="sr-only">Next month</span>
-            <Chevrons
+            <S.Chevrons
               src={ChevronRight}
               alt="next-month"
               className="h-5 w-5"
@@ -138,13 +119,9 @@ function DatePicker() {
         </div>
       </div>
       <div className="mt-2 grid grid-cols-7 text-center text-xs leading-6 text-gray-500">
-        <div>일</div>
-        <div>월</div>
-        <div>화</div>
-        <div>수</div>
-        <div>목</div>
-        <div>금</div>
-        <div>토</div>
+        {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
+          <div key={day}>{day}</div>
+        ))}
       </div>
       <div className="mt-1 grid grid-cols-7 text-sm">{renderCalendar()}</div>
     </div>

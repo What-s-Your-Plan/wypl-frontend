@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { MemberProfileData } from '@/@types/Member';
-import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
+import { MemberProfileData }              from '@/@types/Member';
+import { LabelColorsType }                from '@/styles/colorThemes.ts';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type MemberState = {

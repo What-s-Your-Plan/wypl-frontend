@@ -7,9 +7,9 @@ import PenIcon from '@/assets/icons/pen.svg';
 import RepeatIcon from '@/assets/icons/repeat.svg';
 import LabelIcon from '@/assets/icons/tag.svg';
 import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
-import UsersIcon from '@/assets/icons/users.svg';
-import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
-import Button from '@/components/common/Button';
+import UsersIcon           from '@/assets/icons/users.svg';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import Button              from '@/components/common/Button';
 import LabelButton from '@/components/common/LabelButton';
 import { isAllDay, padding0, stringToDate } from '@/utils/DateUtils';
 

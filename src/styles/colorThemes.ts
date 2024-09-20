@@ -122,8 +122,6 @@ const BorderTheme = {
   main: tw`border border-main`,
 };
 
-export type AllColorsType = (typeof AllColors)[number];
-
 export type BgColorsType = keyof typeof BgTheme;
 export type BorderColors = keyof typeof BorderTheme;
 export type LabelColorsType = keyof typeof LabelTheme;

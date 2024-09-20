@@ -1,7 +1,7 @@
 import * as S from './WeeklyCalendar.styled';
 
-import { LabelColorsType } from '@/assets/styles/colorThemes.ts';
-import useMemberStore from '@/stores/MemberStore';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import useMemberStore      from '@/stores/MemberStore';
 import { stringToDate, padding0 } from '@/utils/DateUtils';
 
 type WSchedulesProps = {
