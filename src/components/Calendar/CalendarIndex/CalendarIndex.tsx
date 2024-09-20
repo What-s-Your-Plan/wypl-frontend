@@ -2,14 +2,14 @@ import { Dispatch, SetStateAction } from 'react';
 
 import * as S from './CalendarIndex.styled.ts';
 
-export interface IndexGroupProps {
+export interface CalendarIndexProps {
   /** 현재 선택한 달력의 종류 */
   calendarType: CalenderType;
   /** 달력의 종류를 변경하는 함수 */
   setCalendarType: Dispatch<SetStateAction<CalenderType>>;
 }
 
-function CalendarIndex({ calendarType, setCalendarType }: IndexGroupProps) {
+function CalendarIndex({ calendarType, setCalendarType }: CalendarIndexProps) {
   // TODO:  추후 YEAR 타입도 추가 예정
   const calendarTypes: CalenderType[] = ['MONTH', 'WEEK', 'DAY'] as const;
 
