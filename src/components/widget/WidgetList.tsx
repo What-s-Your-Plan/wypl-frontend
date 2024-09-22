@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Responsive, WidthProvider } from 'react-grid-layout';
+import ReactGridLayout, { Responsive, WidthProvider } from 'react-grid-layout';
 
 import WDDay from './WDDay';
 import WFilter from './WFilter';
@@ -30,10 +30,12 @@ function WidgetList() {
     const tempArray = widgetArray;
     setLayouts(allLayouts);
     currentLayout?.map((position) => {
-      tempArray[Number(position.i)].layout.x = position.x;
-      tempArray[Number(position.i)].layout.y = position.y;
-      tempArray[Number(position.i)].layout.w = position.w;
-      tempArray[Number(position.i)].layout.h = position.h;
+      if (Number(position.i) !== 0) {
+        tempArray[Number(position.i)].layout.x = position.x;
+        tempArray[Number(position.i)].layout.y = position.y;
+        tempArray[Number(position.i)].layout.w = position.w;
+        tempArray[Number(position.i)].layout.h = position.h;
+      }
     });
     setWidgetArray(tempArray);
   };
@@ -43,7 +45,7 @@ function WidgetList() {
 
   const handleLongPress = () => {
     pressTimer.current = setTimeout(() => {
-      setIsModifying(false); // 추후 이동하고 싶으면 해당 함수를 `true`로 수정합니다.
+      setIsModifying(true); // 추후 이동하고 싶으면 해당 함수를 `true`로 수정합니다.
     }, 1500);
   };
 
