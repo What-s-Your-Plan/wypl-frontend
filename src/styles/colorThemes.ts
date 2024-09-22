@@ -117,6 +117,8 @@ const BorderTheme = {
   labelBrown: tw`border border-label-brown`,
   white: tw`border border-default-white`,
   black: tw`border border-default-black`,
+  black25: tw`border border-default-black/25`,
+  black50: tw`border border-default-black/25`,
   warmGray: tw`border-default-warmgray`,
   coolGray: tw`border-default-coolgray`,
   main: tw`border border-main`,
