@@ -73,6 +73,13 @@ function stringToDate(str: string): Date {
   return new Date(str);
 }
 
+function todayToString(): string {
+  const now = new Date();
+  const days = ['일', '월', '화', '수', '목', '금', '토'];
+  const dayOfWeek = days[now.getDay()];
+  return `${padding0(now.getMonth() + 1)}월 ${padding0(now.getDate())}일 (${dayOfWeek}요일)`;
+}
+
 export {
   dateTimeToString,
   dateToString,
@@ -85,4 +92,5 @@ export {
   padding0,
   splitTTime,
   stringToDate,
+  todayToString,
 };

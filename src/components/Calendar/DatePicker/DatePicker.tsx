@@ -4,12 +4,14 @@ import * as S from './DatePicker.styled.ts';
 
 import ChevronLeft from '@/assets/icons/chevronLeft.svg';
 import ChevronRight from '@/assets/icons/chevronRight.svg';
+import Tooltip from '@/components/Tooltip/Tooltip.tsx';
 import useDateStore from '@/stores/DateStore.ts';
 import {
   padding0,
   isSameDay,
   isCurrentMonth,
   dateToString,
+  todayToString,
 } from '@/utils/DateUtils.ts';
 
 function DatePicker() {
@@ -83,24 +85,43 @@ function DatePicker() {
         {currCalendar.getFullYear()}.{padding0(currCalendar.getMonth() + 1)}
       </S.Header>
       <S.ButtonFlex>
-        <S.TodayButton onClick={goToday}>오늘</S.TodayButton>
+        <Tooltip
+          text={todayToString()}
+          children={<S.TodayButton onClick={goToday}>오늘</S.TodayButton>}
+        />
         <S.ChevronButtonFlex>
-          <S.ChevronsButton type="button" onClick={() => handleMonthChange(-1)}>
-            <S.Chevrons
-              src={ChevronLeft}
-              alt="prev-month"
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          </S.ChevronsButton>
-          <S.ChevronsButton type="button" onClick={() => handleMonthChange(1)}>
-            <S.Chevrons
-              src={ChevronRight}
-              alt="next-month"
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          </S.ChevronsButton>
+          <Tooltip
+            text={'전 달'}
+            children={
+              <S.ChevronsButton
+                type="button"
+                onClick={() => handleMonthChange(-1)}
+              >
+                <S.Chevrons
+                  src={ChevronLeft}
+                  alt="prev-month"
+                  className="h-5 w-5"
+                  aria-hidden="true"
+                />
+              </S.ChevronsButton>
+            }
+          />
+          <Tooltip
+            text={'다음 달'}
+            children={
+              <S.ChevronsButton
+                type="button"
+                onClick={() => handleMonthChange(1)}
+              >
+                <S.Chevrons
+                  src={ChevronRight}
+                  alt="next-month"
+                  className="h-5 w-5"
+                  aria-hidden="true"
+                />
+              </S.ChevronsButton>
+            }
+          />
         </S.ChevronButtonFlex>
       </S.ButtonFlex>
       <S.WeekHeader>
