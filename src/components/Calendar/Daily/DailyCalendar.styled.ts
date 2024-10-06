@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
 import { LabelColorsType, LabelTheme } from '@/styles/colorThemes.ts';
@@ -25,8 +25,9 @@ const ScheduleContainer = styled.div`
 const LabelDiv = styled.div<{ $bgColor: LabelColorsType }>`
   ${tw`
     rounded-xl
-    w-8
+    w-[32px]
   `}
+  
   ${(props) => LabelTheme[props.$bgColor]}
 `;
 

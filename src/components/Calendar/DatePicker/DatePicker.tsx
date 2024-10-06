@@ -16,7 +16,9 @@ function DatePicker() {
   const { today, selectedDate, setSelectedDate } = useDateStore();
   const [currCalendar, setCurrCalendar] = useState<Date>(selectedDate);
 
-  // 선택한 날짜의 월이 바뀌면 currCalendar 업데이트
+  /**
+   * 선택한 날짜의 월이 바뀌면 currentCalendar 업데이트
+   */
   useEffect(() => {
     if (currCalendar.getMonth() !== selectedDate.getMonth()) {
       setCurrCalendar(
@@ -72,59 +74,42 @@ function DatePicker() {
         </S.DateWrapper>,
       );
     }
-
     return calendar;
   };
 
   return (
-    <div className="flex flex-col h-full justify-center">
+    <S.Container>
       <S.Header>
         {currCalendar.getFullYear()}.{padding0(currCalendar.getMonth() + 1)}
       </S.Header>
-      <div className="flex items-center justify-between mt-1">
-        <button
-          className="text-xs w-fit h-fit p-1 rounded-md border font-medium border-gray-500"
-          onClick={goToday}
-        >
-          {/* TODO: `오늘`이 좋은지, `Today`가 좋은지 */}
-          오늘
-        </button>
-        <div className="flex">
-          <button
-            type="button"
-            className="flex flex-none items-center justify-center p-1"
-            onClick={() => handleMonthChange(-1)}
-          >
-            <span className="sr-only">Previous month</span>
+      <S.ButtonFlex>
+        <S.TodayButton onClick={goToday}>오늘</S.TodayButton>
+        <S.ChevronButtonFlex>
+          <S.ChevronsButton type="button" onClick={() => handleMonthChange(-1)}>
             <S.Chevrons
               src={ChevronLeft}
               alt="prev-month"
               className="h-5 w-5"
               aria-hidden="true"
             />
-          </button>
-          <button
-            type="button"
-            className="flex flex-none items-center justify-center p-1"
-            onClick={() => handleMonthChange(1)}
-          >
-            <span className="sr-only">Next month</span>
+          </S.ChevronsButton>
+          <S.ChevronsButton type="button" onClick={() => handleMonthChange(1)}>
             <S.Chevrons
               src={ChevronRight}
               alt="next-month"
               className="h-5 w-5"
               aria-hidden="true"
             />
-          </button>
-        </div>
-      </div>
-      <div className="mt-2 grid grid-cols-7 text-center text-xs leading-6 text-gray-500">
+          </S.ChevronsButton>
+        </S.ChevronButtonFlex>
+      </S.ButtonFlex>
+      <S.WeekHeader>
         {['일', '월', '화', '수', '목', '금', '토'].map((day) => (
           <div key={day}>{day}</div>
         ))}
-      </div>
-      <div className="mt-1 grid grid-cols-7 text-sm">{renderCalendar()}</div>
-    </div>
+      </S.WeekHeader>
+      <S.CalendarGrid>{renderCalendar()}</S.CalendarGrid>
+    </S.Container>
   );
 }
 

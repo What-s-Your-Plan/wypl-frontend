@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
-import CalendarAddIcon from '@/assets/icons/calendarAdd.svg';
 import CalendarIndex from '@/components/Calendar/CalendarIndex/CalendarIndex.tsx';
 import DailyCalendar from '@/components/Calendar/Daily/DailyCalendar';
 import DatePicker from '@/components/Calendar/DatePicker/DatePicker.tsx';
 import MonthlyCalender from '@/components/Calendar/Monthly/MonthlyCalendar';
-import Todo from '@/components/Calendar/Todo';
+import Todo from '@/components/Todo/Todo.tsx';
 import WeeklyCalendar from '@/components/Calendar/Weekly/WeeklyCalendar';
 import Button from '@/components/common/Button';
 import * as Containers from '@/components/common/Container';
@@ -102,18 +101,22 @@ function Calendar({ category, groupId }: CalendarProps) {
 
   return (
     <Containers.Container className="flex" $width="right">
-      <Containers.WhiteContainer $width="1300" $height="max">
+      <Containers.WhiteContainer $width="1200" $height="max">
         <div className="flex p-3 h-full gap-4">
-          <div className="grow">{renderCalendar()}</div>
-          <div className="flex flex-col w-300">
-            <Containers.WhiteContainer $width="1300" $height="one">
-              <DatePicker />
-            </Containers.WhiteContainer>
-            <Todo />
-            <Button className="py-2" $size="lg" onClick={handleOpenCreate}>
-              <img src={CalendarAddIcon} alt="calendar-add" />
+          <div className="grow min-w-[640px]">{renderCalendar()}</div>
+          <div className="flex flex-col min-w-[240px]">
+            <Button
+              className="py-2 mb-5"
+              $size="lg"
+              $border={'black50'}
+              onClick={handleOpenCreate}
+            >
               <span>일정 등록</span>
             </Button>
+            <div className="p-3 mb-4 shadow-md rounded-xl bg-default-white h-[30vh] min-h-[300px]">
+              <DatePicker />
+            </div>
+            <Todo />
           </div>
         </div>
       </Containers.WhiteContainer>

@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
+const Container = styled.div`
+  ${tw`
+    relative
+    flex
+    flex-col
+    min-h-[20px]
+    justify-center
+    `}
+`;
+
 const Header = styled.h2`
   ${tw`
 text-lg
@@ -56,6 +66,27 @@ const DateButton = styled.button<DateButtonProps>`
     ${(props) => (!props.$isSelected || props.$isToday) && tw`font-semibold`}
 `;
 
+const ButtonFlex = styled.div`
+  ${tw`
+  flex
+  mt-1
+  justify-between
+  `}
+`;
+
+const TodayButton = styled.div`
+  ${tw`
+    text-xs
+    w-fit
+    h-fit
+    p-1
+    rounded-md
+    border
+    font-medium
+    border-gray-500
+    `}
+`;
+
 const Chevrons = styled.img`
   filter: invert(30%) sepia(8%) saturate(1109%) hue-rotate(176deg)
     brightness(96%) contrast(83%);
@@ -65,4 +96,53 @@ const Chevrons = styled.img`
   }
 `;
 
-export { Header, DateWrapper, DateButton, Chevrons };
+const ChevronButtonFlex = styled.div`
+  ${tw`
+    flex
+    `}
+`;
+
+const ChevronsButton = styled.button`
+  ${tw`
+  flex
+  flex-none
+  items-center
+  justify-center
+  p-1
+  `}
+`;
+
+const WeekHeader = styled.div`
+  ${tw`
+    mt-2
+    grid
+    grid-cols-7
+    text-center
+    text-xs
+    leading-6
+    text-gray-500
+    `}
+`;
+
+const CalendarGrid = styled.div`
+  ${tw`
+    grid
+    grid-cols-7
+    mt-1 
+    text-sm
+    `}
+`;
+
+export {
+  Container,
+  Header,
+  ButtonFlex,
+  DateWrapper,
+  DateButton,
+  Chevrons,
+  TodayButton,
+  ChevronButtonFlex,
+  ChevronsButton,
+  WeekHeader,
+  CalendarGrid,
+};

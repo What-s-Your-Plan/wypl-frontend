@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 import { BgTheme, LabelColorsType } from '@/styles/colorThemes.ts';
 
 const DateContainer = styled.div`
-  ${tw`flex flex-col border-t-2 border-t-main h-20`}
+  ${tw`flex flex-col border-t-2 border-t-main min-h-[100px]`}
 `;
 
 const ScheduleButton = styled.button<{
@@ -21,7 +21,7 @@ const ScheduleButton = styled.button<{
     rounded 
     absolute 
     left-0 
-    // justify-center 
+    justify-center 
     items-center 
     z-[5] 
     text-xs 
