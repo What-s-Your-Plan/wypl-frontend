@@ -25,12 +25,12 @@ import {
   GroupInviteRequest,
 } from '@/api/group/postGroupInvite';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
-import Setting             from '@/assets/icons/settings.svg';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
-import PalettePanel        from '@/components/PalettePanel/PalettePanel';
-import PopOver             from '@/components/common/PopOver';
-import Tooltip from '@/components/tooltip/Tooltip';
+import Setting from '@/assets/icons/settings.svg';
+import PopOver from '@/components/common/PopOver';
+import PalettePanel from '@/components/PalettePanel/PalettePanel';
+import Tooltip from '@/components/Tooltip/Tooltip';
 import useToastStore from '@/stores/ToastStore';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
 
 type GroupInfoProps = {
   group: Group;
@@ -87,7 +87,10 @@ function GroupDetailList({
     newColor: LabelColorsType,
     memberIds: Array<number>,
   ) => {
-    if (newName !== group.name || newColor !== (group.color as LabelColorsType)) {
+    if (
+      newName !== group.name ||
+      newColor !== (group.color as LabelColorsType)
+    ) {
       const pathVariable: GroupInfoUpdatePathVariable = {
         groupId: group.id,
       };

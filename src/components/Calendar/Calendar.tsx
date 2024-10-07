@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
 import CalendarIndex from '@/components/Calendar/CalendarIndex/CalendarIndex.tsx';
-import DailyCalendar from '@/components/Calendar/Daily/DailyCalendar';
+import DailyCalendar from '@/components/Calendar/DailyCalendar/DailyCalendar';
 import DatePicker from '@/components/Calendar/DatePicker/DatePicker.tsx';
-import MonthlyCalender from '@/components/Calendar/Monthly/MonthlyCalendar';
-import Todo from '@/components/Todo/Todo.tsx';
-import WeeklyCalendar from '@/components/Calendar/Weekly/WeeklyCalendar';
+import MonthlyCalender from '@/components/Calendar/MonthlyCalendar/MonthlyCalendar';
+import WeeklyCalendar from '@/components/Calendar/WeeklyCalendar/WeeklyCalendar';
 import Button from '@/components/common/Button';
 import * as Containers from '@/components/common/Container';
 import ScheduleDetailModal from '@/components/schedule/ScheduleDetailModal.tsx';
 import ScheduleModal from '@/components/schedule/ScheduleModal';
+import Todo from '@/components/Todo/Todo.tsx';
 import initialSchedule from '@/constants/ScheduleFormInit';
 import useDateStore from '@/stores/DateStore';
 import useMemberStore from '@/stores/MemberStore';
@@ -89,7 +89,7 @@ function Calendar({ category, groupId }: CalendarProps) {
         return (
           <MonthlyCalender
             {...commonProps}
-            goDay={() => setCalendarType('DAY')}
+            switchDayCalendarTypeHandler={() => setCalendarType('DAY')}
           />
         );
       case 'WEEK':

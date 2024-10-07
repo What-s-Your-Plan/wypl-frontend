@@ -33,7 +33,7 @@
 
 ## 2. Props
 
-컴포넌트의 `Props`가 있다면 `export interface`로 작성합니다.
+컴포넌트, `CSS In JS`에 `Props`가 있다면 `export interface`로 작성합니다.
 
 **✅ Correct**
 
@@ -44,7 +44,17 @@ export interface CalendarProps {
   /** 그룹 달력이면 현재 선택된 그룹의 식별자 */
   groupId?: number;
 }
+
+export interface DButtonProps {
+  $isSelected: boolean;
+  $isToday: boolean;
+  $isCurrentMonth: boolean;
+}
 ```
+
+### CSS In JS
+
+만약 `CSS In JS`에서 Props가 필요하다면 변수명 앞에 반드시 `$`를 붙여서 관리합니다.
 
 **❌ Incorrect**
 
@@ -54,6 +64,13 @@ export type CalendarProps = {
   category: 'MEMBER' | 'GROUP';
   /** 그룹 달력이면 현재 선택된 그룹의 식별자 */
   groupId?: number;
+}
+
+
+export type DButtonProps = {
+  $isSelected: boolean;
+  $isToday: boolean;
+  $isCurrentMonth: boolean;
 }
 ```
 

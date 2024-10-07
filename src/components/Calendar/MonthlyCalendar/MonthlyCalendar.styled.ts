@@ -4,7 +4,13 @@ import tw from 'twin.macro';
 import { BgTheme, LabelColorsType } from '@/styles/colorThemes.ts';
 
 const DateContainer = styled.div`
-  ${tw`flex flex-col border-t-2 border-t-main min-h-[100px]`}
+  ${tw`
+    flex
+    flex-col
+    border-t-2
+    border-t-main
+    min-h-[100px]
+  `}
 `;
 
 const ScheduleButton = styled.button<{

@@ -15,10 +15,10 @@ import {
   getGroupMember,
   GetGroupMembersResponse,
 } from '@/api/group/getGroupMember';
-import X                   from '@/assets/icons/x.svg';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
-import Tooltip             from '@/components/tooltip/Tooltip';
+import X from '@/assets/icons/x.svg';
+import Tooltip from '@/components/Tooltip/Tooltip';
 import useMemberStore from '@/stores/MemberStore';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupMemberProps = {

@@ -9,7 +9,6 @@ import GroupDetailList from './list/GroupDetailList';
 import Button from '../common/Button';
 import { Container } from '../common/Container';
 import { Divider } from '../common/Divider';
-import Tooltip from '../tooltip/Tooltip';
 
 import {
   GroupInfoData,
@@ -23,9 +22,10 @@ import {
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Envelope from '@/assets/icons/envelope.svg';
 import Plus from '@/assets/icons/plus.svg';
-import Users               from '@/assets/icons/users.svg';
+import Users from '@/assets/icons/users.svg';
+import Tooltip from '@/components/Tooltip/Tooltip';
+import { BROWSER_PATH } from '@/constants/Path';
 import { LabelColorsType } from '@/styles/colorThemes.ts';
-import { BROWSER_PATH }    from '@/constants/Path';
 
 function GroupList() {
   const navigate = useNavigate();

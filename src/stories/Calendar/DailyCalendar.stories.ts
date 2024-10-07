@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import DailyCalendar from '@/components/Calendar/Daily/DailyCalendar.tsx';
+import DailyCalendar from '@/components/Calendar/DailyCalendar/DailyCalendar.tsx';
 
 const meta: Meta<typeof DailyCalendar> = {
   title: 'Calendar/DailyCalendar',
