@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 
 import LabelButton from '../common/LabelButton';
 
-import { getLabelList } from '@/api/label/getLabelList';
-import useDateStore from '@/stores/DateStore';
+import { getLabelList }    from '@/api/label/getLabelList';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import useDateStore        from '@/stores/DateStore';
 
 function WFilter() {
   const dateStore = useDateStore();
@@ -17,7 +18,7 @@ function WFilter() {
         : '!text-default-black !font-medium';
       return (
         <LabelButton
-          $bgColor={labelBgColor as LabelColorsType}
+          $labelColor={labelBgColor as LabelColorsType}
           className={labelClassName}
           key={label.id}
           onClick={() => {
@@ -50,8 +51,10 @@ function WFilter() {
       </div>
       <div id="labelList" className="scrollBar flex flex-wrap gap-2 h-28 mt-2">
         <LabelButton
-          $bgColor={
-            dateStore.selectedLabels.length === 0 ? 'labelBrown' : 'coolGray'
+          $labelColor={
+            dateStore.selectedLabels.length === 0
+              ? 'labelBrown'
+              : 'labelLavender'
           }
           className={`h-8 ${dateStore.selectedLabels.length === 0 ? '' : '!text-default-black !font-medium'}`}
           onClick={dateStore.clearSelectedLabels}

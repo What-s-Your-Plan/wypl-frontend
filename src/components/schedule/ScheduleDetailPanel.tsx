@@ -2,8 +2,8 @@ import React, { useEffect, useState, Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import ScheduleModify from './ScheduleModify.tsx';
-import * as Items from './SkedDetailItems';
-import Modal from '../common/Modal';
+import * as Items     from './ScheduleDetailItems.tsx';
+import Modal          from '../common/Modal';
 
 import deleteSchedule from '@/api/schedule/deleteSchedule';
 import EditIcon from '@/assets/icons/editPaper.svg';

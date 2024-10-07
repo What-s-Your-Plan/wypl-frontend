@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import tw from 'twin.macro';
 
 type Width = keyof typeof containerTheme.width;
@@ -21,7 +21,7 @@ const Container = styled.div<ContainerProps>`
 const WhiteContainer = styled.div<WhiteContainerProps>`
   ${tw`container p-3 mb-4 shadow-md rounded-xl bg-default-white`}
   ${(props) => props.$width && containerTheme.width[props.$width]}
-  ${(props) => (props.$height ? containerTheme.height[props.$height] : '')}
+    ${(props) => (props.$height ? containerTheme.height[props.$height] : '')}
 `;
 
 const containerTheme = {
@@ -32,10 +32,10 @@ const containerTheme = {
     '800': tw`w-800 ml-0 ss:max-sm:w-full ss:max-sm:ml-7 h-[90vh]`,
     '900': tw`w-900`,
     '1100': tw`w-1100 ss:max-sm:w-full h-[90vh]`,
-    '1200': tw`w-1200`,
+    '1200': tw`min-w-[928px] w-1200`,
     '1300': tw`w-1300`,
-    left: tw`w-[24%] ss:max-sm:w-full h-[90vh]`,
-    right: tw`w-[70%] ml-0 ss:max-sm:w-full ss:max-sm:ml-7 h-[90vh]`,
+    left: tw`w-[24%] min-w-[360px] ss:max-sm:w-full h-[90vh]`,
+    right: tw`w-[70%] min-w-[980px] m-0 ss:max-sm:w-full ss:max-sm:ml-7 h-[90vh]`,
   },
   height: {
     quarter: tw`h-[10vh]`,

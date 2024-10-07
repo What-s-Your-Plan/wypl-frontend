@@ -1,5 +1,6 @@
 import { axiosWithAccessToken } from '@/api/axios';
-import { MEMBER } from '@/api/endpoint.ts';
+import { MEMBER }          from '@/api/endpoint.ts';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
 
 /* Request */
 export type UpdateLabelColorRequest = {

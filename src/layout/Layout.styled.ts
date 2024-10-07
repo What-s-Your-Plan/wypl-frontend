@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  min-width: 959px;
+    min-height: 820px;
+    min-width: 1040px;
 `;
 
 const Content = styled.div`
-  min-height: 735px;
+    min-height: 720px;
 `;
 
 export { Container, Content };

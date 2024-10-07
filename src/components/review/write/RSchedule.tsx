@@ -7,7 +7,8 @@ import Users from '@/assets/icons/users.svg';
 
 import Logo from '/logo.png';
 
-import { WhiteContainer } from '@/components/common/Container';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { WhiteContainer }  from '@/components/common/Container';
 import LabelButton from '@/components/common/LabelButton';
 import { splitTTime } from '@/utils/DateUtils';
 
@@ -59,7 +60,7 @@ function RSchedule({ scheduleId }: RScheduleProps) {
       {schedule?.label && (
         <div className="flex gap-4 items-center text-sm">
           <img src={Tag} alt="라벨" className="w-5" />
-          <LabelButton $bgColor={schedule?.label?.color as LabelColorsType}>
+          <LabelButton $labelColor={schedule?.label?.color as LabelColorsType}>
             {schedule?.label?.title}
           </LabelButton>
         </div>

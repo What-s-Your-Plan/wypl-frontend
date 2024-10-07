@@ -4,8 +4,9 @@ import { GroupInfoData, GroupSummaryData } from '@/@types/Group';
 import {
   postGroupRegister,
   GroupResponse as CreateGroup,
-} from '@/api/group/postGroupRegister';
-import Modal from '@/components/common/Modal';
+}                          from '@/api/group/postGroupRegister';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import Modal               from '@/components/common/Modal';
 import * as S from '@/components/group/create/GroupCreateModal.styled';
 import GroupCreatePanel from '@/components/group/create/GroupCreatePanel';
 import useForm from '@/hooks/useForm';

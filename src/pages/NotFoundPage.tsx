@@ -1,6 +1,6 @@
 import * as S from './NotFoundPage.styled';
 
-import NotFoundAnimation from '@/components/animation/NotFound';
+import NotFoundAnimation from '@/components/Animation/NotFound';
 
 
 function NotFoundPage() {

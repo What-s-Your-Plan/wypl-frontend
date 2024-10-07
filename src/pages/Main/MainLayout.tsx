@@ -6,7 +6,7 @@ import Navbar from '@/components/navbar/Navbar';
 
 function MainLayout() {
   return (
-    <S.Container className="bg-default-warmgray">
+    <S.Container>
       <Navbar />
       <S.MarginWrapper>
         <Outlet />

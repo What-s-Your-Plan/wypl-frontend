@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { BgColors, BgTheme, BorderTheme } from '@/assets/styles/colorThemes';
+import { LabelColorsType, BgTheme, BorderTheme } from '@/styles/colorThemes.ts';
 
 const Container = styled.div`
   ${tw`
@@ -42,7 +42,7 @@ const ProfileImg = styled.img`
 const Text = styled.span``;
 
 type CheckProps = {
-  $color: BgColors;
+  $color: LabelColorsType;
   $isAccepted: boolean;
 };
 

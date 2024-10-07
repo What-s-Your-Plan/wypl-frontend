@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { BgTheme } from '@/assets/styles/colorThemes';
+import { LabelColorsType, LabelTheme } from '@/styles/colorThemes.ts';
 
 type LabelProps = {
-  $bgColor: LabelColorsType;
+  $labelColor: LabelColorsType;
 };
 
 const LabelButton = styled.button<LabelProps>`
@@ -20,7 +20,7 @@ const LabelButton = styled.button<LabelProps>`
     text-default-white
     font-semibold
   `}
-  ${(props) => BgTheme[props.$bgColor]}
+  ${(props) => LabelTheme[props.$labelColor]}
 `;
 
 export default LabelButton;

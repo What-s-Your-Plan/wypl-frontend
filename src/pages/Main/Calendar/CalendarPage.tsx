@@ -1,11 +1,11 @@
-import CalendarContent from '@/components/calendar/CalendarContent';
+import Calendar from '@/components/Calendar/Calendar.tsx';
 import WidgetList from '@/components/widget/WidgetList';
 
 function CalendarPage() {
   return (
-    <div className="container flex items-center justify-around ss:max-sm:block h-dvh">
+    <div className="flex items-center h-dvh min-w-[1000px]">
       <WidgetList />
-      <CalendarContent category='MEMBER' />
+      <Calendar category={'MEMBER'} />
     </div>
   );
 }

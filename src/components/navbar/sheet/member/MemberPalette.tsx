@@ -4,9 +4,9 @@ import {
   patchMemberLabelColor,
   UpdateLabelColorRequest,
 } from '@/api/member/patchMemberLabelColor';
-import check from '@/assets/icons/check.svg';
-import { LabelColors } from '@/assets/styles/colorThemes';
-import ColorCircle from '@/components/common/ColorCircle';
+import check                            from '@/assets/icons/check.svg';
+import { LabelColors, LabelColorsType } from '@/styles/colorThemes.ts';
+import ColorCircle                      from '@/components/common/ColorCircle';
 import useMemberStore from '@/stores/MemberStore';
 
 function MemberPalette() {
@@ -37,7 +37,7 @@ function MemberPalette() {
                   <ColorCircle
                     key={`${boxIdx}-${idx}-circle`}
                     onClick={() => changeLabelColor(value)}
-                    $bgColor={value}
+                    $labelColor={value}
                     $hover={true}
                     $cursor={'pointer'}
                   />

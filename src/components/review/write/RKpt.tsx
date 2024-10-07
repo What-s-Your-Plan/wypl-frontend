@@ -1,9 +1,8 @@
-
 import { WhiteContainer } from '@/components/common/Container';
 import { Divider, DividerY } from '@/components/common/Divider';
 import { InputTextArea } from '@/components/common/InputText';
-import { KPTContent }    from '@/objects/ReviewContent.ts';
-import useReviewStore    from '@/stores/ReviewStore';
+import { KPTContent } from '@/objects/ReviewContent.ts';
+import useReviewStore from '@/stores/ReviewStore';
 
 type RKptProps = {
   index: number;

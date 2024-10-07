@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ReviewDetailData } from '@/@types/Review';
-import getReviewList from '@/api/review/getReviewList';
-import NoContentAnimation from '@/components/animation/NoContent';
+import getReviewList                 from '@/api/review/getReviewList';
+import NoContentAnimation            from '@/components/Animation/NoContent';
 import { Container, WhiteContainer } from '@/components/common/Container';
 import { Divider } from '@/components/common/Divider';
 import ReviewThumbnail from '@/components/review/thumbnail/ReviewThumbnail';

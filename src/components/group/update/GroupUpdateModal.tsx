@@ -5,8 +5,8 @@ import GroupUpdatePanel from './GroupUpdatePanel';
 
 import { GroupUpdateInfo } from '@/@types/Group';
 import { deleteGroup, DeleteGroupParams } from '@/api/group/deleteGroup';
-import { BgColors } from '@/assets/styles/colorThemes';
-import Button from '@/components/common/Button';
+import { LabelColorsType }                from '@/styles/colorThemes.ts';
+import Button                             from '@/components/common/Button';
 import Modal from '@/components/common/Modal';
 import useToastStore from '@/stores/ToastStore';
 
@@ -15,7 +15,7 @@ type GroupUpdateModalProps = {
   init: GroupUpdateInfo;
   groupUpdateEvent: (
     newName: string,
-    newColor: BgColors,
+    newColor: LabelColorsType,
     memberIds: Array<number>,
   ) => void;
   groupDeleteEvent: (groupId: number) => void;
@@ -31,7 +31,7 @@ function GroupUpdateModal({
 }: GroupUpdateModalProps) {
   const { addToast } = useToastStore();
   const [groupUpdateInfo, setGroupUpdateInfo] = useState<GroupUpdateInfo>(init);
-  const handleGroupUpdateInfo = (newName: string, newColor: BgColors) => {
+  const handleGroupUpdateInfo = (newName: string, newColor: LabelColorsType) => {
     setGroupUpdateInfo((prev) => {
       return {
         ...prev,
@@ -49,7 +49,7 @@ function GroupUpdateModal({
   const handleConfirmClick = async () => {
     groupUpdateEvent(
       groupUpdateInfo.name,
-      groupUpdateInfo.color as BgColors,
+      groupUpdateInfo.color as LabelColorsType,
       inviteMemberIds,
     );
   };
@@ -85,7 +85,7 @@ function GroupUpdateModal({
             그룹 삭제
           </Button>
         </S.Wrapper>
-        <S.Bar $color={groupUpdateInfo.color as BgColors} />
+        <S.Bar $color={groupUpdateInfo.color as LabelColorsType} />
       </S.Container>
     );
   };

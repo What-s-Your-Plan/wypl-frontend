@@ -9,7 +9,6 @@ import GroupDetailList from './list/GroupDetailList';
 import Button from '../common/Button';
 import { Container } from '../common/Container';
 import { Divider } from '../common/Divider';
-import Tooltip from '../tooltip/Tooltip';
 
 import {
   GroupInfoData,
@@ -24,8 +23,9 @@ import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Envelope from '@/assets/icons/envelope.svg';
 import Plus from '@/assets/icons/plus.svg';
 import Users from '@/assets/icons/users.svg';
-import { BgColors } from '@/assets/styles/colorThemes';
+import Tooltip from '@/components/Tooltip/Tooltip';
 import { BROWSER_PATH } from '@/constants/Path';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
 
 function GroupList() {
   const navigate = useNavigate();
@@ -122,7 +122,7 @@ function GroupList() {
           const newMemberGroup: GroupSummaryData = {
             ...group,
             name: updateGroup.name,
-            color: updateGroup.color as BgColors,
+            color: updateGroup.color as LabelColorsType,
           };
           return newMemberGroup;
         }

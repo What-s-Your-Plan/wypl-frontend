@@ -27,3 +27,4 @@ sw.js
 .env*
 dev-dist
 *storybook.log
+chromatic.config.json

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-const Container = styled.div``;
+const Container = styled.div`
+
+`;
 
 const Wrapper = styled.div`
   ${tw`
@@ -16,9 +18,9 @@ const Wrapper = styled.div`
     shadow-md
     bg-default-white
 
-    w-20
+    w-[80px]
 
-    h-full
+    h-[100%]
     `}
 `;
 

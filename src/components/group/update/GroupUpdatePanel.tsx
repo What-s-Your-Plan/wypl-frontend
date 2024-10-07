@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import PalettePanel from '../../color/PalettePanel';
+import PalettePanel from '@/components/PalettePanel/PalettePanel';
 import ColorCircle from '../../common/ColorCircle';
 import { InputDefault } from '../../common/InputText';
 import PopOver from '../../common/PopOver';
@@ -9,13 +9,13 @@ import { GroupUpdateInfo } from '@/@types/Group';
 import { SearchMemberForCreateGroupData } from '@/@types/Member';
 import { getMemberByEmail } from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
-import { BgColors } from '@/assets/styles/colorThemes';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
 import * as S from '@/components/group/create/GroupCreatePanel.styled';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupUpdatePanelProps = {
   groupUpdateInfo: GroupUpdateInfo;
-  groupUpdateInfoEvent: (newName: string, newColor: BgColors) => void;
+  groupUpdateInfoEvent: (newName: string, newColor: LabelColorsType) => void;
   inviteMemberIdsEvent: (memberIds: Array<number>) => void;
 };
 
@@ -76,8 +76,8 @@ function GroupUpdatePanel({
     );
   }, [selectedMembers]);
 
-  const [color, setColor] = useState<BgColors>(
-    groupUpdateInfo.color as BgColors,
+  const [color, setColor] = useState<LabelColorsType>(
+    groupUpdateInfo.color as LabelColorsType,
   );
   const [name, setName] = useState<string>(groupUpdateInfo.name);
 
@@ -115,7 +115,7 @@ function GroupUpdatePanel({
           onClick={() => handleMemberCancel(member.id)}
         >
           <S.SelectMemberProfileWrapper
-            $color={groupUpdateInfo.color as BgColors}
+            $color={groupUpdateInfo.color as LabelColorsType}
           >
             <S.MemberProfileImg
               src={getMemberProfileImageOrDefault(member.profile_image_url)}
@@ -154,7 +154,7 @@ function GroupUpdatePanel({
               button={
                 <ColorCircle
                   as="button"
-                  $bgColor={color}
+                  $labelColor={color}
                   $cursor="pointer"
                   className="!rounded-md"
                 />

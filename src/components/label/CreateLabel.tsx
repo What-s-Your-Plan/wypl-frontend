@@ -1,8 +1,9 @@
 import { Dispatch, SetStateAction, useRef } from 'react';
 
-import postCreateLabel from '@/api/label/postCreateLabel';
-import ColorSelectButton from '@/components/color/ColorSelectButton';
-import { InputDefault } from '@/components/common/InputText';
+import postCreateLabel     from '@/api/label/postCreateLabel';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import ColorSelectButton   from '@/components/PalettePanel/ColorSelectButton/ColorSelectButton.tsx';
+import { InputDefault }    from '@/components/common/InputText';
 import { CreateDiv } from '@/components/label/Styled';
 import useToastStore from '@/stores/ToastStore';
 
