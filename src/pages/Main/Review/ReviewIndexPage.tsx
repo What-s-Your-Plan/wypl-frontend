@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { ReviewDetailData } from '@/@types/Review';
 import getReviewList                 from '@/api/review/getReviewList';
 import NoContentAnimation            from '@/components/Animation/NoContent';
-import { Container, WhiteContainer } from '@/components/common/Container';
-import { Divider } from '@/components/common/Divider';
-import ReviewThumbnail from '@/components/review/thumbnail/ReviewThumbnail';
+import { Container, WhiteContainer } from '@/components/Common/Container';
+import { Divider }                   from '@/components/Common/Divider';
+import ReviewThumbnail               from '@/components/review/thumbnail/ReviewThumbnail';
 import { MAX_VALUE } from '@/constants/JavaNumber.ts';
 
 function ReviewIndexPage() {

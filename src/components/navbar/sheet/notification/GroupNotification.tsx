@@ -6,8 +6,8 @@ import {
 } from '@/api/group/deleteGroupInvite';
 import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
 import Check from '@/assets/icons/check.svg';
-import X from '@/assets/icons/x.svg';
-import Button from '@/components/common/Button';
+import X                from '@/assets/icons/x.svg';
+import Button           from '@/components/Common/Button';
 import { BROWSER_PATH } from '@/constants/Path';
 
 type GroupNotificationProps = {

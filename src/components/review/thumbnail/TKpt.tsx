@@ -1,4 +1,4 @@
-import Text           from '@/components/common/Text';
+import Text           from '@/components/Common/Text';
 import { KPTContent } from '@/objects/ReviewContent.ts';
 
 type TKptProps = {

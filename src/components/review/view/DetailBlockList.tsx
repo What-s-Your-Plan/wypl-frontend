@@ -9,7 +9,7 @@ import VTitle from './VTitle';
 import VWeather from './VWeather';
 
 import { ReviewDetailData } from '@/@types/ReviewResponse';
-import { Divider }          from '@/components/common/Divider';
+import { Divider }          from '@/components/Common/Divider';
 import {
   TextContent,
   PictureContent,
@@ -17,7 +17,7 @@ import {
   WeatherContent,
   KPTContent,
   FourFContent,
-}                  from '@/objects/ReviewContent.ts';
+}                           from '@/objects/ReviewContent.ts';
 
 type DetailBlockListProps = {
   detail: ReviewDetailData;

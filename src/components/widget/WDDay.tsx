@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import Button from '../common/Button';
-import { InputDefault } from '../common/InputText';
+import Button           from '@/components/Common/Button';
+import { InputDefault } from '@/components/Common/InputText';
 
 import { getMemberDDay } from '@/api/widget/getMemberDDay.ts';
 import patchMemberDDay from '@/api/widget/patchMemberDDay.ts';

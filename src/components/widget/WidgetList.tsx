@@ -6,9 +6,9 @@ import WFilter from './WFilter';
 import WGoal from './WGoal';
 import WMemo from './WMemo';
 import WWeather from './WWeather';
-import Button from '../common/Button';
+import Button   from '@/components/Common/Button';
 
-import * as S from '@/components/common/Container';
+import * as S from '@/components/Common/Container';
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 

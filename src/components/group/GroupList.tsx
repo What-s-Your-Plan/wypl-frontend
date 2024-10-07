@@ -6,9 +6,9 @@ import { Disclosure } from '@headlessui/react';
 import GroupCreateModal from './create/GroupCreateModal';
 import InvitedGroupInfo from './invited/InvitedGroupInfo';
 import GroupDetailList from './list/GroupDetailList';
-import Button from '../common/Button';
-import { Container } from '../common/Container';
-import { Divider } from '../common/Divider';
+import Button          from '@/components/Common/Button';
+import { Container }   from '@/components/Common/Container';
+import { Divider }     from '@/components/Common/Divider';
 
 import {
   GroupInfoData,

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { WhiteContainer } from '@/components/common/Container';
+import { WhiteContainer } from '@/components/Common/Container';
 
 type ReviewBlockProps = {
   icon: string;

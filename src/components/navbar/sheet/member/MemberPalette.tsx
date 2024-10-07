@@ -6,8 +6,8 @@ import {
 } from '@/api/member/patchMemberLabelColor';
 import check                            from '@/assets/icons/check.svg';
 import { LabelColors, LabelColorsType } from '@/styles/colorThemes.ts';
-import ColorCircle                      from '@/components/common/ColorCircle';
-import useMemberStore from '@/stores/MemberStore';
+import ColorCircle                      from '@/components/Common/ColorCircle';
+import useMemberStore                   from '@/stores/MemberStore';
 
 function MemberPalette() {
   const { mainColor, setMainColor: setLabelColor } = useMemberStore();

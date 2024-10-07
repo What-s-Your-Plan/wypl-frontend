@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
 
-import Button from '@/components/common/Button';
+import Button from '@/components/Common/Button';
 
 type Confirm = {
   content: string;

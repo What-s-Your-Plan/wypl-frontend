@@ -1,6 +1,6 @@
 import * as S from './PalettePanel.styled.ts';
 
-import ColorCircle from '@/components/common/ColorCircle';
+import ColorCircle                      from '@/components/Common/ColorCircle';
 import { LabelColors, LabelColorsType } from '@/styles/colorThemes.ts';
 
 type PalettePanelProps = {

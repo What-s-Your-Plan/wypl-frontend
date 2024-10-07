@@ -8,8 +8,8 @@ import RWeather from './RWeather';
 import { ReviewType } from '@/@types/Review';
 import ArrowDown from '@/assets/icons/arrowDown.svg';
 import ArrowUp from '@/assets/icons/arrowUp.svg';
-import Trash from '@/assets/icons/trash.svg';
-import Button from '@/components/common/Button';
+import Trash  from '@/assets/icons/trash.svg';
+import Button from '@/components/Common/Button';
 import {
   ReviewContent,
   TextContent,
@@ -18,7 +18,7 @@ import {
   WeatherContent,
   KPTContent,
   FourFContent,
-} from '@/objects/ReviewContent.ts';
+}             from '@/objects/ReviewContent.ts';
 import useReviewStore from '@/stores/ReviewStore';
 
 type ReviewWriteProps = {

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
-import Button from '../common/Button';
-import { InputTextArea } from '../common/InputText';
+import Button            from '@/components/Common/Button';
+import { InputTextArea } from '@/components/Common/InputText';
 
 import { getMemberMemo } from '@/api/widget/getMemberMemo.ts';
 import { patchMemberMemo } from '@/api/widget/patchMemberMemo.ts';

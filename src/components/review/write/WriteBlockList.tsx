@@ -8,11 +8,11 @@ import RTitle from './RTitle';
 import { ReviewType } from '@/@types/Review';
 import { postReview } from '@/api/review/postReview';
 import Save from '@/assets/icons/save.svg';
-import Cancel from '@/assets/icons/x.svg';
-import Button from '@/components/common/Button';
-import * as S from '@/components/common/Container';
-import { Divider, DividerLabel } from '@/components/common/Divider';
-import useReviewStore from '@/stores/ReviewStore';
+import Cancel                    from '@/assets/icons/x.svg';
+import Button                    from '@/components/Common/Button';
+import * as S                    from '@/components/Common/Container';
+import { Divider, DividerLabel } from '@/components/Common/Divider';
+import useReviewStore            from '@/stores/ReviewStore';
 import useToastStore from '@/stores/ToastStore';
 
 function WriteBlockList() {

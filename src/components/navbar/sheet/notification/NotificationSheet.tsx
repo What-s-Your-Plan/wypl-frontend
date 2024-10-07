@@ -7,9 +7,9 @@ import ReviewNotification from './ReviewNotification';
 
 import { deleteNotification } from '@/api/notification/deleteNotification';
 import { getNotification } from '@/api/notification/getNotification';
-import Bell from '@/assets/icons/bell.svg';
-import Button from '@/components/common/Button';
-import { Divider } from '@/components/common/Divider';
+import Bell          from '@/assets/icons/bell.svg';
+import Button        from '@/components/Common/Button';
+import { Divider }   from '@/components/Common/Divider';
 import useToastStore from '@/stores/ToastStore';
 
 function NotificationSheet() {

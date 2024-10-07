@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { InputDefault } from '@/components/common/InputText.ts';
+import { InputDefault } from '@/components/Common/InputText.ts';
 
 const Form = styled.form`
   width: 100%;

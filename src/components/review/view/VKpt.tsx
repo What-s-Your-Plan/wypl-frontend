@@ -1,7 +1,7 @@
-import { WhiteContainer } from '@/components/common/Container';
-import { Divider, DividerY } from '@/components/common/Divider';
-import Text           from '@/components/common/Text';
-import { KPTContent } from '@/objects/ReviewContent.ts';
+import { WhiteContainer }    from '@/components/Common/Container';
+import { Divider, DividerY } from '@/components/Common/Divider';
+import Text                  from '@/components/Common/Text';
+import { KPTContent }        from '@/objects/ReviewContent.ts';
 
 type VKptProps = {
   content: KPTContent;

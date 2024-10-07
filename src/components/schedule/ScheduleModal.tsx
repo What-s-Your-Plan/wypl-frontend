@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import {
   postSchedule,
   PostScheduleResponse,
-} from '@/api/schedule/postSchedule';
-import Modal from '@/components/common/Modal';
+}                    from '@/api/schedule/postSchedule';
+import Modal         from '@/components/Common/Modal';
 import SchedulePanel from '@/components/schedule/SchedulePanel';
 import useForm from '@/hooks/useForm';
 

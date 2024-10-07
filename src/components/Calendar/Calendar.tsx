@@ -4,9 +4,9 @@ import CalendarIndex from '@/components/Calendar/CalendarIndex/CalendarIndex.tsx
 import DailyCalendar from '@/components/Calendar/DailyCalendar/DailyCalendar';
 import DatePicker from '@/components/Calendar/DatePicker/DatePicker.tsx';
 import MonthlyCalender from '@/components/Calendar/MonthlyCalendar/MonthlyCalendar';
-import WeeklyCalendar from '@/components/Calendar/WeeklyCalendar/WeeklyCalendar';
-import Button from '@/components/common/Button';
-import * as Containers from '@/components/common/Container';
+import WeeklyCalendar      from '@/components/Calendar/WeeklyCalendar/WeeklyCalendar';
+import Button              from '@/components/Common/Button';
+import * as Containers     from '@/components/Common/Container';
 import ScheduleDetailModal from '@/components/schedule/ScheduleDetailModal.tsx';
 import ScheduleModal from '@/components/schedule/ScheduleModal';
 import Todo from '@/components/Todo/Todo.tsx';

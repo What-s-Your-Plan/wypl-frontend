@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import PalettePanel from '@/components/PalettePanel/PalettePanel';
-import ColorCircle from '../../common/ColorCircle';
-import { InputDefault } from '../../common/InputText';
-import PopOver from '../../common/PopOver';
+import PalettePanel     from '@/components/PalettePanel/PalettePanel';
+import ColorCircle      from '@/components/Common/ColorCircle';
+import { InputDefault } from '@/components/Common/InputText';
+import PopOver          from '@/components/Common/PopOver';
 
 import { GroupUpdateInfo } from '@/@types/Group';
 import { SearchMemberForCreateGroupData } from '@/@types/Member';

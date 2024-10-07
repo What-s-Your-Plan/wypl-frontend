@@ -8,9 +8,9 @@ import RepeatIcon from '@/assets/icons/repeat.svg';
 import LabelIcon from '@/assets/icons/tag.svg';
 import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
 import UsersIcon           from '@/assets/icons/users.svg';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
-import Button              from '@/components/common/Button';
-import LabelButton from '@/components/common/LabelButton';
+import { LabelColorsType }                  from '@/styles/colorThemes.ts';
+import Button                               from '@/components/Common/Button';
+import LabelButton                          from '@/components/Common/LabelButton';
 import { isAllDay, padding0, stringToDate } from '@/utils/DateUtils';
 
 function Title({ title }: { title: string }) {

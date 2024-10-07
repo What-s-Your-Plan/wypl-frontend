@@ -1,5 +1,5 @@
-import { WhiteContainer } from '@/components/common/Container';
-import { InputTitle } from '@/components/common/InputText';
+import { WhiteContainer } from '@/components/Common/Container';
+import { InputTitle }     from '@/components/Common/InputText';
 
 type RTitleProps = {
   $title: string;

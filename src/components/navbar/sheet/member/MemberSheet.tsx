@@ -4,7 +4,7 @@ import MemberPalette from './MemberPalette';
 import MemberProfileImage from './MemberProfileImage';
 import * as S from './MemberSheet.styled';
 
-import Button from '@/components/common/Button';
+import Button           from '@/components/Common/Button';
 import useJsonWebTokens from '@/hooks/api/useJsonWebTokens';
 
 function MemberSheet() {
