@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
-import Button           from '@/components/Common/Button';
-import { InputDefault } from '@/components/Common/InputText';
-
 import { getMemberGoal } from '@/api/widget/getMemberGoal.ts';
 import { patchMemberGoal } from '@/api/widget/patchMemberGoal.ts';
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
+import Button from '@/components/Common/Button/Button.tsx';
+import { InputDefault } from '@/components/Common/InputText';
 import useMemberStore from '@/stores/MemberStore';
 
 function WGoal() {
@@ -47,13 +46,17 @@ function WGoal() {
       <div className="flex justify-between">
         <div className="font-bold">Goal</div>
         {isModifyingGoal ? (
-          <Button $size="none" onClick={handleModify}>
-            <img src={Save} alt="저장" className="w-5" />
-          </Button>
+          <Button
+            styles={{ $size: 'small', $variant: 'primary' }}
+            onClick={handleModify}
+            children={<img src={Save} alt="저장" className="w-5" />}
+          />
         ) : (
-          <Button $size="none" onClick={handleModify}>
-            <img src={Edit} alt="수정" className="w-5" />
-          </Button>
+          <Button
+            styles={{ $size: 'small', $variant: 'default' }}
+            onClick={handleModify}
+            children={<img src={Edit} alt="수정" className="w-5" />}
+          />
         )}
       </div>
       <div>

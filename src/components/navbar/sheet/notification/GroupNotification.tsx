@@ -6,8 +6,8 @@ import {
 } from '@/api/group/deleteGroupInvite';
 import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
 import Check from '@/assets/icons/check.svg';
-import X                from '@/assets/icons/x.svg';
-import Button           from '@/components/Common/Button';
+import X from '@/assets/icons/x.svg';
+import Button from '@/components/Common/Button/Button.tsx';
 import { BROWSER_PATH } from '@/constants/Path';
 
 type GroupNotificationProps = {
@@ -36,23 +36,25 @@ function GroupNotification({ notification }: GroupNotificationProps) {
       <div>{notification.message}</div>
       <div className="w-full flex justify-center gap-4">
         <Button
-          $size="lg"
-          $width="30%"
-          className="!bg-zinc-500"
+          styles={{ $size: 'small', $variant: 'danger' }}
           onClick={handleReject}
-        >
-          <img src={X} alt="X" className="whiteImg w-5 mr-2" />
-          <span className="text-default-white font-semibold">거부</span>
-        </Button>
+          children={
+            <>
+              <img src={X} alt="X" className="whiteImg w-5 mr-2" />
+              <span className="text-default-white font-semibold">거부</span>
+            </>
+          }
+        />
         <Button
-          $size="lg"
-          $width="30%"
-          $bgColor="labelGreen"
+          styles={{ $size: 'small', $variant: 'secondary' }}
           onClick={handleAccept}
-        >
-          <img src={Check} alt="Check" className="whiteImg w-5 mr-2" />
-          <span className="text-default-white font-semibold">수락</span>
-        </Button>
+          children={
+            <>
+              <img src={Check} alt="Check" className="whiteImg w-5 mr-2" />
+              <span className="text-default-white font-semibold">수락</span>
+            </>
+          }
+        />
       </div>
     </div>
   );

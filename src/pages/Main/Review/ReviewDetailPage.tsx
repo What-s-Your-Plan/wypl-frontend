@@ -6,10 +6,10 @@ import { ReviewDetailData } from '@/@types/ReviewResponse';
 import { deleteReview } from '@/api/review/deleteReview';
 import { getReviewDetail } from '@/api/review/getReviewDetail';
 import ArrowLeft from '@/assets/icons/arrowLeft.svg';
-import MoreVertical    from '@/assets/icons/moreVertical.svg';
-import Button          from '@/components/Common/Button';
-import { Container }   from '@/components/Common/Container';
-import PopOver         from '@/components/Common/PopOver';
+import MoreVertical from '@/assets/icons/moreVertical.svg';
+import Button from '@/components/Common/Button/Button.tsx';
+import { Container } from '@/components/Common/Container';
+import PopOver from '@/components/Common/PopOver';
 import DetailBlockList from '@/components/review/view/DetailBlockList';
 import { ReviewContent } from '@/objects/ReviewContent.ts';
 import { splitTTime } from '@/utils/DateUtils';
@@ -58,12 +58,10 @@ function ReviewDetailPage() {
           <div className="flex justify-between">
             <span>
               <Button
-                $size="none"
-                className="!bg-transparent"
+                styles={{ $size: 'small', $variant: 'outline' }}
                 onClick={() => navigator(`/review`)}
-              >
-                <img src={ArrowLeft} alt="뒤로가기" />
-              </Button>
+                children={<img src={ArrowLeft} alt="뒤로가기" />}
+              />
             </span>
             <div className="flex gap-2">
               <span className="text-sm">{splitTTime(detail.created_at)}</span>
@@ -71,22 +69,24 @@ function ReviewDetailPage() {
                 <PopOver
                   button={
                     <div>
-                      <Button $size="none" className="!bg-transparent">
-                        <img src={MoreVertical} alt="더보기" />
-                      </Button>
+                      <Button
+                        styles={{ $size: 'small', $variant: 'default' }}
+                        children={<img src={MoreVertical} alt="더보기" />}
+                      />
                     </div>
                   }
                   panel={
-                    <div className="flex flex-col gap-0.5 w-16 px-3 py-2 bg-default-white/95 rounded-lg shadow-lg">
-                      <div onClick={handleModify} className="cursor-pointer">
-                        수정
-                      </div>
-                      <div
+                    <div className="flex flex-col gap-0.5 w-20 px-3 py-2 bg-default-white/95 rounded-lg shadow-lg">
+                      <Button
+                        styles={{ $size: 'small', $variant: 'default' }}
+                        onClick={handleModify}
+                        children={<p>수정</p>}
+                      />
+                      <Button
+                        styles={{ $size: 'small', $variant: 'danger' }}
                         onClick={handleDelete}
-                        className="text-label-red cursor-pointer"
-                      >
-                        삭제
-                      </div>
+                        children={<p>삭제</p>}
+                      />
                     </div>
                   }
                   panelPosition="right-0 top-7"

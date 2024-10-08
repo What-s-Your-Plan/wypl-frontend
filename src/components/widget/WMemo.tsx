@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 
-import Button            from '@/components/Common/Button';
-import { InputTextArea } from '@/components/Common/InputText';
-
 import { getMemberMemo } from '@/api/widget/getMemberMemo.ts';
 import { patchMemberMemo } from '@/api/widget/patchMemberMemo.ts';
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
+import Button from '@/components/Common/Button/Button.tsx';
+import { InputTextArea } from '@/components/Common/InputText';
 import useMemberStore from '@/stores/MemberStore';
 
 function WMemo() {
@@ -59,13 +58,17 @@ function WMemo() {
       <div className="flex justify-between">
         <div className="font-bold">Memo</div>
         {isModifyingMemo ? (
-          <Button $size="none" onClick={handleModify}>
-            <img src={Save} alt="저장" className="w-5" />
-          </Button>
+          <Button
+            styles={{ $size: 'small', $variant: 'primary' }}
+            onClick={handleModify}
+            children={<img src={Save} alt="저장" className="w-5" />}
+          />
         ) : (
-          <Button $size="none" onClick={handleModify}>
-            <img src={Edit} alt="수정" className="w-5" />
-          </Button>
+          <Button
+            styles={{ $size: 'small', $variant: 'default' }}
+            onClick={handleModify}
+            children={<img src={Edit} alt="수정" className="w-5" />}
+          />
         )}
       </div>
       <div>

@@ -7,10 +7,10 @@ import PenIcon from '@/assets/icons/pen.svg';
 import RepeatIcon from '@/assets/icons/repeat.svg';
 import LabelIcon from '@/assets/icons/tag.svg';
 import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
-import UsersIcon           from '@/assets/icons/users.svg';
-import { LabelColorsType }                  from '@/styles/colorThemes.ts';
-import Button                               from '@/components/Common/Button';
-import LabelButton                          from '@/components/Common/LabelButton';
+import UsersIcon from '@/assets/icons/users.svg';
+import { LabelColorsType } from '@/styles/colorThemes.ts';
+import Button from '@/components/Common/Button/Button.tsx';
+import LabelButton from '@/components/Common/LabelButton';
 import { isAllDay, padding0, stringToDate } from '@/utils/DateUtils';
 
 function Title({ title }: { title: string }) {
@@ -168,10 +168,16 @@ function Repeat({ repeat }: { repeat: RepetitionDetailData }) {
 function WriteReview({ handleClick }: { handleClick: () => void }) {
   return (
     <div className="flex justify-center">
-      <Button $width="80%" $size="lg" $border="black" onClick={handleClick}>
-        <img src={PenIcon} alt="write-review" />
-        <span>회고 작성하기</span>
-      </Button>
+      <Button
+        styles={{ $size: 'large', $variant: 'outline' }}
+        onClick={handleClick}
+        children={
+          <>
+            <img src={PenIcon} alt="write-review" />
+            <span>회고 작성하기</span>
+          </>
+        }
+      />
     </div>
   );
 }

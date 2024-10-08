@@ -4,7 +4,7 @@ import MemberPalette from './MemberPalette';
 import MemberProfileImage from './MemberProfileImage';
 import * as S from './MemberSheet.styled';
 
-import Button           from '@/components/Common/Button';
+import Button from '@/components/Common/Button/Button.tsx';
 import useJsonWebTokens from '@/hooks/api/useJsonWebTokens';
 
 function MemberSheet() {
@@ -18,14 +18,10 @@ function MemberSheet() {
       <MemberPalette />
       <S.LogoutButtonWrapper>
         <Button
-          $size={'sm'}
-          $width={'200px'}
-          $bgColor={'labelRed'}
-          $textColor={'white'}
+          styles={{ $size: 'small', $variant: 'danger' }}
           onClick={requestDeleteTokens}
-        >
-          로그아웃
-        </Button>
+          children={'로그아웃'}
+        />
       </S.LogoutButtonWrapper>
     </S.Container>
   );

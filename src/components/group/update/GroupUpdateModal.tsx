@@ -5,10 +5,10 @@ import GroupUpdatePanel from './GroupUpdatePanel';
 
 import { GroupUpdateInfo } from '@/@types/Group';
 import { deleteGroup, DeleteGroupParams } from '@/api/group/deleteGroup';
+import Button from '@/components/Common/Button/Button.tsx';
+import Modal from '@/components/Common/Modal';
+import useToastStore from '@/stores/ToastStore';
 import { LabelColorsType } from '@/styles/colorThemes.ts';
-import Button              from '@/components/Common/Button';
-import Modal               from '@/components/Common/Modal';
-import useToastStore       from '@/stores/ToastStore';
 
 type GroupUpdateModalProps = {
   isOpen: boolean;
@@ -31,7 +31,10 @@ function GroupUpdateModal({
 }: GroupUpdateModalProps) {
   const { addToast } = useToastStore();
   const [groupUpdateInfo, setGroupUpdateInfo] = useState<GroupUpdateInfo>(init);
-  const handleGroupUpdateInfo = (newName: string, newColor: LabelColorsType) => {
+  const handleGroupUpdateInfo = (
+    newName: string,
+    newColor: LabelColorsType,
+  ) => {
     setGroupUpdateInfo((prev) => {
       return {
         ...prev,
@@ -75,17 +78,15 @@ function GroupUpdateModal({
         <S.Wrapper>
           <S.Title>그룹을 수정해보세요!</S.Title>
           <Button
-            $size={'none'}
-            $bgColor={'labelRed'}
-            $textColor={'white'}
-            $width={'100px'}
-            className={'mb-4'}
+            styles={{
+              $size: 'small',
+              $variant: 'danger',
+            }}
             onClick={handleDeleteGroup}
-          >
-            그룹 삭제
-          </Button>
+            children={'그룹 삭제'}
+          />
         </S.Wrapper>
-        <S.Bar $color={groupUpdateInfo.color as LabelColorsType} />
+        <S.Bar $color={groupUpdateInfo.color as LabelColorsType} />;
       </S.Container>
     );
   };
