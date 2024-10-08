@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import React, { ComponentPropsWithoutRef, ElementType } from 'react';
 
 import type { ButtonStyling } from '@/components/Common/Button/Button.styled.ts';
