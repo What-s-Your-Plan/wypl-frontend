@@ -20,6 +20,8 @@ import {
 } from '@/api/calendar/getGroupCalendars.ts';
 import ChevronLeft from '@/assets/icons/chevronLeft.svg';
 import ChevronRight from '@/assets/icons/chevronRight.svg';
+import Button from '@/components/Common/Button/Button.tsx';
+import Tooltip from '@/components/Tooltip/Tooltip.tsx';
 import useDateStore from '@/stores/DateStore';
 import {
   dateToString,
@@ -213,23 +215,39 @@ function WeeklyCalendar({
         <h1 className="text-lg font-bold leading-6 text-default-black">
           <time dateTime={dateToString(selectedDate)}>{renderHeader()}</time>
         </h1>
-        <div className="flex gap-4">
-          <button
-            onClick={() => {
-              handlePrevWeek();
-            }}
-          >
-            <span className="sr-only">Prev week</span>
-            <Chevrons src={ChevronLeft} alt="prev-week" aria-hidden="true" />
-          </button>
-          <button
-            onClick={() => {
-              handleNextWeek();
-            }}
-          >
-            <span className="sr-only">Next week</span>
-            <Chevrons src={ChevronRight} alt="next-week" aria-hidden="true" />
-          </button>
+        <div className="flex">
+          <Tooltip
+            text={'전 달'}
+            children={
+              <Button
+                styles={{ $size: 'circle', $variant: 'default' }}
+                onClick={() => handlePrevWeek()}
+                children={
+                  <Chevrons
+                    src={ChevronLeft}
+                    alt="prev-month"
+                    aria-hidden="true"
+                  />
+                }
+              />
+            }
+          />
+          <Tooltip
+            text={'다음 달'}
+            children={
+              <Button
+                styles={{ $size: 'circle', $variant: 'default' }}
+                onClick={() => handleNextWeek()}
+                children={
+                  <Chevrons
+                    src={ChevronRight}
+                    alt="prev-month"
+                    aria-hidden="true"
+                  />
+                }
+              />
+            }
+          />
         </div>
       </header>
       <div className="isolate flex flex-auto flex-col scrollBar overflow-auto bg-white">
@@ -251,19 +269,12 @@ function WeeklyCalendar({
           <div className="flex flex-auto">
             <div className="sticky left-0 z-10 w-14 flex-none bg-white border-r border-gray-100" />
             <div className="grid flex-auto grid-cols-1 grid-rows-1">
-              {/* Vertical lines */}
               <WeeklyVertical />
-
-              {/* Horizontal lines */}
               <WeeklyHorizontal />
-
-              {/* Schedules */}
               <WeeklySchedules
                 schedules={schedules}
                 handleScheduleClick={handleScheduleClick}
               />
-
-              {/* LongSchedules */}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { Theme } from '@/styles/Theme.ts';
 
 export interface ButtonStyling {
-  $size: 'small' | 'medium' | 'large';
+  $size: 'small' | 'medium' | 'large' | 'circle';
   $variant: 'primary' | 'secondary' | 'danger' | 'outline' | 'default';
 }
 
@@ -91,6 +91,10 @@ export const getSizeStyling = (size: Required<ButtonStyling>['$size']) => {
     }),
     large: css({
       padding: '14px 16px',
+    }),
+    circle: css({
+      padding: '8px 8px',
+      borderRadius: 100,
     }),
   };
 

@@ -4,6 +4,7 @@ import * as S from './DatePicker.styled.ts';
 
 import ChevronLeft from '@/assets/icons/chevronLeft.svg';
 import ChevronRight from '@/assets/icons/chevronRight.svg';
+import Button from '@/components/Common/Button/Button.tsx';
 import Tooltip from '@/components/Tooltip/Tooltip.tsx';
 import useDateStore from '@/stores/DateStore.ts';
 import {
@@ -93,33 +94,35 @@ function DatePicker() {
           <Tooltip
             text={'전 달'}
             children={
-              <S.ChevronsButton
-                type="button"
+              <Button
+                styles={{ $size: 'circle', $variant: 'default' }}
                 onClick={() => handleMonthChange(-1)}
-              >
-                <S.Chevrons
-                  src={ChevronLeft}
-                  alt="prev-month"
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              </S.ChevronsButton>
+                children={
+                  <S.Chevrons
+                    src={ChevronLeft}
+                    alt="prev-month"
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                }
+              />
             }
           />
           <Tooltip
             text={'다음 달'}
             children={
-              <S.ChevronsButton
-                type="button"
+              <Button
+                styles={{ $size: 'circle', $variant: 'default' }}
                 onClick={() => handleMonthChange(1)}
-              >
-                <S.Chevrons
-                  src={ChevronRight}
-                  alt="next-month"
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              </S.ChevronsButton>
+                children={
+                  <S.Chevrons
+                    src={ChevronRight}
+                    alt="next-month"
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                }
+              />
             }
           />
         </S.ChevronButtonFlex>

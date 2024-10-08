@@ -14,6 +14,8 @@ import {
 } from '@/api/calendar/getGroupCalendars.ts';
 import ChevronLeft from '@/assets/icons/chevronLeft.svg';
 import ChevronRight from '@/assets/icons/chevronRight.svg';
+import Button from '@/components/Common/Button/Button.tsx';
+import Tooltip from '@/components/Tooltip/Tooltip.tsx';
 import useDateStore from '@/stores/DateStore';
 import {
   isSameDay,
@@ -179,15 +181,39 @@ function MonthlyCalender({
         <h1 className="text-lg font-bold leading-6 text-default-black">
           {selectedDate.getFullYear()}.{selectedDate.getMonth() + 1}
         </h1>
-        <div className="flex gap-4">
-          <button onClick={() => updateSelectedDate(-1)}>
-            <span className="sr-only">Prev month</span>
-            <Chevrons src={ChevronLeft} alt="prev-month" aria-hidden="true" />
-          </button>
-          <button onClick={() => updateSelectedDate(1)}>
-            <span className="sr-only">Next month</span>
-            <Chevrons src={ChevronRight} alt="next-month" aria-hidden="true" />
-          </button>
+        <div className="flex">
+          <Tooltip
+            text={'전 달'}
+            children={
+              <Button
+                styles={{ $size: 'circle', $variant: 'default' }}
+                onClick={() => updateSelectedDate(-1)}
+                children={
+                  <Chevrons
+                    src={ChevronLeft}
+                    alt="prev-month"
+                    aria-hidden="true"
+                  />
+                }
+              />
+            }
+          />
+          <Tooltip
+            text={'다음 달'}
+            children={
+              <Button
+                styles={{ $size: 'circle', $variant: 'default' }}
+                onClick={() => updateSelectedDate(1)}
+                children={
+                  <Chevrons
+                    src={ChevronRight}
+                    alt="prev-month"
+                    aria-hidden="true"
+                  />
+                }
+              />
+            }
+          />
         </div>
       </header>
       <div className="lg:flex lg:flex-auto lg:flex-col">
