@@ -5,8 +5,8 @@ import Pen from '@/assets/icons/pen.svg';
 import Smiley from '@/assets/icons/smiley.svg';
 import SunDim from '@/assets/icons/sunDim.svg';
 import TextAlignLeft from '@/assets/icons/textAlignLeft.svg';
-import { Container } from '@/components/common/Container';
-import ReviewView from '@/components/review/view/ReviewView';
+import { Container } from '@/components/Common/Container';
+import ReviewView    from '@/components/review/view/ReviewView';
 
 function BlockList() {
   const blocks = [

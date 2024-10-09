@@ -1,6 +1,6 @@
-import { WhiteContainer } from '@/components/common/Container';
-import Text            from '@/components/common/Text';
-import { TextContent } from '@/objects/ReviewContent.ts';
+import { WhiteContainer } from '@/components/Common/Container';
+import Text               from '@/components/Common/Text';
+import { TextContent }    from '@/objects/ReviewContent.ts';
 
 type VTextProps = {
   content: TextContent;

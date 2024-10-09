@@ -3,9 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { Disclosure } from '@headlessui/react';
 
-import * as S from './GroupDetailList.styled';
-import ColorCircle from '../../common/ColorCircle';
-import { Divider } from '../../common/Divider';
+import * as S          from './GroupDetailList.styled';
+import ColorCircle     from '@/components/Common/ColorCircle';
+import { Divider }     from '@/components/Common/Divider';
 import GroupMemberList from '../member/GroupMemberList';
 import GroupUpdateModal from '../update/GroupUpdateModal';
 
@@ -25,9 +25,9 @@ import {
   GroupInviteRequest,
 } from '@/api/group/postGroupInvite';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
-import Setting from '@/assets/icons/settings.svg';
-import PopOver from '@/components/common/PopOver';
-import PalettePanel from '@/components/PalettePanel/PalettePanel';
+import Setting         from '@/assets/icons/settings.svg';
+import PopOver         from '@/components/Common/PopOver';
+import PalettePanel    from '@/components/PalettePanel/PalettePanel';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import useToastStore from '@/stores/ToastStore';
 import { LabelColorsType } from '@/styles/colorThemes.ts';

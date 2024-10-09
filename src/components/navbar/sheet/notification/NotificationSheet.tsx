@@ -8,8 +8,8 @@ import ReviewNotification from './ReviewNotification';
 import { deleteNotification } from '@/api/notification/deleteNotification';
 import { getNotification } from '@/api/notification/getNotification';
 import Bell from '@/assets/icons/bell.svg';
-import Button from '@/components/common/Button';
-import { Divider } from '@/components/common/Divider';
+import Button from '@/components/Common/Button/Button.tsx';
+import { Divider } from '@/components/Common/Divider';
 import useToastStore from '@/stores/ToastStore';
 
 function NotificationSheet() {
@@ -100,13 +100,13 @@ function NotificationSheet() {
       )}
       <div className="flex justify-end mt-1">
         <Button
-          $size="lg"
-          $width="120px"
-          $border="black"
+          styles={{
+            $size: 'large',
+            $variant: 'outline',
+          }}
           onClick={() => handleRemoveAll()}
-        >
-          알림함 비우기
-        </Button>
+          children={'알림함 비우기'}
+        />
       </div>
     </S.Container>
   );

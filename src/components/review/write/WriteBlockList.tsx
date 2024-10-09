@@ -9,9 +9,9 @@ import { ReviewType } from '@/@types/Review';
 import { postReview } from '@/api/review/postReview';
 import Save from '@/assets/icons/save.svg';
 import Cancel from '@/assets/icons/x.svg';
-import Button from '@/components/common/Button';
-import * as S from '@/components/common/Container';
-import { Divider, DividerLabel } from '@/components/common/Divider';
+import Button from '@/components/Common/Button/Button.tsx';
+import * as S from '@/components/Common/Container';
+import { Divider, DividerLabel } from '@/components/Common/Divider';
 import useReviewStore from '@/stores/ReviewStore';
 import useToastStore from '@/stores/ToastStore';
 
@@ -105,26 +105,35 @@ function WriteBlockList() {
       <div>
         <span className="float-end flex gap-2">
           <Button
-            $size="lg"
-            $width="90px"
-            $bgColor="labelCharcoal"
-            $textColor="white"
+            styles={{
+              $size: 'large',
+              $variant: 'danger',
+            }}
             onClick={handleCancelClick}
-          >
-            <img src={Cancel} alt="취소" className="w-5 mr-2 whiteImg" />
-            취소
-          </Button>
-          <Button $size="lg" $width="90px" onClick={handleSaveClick}>
-            <img src={Save} alt="저장" className="w-5 mr-2" />
-            저장
-          </Button>
+            children={
+              <>
+                <img src={Cancel} alt="취소" className="w-5 mr-2 whiteImg" />
+                취소
+              </>
+            }
+          />
+          <Button
+            styles={{ $size: 'large', $variant: 'primary' }}
+            onClick={handleSaveClick}
+            children={
+              <>
+                <img src={Save} alt="저장" className="w-5 mr-2" />
+                저장
+              </>
+            }
+          />
         </span>
         <div>
           <RTitle $title={reviewStore.title} $setTitle={reviewStore.setTitle} />
           <RSchedule scheduleId={reviewStore.scheduleId} />
         </div>
       </div>
-      <Divider />
+      <Divider />;
       <div
         onDragOver={(event) => {
           event.preventDefault();
@@ -142,6 +151,7 @@ function WriteBlockList() {
           renderBlockList()
         )}
       </div>
+      ;
     </S.Container>
   );
 }

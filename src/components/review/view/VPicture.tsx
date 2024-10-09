@@ -1,4 +1,4 @@
-import { WhiteContainer } from '@/components/common/Container';
+import { WhiteContainer } from '@/components/Common/Container';
 import { PictureContent } from '@/objects/ReviewContent.ts';
 
 type VPictureProps = {

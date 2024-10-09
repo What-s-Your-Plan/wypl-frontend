@@ -6,8 +6,8 @@ import {
   GroupResponse as CreateGroup,
 }                          from '@/api/group/postGroupRegister';
 import { LabelColorsType } from '@/styles/colorThemes.ts';
-import Modal               from '@/components/common/Modal';
-import * as S from '@/components/group/create/GroupCreateModal.styled';
+import Modal               from '@/components/Common/Modal';
+import * as S              from '@/components/group/create/GroupCreateModal.styled';
 import GroupCreatePanel from '@/components/group/create/GroupCreatePanel';
 import useForm from '@/hooks/useForm';
 

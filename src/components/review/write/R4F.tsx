@@ -1,8 +1,8 @@
 
-import { WhiteContainer } from '@/components/common/Container';
-import { Divider, DividerY } from '@/components/common/Divider';
-import { InputTextArea } from '@/components/common/InputText';
-import { FourFContent }  from '@/objects/ReviewContent.ts';
+import { WhiteContainer }    from '@/components/Common/Container';
+import { Divider, DividerY } from '@/components/Common/Divider';
+import { InputTextArea }     from '@/components/Common/InputText';
+import { FourFContent }      from '@/objects/ReviewContent.ts';
 import useReviewStore    from '@/stores/ReviewStore';
 
 type R4FProps = {

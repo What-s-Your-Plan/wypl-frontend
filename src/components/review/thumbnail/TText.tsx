@@ -1,4 +1,4 @@
-import Text            from '@/components/common/Text';
+import Text            from '@/components/Common/Text';
 import { TextContent } from '@/objects/ReviewContent.ts';
 
 type TTextProps = {

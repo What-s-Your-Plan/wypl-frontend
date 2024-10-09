@@ -6,9 +6,6 @@ import { Disclosure } from '@headlessui/react';
 import GroupCreateModal from './create/GroupCreateModal';
 import InvitedGroupInfo from './invited/InvitedGroupInfo';
 import GroupDetailList from './list/GroupDetailList';
-import Button from '../common/Button';
-import { Container } from '../common/Container';
-import { Divider } from '../common/Divider';
 
 import {
   GroupInfoData,
@@ -23,6 +20,9 @@ import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Envelope from '@/assets/icons/envelope.svg';
 import Plus from '@/assets/icons/plus.svg';
 import Users from '@/assets/icons/users.svg';
+import Button from '@/components/Common/Button/Button.tsx';
+import { Container } from '@/components/Common/Container';
+import { Divider } from '@/components/Common/Divider';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import { BROWSER_PATH } from '@/constants/Path';
 import { LabelColorsType } from '@/styles/colorThemes.ts';
@@ -200,13 +200,16 @@ function GroupList() {
                     <span>(+{memberGroups.invited_group_count})</span>
                   )}
                 </div>
-                <Button className="!bg-transparent" $size="none">
-                  <img
-                    src={ChevronDown}
-                    alt="펼치기"
-                    className={open ? 'rotate-180 transform w-5' : 'w-5'}
-                  />
-                </Button>
+                <Button
+                  styles={{ $size: 'small', $variant: 'default' }}
+                  children={
+                    <img
+                      src={ChevronDown}
+                      alt="펼치기"
+                      className={open ? 'rotate-180 transform w-5' : 'w-5'}
+                    />
+                  }
+                />
               </Disclosure.Button>
               <Disclosure.Panel>{renderInvitedGroupList()}</Disclosure.Panel>
             </>
@@ -222,16 +225,16 @@ function GroupList() {
             <Tooltip
               children={
                 <Button
-                  className="!bg-transparent"
-                  $size="none"
                   onClick={openModal}
-                >
-                  <img
-                    src={Plus}
-                    alt="그룹 생성"
-                    className="w-5 cursor-pointer"
-                  />
-                </Button>
+                  styles={{ $size: 'small', $variant: 'default' }}
+                  children={
+                    <img
+                      src={Plus}
+                      alt="그룹 생성"
+                      className="w-5 cursor-pointer"
+                    />
+                  }
+                />
               }
               text={'그룹 생성'}
             />

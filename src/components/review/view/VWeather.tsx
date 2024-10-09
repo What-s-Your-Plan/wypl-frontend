@@ -4,8 +4,8 @@ import Cloud from '@/assets/icons/weather/cloud.svg';
 import CloudAngledRain from '@/assets/icons/weather/cloudAngledRain.svg';
 import CloudSnow from '@/assets/icons/weather/cloudSnow.svg';
 import FastWind from '@/assets/icons/weather/fastWinds.svg';
-import Sun from '@/assets/icons/weather/sun.svg';
-import { WhiteContainer } from '@/components/common/Container';
+import Sun                from '@/assets/icons/weather/sun.svg';
+import { WhiteContainer } from '@/components/Common/Container';
 import { WeatherContent } from '@/objects/ReviewContent.ts';
 
 type VWeatherProps = {

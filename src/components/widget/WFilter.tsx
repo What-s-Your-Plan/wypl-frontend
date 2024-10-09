@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import LabelButton from '../common/LabelButton';
+import LabelButton from '@/components/Common/LabelButton';
 
 import { getLabelList }    from '@/api/label/getLabelList';
 import { LabelColorsType } from '@/styles/colorThemes.ts';

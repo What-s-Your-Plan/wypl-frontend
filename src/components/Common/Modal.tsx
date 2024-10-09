@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import { Dialog, Transition } from '@headlessui/react';
 
-import Button from '@/components/common/Button';
+import Button from '@/components/Common/Button/Button.tsx';
 
 type Confirm = {
   content: string;
@@ -70,32 +70,27 @@ function Modal({
                   </div>
                   <div className="mt-4 flex justify-end gap-3">
                     <Button
-                      $size="lg"
-                      $width="60px"
-                      $bgColor="white"
-                      $textColor="black"
-                      $border="black"
-                      $hover={true}
+                      styles={{
+                        $size: 'medium',
+                        $variant: 'outline',
+                      }}
                       onClick={() => {
                         handleClose();
                       }}
-                    >
-                      {cancel}
-                    </Button>
+                      children={cancel}
+                    />
                     {confirm ? (
                       <Button
-                        $size="lg"
-                        $width="60px"
-                        $bgColor="labelBrown"
-                        $textColor="white"
-                        $hover={true}
+                        styles={{
+                          $size: 'medium',
+                          $variant: 'primary',
+                        }}
                         onClick={async () => {
                           await confirm.handleConfirm();
                           handleClose();
                         }}
-                      >
-                        {confirm.content}
-                      </Button>
+                        children={confirm.content}
+                      />
                     ) : null}
                   </div>
                 </Dialog.Panel>

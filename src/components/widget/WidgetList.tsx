@@ -6,9 +6,9 @@ import WFilter from './WFilter';
 import WGoal from './WGoal';
 import WMemo from './WMemo';
 import WWeather from './WWeather';
-import Button from '../common/Button';
 
-import * as S from '@/components/common/Container';
+import Button from '@/components/Common/Button/Button.tsx';
+import * as S from '@/components/Common/Container';
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -79,13 +79,13 @@ function WidgetList() {
       <div className="flex justify-end z-50 sticky float-right">
         {isModifying && (
           <Button
-            className="float-end"
-            $size="sm"
-            $width="50px"
+            styles={{
+              $size: 'small',
+              $variant: 'primary',
+            }}
             onClick={() => setIsModifying(false)}
-          >
-            저장
-          </Button>
+            children={'저장'}
+          />
         )}
       </div>
       <ResponsiveReactGridLayout

@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 
-import { WhiteContainer } from '@/components/common/Container';
-import { InputTextArea } from '@/components/common/InputText';
-import { TextContent }   from '@/objects/ReviewContent.ts';
+import { WhiteContainer } from '@/components/Common/Container';
+import { InputTextArea }  from '@/components/Common/InputText';
+import { TextContent }    from '@/objects/ReviewContent.ts';
 import useReviewStore    from '@/stores/ReviewStore';
 
 type RTextProps = {

@@ -9,7 +9,7 @@ import { ReviewType } from '@/@types/Review';
 import ArrowDown from '@/assets/icons/arrowDown.svg';
 import ArrowUp from '@/assets/icons/arrowUp.svg';
 import Trash from '@/assets/icons/trash.svg';
-import Button from '@/components/common/Button';
+import Button from '@/components/Common/Button/Button.tsx';
 import {
   ReviewContent,
   TextContent,
@@ -108,15 +108,21 @@ function ReviewWrite({ index, content }: ReviewWriteProps) {
     >
       {reviewStore.focusIndex === index && (
         <span className="float-right isolate inline-flex gap-1 rounded-md shadow-sm bg-default-white p-1 mr-64 -mt-2">
-          <Button $size="none" onClick={handleMoveUp}>
-            <img src={ArrowUp} alt="위로 이동" className="w-5" />
-          </Button>
-          <Button $size="none" onClick={handleMoveDown}>
-            <img src={ArrowDown} alt="아래로 이동" className="w-5" />
-          </Button>
-          <Button $size="none" onClick={handleDelete}>
-            <img src={Trash} alt="삭제" className="w-5" />
-          </Button>
+          <Button
+            styles={{ $size: 'small', $variant: 'default' }}
+            onClick={handleMoveUp}
+            children={<img src={ArrowUp} alt="위로 이동" className="w-5" />}
+          />
+          <Button
+            styles={{ $size: 'small', $variant: 'default' }}
+            onClick={handleMoveDown}
+            children={<img src={ArrowDown} alt="아래로 이동" className="w-5" />}
+          />
+          <Button
+            styles={{ $size: 'small', $variant: 'default' }}
+            onClick={handleDelete}
+            children={<img src={Trash} alt="삭제" className="w-5" />}
+          />
         </span>
       )}
       {renderBlock()}

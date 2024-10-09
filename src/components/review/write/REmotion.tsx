@@ -11,9 +11,9 @@ import Sick from '@/assets/icons/emoji/sick.svg';
 import Smile from '@/assets/icons/emoji/smile.svg';
 import Stareyes from '@/assets/icons/emoji/stareyes.svg';
 import Tired from '@/assets/icons/emoji/tired.svg';
-import Smiley from '@/assets/icons/smiley.svg';
-import { WhiteContainer } from '@/components/common/Container';
-import { InputDefault }   from '@/components/common/InputText';
+import Smiley             from '@/assets/icons/smiley.svg';
+import { WhiteContainer } from '@/components/Common/Container';
+import { InputDefault }   from '@/components/Common/InputText';
 import { EmotionContent } from '@/objects/ReviewContent.ts';
 import useReviewStore     from '@/stores/ReviewStore';
 

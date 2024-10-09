@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { WhiteContainer } from '../common/Container.ts';
+import { WhiteContainer } from '@/components/Common/Container.ts';
 
 import { checkTodo } from '@/api/todo/checkTodo.ts';
 import { deleteTodo } from '@/api/todo/deleteTodo.ts';
