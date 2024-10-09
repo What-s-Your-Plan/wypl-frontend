@@ -10,17 +10,17 @@ import Plus from '@/assets/icons/plus.svg';
 import RepeatIcon from '@/assets/icons/repeat.svg';
 import LabelIcon from '@/assets/icons/tag.svg';
 import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
-import UsersIcon   from '@/assets/icons/users.svg';
+import UsersIcon from '@/assets/icons/users.svg';
 import {
   InputDefault,
   InputTitle,
   InputTextArea,
-}                  from '@/components/Common/InputText';
+} from '@/components/Common/InputText';
 import LabelButton from '@/components/Common/LabelButton';
-import ListBox     from '@/components/Common/ListBox';
-import Toggle      from '@/components/Common/Toggle';
+import ListBox from '@/components/Common/ListBox';
+import Toggle from '@/components/Common/Toggle/Toggle';
 import CreateLabel from '@/components/label/CreateLabel';
-import useDateStore        from '@/stores/DateStore';
+import useDateStore from '@/stores/DateStore';
 import { LabelColorsType } from '@/styles/colorThemes.ts';
 
 type ChangeProps = {
@@ -108,8 +108,8 @@ function Time({ states, handleChange, setStates }: ChangeProps & SetProps) {
         <S.BetweenDiv>
           <span>하루 종일</span>
           <Toggle
-            enabled={states.isAllDay}
-            setEnabled={handleAllday as Dispatch<SetStateAction<boolean>>}
+            isEnabled={states.isAllDay}
+            toggleHandler={handleAllday as Dispatch<SetStateAction<boolean>>}
           />
         </S.BetweenDiv>
         <div className="flex items-center w-4/5 justify-around">
@@ -375,8 +375,8 @@ function Repeat({ states, handleChange, setStates }: ChangeProps & SetProps) {
         <S.BetweenDiv>
           <span>반복</span>
           <Toggle
-            enabled={states.isRepetition}
-            setEnabled={setRepetition as Dispatch<SetStateAction<boolean>>}
+            isEnabled={states.isRepetition}
+            toggleHandler={setRepetition as Dispatch<SetStateAction<boolean>>}
           />
         </S.BetweenDiv>
         {states.isRepetition ? (
