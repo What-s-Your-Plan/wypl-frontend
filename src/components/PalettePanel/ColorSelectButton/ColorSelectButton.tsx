@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import ColorCircle  from '@/components/Common/ColorCircle.ts';
-import PopOver      from '@/components/Common/PopOver.tsx';
+import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
+import PopOver from '@/components/Common/PopOver.tsx';
 import PalettePanel from '@/components/PalettePanel/PalettePanel.tsx';
 import { LabelColorsType } from '@/styles/colorThemes.ts';
 

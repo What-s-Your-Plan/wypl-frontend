@@ -1,16 +1,16 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-import PalettePanel     from '@/components/PalettePanel/PalettePanel';
-import ColorCircle      from '@/components/Common/ColorCircle';
+import PalettePanel from '@/components/PalettePanel/PalettePanel';
+import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
 import { InputDefault } from '@/components/Common/InputText';
-import PopOver          from '@/components/Common/PopOver';
+import PopOver from '@/components/Common/PopOver';
 
 import { GroupInfoData } from '@/@types/Group';
 import { SearchMemberForCreateGroupData } from '@/@types/Member';
 import { getMemberByEmail } from '@/api/member/getMemberbyEmail';
-import noContent           from '@/assets/lottie/noContent.json';
+import noContent from '@/assets/lottie/noContent.json';
 import { LabelColorsType } from '@/styles/colorThemes.ts';
-import * as S              from '@/components/group/create/GroupCreatePanel.styled';
+import * as S from '@/components/group/create/GroupCreatePanel.styled';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupCreatePanelProps = {

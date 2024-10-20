@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ColorCircle from '@/components/Common/ColorCircle.ts';
+import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
 
 const meta: Meta<typeof ColorCircle> = {
   title: 'Common/ColorCircle',
