@@ -1,7 +1,7 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { GROUP }           from '@/api/endpoint.ts';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { GROUP } from '@/api/endpoint.ts';
+import { LabelColorType } from '@/styles/Theme';
 
 /* Request */
 export type GroupInfoUpdatePathVariable = {
@@ -10,14 +10,14 @@ export type GroupInfoUpdatePathVariable = {
 
 export type GroupInfoUpdateRequest = {
   name: string;
-  color: LabelColorsType;
+  color: LabelColorType;
 };
 
 /* Response */
 export type GroupInfoUpdateResponse = {
   id: number;
   name: string;
-  color: LabelColorsType;
+  color: LabelColorType;
 };
 
 export const patchGroupInfo = async (

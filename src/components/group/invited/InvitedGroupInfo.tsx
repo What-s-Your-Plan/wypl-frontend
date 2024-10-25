@@ -12,9 +12,9 @@ import {
 import patchGroupInviteAccepted from '@/api/group/patchGroupInviteAccepted';
 import Check from '@/assets/icons/check.svg';
 import X from '@/assets/icons/x.svg';
-import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
+import ColorCircle from '@/components/Common/ColorCircle/ColorCircle.tsx';
 import Tooltip from '@/components/Tooltip/Tooltip';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType } from '@/styles/Theme';
 
 type InvitedGroupInfoProps = {
   group: Group;
@@ -80,8 +80,11 @@ function InvitedGroupInfo({
       <S.Wrapper>
         <S.Box>
           <ColorCircle
-            $labelColor={group.color as LabelColorsType}
-            className="!rounded-lg"
+            styles={{
+              $color: group.color as LabelColorType,
+              $figure: 'square',
+              $hover: 'none',
+            }}
           />
           {group.name}
         </S.Box>

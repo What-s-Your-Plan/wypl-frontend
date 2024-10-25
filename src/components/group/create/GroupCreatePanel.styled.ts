@@ -2,7 +2,7 @@ import Lottie from 'lottie-react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { LabelColorsType, BgTheme, BorderTheme } from '@/styles/colorThemes.ts';
+import { LabelColorType, Theme } from '@/styles/Theme';
 
 const CreateGroupForm = styled.form`
   ${tw`
@@ -72,7 +72,7 @@ const MemberContainer = styled.div`
 `;
 
 type MemberProfileWrapperProps = {
-  $color: LabelColorsType;
+  $color: LabelColorType;
 };
 
 const MemberProfileWrapper = styled.div<MemberProfileWrapperProps>`
@@ -88,9 +88,9 @@ const MemberProfileWrapper = styled.div<MemberProfileWrapperProps>`
     shadow-md
   `}
 
-  ${(props) => BorderTheme[props.$color]}
+  ${(props) => Theme.labelColor[props.$color]}
   &:hover {
-    background-color: ${(props) => BgTheme[props.$color]};
+    background-color: ${(props) => Theme.labelColor[props.$color]};
     color: white;
   }
 `;
@@ -108,9 +108,9 @@ const SelectMemberProfileWrapper = styled.div<MemberProfileWrapperProps>`
     shadow-md
   `}
 
-  ${(props) => BorderTheme[props.$color]}
+  ${(props) => Theme.labelColor[props.$color]}
   &:hover {
-    background-color: ${(props) => BgTheme[props.$color]};
+    background-color: ${(props) => Theme.labelColor[props.$color]};
     color: white;
   }
 `;
@@ -137,7 +137,7 @@ const MemberProfileSpan = styled.span`
 `;
 
 type BarProps = {
-  $color: LabelColorsType;
+  $color: LabelColorType;
 };
 
 const Bar = styled.div<BarProps>`
@@ -147,7 +147,7 @@ const Bar = styled.div<BarProps>`
       mt-5
       mb-3
     `}
-  ${(props) => BgTheme[props.$color]}
+  background-color: ${(props) => Theme.labelColor[props.$color]};
 `;
 
 const AnimationBox = styled.div`

@@ -1,11 +1,11 @@
 import { axiosWithAccessToken } from '../axios';
 
-import { LABEL }           from '@/api/endpoint.ts';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LABEL } from '@/api/endpoint.ts';
+import { LabelColorType } from '@/styles/Theme';
 
 /* Request */
 export type LabelCreateRequest = {
-  color: LabelColorsType;
+  color: LabelColorType;
   title: string;
 };
 

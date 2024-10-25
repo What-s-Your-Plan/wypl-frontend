@@ -8,14 +8,14 @@ import { deleteGroup, DeleteGroupParams } from '@/api/group/deleteGroup';
 import Button from '@/components/Common/Button/Button.tsx';
 import Modal from '@/components/Common/Modal';
 import useToastStore from '@/stores/ToastStore';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType } from '@/styles/Theme';
 
 type GroupUpdateModalProps = {
   isOpen: boolean;
   init: GroupUpdateInfo;
   groupUpdateEvent: (
     newName: string,
-    newColor: LabelColorsType,
+    newColor: LabelColorType,
     memberIds: Array<number>,
   ) => void;
   groupDeleteEvent: (groupId: number) => void;
@@ -31,10 +31,7 @@ function GroupUpdateModal({
 }: GroupUpdateModalProps) {
   const { addToast } = useToastStore();
   const [groupUpdateInfo, setGroupUpdateInfo] = useState<GroupUpdateInfo>(init);
-  const handleGroupUpdateInfo = (
-    newName: string,
-    newColor: LabelColorsType,
-  ) => {
+  const handleGroupUpdateInfo = (newName: string, newColor: LabelColorType) => {
     setGroupUpdateInfo((prev) => {
       return {
         ...prev,
@@ -52,7 +49,7 @@ function GroupUpdateModal({
   const handleConfirmClick = async () => {
     groupUpdateEvent(
       groupUpdateInfo.name,
-      groupUpdateInfo.color as LabelColorsType,
+      groupUpdateInfo.color as LabelColorType,
       inviteMemberIds,
     );
   };
@@ -86,7 +83,7 @@ function GroupUpdateModal({
             children={'그룹 삭제'}
           />
         </S.Wrapper>
-        <S.Bar $color={groupUpdateInfo.color as LabelColorsType} />;
+        <S.Bar $color={groupUpdateInfo.color as LabelColorType} />;
       </S.Container>
     );
   };

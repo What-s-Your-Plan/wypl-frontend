@@ -7,7 +7,7 @@ const response: BaseResponse<GetMemberProfileResponse> = {
   body: {
     email: 'wypl602@gmail.com',
     id: 1,
-    main_color: 'labelBrown',
+    main_color: 'brown',
     nickname: '와플',
     profile_image_url: undefined,
   },

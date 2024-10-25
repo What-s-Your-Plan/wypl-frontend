@@ -1,4 +1,4 @@
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType } from '@/styles/Theme';
 
 type Group = {
   id: number;
@@ -16,7 +16,7 @@ type GroupUpdateInfo = {
 /* Data */
 interface GroupInfoData {
   name: string;
-  color: LabelColorsType;
+  color: LabelColorType;
   member_id_list: Array<number>;
 }
 

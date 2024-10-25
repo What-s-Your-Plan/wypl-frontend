@@ -5,7 +5,7 @@ import { GetGroupMembersResponse } from '@/api/group/getGroupMember.ts';
 
 const response: BaseResponse<GetGroupMembersResponse> = {
   body: {
-    color: 'labelBrown',
+    color: 'brown',
     member_count: 3,
     members: [
       {

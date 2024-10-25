@@ -10,7 +10,7 @@ import DescriptionIcon from '@/assets/icons/textAlignLeft.svg';
 import UsersIcon from '@/assets/icons/users.svg';
 import Button from '@/components/Common/Button/Button.tsx';
 import LabelButton from '@/components/Common/LabelButton';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType } from '@/styles/Theme';
 import { isAllDay, padding0, stringToDate } from '@/utils/DateUtils';
 
 function Title({ title }: { title: string }) {
@@ -90,7 +90,7 @@ function Label({ label }: { label: LabelResponse | null }) {
       <img src={LabelIcon} alt="label" />
       <div className="grow">
         {label ? (
-          <LabelButton $labelColor={label.color as LabelColorsType}>
+          <LabelButton $labelColor={label.color as LabelColorType}>
             {label.title}
           </LabelButton>
         ) : (

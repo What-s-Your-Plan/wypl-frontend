@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
+import ColorCirclePrev from '@/components/Common/ColorCircle/ColorCircle.styled';
 
-const meta: Meta<typeof ColorCircle> = {
+const meta: Meta<typeof ColorCirclePrev> = {
   title: 'Common/ColorCircle',
-  component: ColorCircle,
+  component: ColorCirclePrev,
   tags: ['autodocs'],
 };
 

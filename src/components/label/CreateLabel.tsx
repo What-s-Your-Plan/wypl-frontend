@@ -1,15 +1,15 @@
 import { Dispatch, SetStateAction, useRef } from 'react';
 
-import postCreateLabel     from '@/api/label/postCreateLabel';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import postCreateLabel from '@/api/label/postCreateLabel';
+import { InputDefault } from '@/components/Common/InputText';
+import { CreateDiv } from '@/components/label/Styled';
 import ColorSelectButton from '@/components/PalettePanel/ColorSelectButton/ColorSelectButton.tsx';
-import { InputDefault }  from '@/components/Common/InputText';
-import { CreateDiv }     from '@/components/label/Styled';
 import useToastStore from '@/stores/ToastStore';
+import { LabelColorType } from '@/styles/Theme';
 
 type CreateLabelProps = {
-  color: LabelColorsType;
-  setColor: Dispatch<SetStateAction<LabelColorsType>>;
+  color: LabelColorType;
+  setColor: Dispatch<SetStateAction<LabelColorType>>;
   handleKeyDown?: (() => void) | (() => Promise<void>);
 };
 

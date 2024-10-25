@@ -4,10 +4,10 @@ import Users from '@/assets/icons/users.svg';
 
 import Logo from '/logo.png';
 
-import { LabelColorsType } from '@/styles/colorThemes.ts';
-import { WhiteContainer }  from '@/components/Common/Container';
-import LabelButton         from '@/components/Common/LabelButton';
-import { splitTTime }      from '@/utils/DateUtils';
+import { WhiteContainer } from '@/components/Common/Container';
+import LabelButton from '@/components/Common/LabelButton';
+import { LabelColorType } from '@/styles/Theme';
+import { splitTTime } from '@/utils/DateUtils';
 
 type VScheduleProps = {
   schedule: ScheduleSimpleResponse;
@@ -44,7 +44,7 @@ function VSchedule({ schedule }: VScheduleProps) {
           <img src={Tag} alt="라벨" className="w-5" />
           <LabelButton
             className="text-base"
-            $labelColor={schedule.label?.color as LabelColorsType}
+            $labelColor={schedule.label?.color as LabelColorType}
           >
             {schedule.label?.title}
           </LabelButton>

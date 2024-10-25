@@ -4,8 +4,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Disclosure } from '@headlessui/react';
 
 import * as S from './GroupDetailList.styled';
-import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
-import { Divider } from '@/components/Common/Divider';
 import GroupMemberList from '../member/GroupMemberList';
 import GroupUpdateModal from '../update/GroupUpdateModal';
 
@@ -26,11 +24,13 @@ import {
 } from '@/api/group/postGroupInvite';
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Setting from '@/assets/icons/settings.svg';
+import ColorCircle from '@/components/Common/ColorCircle/ColorCircle.tsx';
+import { Divider } from '@/components/Common/Divider';
 import PopOver from '@/components/Common/PopOver';
 import PalettePanel from '@/components/PalettePanel/PalettePanel';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import useToastStore from '@/stores/ToastStore';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType } from '@/styles/Theme';
 
 type GroupInfoProps = {
   group: Group;
@@ -46,11 +46,11 @@ function GroupDetailList({
   const navigate = useNavigate();
   const { groupId } = useParams();
   const { addToast } = useToastStore();
-  const [color, setColor] = useState<LabelColorsType>(
-    group.color as LabelColorsType,
+  const [color, setColor] = useState<LabelColorType>(
+    group.color as LabelColorType,
   );
 
-  const handleChangeColor = async (color: LabelColorsType) => {
+  const handleChangeColor = async (color: LabelColorType) => {
     const pathVariable: PersonalGroupColorUpdatePathVariable = {
       groupId: group.id,
     };
@@ -58,7 +58,7 @@ function GroupDetailList({
       color,
     };
     const data = await patchPersonalGroupColor(pathVariable, request);
-    setColor(data.body.color as LabelColorsType);
+    setColor(data.body.color as LabelColorType);
   };
 
   const gotoGroupPage = (open: boolean) => {
@@ -84,12 +84,12 @@ function GroupDetailList({
 
   const handleUpdateGroup = async (
     newName: string,
-    newColor: LabelColorsType,
+    newColor: LabelColorType,
     memberIds: Array<number>,
   ) => {
     if (
       newName !== group.name ||
-      newColor !== (group.color as LabelColorsType)
+      newColor !== (group.color as LabelColorType)
     ) {
       const pathVariable: GroupInfoUpdatePathVariable = {
         groupId: group.id,
@@ -168,10 +168,11 @@ function GroupDetailList({
           panelPosition="bottom-8"
           button={
             <ColorCircle
-              as="button"
-              $labelColor={color as LabelColorsType}
-              $cursor="pointer"
-              className="!rounded-md"
+              styles={{
+                $color: color,
+                $figure: 'circle',
+                $hover: 'none',
+              }}
             />
           }
           panel={<PalettePanel setColor={handleChangeColor} isRounded={true} />}

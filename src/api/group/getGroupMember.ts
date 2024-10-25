@@ -1,8 +1,8 @@
 import { axiosWithAccessToken } from '../axios';
 
 import { GroupMemberData } from '@/@types/Group';
-import { GROUP }           from '@/api/endpoint.ts';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { GROUP } from '@/api/endpoint.ts';
+import { LabelColorType } from '@/styles/Theme';
 
 /* Request */
 export type GetGroupMemberPathVariable = {
@@ -11,7 +11,7 @@ export type GetGroupMemberPathVariable = {
 
 /* Response */
 export type GetGroupMembersResponse = {
-  color: LabelColorsType;
+  color: LabelColorType;
   member_count: number;
   members: GroupMemberData[];
 };

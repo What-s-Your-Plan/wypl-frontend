@@ -1,16 +1,15 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-import PalettePanel from '@/components/PalettePanel/PalettePanel';
-import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
-import { InputDefault } from '@/components/Common/InputText';
-import PopOver from '@/components/Common/PopOver';
-
 import { GroupInfoData } from '@/@types/Group';
 import { SearchMemberForCreateGroupData } from '@/@types/Member';
 import { getMemberByEmail } from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
+import { InputDefault } from '@/components/Common/InputText';
+import PopOver from '@/components/Common/PopOver';
 import * as S from '@/components/group/create/GroupCreatePanel.styled';
+import PalettePanel from '@/components/PalettePanel/PalettePanel';
+import { LabelColorType } from '@/styles/Theme';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupCreatePanelProps = {
@@ -21,8 +20,8 @@ type GroupCreatePanelProps = {
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
   setStates: Dispatch<SetStateAction<GroupInfoData>>;
-  color: LabelColorsType;
-  setColor: Dispatch<SetStateAction<LabelColorsType>>;
+  color: LabelColorType;
+  setColor: Dispatch<SetStateAction<LabelColorType>>;
 };
 
 function GroupCreatePanel({
@@ -155,10 +154,11 @@ function GroupCreatePanel({
               panelPosition="top-8"
               button={
                 <ColorCircle
-                  as="button"
-                  $labelColor={color as LabelColorsType}
-                  $cursor="pointer"
-                  className="!rounded-md"
+                  styles={{
+                    $color: color as LabelColorType,
+                    $figure: 'circle',
+                    $hover: 'none',
+                  }}
                 />
               }
               panel={<PalettePanel setColor={setColor} isRounded={true} />}

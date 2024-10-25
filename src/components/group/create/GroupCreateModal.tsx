@@ -4,12 +4,12 @@ import { GroupInfoData, GroupSummaryData } from '@/@types/Group';
 import {
   postGroupRegister,
   GroupResponse as CreateGroup,
-}                          from '@/api/group/postGroupRegister';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
-import Modal               from '@/components/Common/Modal';
-import * as S              from '@/components/group/create/GroupCreateModal.styled';
+} from '@/api/group/postGroupRegister';
+import Modal from '@/components/Common/Modal';
+import * as S from '@/components/group/create/GroupCreateModal.styled';
 import GroupCreatePanel from '@/components/group/create/GroupCreatePanel';
 import useForm from '@/hooks/useForm';
+import { LabelColorType } from '@/styles/Theme';
 
 type GroupCreateModalProps = {
   isOpen: boolean;
@@ -43,7 +43,7 @@ function GroupCreateModal({
     setForm(init);
   };
 
-  const [color, setColor] = useState<LabelColorsType>('labelRed');
+  const [color, setColor] = useState<LabelColorType>('red');
   const CreateGroupHeader = () => {
     return (
       <S.TitleContainer>

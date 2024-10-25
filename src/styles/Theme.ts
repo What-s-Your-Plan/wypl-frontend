@@ -60,6 +60,23 @@ const color = {
   red100: '#FFD9D9',
 } as const;
 
+const circleLabelColor = [
+  'brown',
+  'red',
+  'pink',
+  'orange',
+  'yellow',
+  'green',
+  'leaf',
+  'blue',
+  'sky',
+  'navy',
+  'indigo',
+  'purple',
+  'lavender',
+  'charcoal',
+] as const;
+
 const labelColor = {
   /** default */
   brown: '#876445',
@@ -92,4 +109,5 @@ export const Theme = {
   color,
   labelColor,
   borderRadius,
+  circleLabelColor,
 };

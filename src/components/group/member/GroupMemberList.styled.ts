@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { LabelColorsType, BgTheme, BorderTheme } from '@/styles/colorThemes.ts';
+import { LabelColorType, Theme } from '@/styles/Theme';
 
 const Container = styled.div`
   ${tw`
@@ -42,7 +42,7 @@ const ProfileImg = styled.img`
 const Text = styled.span``;
 
 type CheckProps = {
-  $color: LabelColorsType;
+  $color: LabelColorType;
   $isAccepted: boolean;
 };
 
@@ -58,8 +58,10 @@ const Check = styled.div<CheckProps>`
   border-4
   `}
 
-  ${(props) => props.$isAccepted && BgTheme[props.$color]}
-  ${(props) => props.$isAccepted && BorderTheme[props.$color]}
+  border-color:  ${(props) =>
+    props.$isAccepted && Theme.labelColor[props.$color]};
+  background-color: ${(props) =>
+    props.$isAccepted && Theme.labelColor[props.$color]};
 `;
 
 export { Container, Wrapper, Box, ProfileImg, Text, Icon, Check };
