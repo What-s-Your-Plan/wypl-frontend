@@ -12,7 +12,7 @@ const response: BaseResponse<GetScheduleDetailResponse> = {
     label: {
       label_id: 1,
       title: '알고리즘 스터디',
-      color: 'labelCharcoal',
+      color: 'charcoal',
     },
     member_count: 1,
     members: [

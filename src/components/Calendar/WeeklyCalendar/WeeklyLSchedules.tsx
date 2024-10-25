@@ -1,8 +1,8 @@
 import { LongSchedule } from './WeeklyCalendar';
 import * as S from './WeeklyCalendar.styled';
 
-import { LabelColorsType } from '@/styles/colorThemes.ts';
-import useMemberStore      from '@/stores/MemberStore';
+import useMemberStore from '@/stores/MemberStore';
+import { LabelColorType } from '@/styles/Theme';
 
 type LSchedulesProps = {
   lSchedules: Array<LongSchedule>;
@@ -28,7 +28,7 @@ function WeeklyLSchedules({
       return (
         <S.LScheduleButton
           key={index}
-          $bgColor={bgColor as LabelColorsType}
+          $bgColor={bgColor as LabelColorType}
           $startDay={schedule.startDay}
           $row={schedule.row}
           $period={schedule.period}

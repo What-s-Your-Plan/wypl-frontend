@@ -20,7 +20,7 @@ const LabelButton = styled.button<LabelProps>`
     text-default-white
     font-semibold
   `}
-  background-color: ${(props) => Theme.labelColor[props.$labelColor]}
+  background-color: ${(props) => Theme.labelColor[props.$labelColor]};
 `;
 
 export default LabelButton;

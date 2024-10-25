@@ -82,7 +82,7 @@ function InvitedGroupInfo({
           <ColorCircle
             styles={{
               $color: group.color as LabelColorType,
-              $figure: 'square',
+              $figure: 'circle',
               $hover: 'none',
             }}
           />

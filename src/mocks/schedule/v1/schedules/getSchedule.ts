@@ -14,7 +14,7 @@ const response: BaseResponse<GetReviewScheduleResponse> = {
       id: 1,
       category: 'MEMBER',
       title: '알고리즘 스터디',
-      color: 'labelCharcoal',
+      color: 'charcoal',
     },
     member_count: 2,
     title: '알고리즘 스터디',

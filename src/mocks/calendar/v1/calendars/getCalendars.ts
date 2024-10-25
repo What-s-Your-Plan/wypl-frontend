@@ -35,7 +35,7 @@ const response: BaseResponse<CalendarsResponse> = {
         label: null,
         group: {
           group_id: 1,
-          color: 'labelBlue',
+          color: 'blue',
           title: 'study group',
         },
       },

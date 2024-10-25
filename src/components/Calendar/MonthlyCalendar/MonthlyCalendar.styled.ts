@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { BgTheme, LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType, Theme } from '@/styles/Theme';
 
 const DateContainer = styled.div`
   ${tw`
@@ -14,7 +14,7 @@ const DateContainer = styled.div`
 `;
 
 const ScheduleButton = styled.button<{
-  $color: LabelColorsType;
+  $color: LabelColorType;
   $top: number;
   $width: number;
 }>`
@@ -35,9 +35,9 @@ const ScheduleButton = styled.button<{
     text-default-white
     transition-all
     `}
-  ${(props) => BgTheme[props.$color]}
-    ${(props) => `top: ${props.$top}rem;`}
-    ${(props) => `width: ${props.$width}00%;`}
+  background-color: ${(props) => Theme.labelColor[props.$color]};
+  ${(props) => `top: ${props.$top}rem;`}
+  ${(props) => `width: ${props.$width}00%;`}
     &:hover {
     scale: 103%;
     z-index: 10;

@@ -3,7 +3,7 @@ import * as S from './MonthlyCalendar.styled';
 
 import useDateStore from '@/stores/DateStore';
 import useMemberStore from '@/stores/MemberStore';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType } from '@/styles/Theme';
 import { isSameDay, stringToDate, getDateDiff } from '@/utils/DateUtils';
 
 interface MDayProps {
@@ -51,7 +51,7 @@ function MonthlyDay({
           return (
             <S.ScheduleButton
               key={scheduleIdx}
-              $color={scheduleLabelColor as LabelColorsType}
+              $color={scheduleLabelColor as LabelColorType}
               $top={scheduleIdx}
               $width={scheduleWidth}
               onClick={() => {

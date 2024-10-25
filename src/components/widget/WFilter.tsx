@@ -11,7 +11,7 @@ function WFilter() {
   const renderLabels = () => {
     return dateStore.labels.map((label: LabelFilterData) => {
       const isSelected = dateStore.selectedLabels.includes(label);
-      const labelBgColor = isSelected ? label.color : 'coolGray';
+      const labelBgColor = isSelected && label.color;
       const labelClassName = isSelected
         ? ''
         : '!text-default-black !font-medium';
@@ -51,7 +51,7 @@ function WFilter() {
       <div id="labelList" className="scrollBar flex flex-wrap gap-2 h-28 mt-2">
         <LabelButton
           $labelColor={
-            dateStore.selectedLabels.length === 0 ? 'brown' : 'lavender'
+            dateStore.selectedLabels.length === 0 ? 'brown' : 'orange'
           }
           className={`h-8 ${dateStore.selectedLabels.length === 0 ? '' : '!text-default-black !font-medium'}`}
           onClick={dateStore.clearSelectedLabels}
