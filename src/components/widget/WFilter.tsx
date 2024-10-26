@@ -18,6 +18,7 @@ function WFilter() {
       return (
         <LabelButton
           $labelColor={labelBgColor as LabelColorType}
+          $isSelected={isSelected}
           className={labelClassName}
           key={label.id}
           onClick={() => {
@@ -53,6 +54,7 @@ function WFilter() {
           $labelColor={
             dateStore.selectedLabels.length === 0 ? 'brown' : 'orange'
           }
+          $isSelected={dateStore.selectedLabels.length === 0}
           className={`h-8 ${dateStore.selectedLabels.length === 0 ? '' : '!text-default-black !font-medium'}`}
           onClick={dateStore.clearSelectedLabels}
         >

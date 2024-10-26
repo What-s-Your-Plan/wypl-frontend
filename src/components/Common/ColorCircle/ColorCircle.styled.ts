@@ -15,7 +15,9 @@ export const getFigureStyling = (
     circle: css({
       borderRadius: '50%',
     }),
-    square: css({}),
+    square: css({
+      borderRadius: '25%',
+    }),
   };
   return style[figure];
 };
