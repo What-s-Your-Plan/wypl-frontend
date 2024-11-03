@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { LabelColorsType, BgTheme } from '@/styles/colorThemes.ts';
+import { LabelColorType, Theme } from '@/styles/Theme';
 
 const TitleContainer = styled.div``;
 
@@ -12,7 +12,7 @@ const Title = styled.p`
 `;
 
 type BarProps = {
-  $color: LabelColorsType;
+  $color: LabelColorType;
 };
 
 const Bar = styled.div<BarProps>`
@@ -20,7 +20,7 @@ const Bar = styled.div<BarProps>`
     h-[0.5px]
     mb-5
   `}
-  ${(props) => BgTheme[props.$color]}
+  background-color: ${(props) => Theme.labelColor[props.$color]}
 `;
 
 export { TitleContainer, Title, Bar };

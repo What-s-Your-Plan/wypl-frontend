@@ -21,7 +21,7 @@ import ListBox from '@/components/Common/ListBox';
 import Toggle from '@/components/Common/Toggle/Toggle';
 import CreateLabel from '@/components/label/CreateLabel';
 import useDateStore from '@/stores/DateStore';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType } from '@/styles/Theme';
 
 type ChangeProps = {
   states: ScheduleData & RepeatData;
@@ -221,7 +221,7 @@ function Description({ states, handleChange }: ChangeProps) {
 
 function Label({ states, setStates }: SetProps) {
   const { labels, setLabels } = useDateStore();
-  const [color, setColor] = useState<LabelColorsType>('labelRed');
+  const [color, setColor] = useState<LabelColorType>('red');
   const [create, setCreate] = useState<boolean>(false);
   const handleLabel = (value: Label) => {
     setStates((prev) => {
@@ -249,7 +249,7 @@ function Label({ states, setStates }: SetProps) {
           setSelected={handleLabel}
           render={(item: Label | null) => {
             return item ? (
-              <LabelButton as="div" $labelColor={item.color as LabelColorsType}>
+              <LabelButton as="div" $labelColor={item.color as LabelColorType}>
                 {item.title}
               </LabelButton>
             ) : (

@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-import PalettePanel     from '@/components/PalettePanel/PalettePanel';
-import ColorCircle      from '@/components/Common/ColorCircle';
-import { InputDefault } from '@/components/Common/InputText';
-import PopOver          from '@/components/Common/PopOver';
-
 import { GroupUpdateInfo } from '@/@types/Group';
 import { SearchMemberForCreateGroupData } from '@/@types/Member';
 import { getMemberByEmail } from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import ColorCircle from '@/components/Common/ColorCircle/ColorCircle.tsx';
+import { InputDefault } from '@/components/Common/InputText';
+import PopOver from '@/components/Common/PopOver';
 import * as S from '@/components/group/create/GroupCreatePanel.styled';
+import PalettePanel from '@/components/PalettePanel/PalettePanel';
+import { LabelColorType } from '@/styles/Theme';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type GroupUpdatePanelProps = {
   groupUpdateInfo: GroupUpdateInfo;
-  groupUpdateInfoEvent: (newName: string, newColor: LabelColorsType) => void;
+  groupUpdateInfoEvent: (newName: string, newColor: LabelColorType) => void;
   inviteMemberIdsEvent: (memberIds: Array<number>) => void;
 };
 
@@ -76,8 +75,8 @@ function GroupUpdatePanel({
     );
   }, [selectedMembers]);
 
-  const [color, setColor] = useState<LabelColorsType>(
-    groupUpdateInfo.color as LabelColorsType,
+  const [color, setColor] = useState<LabelColorType>(
+    groupUpdateInfo.color as LabelColorType,
   );
   const [name, setName] = useState<string>(groupUpdateInfo.name);
 
@@ -115,7 +114,7 @@ function GroupUpdatePanel({
           onClick={() => handleMemberCancel(member.id)}
         >
           <S.SelectMemberProfileWrapper
-            $color={groupUpdateInfo.color as LabelColorsType}
+            $color={groupUpdateInfo.color as LabelColorType}
           >
             <S.MemberProfileImg
               src={getMemberProfileImageOrDefault(member.profile_image_url)}
@@ -153,10 +152,11 @@ function GroupUpdatePanel({
               panelPosition="top-8"
               button={
                 <ColorCircle
-                  as="button"
-                  $labelColor={color}
-                  $cursor="pointer"
-                  className="!rounded-md"
+                  styles={{
+                    $color: color,
+                    $figure: 'square',
+                    $hover: 'none',
+                  }}
                 />
               }
               panel={<PalettePanel setColor={setColor} isRounded={true} />}

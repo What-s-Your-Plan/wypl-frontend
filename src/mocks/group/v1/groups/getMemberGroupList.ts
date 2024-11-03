@@ -12,7 +12,7 @@ const response: BaseResponse<MemberGroupsResponse> = {
       {
         id: 1,
         name: 'work group',
-        color: 'labelBlue',
+        color: 'blue',
         is_owner: false,
       },
     ],
@@ -20,13 +20,13 @@ const response: BaseResponse<MemberGroupsResponse> = {
       {
         id: 2,
         name: 'study group',
-        color: 'labelYellow',
+        color: 'yellow',
         is_owner: false,
       },
       {
         id: 3,
         name: 'project group',
-        color: 'labelCharcoal',
+        color: 'charcoal',
         is_owner: true,
       },
     ],

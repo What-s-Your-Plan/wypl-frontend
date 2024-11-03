@@ -4,15 +4,15 @@ import {
   patchMemberLabelColor,
   UpdateLabelColorRequest,
 } from '@/api/member/patchMemberLabelColor';
-import check                            from '@/assets/icons/check.svg';
-import { LabelColors, LabelColorsType } from '@/styles/colorThemes.ts';
-import ColorCircle                      from '@/components/Common/ColorCircle';
-import useMemberStore                   from '@/stores/MemberStore';
+import check from '@/assets/icons/check.svg';
+import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
+import useMemberStore from '@/stores/MemberStore';
+import { LabelColorType, Theme } from '@/styles/Theme';
 
 function MemberPalette() {
   const { mainColor, setMainColor: setLabelColor } = useMemberStore();
 
-  const changeLabelColor = async (color: LabelColorsType) => {
+  const changeLabelColor = async (color: LabelColorType) => {
     if (mainColor === color) {
       return;
     }
@@ -28,8 +28,12 @@ function MemberPalette() {
       <S.SelectLabelColorsWrapper>
         {[...Array(2)].map((_, boxIdx: number) => (
           <S.SelectLabelColorsBox key={boxIdx}>
-            {LabelColors.slice(boxIdx * 7, (boxIdx + 1) * 7).map(
-              (value: LabelColorsType, idx: number) => (
+            {Theme.circleLabelColor
+              .slice(
+                boxIdx * 7,
+                Math.min((boxIdx + 1) * 7, Theme.circleLabelColor.length),
+              )
+              .map((value: LabelColorType, idx: number) => (
                 <S.SelectLabelColor key={`${boxIdx}-${idx}-color`}>
                   {mainColor === value && (
                     <S.Icon src={check} className={'whiteImg'} />
@@ -37,13 +41,14 @@ function MemberPalette() {
                   <ColorCircle
                     key={`${boxIdx}-${idx}-circle`}
                     onClick={() => changeLabelColor(value)}
-                    $labelColor={value}
-                    $hover={true}
-                    $cursor={'pointer'}
+                    styles={{
+                      $figure: 'circle',
+                      $hover: 'hover',
+                      $color: value,
+                    }}
                   />
                 </S.SelectLabelColor>
-              ),
-            )}
+              ))}
           </S.SelectLabelColorsBox>
         ))}
       </S.SelectLabelColorsWrapper>

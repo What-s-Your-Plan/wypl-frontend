@@ -1,7 +1,7 @@
 import * as S from './WeeklyCalendar.styled';
 
-import { LabelColorsType } from '@/styles/colorThemes.ts';
-import useMemberStore      from '@/stores/MemberStore';
+import useMemberStore from '@/stores/MemberStore';
+import { LabelColorType } from '@/styles/Theme';
 import { stringToDate, padding0 } from '@/utils/DateUtils';
 
 type WSchedulesProps = {
@@ -42,7 +42,7 @@ function WeeklySchedules({ schedules, handleScheduleClick }: WSchedulesProps) {
             $bgColor={
               (schedule.label?.color ||
                 schedule.group?.color ||
-                mainColor) as LabelColorsType
+                mainColor) as LabelColorType
             }
             onClick={() => {
               handleScheduleClick(schedule.schedule_id);

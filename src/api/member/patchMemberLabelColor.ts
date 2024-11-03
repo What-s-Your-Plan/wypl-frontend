@@ -1,15 +1,14 @@
 import { axiosWithAccessToken } from '@/api/axios';
-import { MEMBER }          from '@/api/endpoint.ts';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
-
+import { MEMBER } from '@/api/endpoint.ts';
+import { LabelColorType } from '@/styles/Theme';
 /* Request */
 export type UpdateLabelColorRequest = {
-  color: LabelColorsType;
+  color: LabelColorType;
 };
 
 /* Response */
 export type UpdateLabelColorResponse = {
-  color: LabelColorsType;
+  color: LabelColorType;
 };
 
 /* API */

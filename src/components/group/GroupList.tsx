@@ -137,7 +137,7 @@ function GroupList() {
 
   const [groupCreateInit] = useState<GroupInfoData>({
     name: '',
-    color: 'labelBrown',
+    color: 'brown',
     member_id_list: [],
   });
 

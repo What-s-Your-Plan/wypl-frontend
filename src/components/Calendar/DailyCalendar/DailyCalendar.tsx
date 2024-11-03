@@ -10,7 +10,7 @@ import {
 import NoContentAnimation from '@/components/Animation/NoContent';
 import useDateStore from '@/stores/DateStore';
 import useMemberStore from '@/stores/MemberStore';
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType } from '@/styles/Theme';
 import { dateToString, getTime } from '@/utils/DateUtils';
 import { labelFilter } from '@/utils/FilterUtils';
 
@@ -106,7 +106,7 @@ function DailyCalendar({
             $bgColor={
               (schedule.label?.color ||
                 schedule.group?.color ||
-                mainColor) as LabelColorsType
+                mainColor) as LabelColorType
             }
           />
           <S.ScheduleContents>

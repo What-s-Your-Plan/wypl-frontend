@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { MemberProfileData }              from '@/@types/Member';
-import { LabelColorsType }                from '@/styles/colorThemes.ts';
+import { MemberProfileData } from '@/@types/Member';
+import { LabelColorType } from '@/styles/Theme';
 import { getMemberProfileImageOrDefault } from '@/utils/ImageUtils';
 
 type MemberState = {
@@ -10,12 +10,12 @@ type MemberState = {
   profileImage: string;
   email: string | undefined;
   nickname: string | undefined;
-  mainColor: LabelColorsType | undefined;
+  mainColor: LabelColorType | undefined;
   setId: (newId: number) => void;
   setProfileImage: (newProfileImage: string | undefined) => void;
   setEmail: (newEmail: string) => void;
   setNickname: (newNickname: string) => void;
-  setMainColor: (newMainColor: LabelColorsType) => void;
+  setMainColor: (newMainColor: LabelColorType) => void;
   setProfile: (profile: MemberProfileData) => void;
   resetMember: () => void;
 };
@@ -46,7 +46,7 @@ const useMemberStore = create<MemberState>()(
           nickname: newNickname,
         }));
       },
-      setMainColor: (newLabelColor: LabelColorsType) => {
+      setMainColor: (newLabelColor: LabelColorType) => {
         set(() => ({
           mainColor: newLabelColor,
         }));

@@ -1,4 +1,4 @@
-import { LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType } from '@/styles/Theme';
 
 interface SearchMemberForCreateGroupData {
   id: number;
@@ -12,5 +12,5 @@ interface MemberProfileData {
   email: string;
   nickname: string;
   profile_image_url: string | undefined;
-  main_color: LabelColorsType;
+  main_color: LabelColorType;
 }

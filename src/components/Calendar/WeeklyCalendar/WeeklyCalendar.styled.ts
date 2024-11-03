@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { BgTheme, LabelColorsType } from '@/styles/colorThemes.ts';
+import { LabelColorType, Theme } from '@/styles/Theme';
 
 type DateSpanProps = {
   $isHoliday?: boolean;
@@ -16,7 +16,7 @@ type ScheduleListProps = {
 };
 
 type LScheduleButtonProps = {
-  $bgColor: LabelColorsType;
+  $bgColor: LabelColorType;
   $startDay: number;
   $row: number;
   $period: number;
@@ -61,7 +61,7 @@ const ScheduleList = styled.li<ScheduleListProps>`
   grid-row: ${(props) => `${props.$start} / span ${props.$length}`};
 `;
 
-const ScheduleButton = styled.button<{ $bgColor: LabelColorsType }>`
+const ScheduleButton = styled.button<{ $bgColor: LabelColorType }>`
   ${tw`
     absolute 
     p-1
@@ -76,8 +76,8 @@ const ScheduleButton = styled.button<{ $bgColor: LabelColorsType }>`
     transition-all
     border
   `}
-  ${(props) => BgTheme[props.$bgColor as LabelColorsType]}
-    &:hover {
+  background-color:  ${(props) => Theme.labelColor[props.$bgColor]};
+  &:hover {
     scale: 103%;
     z-index: 10;
   }
@@ -127,8 +127,8 @@ const LScheduleButton = styled.button<LScheduleButtonProps>`
     border-b
     cursor-pointer
   `}
-  ${(props) => BgTheme[props.$bgColor]}
-    grid-column: ${(props) =>
+  background-color: ${(props) => Theme.labelColor[props.$bgColor]};
+  grid-column: ${(props) =>
     `${props.$startDay + 1} / span ${props.$period + 1}`};
   grid-row-start: ${(props) => `${props.$row + 1}`};
 `;

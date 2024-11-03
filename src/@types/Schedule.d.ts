@@ -86,7 +86,7 @@ interface LabelFilterData {
   category: string;
   id: number;
   title: string;
-  color: LabelColorsType;
+  color: LabelColorType;
 }
 
 interface ScheduleSummaryData {

@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-import { LabelColorsType, LabelTheme } from '@/styles/colorThemes.ts';
+import { LabelColorType, Theme } from '@/styles/Theme';
 
 type LabelProps = {
-  $labelColor: LabelColorsType;
+  $isSelected?: boolean;
+  $labelColor: LabelColorType;
 };
 
 const LabelButton = styled.button<LabelProps>`
@@ -20,7 +21,15 @@ const LabelButton = styled.button<LabelProps>`
     text-default-white
     font-semibold
   `}
-  ${(props) => LabelTheme[props.$labelColor]}
+
+  border: 1px solid;
+
+  border-color: ${(props) =>
+    !props.$isSelected && Theme.labelColor[props.$labelColor]};
+
+  background-color: ${(props) =>
+    (props.$isSelected || props.$isSelected === undefined) &&
+    Theme.labelColor[props.$labelColor]};
 `;
 
 export default LabelButton;
