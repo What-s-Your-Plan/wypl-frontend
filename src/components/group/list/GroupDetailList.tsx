@@ -25,7 +25,7 @@ import {
 import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Setting from '@/assets/icons/settings.svg';
 import ColorCircle from '@/components/Common/ColorCircle/ColorCircle.tsx';
-import { Divider } from '@/components/Common/Divider';
+import Divider from '@/components/Common/Divider/Divider';
 import PopOver from '@/components/Common/PopOver';
 import PalettePanel from '@/components/PalettePanel/PalettePanel';
 import Tooltip from '@/components/Tooltip/Tooltip';
@@ -185,7 +185,7 @@ function GroupDetailList({
               <Disclosure.Button className="pt-2 pb-4 w-full border-none">
                 {groupDetail(open)}
               </Disclosure.Button>
-              <Divider />
+              <Divider styles={{ $direction: 'horizontal' }} />
               <Disclosure.Panel>
                 <GroupMemberList
                   groupId={group.id}

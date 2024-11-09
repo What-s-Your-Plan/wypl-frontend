@@ -22,7 +22,7 @@ import Plus from '@/assets/icons/plus.svg';
 import Users from '@/assets/icons/users.svg';
 import Button from '@/components/Common/Button/Button.tsx';
 import { Container } from '@/components/Common/Container';
-import { Divider } from '@/components/Common/Divider';
+import Divider from '@/components/Common/Divider/Divider';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import { BROWSER_PATH } from '@/constants/Path';
 import { LabelColorsType } from '@/styles/colorThemes.ts';
@@ -215,7 +215,7 @@ function GroupList() {
             </>
           )}
         </Disclosure>
-        <Divider />
+        <Divider styles={{ $direction: 'horizontal' }} />
         <div className="flex flex-col gap-4">
           <div className="flex justify-between">
             <div className="flex gap-2">

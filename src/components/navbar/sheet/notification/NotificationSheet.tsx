@@ -9,7 +9,7 @@ import { deleteNotification } from '@/api/notification/deleteNotification';
 import { getNotification } from '@/api/notification/getNotification';
 import Bell from '@/assets/icons/bell.svg';
 import Button from '@/components/Common/Button/Button.tsx';
-import { Divider } from '@/components/Common/Divider';
+import Divider from '@/components/Common/Divider/Divider';
 import useToastStore from '@/stores/ToastStore';
 
 function NotificationSheet() {
@@ -26,7 +26,7 @@ function NotificationSheet() {
     return notifications?.notifications.map((notification) => {
       return (
         <div key={notification.id} className="w-full mb-4">
-          <Divider />
+          <Divider styles={{ $direction: 'horizontal' }} />
           {notification.type_code === 'GROUP' ? (
             <GroupNotification
               key={notification.id}

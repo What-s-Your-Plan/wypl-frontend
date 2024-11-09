@@ -1,8 +1,7 @@
-
-import { WhiteContainer }    from '@/components/Common/Container';
-import { Divider, DividerY } from '@/components/Common/Divider';
-import Text                  from '@/components/Common/Text';
-import { FourFContent }      from '@/objects/ReviewContent.ts';
+import { WhiteContainer } from '@/components/Common/Container';
+import Divider from '@/components/Common/Divider/Divider';
+import Text from '@/components/Common/Text';
+import { FourFContent } from '@/objects/ReviewContent.ts';
 
 type V4FProps = {
   content: FourFContent;
@@ -18,7 +17,7 @@ function V4F({ content }: V4FProps) {
             <Text content={content.facts} />
           </div>
         </div>
-        <Divider />
+        <Divider styles={{ $direction: 'horizontal' }} />
         <div>
           <div className="font-semibold">느낌(Feeling)</div>
           <div className="!min-h-24 !mb-2">
@@ -26,7 +25,7 @@ function V4F({ content }: V4FProps) {
           </div>
         </div>
       </div>
-      <DividerY />
+      <Divider styles={{ $direction: 'vertical' }} />
       <div className="w-500 flex flex-col gap-4 justify-between">
         <div>
           <div className="font-semibold">교훈(Finding)</div>
@@ -34,7 +33,11 @@ function V4F({ content }: V4FProps) {
             <Text content={content.finding} />
           </div>
         </div>
-        <Divider />
+        <Divider
+          styles={{
+            $direction: 'horizontal',
+          }}
+        />
         <div>
           <div className="font-semibold">향후 행동(Future action)</div>
           <div className="!min-h-24 !mb-2">
