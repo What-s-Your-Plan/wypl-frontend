@@ -11,7 +11,7 @@ import Save from '@/assets/icons/save.svg';
 import Cancel from '@/assets/icons/x.svg';
 import Button from '@/components/Common/Button/Button.tsx';
 import * as S from '@/components/Common/Container';
-import { Divider, DividerLabel } from '@/components/Common/Divider';
+import Divider from '@/components/Common/Divider/Divider';
 import useReviewStore from '@/stores/ReviewStore';
 import useToastStore from '@/stores/ToastStore';
 
@@ -133,7 +133,7 @@ function WriteBlockList() {
           <RSchedule scheduleId={reviewStore.scheduleId} />
         </div>
       </div>
-      <Divider />;
+      <Divider styles={{ $direction: 'horizontal' }} />
       <div
         onDragOver={(event) => {
           event.preventDefault();
@@ -143,15 +143,15 @@ function WriteBlockList() {
       >
         {reviewStore.contents.length === 0 ? (
           <S.WhiteContainer $width="900">
-            <DividerLabel>
-              좌측 블록 드래그&드랍으로 블록을 추가해주세요
-            </DividerLabel>
+            <Divider
+              styles={{ $direction: 'horizontal' }}
+              text={'좌측 블록 드래그&드랍으로 블록을 추가해주세요'}
+            />
           </S.WhiteContainer>
         ) : (
           renderBlockList()
         )}
       </div>
-      ;
     </S.Container>
   );
 }

@@ -1,4 +1,3 @@
-
 import V4F from './V4F';
 import VEmotion from './VEmotion';
 import VKpt from './VKpt';
@@ -9,7 +8,7 @@ import VTitle from './VTitle';
 import VWeather from './VWeather';
 
 import { ReviewDetailData } from '@/@types/ReviewResponse';
-import { Divider }          from '@/components/Common/Divider';
+import Divider from '@/components/Common/Divider/Divider';
 import {
   TextContent,
   PictureContent,
@@ -17,7 +16,7 @@ import {
   WeatherContent,
   KPTContent,
   FourFContent,
-}                           from '@/objects/ReviewContent.ts';
+} from '@/objects/ReviewContent.ts';
 
 type DetailBlockListProps = {
   detail: ReviewDetailData;
@@ -51,7 +50,11 @@ function DetailBlockList({ detail }: DetailBlockListProps) {
         <VTitle title={detail.title} />
         <VSchedule schedule={detail.schedule} />
         <div className="w-900 mb-4">
-          <Divider />
+          <Divider
+            styles={{
+              $direction: 'horizontal',
+            }}
+          />
         </div>
         {renderDetailBlock()}
       </div>

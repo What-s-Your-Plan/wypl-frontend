@@ -1,9 +1,8 @@
-
-import { WhiteContainer }    from '@/components/Common/Container';
-import { Divider, DividerY } from '@/components/Common/Divider';
-import { InputTextArea }     from '@/components/Common/InputText';
-import { FourFContent }      from '@/objects/ReviewContent.ts';
-import useReviewStore    from '@/stores/ReviewStore';
+import { WhiteContainer } from '@/components/Common/Container';
+import Divider from '@/components/Common/Divider/Divider';
+import { InputTextArea } from '@/components/Common/InputText';
+import { FourFContent } from '@/objects/ReviewContent.ts';
+import useReviewStore from '@/stores/ReviewStore';
 
 type R4FProps = {
   index: number;
@@ -52,7 +51,7 @@ function R4F({ index, content }: R4FProps) {
             placeholder="일어난 일에 대한 객관적인 기록"
           />
         </div>
-        <Divider />
+        <Divider styles={{ $direction: 'horizontal' }} />
         <div>
           <label htmlFor={`finding${index}`}>느낌(Feeling)</label>
           <InputTextArea
@@ -66,7 +65,7 @@ function R4F({ index, content }: R4FProps) {
           />
         </div>
       </div>
-      <DividerY />
+      <Divider styles={{ $direction: 'vertical' }} />
       <div className="flex flex-col w-500 gap-2">
         <div>
           <label htmlFor={`finding${index}`}>교훈(Finding)</label>
@@ -80,7 +79,7 @@ function R4F({ index, content }: R4FProps) {
             placeholder="경험을 통해 배울 수 있었던 것"
           />
         </div>
-        <Divider />
+        <Divider styles={{ $direction: 'horizontal' }} />
         <div>
           <label htmlFor={`future${index}`}>향후 행동(Future action)</label>
           <InputTextArea

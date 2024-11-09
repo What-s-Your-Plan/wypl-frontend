@@ -1,7 +1,7 @@
-import { WhiteContainer }    from '@/components/Common/Container';
-import { Divider, DividerY } from '@/components/Common/Divider';
-import { InputTextArea }     from '@/components/Common/InputText';
-import { KPTContent }        from '@/objects/ReviewContent.ts';
+import { WhiteContainer } from '@/components/Common/Container';
+import Divider from '@/components/Common/Divider/Divider';
+import { InputTextArea } from '@/components/Common/InputText';
+import { KPTContent } from '@/objects/ReviewContent.ts';
 import useReviewStore from '@/stores/ReviewStore';
 
 type RKptProps = {
@@ -45,7 +45,7 @@ function RKpt({ index, content }: RKptProps) {
             placeholder="현재 만족하고 있는 부분/계속 이어갔으면 하는 부분"
           />
         </div>
-        <Divider />
+        <Divider styles={{ $direction: 'horizontal' }} />
         <div>
           <label htmlFor="problem">Problem</label>
           <InputTextArea
@@ -59,7 +59,7 @@ function RKpt({ index, content }: RKptProps) {
           />
         </div>
       </div>
-      <DividerY />
+      <Divider styles={{ $direction: 'vertical' }} />
       <div className="w-500">
         <div>
           <label htmlFor="problem">Try</label>

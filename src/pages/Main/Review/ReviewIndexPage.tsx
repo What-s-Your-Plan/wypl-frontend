@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ReviewDetailData } from '@/@types/Review';
-import getReviewList                 from '@/api/review/getReviewList';
-import NoContentAnimation            from '@/components/Animation/NoContent';
+import getReviewList from '@/api/review/getReviewList';
+import NoContentAnimation from '@/components/Animation/NoContent';
 import { Container, WhiteContainer } from '@/components/Common/Container';
-import { Divider }                   from '@/components/Common/Divider';
-import ReviewThumbnail               from '@/components/review/thumbnail/ReviewThumbnail';
+import Divider from '@/components/Common/Divider/Divider';
+import ReviewThumbnail from '@/components/review/thumbnail/ReviewThumbnail';
 import { MAX_VALUE } from '@/constants/JavaNumber.ts';
 
 function ReviewIndexPage() {
@@ -77,7 +77,7 @@ function ReviewIndexPage() {
             blockType={review.thumbnail_content?.blockType}
             thumbnailContent={review.thumbnail_content}
           />
-          <Divider />
+          <Divider styles={{ $direction: 'horizontal' }} />
           <div className="font-semibold mt-2">{review.title}</div>
         </WhiteContainer>
       );
