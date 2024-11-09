@@ -11,13 +11,14 @@ type InputTextProps = {
 const InputDefault = styled.input<InputTextProps>`
   ${tw`
     h-8
-    rounded-md
     px-2
     transition
 
     placeholder:text-gray-300
     hover:outline-gray-400
     focus:!outline-none
+
+    rounded-md
     focus:ring
     focus:ring-main
     `}
@@ -32,14 +33,15 @@ const InputDefault = styled.input<InputTextProps>`
 const InputTitle = styled.input<InputTextProps>`
   ${tw`
       h-8
-      bg-transparent
-      font-bold
       px-2
       transition
 
       placeholder:text-gray-300
       hover:border-gray-400
       focus:!outline-none
+      
+      font-bold
+      bg-transparent
       focus:border-main
   `}
   ${(props) => (props.$void ? '' : tw`border-b-2`)}
