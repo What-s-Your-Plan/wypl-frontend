@@ -1,4 +1,4 @@
-function Divider() {
+function DividerPrev() {
   return (
     <div className="relative">
       <div className="absolute inset-0 flex items-center" aria-hidden="true">
@@ -37,4 +37,4 @@ function DividerLabel({ children }: DividerLabelProps) {
   );
 }
 
-export { Divider, DividerY, DividerLabel };
+export { DividerPrev as Divider, DividerY, DividerLabel };
