@@ -7,9 +7,7 @@ const meta: Meta<typeof Input> = {
   component: Input,
   tags: ['autodocs'],
   args: {
-    styles: {
-      $variant: 'default',
-    },
+    $variant: 'default',
   },
 };
 
@@ -19,8 +17,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 export const Title: Story = {
   args: {
-    styles: {
-      $variant: 'title',
-    },
+    $variant: 'title',
   },
 };
