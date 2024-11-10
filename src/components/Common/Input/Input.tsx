@@ -1,20 +1,39 @@
 import type { ComponentPropsWithRef } from 'react';
 
-import { getInputStyling, getVariantStyling } from './Input.styled';
+import {
+  getInputStyling,
+  getVariantStyling,
+  getSizeStyling,
+  getFlexStyling,
+} from './Input.styled';
 
-import type { InputStyling } from './Input.styled';
+import Flex from '@/components/Common/Flex/Flex';
 
 export interface InputProps extends ComponentPropsWithRef<'input'> {
-  /** Input 스타일 옵션 */
-  styles: InputStyling;
+  /** Input 종류 */
+  $variant?: 'default' | 'title';
+  /** Input 크기 */
+  $size?: 'small' | 'medium' | 'large';
+
+  $disable?: boolean;
 }
 
-function Input({ styles, ...attributes }: InputProps) {
+function Input({
+  $variant = 'default',
+  $size = 'medium',
+  ...attributes
+}: InputProps) {
   return (
-    <input
-      css={[getInputStyling, getVariantStyling(styles.$variant)]}
-      {...attributes}
-    />
+    <Flex css={[getFlexStyling($size)]}>
+      <input
+        css={[
+          getInputStyling,
+          getVariantStyling($variant),
+          getSizeStyling($size),
+        ]}
+        {...attributes}
+      />
+    </Flex>
   );
 }
 
