@@ -1,4 +1,3 @@
-
 import Bad from '@/assets/icons/emoji/bad.svg';
 import Congrats from '@/assets/icons/emoji/congrats.svg';
 import Cry from '@/assets/icons/emoji/cry.svg';
@@ -10,7 +9,7 @@ import Sick from '@/assets/icons/emoji/sick.svg';
 import Smile from '@/assets/icons/emoji/smile.svg';
 import Stareyes from '@/assets/icons/emoji/stareyes.svg';
 import Tired from '@/assets/icons/emoji/tired.svg';
-import Smiley             from '@/assets/icons/smiley.svg';
+import Smiley from '@/assets/icons/smiley.svg';
 import { EmotionContent } from '@/objects/ReviewContent.ts';
 
 type TEmotionProps = {

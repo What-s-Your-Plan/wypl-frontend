@@ -4,10 +4,10 @@ type TextProps = {
 
 function Text({ content }: TextProps) {
   return (
-    <div className="w-full">
+    <div css={{ width: '100%' }}>
       {content.split('\n').map((line, index) => {
         return (
-          <span key={index} className="break-all w-full">
+          <span key={index} css={{ width: '100%', wordBreak: 'break-all' }}>
             {line}
             <br />
           </span>
