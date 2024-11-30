@@ -14,8 +14,6 @@ export interface InputProps extends ComponentPropsWithRef<'input'> {
   $variant?: 'default' | 'title';
   /** Input 크기 */
   $size?: 'small' | 'medium' | 'large';
-
-  $disable?: boolean;
 }
 
 function Input({

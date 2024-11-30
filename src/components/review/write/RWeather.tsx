@@ -4,11 +4,11 @@ import Cloud from '@/assets/icons/weather/cloud.svg';
 import CloudAngledRain from '@/assets/icons/weather/cloudAngledRain.svg';
 import CloudSnow from '@/assets/icons/weather/cloudSnow.svg';
 import FastWind from '@/assets/icons/weather/fastWinds.svg';
-import Sun                from '@/assets/icons/weather/sun.svg';
+import Sun from '@/assets/icons/weather/sun.svg';
 import { WhiteContainer } from '@/components/Common/Container';
-import { InputDefault }   from '@/components/Common/InputText';
+import Input from '@/components/Common/Input/Input';
 import { WeatherContent } from '@/objects/ReviewContent.ts';
-import useReviewStore     from '@/stores/ReviewStore';
+import useReviewStore from '@/stores/ReviewStore';
 
 type RWeatherProps = {
   index: number;
@@ -74,12 +74,20 @@ function RWeather({ index, content }: RWeatherProps) {
         </div>
         <div className="flex gap-4">
           {renderWeather(content.weather)}
-          <InputDefault
+          <Input
+            styles={{
+              $variant: 'default',
+            }}
+            placeholder="오늘의 날씨를 입력해주세요"
+            value={content.description}
+            onChange={(e) => handleTextInput(e.target.value)}
+          />
+          {/* <InputDefault
             placeholder="오늘의 날씨를 입력해주세요"
             className="!h-10"
             value={content.description}
             onChange={(e) => handleTextInput(e.target.value)}
-          />
+          /> */}
         </div>
       </div>
     </WhiteContainer>

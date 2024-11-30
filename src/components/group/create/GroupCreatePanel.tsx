@@ -5,7 +5,7 @@ import { SearchMemberForCreateGroupData } from '@/@types/Member';
 import { getMemberByEmail } from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
 import ColorCircle from '@/components/Common/ColorCircle/ColorCircle';
-import { InputDefault } from '@/components/Common/InputText';
+import Input from '@/components/Common/Input/Input';
 import PopOver from '@/components/Common/PopOver';
 import * as S from '@/components/group/create/GroupCreatePanel.styled';
 import PalettePanel from '@/components/PalettePanel/PalettePanel';
@@ -143,7 +143,7 @@ function GroupCreatePanel({
         <S.InputWrapper>
           <S.InputLabel htmlFor="groupName">그룹 이름</S.InputLabel>
           <S.InputBox>
-            <InputDefault
+            <Input
               id="groupName"
               name="name"
               maxLength={10}
@@ -168,7 +168,7 @@ function GroupCreatePanel({
         <S.MemberWrapper>
           <S.InputWrapper>
             <S.InputLabel>그룹 멤버 추가</S.InputLabel>
-            <InputDefault
+            <Input
               disabled={selectedMembers.length > 10}
               value={searchMember}
               onChange={handleSearchMemberChange}

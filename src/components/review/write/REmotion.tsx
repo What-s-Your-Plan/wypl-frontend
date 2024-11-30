@@ -1,5 +1,3 @@
-
-
 import Bad from '@/assets/icons/emoji/bad.svg';
 import Congrats from '@/assets/icons/emoji/congrats.svg';
 import Cry from '@/assets/icons/emoji/cry.svg';
@@ -11,11 +9,11 @@ import Sick from '@/assets/icons/emoji/sick.svg';
 import Smile from '@/assets/icons/emoji/smile.svg';
 import Stareyes from '@/assets/icons/emoji/stareyes.svg';
 import Tired from '@/assets/icons/emoji/tired.svg';
-import Smiley             from '@/assets/icons/smiley.svg';
+import Smiley from '@/assets/icons/smiley.svg';
 import { WhiteContainer } from '@/components/Common/Container';
-import { InputDefault }   from '@/components/Common/InputText';
+import Input from '@/components/Common/Input/Input';
 import { EmotionContent } from '@/objects/ReviewContent.ts';
-import useReviewStore     from '@/stores/ReviewStore';
+import useReviewStore from '@/stores/ReviewStore';
 
 type REmotionProps = {
   index: number;
@@ -108,9 +106,11 @@ function REmotion({ index, content }: REmotionProps) {
         </div>
         <div className="flex gap-4">
           {renderEmoji(content.emoji)}
-          <InputDefault
+          <Input
+            styles={{
+              $variant: 'default',
+            }}
             placeholder="오늘의 기분을 입력해주세요"
-            className="!h-10"
             value={content.description}
             onChange={(e) => handleTextInput(e.target.value)}
           />

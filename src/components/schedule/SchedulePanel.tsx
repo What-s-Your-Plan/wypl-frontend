@@ -34,10 +34,6 @@ function SchedulePanel({
       {states.category === 'MEMBER' && (
         <Items.Label states={states} setStates={setStates} />
       )}
-      {/* TODO: 추후 회원별로 저장 기능 구현 */}
-      {/* {states.category === 'GROUP' && (
-        <Items.Users states={states} setStates={setStates} />
-      )} */}
       <Items.Repeat
         states={states}
         setStates={setStates}

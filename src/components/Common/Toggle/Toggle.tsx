@@ -1,3 +1,5 @@
+import type { ComponentPropsWithRef } from 'react';
+
 import { Switch } from '@headlessui/react';
 
 import {
@@ -6,7 +8,7 @@ import {
   ToggleStyling,
 } from './Toggle.styled';
 
-export interface ToggleProps {
+export interface ToggleProps extends ComponentPropsWithRef<typeof Switch> {
   /** 현재 활성화 상태를 나타냅니다. */
   isEnabled: boolean;
   /** 활성화 상태를 변경하는 함수입니다. 현재 상태를 반전시켜 활성화 또는 비활성화합니다. */
@@ -23,12 +25,14 @@ function Toggle({
   isEnabled,
   toggleHandler,
   styles = { $variant: 'primary' },
+  ...attributes
 }: ToggleProps) {
   return (
     <Switch
       checked={isEnabled}
       onChange={toggleHandler}
       css={[getSwitchStyling(isEnabled, styles.$variant)]}
+      {...attributes}
     >
       <span aria-hidden="true" css={getKnobStyling(isEnabled)} />
     </Switch>

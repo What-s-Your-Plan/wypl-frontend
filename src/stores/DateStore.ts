@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 
+import { LabelFilterData } from '@/@types/Schedule';
+
 type DateStates = {
   today: Date;
   selectedDate: Date;

@@ -1,6 +1,9 @@
+import { LabelColorType } from '@/styles/Theme';
+
 type RepetitionCycle = 'DAY' | 'WEEK' | 'MONTH' | 'YEAR';
 type ScheduleCategory = 'MEMBER' | 'GROUP';
 
+// FIXME: Label 인터페이스로 수정하기
 type Label = {
   category: string;
   id: number;
@@ -14,7 +17,7 @@ type LabelResponse = {
   color: string;
 };
 
-interface MemberData {
+export interface MemberData {
   member_id: number;
   nickname: string;
   profile_image: string;
@@ -26,7 +29,7 @@ type GroupResponse = {
   title: string; // 그룹 이름
 };
 
-interface ScheduleData {
+export interface ScheduleData {
   scheduleId?: number;
   title: string; // 필수
   description: string; // 선택
@@ -115,7 +118,7 @@ interface ScheduleDetailData {
   members: Member[]; //개인 일정일 경우 1명의 정보만 들어
 }
 
-interface RepeatData {
+export interface RepeatData {
   repetitionCycle: string; // 필수
   week: number; // week일 경우 몇 주에 한번 반복할지, 선택
   dayOfWeek: number; // bit로 0100010와 같은 형태로, 선택

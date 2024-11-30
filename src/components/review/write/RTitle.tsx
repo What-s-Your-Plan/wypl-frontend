@@ -1,5 +1,5 @@
 import { WhiteContainer } from '@/components/Common/Container';
-import { InputTitle }     from '@/components/Common/InputText';
+import Input from '@/components/Common/Input/Input';
 
 type RTitleProps = {
   $title: string;
@@ -9,9 +9,9 @@ type RTitleProps = {
 function RTitle({ $title, $setTitle }: RTitleProps) {
   return (
     <WhiteContainer $width="900">
-      <InputTitle
+      <Input
         placeholder="제목을 입력해주세요"
-        $width="100%"
+        $variant="title"
         value={$title}
         maxLength={30}
         onChange={(e) => {
