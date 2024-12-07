@@ -47,4 +47,4 @@ const containerTheme = {
   },
 };
 
-export { Container, WhiteContainer };
+export { Container as PrevContainer, WhiteContainer as PrevWhiteContainer };

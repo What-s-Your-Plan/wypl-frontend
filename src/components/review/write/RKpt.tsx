@@ -1,4 +1,4 @@
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import Divider from '@/components/Common/Divider/Divider';
 import { InputTextArea } from '@/components/Common/InputText';
 import { KPTContent } from '@/objects/ReviewContent.ts';
@@ -31,7 +31,7 @@ function RKpt({ index, content }: RKptProps) {
   };
 
   return (
-    <WhiteContainer $width="900" className="flex flex-row gap-5">
+    <PrevWhiteContainer $width="900" className="flex flex-row gap-5">
       <div className="flex flex-col w-500 gap-2">
         <div>
           <label htmlFor="keep">Keep</label>
@@ -74,7 +74,7 @@ function RKpt({ index, content }: RKptProps) {
           />
         </div>
       </div>
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

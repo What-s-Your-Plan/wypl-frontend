@@ -6,7 +6,8 @@ import DatePicker from '@/components/Calendar/DatePicker/DatePicker.tsx';
 import MonthlyCalender from '@/components/Calendar/MonthlyCalendar/MonthlyCalendar';
 import WeeklyCalendar from '@/components/Calendar/WeeklyCalendar/WeeklyCalendar';
 import Button from '@/components/Common/Button/Button.tsx';
-import * as Containers from '@/components/Common/Container';
+import Container from '@/components/Common/Container/Container';
+import Flex from '@/components/Common/Flex/Flex';
 import ScheduleDetailModal from '@/components/schedule/ScheduleDetailModal.tsx';
 import ScheduleModal from '@/components/schedule/ScheduleModal';
 import Todo from '@/components/Todo/Todo.tsx';
@@ -100,24 +101,26 @@ function Calendar({ category, groupId }: CalendarProps) {
   };
 
   return (
-    <Containers.Container className="flex" $width="right">
-      <Containers.WhiteContainer $width="1200" $height="max">
-        <div className="flex p-3 h-full gap-4">
-          <div className="grow min-w-[640px]">{renderCalendar()}</div>
-          <div className="flex flex-col min-w-[240px]">
-            <Button
-              styles={{ $size: 'medium', $variant: 'outline' }}
-              onClick={handleOpenCreate}
-              children={<span className={'font-extrabold'}>일정 등록</span>}
-              className="py-2 mb-5"
-            />
-            <div className="p-3 mb-4 shadow-md rounded-xl bg-default-white h-[30vh] min-h-[300px]">
-              <DatePicker />
+    <Container $width="right">
+      <Flex>
+        <Container $variant="white" $width="1200" $height="max">
+          <div className="flex p-3 h-full gap-4">
+            <div className="grow min-w-[640px]">{renderCalendar()}</div>
+            <div className="flex flex-col min-w-[240px]">
+              <Button
+                styles={{ $size: 'medium', $variant: 'outline' }}
+                onClick={handleOpenCreate}
+                children={<span className={'font-extrabold'}>일정 등록</span>}
+                className="py-2 mb-5"
+              />
+              <div className="p-3 mb-4 shadow-md rounded-xl bg-default-white h-[30vh] min-h-[300px]">
+                <DatePicker />
+              </div>
+              <Todo />
             </div>
-            <Todo />
           </div>
-        </div>
-      </Containers.WhiteContainer>
+        </Container>
+      </Flex>
       <CalendarIndex
         calendarType={calendarType}
         setCalendarType={setCalendarType}
@@ -134,7 +137,7 @@ function Calendar({ category, groupId }: CalendarProps) {
         handleClose={handleCloseDetail}
         setUpdateTrue={() => setNeedUpdate(true)}
       />
-    </Containers.Container>
+    </Container>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { WhiteContainer } from '@/components/Common/Container.ts';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 
 import { checkTodo } from '@/api/todo/checkTodo.ts';
 import { deleteTodo } from '@/api/todo/deleteTodo.ts';
@@ -116,7 +116,7 @@ function Todo({ initTodos }: TodoProps) {
   }, []);
 
   return (
-    <WhiteContainer $width="1300">
+    <PrevWhiteContainer $width="1300">
       <S.Header>
         <div className="font-bold">Todo</div>
         <S.IconButton onClick={clickPlusButton}>
@@ -178,7 +178,7 @@ function Todo({ initTodos }: TodoProps) {
           </S.SubmitDiv>
         )}
       </div>
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

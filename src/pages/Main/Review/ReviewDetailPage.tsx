@@ -8,8 +8,8 @@ import { getReviewDetail } from '@/api/review/getReviewDetail';
 import ArrowLeft from '@/assets/icons/arrowLeft.svg';
 import MoreVertical from '@/assets/icons/moreVertical.svg';
 import Button from '@/components/Common/Button/Button.tsx';
-import { Container } from '@/components/Common/Container';
-import PopOver from '@/components/Common/PopOver';
+import { PrevContainer } from '@/components/Common/PrevContainer';
+import PopOver from '@/components/Common/PopOver/PopOver';
 import DetailBlockList from '@/components/review/view/DetailBlockList';
 import { ReviewContent } from '@/objects/ReviewContent.ts';
 import { splitTTime } from '@/utils/DateUtils';
@@ -54,7 +54,7 @@ function ReviewDetailPage() {
   return (
     <div className="container flex items-center   justify-center ss:max-sm:block h-dvh ">
       {detail && (
-        <Container $width="1200" className="h-[90vh]">
+        <PrevContainer $width="1200" className="h-[90vh]">
           <div className="flex justify-between">
             <span>
               <Button
@@ -89,13 +89,13 @@ function ReviewDetailPage() {
                       />
                     </div>
                   }
-                  panelPosition="right-0 top-7"
+                  $position="top"
                 />
               </span>
             </div>
           </div>
           {reviewId && <DetailBlockList detail={detail} />}
-        </Container>
+        </PrevContainer>
       )}
     </div>
   );

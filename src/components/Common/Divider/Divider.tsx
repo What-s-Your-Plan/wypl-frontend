@@ -1,5 +1,6 @@
 import { ComponentPropsWithRef, ElementType } from 'react';
 
+import { getDirectionStyling } from './Divider.styled';
 import Flex from '../Flex/Flex';
 
 import type { DividerStyling } from './Divider.styled';
@@ -31,14 +32,7 @@ function Divider({ tag = 'div', styles, text, ...attributes }: DividerProps) {
         css={{ inset: '0px' }}
         aria-hidden="true"
       >
-        <Tag
-          css={{
-            width: styles.$direction === 'vertical' ? '1px' : '100%',
-            height: styles.$direction === 'vertical' ? '100%' : '1px',
-            backgroundColor: '#d1d5db',
-          }}
-          {...attributes}
-        />
+        <Tag css={[getDirectionStyling(styles.$direction)]} {...attributes} />
         {text && (
           <Flex
             styles={{

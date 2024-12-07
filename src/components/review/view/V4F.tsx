@@ -1,6 +1,6 @@
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import Divider from '@/components/Common/Divider/Divider';
-import Text from '@/components/Common/Text';
+import Text from '@/components/Common/Text/Text';
 import { FourFContent } from '@/objects/ReviewContent.ts';
 
 type V4FProps = {
@@ -9,7 +9,7 @@ type V4FProps = {
 
 function V4F({ content }: V4FProps) {
   return (
-    <WhiteContainer $width="900" className="flex justify-around gap-4">
+    <PrevWhiteContainer $width="900" className="flex justify-around gap-4">
       <div className="w-500 flex flex-col gap-4 justify-between">
         <div>
           <div className="font-semibold">사실(Facts)</div>
@@ -45,7 +45,7 @@ function V4F({ content }: V4FProps) {
           </div>
         </div>
       </div>
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

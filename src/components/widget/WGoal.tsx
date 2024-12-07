@@ -5,7 +5,7 @@ import { patchMemberGoal } from '@/api/widget/patchMemberGoal.ts';
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
 import Button from '@/components/Common/Button/Button.tsx';
-import { InputDefault } from '@/components/Common/InputText';
+import Input from '@/components/Common/Input/Input';
 import useMemberStore from '@/stores/MemberStore';
 
 function WGoal() {
@@ -60,10 +60,8 @@ function WGoal() {
         )}
       </div>
       <div>
-        <InputDefault
-          className="disabled:bg-transparent mt-3"
-          $width="100%"
-          $void={true}
+        <Input
+          $size="small"
           value={content}
           disabled={!isModifyingGoal}
           onChange={(e) => setContent(e.target.value)}

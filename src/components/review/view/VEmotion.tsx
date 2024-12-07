@@ -1,4 +1,3 @@
-
 import Bad from '@/assets/icons/emoji/bad.svg';
 import Congrats from '@/assets/icons/emoji/congrats.svg';
 import Cry from '@/assets/icons/emoji/cry.svg';
@@ -10,8 +9,8 @@ import Sick from '@/assets/icons/emoji/sick.svg';
 import Smile from '@/assets/icons/emoji/smile.svg';
 import Stareyes from '@/assets/icons/emoji/stareyes.svg';
 import Tired from '@/assets/icons/emoji/tired.svg';
-import Smiley             from '@/assets/icons/smiley.svg';
-import { WhiteContainer } from '@/components/Common/Container';
+import Smiley from '@/assets/icons/smiley.svg';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import { EmotionContent } from '@/objects/ReviewContent.ts';
 
 type VEmotionProps = {
@@ -47,14 +46,14 @@ function VEmotion({ content }: VEmotionProps) {
   };
 
   return (
-    <WhiteContainer $width="900">
+    <PrevWhiteContainer $width="900">
       <div className="flex flex-row">
         <img src={Smiley} alt="기분" className="w-5 mr-2" />
         <span>오늘의 기분</span>
       </div>
       {renderEmoji(content.emoji)}
       {content.description}
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

@@ -26,7 +26,7 @@ import ChevronDown from '@/assets/icons/chevronDown.svg';
 import Setting from '@/assets/icons/settings.svg';
 import ColorCircle from '@/components/Common/ColorCircle/ColorCircle.tsx';
 import Divider from '@/components/Common/Divider/Divider';
-import PopOver from '@/components/Common/PopOver';
+import PopOver from '@/components/Common/PopOver/PopOver';
 import PalettePanel from '@/components/PalettePanel/PalettePanel';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import useToastStore from '@/stores/ToastStore';
@@ -165,7 +165,7 @@ function GroupDetailList({
       />
       <S.PopOverWrapper>
         <PopOver
-          panelPosition="bottom-8"
+          $position="bottom"
           button={
             <ColorCircle
               styles={{

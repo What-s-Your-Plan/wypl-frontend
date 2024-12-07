@@ -8,7 +8,7 @@ import WMemo from './WMemo';
 import WWeather from './WWeather';
 
 import Button from '@/components/Common/Button/Button.tsx';
-import * as S from '@/components/Common/Container';
+import * as S from '@/components/Common/PrevContainer';
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -75,7 +75,7 @@ function WidgetList() {
   };
 
   return (
-    <S.Container $width="left" className="!p-2">
+    <S.PrevContainer $width="left" className="!p-2">
       <div className="flex justify-end z-50 sticky float-right">
         {isModifying && (
           <Button
@@ -132,14 +132,14 @@ function WidgetList() {
               onTouchStart={handleLongPress}
               onTouchEnd={clearPressTimer}
             >
-              <S.WhiteContainer $width="1300" className={animationClasses}>
+              <S.PrevWhiteContainer $width="1300" className={animationClasses}>
                 {renderWidget(widget.widgetType)}
-              </S.WhiteContainer>
+              </S.PrevWhiteContainer>
             </div>
           );
         })}
       </ResponsiveReactGridLayout>
-    </S.Container>
+    </S.PrevContainer>
   );
 }
 

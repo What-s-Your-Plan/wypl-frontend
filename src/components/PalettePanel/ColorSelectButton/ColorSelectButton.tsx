@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
 import ColorCircle from '@/components/Common/ColorCircle/ColorCircle.tsx';
-import PopOver from '@/components/Common/PopOver.tsx';
+import PopOver from '@/components/Common/PopOver/PopOver';
 import PalettePanel from '@/components/PalettePanel/PalettePanel.tsx';
 import { LabelColorType } from '@/styles/Theme';
 
@@ -16,7 +16,7 @@ function ColorSelectButton({ color, setColor }: ColorSelectProps) {
   };
   return (
     <PopOver
-      panelPosition="top-8"
+      $position="top"
       button={
         <ColorCircle
           styles={{

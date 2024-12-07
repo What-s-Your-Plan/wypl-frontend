@@ -5,8 +5,12 @@ import patchMemberDDay from '@/api/widget/patchMemberDDay.ts';
 import Edit from '@/assets/icons/edit.svg';
 import Save from '@/assets/icons/save.svg';
 import Button from '@/components/Common/Button/Button.tsx';
+import Flex from '@/components/Common/Flex/Flex';
+import Input from '@/components/Common/Input/Input';
 import { InputDefault } from '@/components/Common/InputText';
+import Text from '@/components/Common/Text/Text';
 import useMemberStore from '@/stores/MemberStore';
+import Tooltip from '../Tooltip/Tooltip';
 
 function WDDay() {
   const { memberId } = useMemberStore();
@@ -86,7 +90,15 @@ function WDDay() {
   return (
     <div>
       <div className="flex justify-between">
-        <div className="flex justify-between content-center w-full mb-2">
+        <Flex
+          styles={{
+            align: 'center',
+            justify: 'center',
+            width: '100%',
+            marginBottom: '8px',
+            gap: '5px',
+          }}
+        >
           {isModifyingDDay ? (
             <InputDefault
               className="disabled:bg-transparent"
@@ -101,9 +113,10 @@ function WDDay() {
               placeholder="디데이 제목(10자 이내)"
             />
           ) : (
-            <span className="w-[80%] break-keep font-semibold overflow-hidden text-ellipsis">
-              {dDayInfo.title}
-            </span>
+            <Tooltip
+              text={dDayInfo.title}
+              children={<Text content={dDayInfo.title} />}
+            />
           )}
 
           {isModifyingDDay ? (
@@ -119,7 +132,7 @@ function WDDay() {
               children={<img src={Edit} alt="수정" className="w-5" />}
             />
           )}
-        </div>
+        </Flex>
       </div>
       <div>
         {isModifyingDDay ? (

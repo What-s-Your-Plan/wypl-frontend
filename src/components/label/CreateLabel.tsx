@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useRef } from 'react';
 
 import postCreateLabel from '@/api/label/postCreateLabel';
-import { InputDefault } from '@/components/Common/InputText';
+import Input from '@/components/Common/Input/Input';
 import { CreateDiv } from '@/components/label/Styled';
 import ColorSelectButton from '@/components/PalettePanel/ColorSelectButton/ColorSelectButton.tsx';
 import useToastStore from '@/stores/ToastStore';
@@ -22,7 +22,7 @@ function CreateLabel({ color, setColor, handleKeyDown }: CreateLabelProps) {
   return (
     <CreateDiv>
       <ColorSelectButton color={color} setColor={setColor} />
-      <InputDefault
+      <Input
         maxLength={15}
         placeholder="라벨명을 입력하세요"
         onKeyDown={async (e) => {

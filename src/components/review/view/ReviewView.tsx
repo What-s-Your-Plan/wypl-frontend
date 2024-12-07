@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 
 type ReviewBlockProps = {
   icon: string;
@@ -17,13 +17,13 @@ function ReviewView({ icon, blockType, title, content }: ReviewBlockProps) {
         e.dataTransfer.setData('blockType', blockType)
       }
     >
-      <WhiteContainer $width="1300" className="flex flex-col">
+      <PrevWhiteContainer $width="1300" className="flex flex-col">
         <div className="flex">
           <img src={icon} className="w-5 mr-2" />
           <span>{title}</span>
         </div>
         <div className="text-sm my-1">{content}</div>
-      </WhiteContainer>
+      </PrevWhiteContainer>
     </div>
   );
 }

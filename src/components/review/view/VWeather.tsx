@@ -4,8 +4,8 @@ import Cloud from '@/assets/icons/weather/cloud.svg';
 import CloudAngledRain from '@/assets/icons/weather/cloudAngledRain.svg';
 import CloudSnow from '@/assets/icons/weather/cloudSnow.svg';
 import FastWind from '@/assets/icons/weather/fastWinds.svg';
-import Sun                from '@/assets/icons/weather/sun.svg';
-import { WhiteContainer } from '@/components/Common/Container';
+import Sun from '@/assets/icons/weather/sun.svg';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import { WeatherContent } from '@/objects/ReviewContent.ts';
 
 type VWeatherProps = {
@@ -30,14 +30,14 @@ function VWeather({ content }: VWeatherProps) {
     }
   };
   return (
-    <WhiteContainer $width="900">
+    <PrevWhiteContainer $width="900">
       <div className="flex flex-row">
         <img src={SunDim} alt="날씨" className="w-5 mr-2" />
         <span>오늘의 날씨</span>
       </div>
       {renderWeather(content.weather)}
       {content.description}
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

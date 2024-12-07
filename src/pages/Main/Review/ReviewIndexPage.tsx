@@ -4,7 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { ReviewDetailData } from '@/@types/Review';
 import getReviewList from '@/api/review/getReviewList';
 import NoContentAnimation from '@/components/Animation/NoContent';
-import { Container, WhiteContainer } from '@/components/Common/Container';
+import {
+  PrevContainer,
+  PrevWhiteContainer,
+} from '@/components/Common/PrevContainer';
 import Divider from '@/components/Common/Divider/Divider';
 import ReviewThumbnail from '@/components/review/thumbnail/ReviewThumbnail';
 import { MAX_VALUE } from '@/constants/JavaNumber.ts';
@@ -66,7 +69,7 @@ function ReviewIndexPage() {
     }
     return reviews.map((review, index) => {
       return (
-        <WhiteContainer
+        <PrevWhiteContainer
           key={index}
           className="h-full"
           $width="400"
@@ -79,14 +82,14 @@ function ReviewIndexPage() {
           />
           <Divider styles={{ $direction: 'horizontal' }} />
           <div className="font-semibold mt-2">{review.title}</div>
-        </WhiteContainer>
+        </PrevWhiteContainer>
       );
     });
   };
 
   return (
     <div className="container flex items-center   justify-center ss:max-sm:block h-dvh">
-      <Container $width="1200" className="h-[90%]">
+      <PrevContainer $width="1200" className="h-[90%]">
         <div className="text-lg font-semibold">회고록</div>
         <div className="scrollBar flex gap-6 gap-x-10 flex-wrap justify-start content-start pl-10 px-4 mt-4 h-[95%]">
           {renderReviewIndex()}
@@ -96,7 +99,7 @@ function ReviewIndexPage() {
             </div>
           )}
         </div>
-      </Container>
+      </PrevContainer>
     </div>
   );
 }

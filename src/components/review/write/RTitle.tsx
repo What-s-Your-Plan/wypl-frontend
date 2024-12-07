@@ -1,5 +1,5 @@
-import { WhiteContainer } from '@/components/Common/Container';
-import { InputTitle }     from '@/components/Common/InputText';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
+import Input from '@/components/Common/Input/Input';
 
 type RTitleProps = {
   $title: string;
@@ -8,17 +8,17 @@ type RTitleProps = {
 
 function RTitle({ $title, $setTitle }: RTitleProps) {
   return (
-    <WhiteContainer $width="900">
-      <InputTitle
+    <PrevWhiteContainer $width="900">
+      <Input
         placeholder="제목을 입력해주세요"
-        $width="100%"
+        $variant="title"
         value={$title}
         maxLength={30}
         onChange={(e) => {
           $setTitle(e.target.value);
         }}
       />
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

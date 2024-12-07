@@ -1,4 +1,4 @@
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 
 type VTitleProps = {
   title: string;
@@ -6,9 +6,9 @@ type VTitleProps = {
 
 function VTitle({ title }: VTitleProps) {
   return (
-    <WhiteContainer $width="900">
+    <PrevWhiteContainer $width="900">
       <span className="font-bold">{title}</span>
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

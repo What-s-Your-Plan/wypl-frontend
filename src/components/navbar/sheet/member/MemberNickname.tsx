@@ -4,9 +4,9 @@ import * as S from './MemberNickname.styled';
 
 import { patchNickname } from '@/api/member/patchNickname';
 import CheckIcon from '@/assets/icons/check.svg';
-import XIcon            from '@/assets/icons/x.svg';
-import { InputDefault } from '@/components/Common/InputText';
-import useMemberStore   from '@/stores/MemberStore';
+import XIcon from '@/assets/icons/x.svg';
+import Input from '@/components/Common/Input/Input';
+import useMemberStore from '@/stores/MemberStore';
 
 function MemberNickname() {
   const { nickname, setNickname } = useMemberStore();
@@ -49,12 +49,11 @@ function MemberNickname() {
     <S.Container>
       {edit ? (
         <S.NicknameUpdateWrapper>
-          <InputDefault
+          <Input
             value={inputNickname}
             onChange={handleNickname}
             maxLength={12}
             ref={inputRef}
-            $width={'170px'}
           />
           <S.IconWrapper>
             <S.IconBox>
