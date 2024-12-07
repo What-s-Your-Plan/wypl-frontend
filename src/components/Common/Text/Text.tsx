@@ -1,13 +1,16 @@
-type TextProps = {
-  content: string;
-};
+import { getTextSizeStyling } from './Text.styled';
 
-function Text({ content }: TextProps) {
+export interface TextProps {
+  content: string;
+  $size?: 'small' | 'medium' | 'large';
+}
+
+function Text({ content, $size = 'medium' }: TextProps) {
   return (
     <div css={{ width: '100%' }}>
       {content.split('\n').map((line, index) => {
         return (
-          <span key={index} css={{ width: '100%', wordBreak: 'break-all' }}>
+          <span key={index} css={[getTextSizeStyling($size)]}>
             {line}
             <br />
           </span>
