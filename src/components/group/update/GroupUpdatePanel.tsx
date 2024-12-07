@@ -6,7 +6,7 @@ import { getMemberByEmail } from '@/api/member/getMemberbyEmail';
 import noContent from '@/assets/lottie/noContent.json';
 import ColorCircle from '@/components/Common/ColorCircle/ColorCircle.tsx';
 import Input from '@/components/Common/Input/Input';
-import PopOver from '@/components/Common/PopOver';
+import PopOver from '@/components/Common/PopOver/PopOver';
 import * as S from '@/components/group/create/GroupCreatePanel.styled';
 import PalettePanel from '@/components/PalettePanel/PalettePanel';
 import { LabelColorType } from '@/styles/Theme';
@@ -149,7 +149,7 @@ function GroupUpdatePanel({
               onChange={(e) => setName(e.target.value)}
             />
             <PopOver
-              panelPosition="top-8"
+              $position="top"
               button={
                 <ColorCircle
                   styles={{

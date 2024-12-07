@@ -9,7 +9,7 @@ import ArrowLeft from '@/assets/icons/arrowLeft.svg';
 import MoreVertical from '@/assets/icons/moreVertical.svg';
 import Button from '@/components/Common/Button/Button.tsx';
 import { PrevContainer } from '@/components/Common/PrevContainer';
-import PopOver from '@/components/Common/PopOver';
+import PopOver from '@/components/Common/PopOver/PopOver';
 import DetailBlockList from '@/components/review/view/DetailBlockList';
 import { ReviewContent } from '@/objects/ReviewContent.ts';
 import { splitTTime } from '@/utils/DateUtils';
@@ -89,7 +89,7 @@ function ReviewDetailPage() {
                       />
                     </div>
                   }
-                  panelPosition="right-0 top-7"
+                  $position="top"
                 />
               </span>
             </div>
