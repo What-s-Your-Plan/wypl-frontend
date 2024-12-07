@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import ScheduleDetailPanel from './ScheduleDetailPanel.tsx';
-import Modal               from '@/components/Common/Modal';
+import Modal from '@/components/Common/Modal/Modal.tsx';
 
 import getScheduleDetail from '@/api/schedule/getScheduleDetail';
 import { putSchedule } from '@/api/schedule/putSchedule';

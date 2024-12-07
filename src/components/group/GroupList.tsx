@@ -21,7 +21,7 @@ import Envelope from '@/assets/icons/envelope.svg';
 import Plus from '@/assets/icons/plus.svg';
 import Users from '@/assets/icons/users.svg';
 import Button from '@/components/Common/Button/Button.tsx';
-import { Container } from '@/components/Common/Container';
+import { PrevContainer } from '@/components/Common/PrevContainer';
 import Divider from '@/components/Common/Divider/Divider';
 import Tooltip from '@/components/Tooltip/Tooltip';
 import { BROWSER_PATH } from '@/constants/Path';
@@ -188,7 +188,7 @@ function GroupList() {
 
   return (
     <>
-      <Container $width="left" className="scrollBar flex flex-col gap-4">
+      <PrevContainer $width="left" className="scrollBar flex flex-col gap-4">
         <Disclosure>
           {({ open }) => (
             <>
@@ -241,7 +241,7 @@ function GroupList() {
           </div>
           {renderGroupList()}
         </div>
-      </Container>
+      </PrevContainer>
       <GroupCreateModal
         isOpen={isModalOpen}
         init={groupCreateInit}

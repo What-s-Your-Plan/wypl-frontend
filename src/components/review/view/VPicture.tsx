@@ -1,4 +1,4 @@
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import { PictureContent } from '@/objects/ReviewContent.ts';
 
 type VPictureProps = {
@@ -7,9 +7,9 @@ type VPictureProps = {
 
 function VPicture({ content }: VPictureProps) {
   return (
-    <WhiteContainer $width="900" className="flex justify-center">
+    <PrevWhiteContainer $width="900" className="flex justify-center">
       <img src={content.path} alt="사진" />
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

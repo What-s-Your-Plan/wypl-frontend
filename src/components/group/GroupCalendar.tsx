@@ -1,4 +1,4 @@
-import { Container } from '@/components/Common/Container';
+import { PrevContainer } from '@/components/Common/PrevContainer';
 
 type GroupCalendarProps = {
   groupId?: number;
@@ -6,7 +6,7 @@ type GroupCalendarProps = {
 
 function GroupCalendar({ groupId }: GroupCalendarProps) {
   console.log(groupId);
-  return <Container $width="right">GroupCalendar</Container>;
+  return <PrevContainer $width="right">GroupCalendar</PrevContainer>;
 }
 
 export default GroupCalendar;

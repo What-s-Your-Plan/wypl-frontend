@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 
-import { WhiteContainer } from '@/components/Common/Container';
-import { InputTextArea }  from '@/components/Common/InputText';
-import { TextContent }    from '@/objects/ReviewContent.ts';
-import useReviewStore    from '@/stores/ReviewStore';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
+import { InputTextArea } from '@/components/Common/InputText';
+import { TextContent } from '@/objects/ReviewContent.ts';
+import useReviewStore from '@/stores/ReviewStore';
 
 type RTextProps = {
   index: number;
@@ -25,7 +25,7 @@ function RText({ index, content }: RTextProps) {
   };
 
   return (
-    <WhiteContainer $width="900">
+    <PrevWhiteContainer $width="900">
       <InputTextArea
         className="scrollBar"
         $width="100%"
@@ -35,7 +35,7 @@ function RText({ index, content }: RTextProps) {
         placeholder="내용을 입력해주세요"
         onChange={(e) => handleTextInput(e)}
       />
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

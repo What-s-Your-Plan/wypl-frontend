@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import ScheduleModify from './ScheduleModify.tsx';
 import * as Items from './ScheduleDetailItems.tsx';
-import Modal      from '@/components/Common/Modal';
+import Modal from '@/components/Common/Modal/Modal.tsx';
 
 import deleteSchedule from '@/api/schedule/deleteSchedule';
 import EditIcon from '@/assets/icons/editPaper.svg';

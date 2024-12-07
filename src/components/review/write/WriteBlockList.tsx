@@ -10,7 +10,7 @@ import { postReview } from '@/api/review/postReview';
 import Save from '@/assets/icons/save.svg';
 import Cancel from '@/assets/icons/x.svg';
 import Button from '@/components/Common/Button/Button.tsx';
-import * as S from '@/components/Common/Container';
+import * as S from '@/components/Common/PrevContainer';
 import Divider from '@/components/Common/Divider/Divider';
 import useReviewStore from '@/stores/ReviewStore';
 import useToastStore from '@/stores/ToastStore';
@@ -101,7 +101,7 @@ function WriteBlockList() {
   }, []);
 
   return (
-    <S.Container $width="right" className="scrollBar flex flex-col gap-4">
+    <S.PrevContainer $width="right" className="scrollBar flex flex-col gap-4">
       <div>
         <span className="float-end flex gap-2">
           <Button
@@ -142,17 +142,17 @@ function WriteBlockList() {
         className="h-[50vh]"
       >
         {reviewStore.contents.length === 0 ? (
-          <S.WhiteContainer $width="900">
+          <S.PrevWhiteContainer $width="900">
             <Divider
               styles={{ $direction: 'horizontal' }}
               text={'좌측 블록 드래그&드랍으로 블록을 추가해주세요'}
             />
-          </S.WhiteContainer>
+          </S.PrevWhiteContainer>
         ) : (
           renderBlockList()
         )}
       </div>
-    </S.Container>
+    </S.PrevContainer>
   );
 }
 

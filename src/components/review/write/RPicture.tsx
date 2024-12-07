@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 import postPicture from '@/api/file/postPicture.ts';
-import Upload                 from '@/assets/icons/upload.svg';
+import Upload from '@/assets/icons/upload.svg';
 import CircleLoadingAnimation from '@/components/Animation/CircleLoading';
-import { WhiteContainer }     from '@/components/Common/Container';
-import { PictureContent }     from '@/objects/ReviewContent.ts';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
+import { PictureContent } from '@/objects/ReviewContent.ts';
 import useReviewStore from '@/stores/ReviewStore';
 
 type RPictureProps = {
@@ -38,7 +38,7 @@ function RPicture({ index, content }: RPictureProps) {
   };
 
   return (
-    <WhiteContainer $width="900" className="flex justify-center !py-8">
+    <PrevWhiteContainer $width="900" className="flex justify-center !py-8">
       {isLoading && <CircleLoadingAnimation />}
       <label htmlFor={`file${index}`}>
         <img
@@ -56,7 +56,7 @@ function RPicture({ index, content }: RPictureProps) {
           className="hidden"
         />
       </label>
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

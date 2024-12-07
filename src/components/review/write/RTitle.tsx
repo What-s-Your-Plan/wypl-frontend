@@ -1,4 +1,4 @@
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import Input from '@/components/Common/Input/Input';
 
 type RTitleProps = {
@@ -8,7 +8,7 @@ type RTitleProps = {
 
 function RTitle({ $title, $setTitle }: RTitleProps) {
   return (
-    <WhiteContainer $width="900">
+    <PrevWhiteContainer $width="900">
       <Input
         placeholder="제목을 입력해주세요"
         $variant="title"
@@ -18,7 +18,7 @@ function RTitle({ $title, $setTitle }: RTitleProps) {
           $setTitle(e.target.value);
         }}
       />
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

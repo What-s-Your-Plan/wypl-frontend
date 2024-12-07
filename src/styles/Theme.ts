@@ -102,11 +102,105 @@ const borderRadius = {
   large: '16px',
 } as const;
 
+const container = {
+  width: {
+    '300': {
+      width: '300px',
+      height: '90vh',
+      '@media (max-width: 640px)': {
+        width: '100%',
+      },
+    },
+    '400': {
+      width: '400px',
+    },
+    '500': {
+      width: '500px',
+    },
+    '800': {
+      width: '800px',
+      marginLeft: '0',
+      height: '90vh',
+      '@media (max-width: 640px)': {
+        width: '100%',
+        marginLeft: '7px',
+      },
+    },
+    '900': {
+      width: '900px',
+    },
+    '1100': {
+      width: '1100px',
+      height: '90vh',
+      '@media (max-width: 640px)': {
+        width: '100%',
+      },
+    },
+    '1200': {
+      width: '1200px',
+      minWidth: '928px',
+    },
+    '1300': {
+      width: '1300px',
+    },
+    left: {
+      width: '24%',
+      minWidth: '360px',
+      height: '90vh',
+      '@media (max-width: 640px)': {
+        width: '100%',
+      },
+    },
+    right: {
+      width: '70%',
+      minWidth: '980px',
+      margin: '0',
+      height: '90vh',
+      '@media (max-width: 640px)': {
+        width: '100%',
+        marginLeft: '7px',
+      },
+    },
+  },
+  height: {
+    quarter: {
+      height: '10vh',
+    },
+    third: {
+      height: '15vh',
+    },
+    half: {
+      height: '20vh',
+    },
+    twoThird: {
+      height: '25vh',
+    },
+    one: {
+      height: '40vh',
+    },
+    max: {
+      height: '85vh',
+    },
+  },
+  colors: {
+    white: '#ffffff',
+    defaultWhite: '#ffffff66', // Assuming 40% opacity
+  },
+  shadows: {
+    md: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  },
+  borderRadius: {
+    xl: '16px',
+    lg: '12px',
+  },
+};
+
 export type ColorType = keyof typeof color;
 export type LabelColorType = keyof typeof labelColor;
 
 export const Theme = {
   color,
+  container,
   labelColor,
   borderRadius,
   circleLabelColor,

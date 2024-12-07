@@ -5,7 +5,7 @@ import {
   postSchedule,
   PostScheduleResponse,
 } from '@/api/schedule/postSchedule';
-import Modal from '@/components/Common/Modal';
+import Modal from '@/components/Common/Modal/Modal';
 import SchedulePanel from '@/components/schedule/SchedulePanel';
 import useForm from '@/hooks/useForm';
 

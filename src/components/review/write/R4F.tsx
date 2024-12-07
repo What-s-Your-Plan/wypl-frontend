@@ -1,4 +1,4 @@
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import Divider from '@/components/Common/Divider/Divider';
 import { InputTextArea } from '@/components/Common/InputText';
 import { FourFContent } from '@/objects/ReviewContent.ts';
@@ -37,7 +37,7 @@ function R4F({ index, content }: R4FProps) {
   };
 
   return (
-    <WhiteContainer $width="900" className="flex flex-row gap-5">
+    <PrevWhiteContainer $width="900" className="flex flex-row gap-5">
       <div className="flex flex-col w-500 gap-2">
         <div>
           <label htmlFor={`facts${index}`}>사실(Facts)</label>
@@ -93,7 +93,7 @@ function R4F({ index, content }: R4FProps) {
           />
         </div>
       </div>
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

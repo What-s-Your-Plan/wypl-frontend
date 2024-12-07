@@ -4,7 +4,7 @@ import Users from '@/assets/icons/users.svg';
 
 import Logo from '/logo.png';
 
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import LabelButton from '@/components/Common/LabelButton';
 import { LabelColorType } from '@/styles/Theme';
 import { splitTTime } from '@/utils/DateUtils';
@@ -26,7 +26,7 @@ function VSchedule({ schedule }: VScheduleProps) {
   };
 
   return (
-    <WhiteContainer $width="900" className="flex flex-wrap gap-4">
+    <PrevWhiteContainer $width="900" className="flex flex-wrap gap-4">
       <div className="flex gap-4 text-sm">
         <img src={Calendar} alt="일정명" className="w-5" />
         <div>
@@ -54,7 +54,7 @@ function VSchedule({ schedule }: VScheduleProps) {
         <img src={Users} alt="참가자" className="w-5" />
         {renderMembers()}
       </div>
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

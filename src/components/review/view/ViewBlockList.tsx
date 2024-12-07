@@ -5,8 +5,8 @@ import Pen from '@/assets/icons/pen.svg';
 import Smiley from '@/assets/icons/smiley.svg';
 import SunDim from '@/assets/icons/sunDim.svg';
 import TextAlignLeft from '@/assets/icons/textAlignLeft.svg';
-import { Container } from '@/components/Common/Container';
-import ReviewView    from '@/components/review/view/ReviewView';
+import { PrevContainer } from '@/components/Common/PrevContainer';
+import ReviewView from '@/components/review/view/ReviewView';
 
 function BlockList() {
   const blocks = [
@@ -70,9 +70,9 @@ function BlockList() {
   };
 
   return (
-    <Container $width="left" className="scrollBar ss:max-sm:!h-40">
+    <PrevContainer $width="left" className="scrollBar ss:max-sm:!h-40">
       {renderBlock()}
-    </Container>
+    </PrevContainer>
   );
 }
 

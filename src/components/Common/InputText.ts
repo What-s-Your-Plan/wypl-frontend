@@ -30,28 +30,6 @@ const InputDefault = styled.input<InputTextProps>`
   ${(props) => (props.$width ? `width:${props.$width};` : tw`grow`)}
 `;
 
-const InputTitle = styled.input<InputTextProps>`
-  ${tw`
-      h-8
-      px-2
-      transition
-
-      placeholder:text-gray-300
-      hover:border-gray-400
-      focus:!outline-none
-      
-      font-bold
-      bg-transparent
-      focus:border-main
-  `}
-  ${(props) => (props.$void ? '' : tw`border-b-2`)}
-  ${(props) =>
-    props.$isValid === false
-      ? tw`border-label-red text-label-red`
-      : tw`border-gray-300`}
-  ${(props) => (props.$width ? `width:${props.$width};` : tw`grow`)}
-`;
-
 const InputTextArea = styled.textarea<InputTextProps>`
   ${tw`
     rounded-md
@@ -73,4 +51,4 @@ const InputTextArea = styled.textarea<InputTextProps>`
   ${(props) => (props.$resize === false ? tw`resize-none` : '')}
 `;
 
-export { InputDefault, InputTitle, InputTextArea };
+export { InputDefault, InputTextArea };

@@ -5,7 +5,7 @@ import CloudAngledRain from '@/assets/icons/weather/cloudAngledRain.svg';
 import CloudSnow from '@/assets/icons/weather/cloudSnow.svg';
 import FastWind from '@/assets/icons/weather/fastWinds.svg';
 import Sun from '@/assets/icons/weather/sun.svg';
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import Input from '@/components/Common/Input/Input';
 import { WeatherContent } from '@/objects/ReviewContent.ts';
 import useReviewStore from '@/stores/ReviewStore';
@@ -47,7 +47,7 @@ function RWeather({ index, content }: RWeatherProps) {
   };
 
   return (
-    <WhiteContainer $width="900">
+    <PrevWhiteContainer $width="900">
       <div className="flex flex-row">
         <img src={SunDim} alt="날씨" className="w-5 mr-2" />
         <span>오늘의 날씨</span>
@@ -90,7 +90,7 @@ function RWeather({ index, content }: RWeatherProps) {
           /> */}
         </div>
       </div>
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 

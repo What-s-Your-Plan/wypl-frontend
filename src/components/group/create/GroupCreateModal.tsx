@@ -5,7 +5,7 @@ import {
   postGroupRegister,
   GroupResponse as CreateGroup,
 } from '@/api/group/postGroupRegister';
-import Modal from '@/components/Common/Modal';
+import Modal from '@/components/Common/Modal/Modal';
 import * as S from '@/components/group/create/GroupCreateModal.styled';
 import GroupCreatePanel from '@/components/group/create/GroupCreatePanel';
 import useForm from '@/hooks/useForm';

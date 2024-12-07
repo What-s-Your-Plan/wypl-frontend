@@ -1,4 +1,4 @@
-import { WhiteContainer } from '@/components/Common/Container';
+import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
 import Divider from '@/components/Common/Divider/Divider';
 import Text from '@/components/Common/Text/Text';
 import { KPTContent } from '@/objects/ReviewContent.ts';
@@ -9,7 +9,7 @@ type VKptProps = {
 
 function V4F({ content }: VKptProps) {
   return (
-    <WhiteContainer $width="900" className="flex justify-between gap-4">
+    <PrevWhiteContainer $width="900" className="flex justify-between gap-4">
       <div className="w-500 flex flex-col gap-4 justify-between">
         <div>
           <div className="font-semibold">Keep</div>
@@ -32,7 +32,7 @@ function V4F({ content }: VKptProps) {
           <Text content={content.tryStr} />
         </div>
       </div>
-    </WhiteContainer>
+    </PrevWhiteContainer>
   );
 }
 
