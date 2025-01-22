@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { PrevWhiteContainer } from '@/components/Common/PrevContainer';
+import TodoHeader from './Header/TodoHeader';
+
+import type { TodoData } from '@/@types/Todo';
 
 import { checkTodo } from '@/api/todo/checkTodo.ts';
 import { deleteTodo } from '@/api/todo/deleteTodo.ts';
@@ -8,8 +10,8 @@ import { getTodoList } from '@/api/todo/getTodoList.ts';
 import { patchTodo } from '@/api/todo/patchTodo.ts';
 import { postTodo } from '@/api/todo/postTodo.ts';
 import updateButton from '@/assets/icons/edit.svg';
-import plusButton from '@/assets/icons/plus.svg';
 import editButton from '@/assets/icons/x.svg';
+import Container from '@/components/Common/Container/Container';
 import * as S from '@/components/Todo/Todo.styled.ts';
 
 export interface TodoProps {
@@ -18,9 +20,9 @@ export interface TodoProps {
 }
 
 function Todo({ initTodos }: TodoProps) {
+  const [todos, setTodos] = useState<TodoData[]>(initTodos || []);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [content, setContent] = useState<string>('');
-  const [todos, setTodos] = useState<TodoData[]>(initTodos || []);
   const [chosenTodo, setChosenTodo] = useState(-1);
 
   /**
@@ -116,14 +118,10 @@ function Todo({ initTodos }: TodoProps) {
   }, []);
 
   return (
-    <PrevWhiteContainer $width="1300">
-      <S.Header>
-        <div className="font-bold">Todo</div>
-        <S.IconButton onClick={clickPlusButton}>
-          <img src={plusButton} alt="Add Todo" />
-        </S.IconButton>
-      </S.Header>
-      <div className="scrollBar h-[85%]">
+    <Container $width="300" $variant="white">
+      <TodoHeader isCreatingTodo={isOpen} toggleCreateTodo={clickPlusButton} />
+      <div css={{ height: '85%', overflowY: 'auto' }}>
+        {/* TODO: View */}
         {todos.length > 0 && (
           <div>
             {todos.map((todo) => (
@@ -160,6 +158,7 @@ function Todo({ initTodos }: TodoProps) {
             ))}
           </div>
         )}
+        {/* TODO: Input */}
         {isOpen && (
           <S.SubmitDiv>
             <S.Form onSubmit={handleCreateTodo}>
@@ -178,7 +177,7 @@ function Todo({ initTodos }: TodoProps) {
           </S.SubmitDiv>
         )}
       </div>
-    </PrevWhiteContainer>
+    </Container>
   );
 }
 

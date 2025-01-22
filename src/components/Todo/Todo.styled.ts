@@ -33,13 +33,13 @@ const TodoElement = styled.div`
 `;
 
 const Header = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 
-    & > div {
-        width: 12px;
-    }
+  & > div {
+    width: 12px;
+  }
 `;
 
 const SubmitDiv = styled.div`
