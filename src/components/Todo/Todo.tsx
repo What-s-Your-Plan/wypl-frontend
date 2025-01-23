@@ -13,6 +13,7 @@ import updateButton from '@/assets/icons/edit.svg';
 import editButton from '@/assets/icons/x.svg';
 import Container from '@/components/Common/Container/Container';
 import * as S from '@/components/Todo/Todo.styled.ts';
+import TodoFooter from './Footer/TodoFooter';
 
 export interface TodoProps {
   /** 초기 할일 데이터 */
@@ -158,24 +159,12 @@ function Todo({ initTodos }: TodoProps) {
             ))}
           </div>
         )}
-        {/* TODO: Input */}
-        {isOpen && (
-          <S.SubmitDiv>
-            <S.Form onSubmit={handleCreateTodo}>
-              <S.CheckBox type="checkbox" disabled />
-              <S.StyledInputDefault
-                className="!h-6 !p-1"
-                $width="85%"
-                type="text"
-                value={content}
-                onChange={handleInputChange}
-              />
-              <S.IconButton type="submit">
-                <img src={updateButton} alt="Create Todo" />
-              </S.IconButton>
-            </S.Form>
-          </S.SubmitDiv>
-        )}
+        <TodoFooter
+          isCreatingTodo={isOpen}
+          todoContent={content}
+          onInputChange={handleInputChange}
+          onSubmit={handleCreateTodo}
+        />
       </div>
     </Container>
   );
